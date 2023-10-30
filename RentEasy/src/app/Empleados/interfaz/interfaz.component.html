@@ -1,0 +1,35 @@
+<section id="princi">
+    <br>
+    <div class="container overflow-hidden" id="gestiones">
+        <div class="row gx-5">
+            <div class="col-3">
+                <div (click)="CargarRVehiculo()" class="p-3 border bg-light text-center hover-effect">Gestion Vehiculos</div>
+                <div (click)="CargarRCliente()"class="p-3 border bg-light text-center hover-effect">Gestion Clientes</div>
+                <div (click)="CargarRCategorias()"class="p-3 border bg-light text-center hover-effect">Gestion Categoria</div>
+                <div (click)=" CargarREmpleado()"class="p-3 border bg-light text-center hover-effect">Gestion Empleados</div>
+                <div (click)="CargarRTarifas()"class="p-3 border bg-light text-center hover-effect">Gestion Tarifa</div>
+                <div (click)="CargarRAlquiler()"class="p-3 border bg-light text-center hover-effect">Gestion Alquiler</div>
+                <div (click)=" CargarIConsulta()"class="p-3 border bg-light text-center hover-effect">Consultas</div>
+            </div>
+        </div>
+    </div>
+    <div id="Contenedor" class="w-100">
+        <!-- este es el contenedor -->
+        <div class="container" >
+            <div class="row">
+                <div class="col" id="Contenedor">
+                    <div class="empty-box d-grid gap-1 col-80 mx-auto" >
+                        <app-vehiculo *ngIf="MostrarComponenteRVehiculo"></app-vehiculo>
+                        <app-registro *ngIf="MostrarComponenteRCliente"></app-registro>
+                        <app-tipo-vehiculo *ngIf="MostrarComponenteRCategorias"></app-tipo-vehiculo>
+                        <app-registroempleados *ngIf="MostrarComponenteREmpleado"></app-registroempleados>
+                        <app-tarifa *ngIf="MostrarComponenteRTarifas"></app-tarifa>
+                        <app-alquiler *ngIf="MostrarComponenteRAlquiler"></app-alquiler>
+                        <app-interfaz-consulta *ngIf="MostrarComponenteIConsulta"></app-interfaz-consulta>
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+    </div> 
+</section>

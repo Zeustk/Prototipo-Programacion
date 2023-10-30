@@ -1,0 +1,60 @@
+#mover1{
+    position: absolute;
+    top:220px;
+    left: 500px;
+    width: 30%;
+    
+ }
+
+ #mover2{
+    position: absolute;
+    top:270px;
+    left: 500px;
+    width: 30%;
+ }
+
+ #mover3{
+    position: absolute;
+    top:320px;
+    left: 500px;
+    width: 30%;
+ }
+ #mover4{
+    position: absolute;
+    top:370px;
+    left: 500px;
+    width: 30%;
+ }
+
+ #mover5{
+    position: absolute;
+    top:419px;
+    left: 500px;
+    width: 30%;
+ }
+
+ #mover6{
+    position: absolute;
+    top:470px;
+    left: 500px;
+    width: 30%;
+ }
+
+ #mover7{
+    position: absolute;
+    top:520px;
+    left: 500px;
+    width: 30%;
+ } 
+
+h1{
+   text-align: center;
+   color:azure;
+}
+
+
+#contenedor{
+   background-color: #25274d;
+   min-height: 100vh;
+
+}
