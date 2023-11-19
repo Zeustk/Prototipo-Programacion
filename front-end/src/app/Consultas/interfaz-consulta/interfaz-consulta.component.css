@@ -1,60 +1,89 @@
 #mover1{
-    position: absolute;
-    top:220px;
-    left: 500px;
-    width: 30%;
+   position: absolute;
+   top: 200px;
+   width: 12%;
+   left: 35px;
     
  }
 
  #mover2{
-    position: absolute;
-    top:270px;
-    left: 500px;
-    width: 30%;
+   position: absolute;
+   top: 200px;
+   width: 13%;
+   left: 235px;
  }
 
  #mover3{
-    position: absolute;
-    top:320px;
-    left: 500px;
-    width: 30%;
+   position: absolute;
+   top: 200px;
+   width: 10%;
+   left: 452px;
  }
  #mover4{
-    position: absolute;
-    top:370px;
-    left: 500px;
-    width: 30%;
+   position: absolute;
+   top: 200px;
+   width: 12%;
+   left: 620px;
  }
 
  #mover5{
-    position: absolute;
-    top:419px;
-    left: 500px;
-    width: 30%;
+   position: absolute;
+   top: 200px;
+   width: 10%;
+   left: 820px;
  }
 
  #mover6{
-    position: absolute;
-    top:470px;
-    left: 500px;
-    width: 30%;
+   position: absolute;
+   top: 200px;
+   width: 11%;
+   left: 988px;
  }
 
  #mover7{
-    position: absolute;
-    top:520px;
-    left: 500px;
-    width: 30%;
+   position: absolute;
+   top: 200px;
+   width: 10%;
+   left: 1173px;
+ }
+
+ #mover8{
+   position: absolute;
+   top: 200px;
+   width: 12%;
+   left: 1341px;
+   
  } 
 
 h1{
    text-align: center;
-   color:azure;
+   color: gray;
+}
+
+hr{
+  border-bottom: 2px solid gray;
 }
 
 
 #contenedor{
-   background-color: #25274d;
+   background-color:aliceblue;
    min-height: 100vh;
 
+   
+}
+
+#bode-table{
+   border: 4px solid cadetblue;
+}
+
+h1 p{
+  position: absolute;
+  color: gray;
+  top: 100px;
+  left: 35px;
+}
+
+.input-group{
+  position: absolute;
+  top: 150px;
 }

@@ -12,12 +12,16 @@
     background-color: aqua;
 }
 .empty-box {
-   border: 1px solid #ccc;
+  
    border: 2px solid gray;
    height: 995px; /* Aumenta la altura del contenedor */
   position:absolute;
-  width: 120%;
+  width: 143%;
   overflow: auto;
   
+  
 }
+
+
+  
 
