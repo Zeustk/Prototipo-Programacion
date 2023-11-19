@@ -10,9 +10,9 @@ module.exports = function (servicio) {
 
       try {
 
-         const { Nombre, Disponible } = req.body;
+         const { Placa, Tipo_De_Vehiculo,Modelo,Marca,Tarifa,Disponible} = req.body;
 
-         const Answer = await servicio.addMarca(Nombre, Disponible)
+         const Answer = await servicio.addVehiculo(Placa, Tipo_De_Vehiculo,Modelo,Marca,Tarifa,Disponible)
 
          console.log(Answer);
 
@@ -27,17 +27,17 @@ module.exports = function (servicio) {
 
    router.get('/api/getVehiculo', async (req, res) => {
 
-      const Marcas = await servicio.getMarca();
+      const Vehiculo = await servicio.getVehiculo();
 
-      res.json(Marcas);
+      res.json(Vehiculo);
    })
 
 
    router.put('/api/UpdateVehiculo', async (req, res) => {
 
-      const { id, Nombre } = req.body
+      const { Placa, Tipo_De_Vehiculo,Modelo,Marca,Tarifa,Disponible } = req.body
 
-      const Answer = await servicio.UpdateMarca(id, Nombre);
+      const Answer = await servicio.UpdateVehiculo(Placa, Tipo_De_Vehiculo,Modelo,Marca,Tarifa,Disponible);
 
 
       res.json(Answer);
@@ -46,9 +46,9 @@ module.exports = function (servicio) {
 
    router.delete('/api/DeleteVehiculo', async (req, res) => {
 
-      const { id } = req.body
+      const { Placa } = req.body
 
-      const Answer = await servicio.DeleteMarca(id);
+      const Answer = await servicio.DeleteVehiculo(Placa);
 
       res.json(Answer);
    })

@@ -27,30 +27,30 @@ module.exports = function (servicio) {
 
    })
 
-   router.get('/api/getMarca', async (req, res) => {
+   router.get('/api/getEmpleado', async (req, res) => {
 
-      const Marcas = await servicio.getMarca();
+      const Empleado = await servicio.getEmpleado();
 
-      res.json(Marcas);
+      res.json(Empleado);
    })
 
 
-   router.put('/api/UpdateMarca', async (req, res) => {
+   router.put('/api/UpdateEmpleado', async (req, res) => {
 
-      const { id, Nombre } = req.body
+      const { Id,Correo, Clave,Id_Cargo } = req.body
 
-      const Answer = await servicio.UpdateMarca(id, Nombre);
+      const Answer = await servicio.UpdateEmpleado(Id,Correo, Clave,Id_Cargo);
 
 
       res.json(Answer);
    })
 
 
-   router.delete('/api/DeleteMarca', async (req, res) => {
+   router.delete('/api/DeleteEmpleado', async (req, res) => {
 
-      const { id } = req.body
+      const { Id } = req.body
 
-      const Answer = await servicio.DeleteMarca(id);
+      const Answer = await servicio.DeleteMarca(Id);
 
       res.json(Answer);
    })

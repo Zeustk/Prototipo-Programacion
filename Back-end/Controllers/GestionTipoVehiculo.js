@@ -32,7 +32,7 @@ class ServicioTipoVehiculo {
 
             result.rows.map(propiedad => {
                 let TipoVehiculoSchema = {
-                    "Id": propiedad[0],
+                    "ID": propiedad[0],
                     "Nombre": propiedad[1],
                     "Disponible": propiedad[2]
                 }
@@ -51,13 +51,13 @@ class ServicioTipoVehiculo {
     }
 
 
-    async UpdateMarca(Id_Marca, Nombre) {
+    async UpdateTipoVehiculo(Id, Nombre) {
 
         try {
 
-            const sql = "update Marcas set Nombre=:Nombre where ID_MARCA=:Id_Marca";
+            const sql = "update TipoVehiculo set Nombre=:Nombre where ID=:Id";
 
-            await this.DB.Open(sql, [Nombre, Id_Marca], true);
+            await this.DB.Open(sql, [Id, Nombre], true);
 
             return ('Actualizado Correctamente')
         }
@@ -70,13 +70,13 @@ class ServicioTipoVehiculo {
     }
 
 
-    async DeleteMarca(Id_Marca) {
+    async DeleleTipoVehiculo(Id,Nombre) {
 
         try {
 
-            const sql = "update Marcas set Disponible='NO' where ID_MARCA=:Id_Marca";
+            const sql = "update TipoVehiculos set Nombre=:Nombre where ID=:Id";
 
-            await this.DB.Open(sql, [Id_Marca], true);
+            await this.DB.Open(sql, [Id,Nombre], true);
 
             return ('Eliminado Correctamente')
         }
@@ -87,25 +87,6 @@ class ServicioTipoVehiculo {
         }
 
     }
-
-
-    async addMarca(Nombre, Disponible) {
-        try {
-            const sql = "insert into Marcas(ID_MARCA,Nombre,Disponible) values (SEQ_MARCAS.NEXTVAL,:Nombre,:Disponible)";
-
-            await this.DB.Open(sql, [Nombre, Disponible], true);
-
-            return ('Guardado Exitosamente')
-        }
-
-        catch (err) {
-            console.error(err);
-            return ('Guardado errado');
-        }
-
-    }
-
-
 
 
 }

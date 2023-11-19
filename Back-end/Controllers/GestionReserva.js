@@ -5,11 +5,11 @@ class ServicioReservas {
     }
 
 
-    async addReserva(Fecha_Inicio, Fecha_Final,Cc_Cliente,Placa_Vehiculo) {
+    async addReserva(Fecha_Inicio, Fecha_Final,Cc_Cliente,Placa_Vehiculo,Disponible) {
         try {
-            const sql = "insert into Reservas(ID_RESERVA,Fecha_Inicio,Fecha_Final,Cc_Cliente,Placa_Vehiculo) values (SEQ_MARCAS.NEXTVAL,:Fecha_Inicio,:Fecha_Final,:Cc_Cliente,:Placa_Vehiculo)";
+            const sql = "insert into Reservas(ID_RESERVA,Fecha_Inicio,Fecha_Final,Cc_Cliente,Placa_Vehiculo) values (SEQ_MARCAS.NEXTVAL,:Fecha_Inicio,:Fecha_Final,:Cc_Cliente,:Placa_Vehiculo :Disponible)";
 
-            await this.DB.Open(sql, [Fecha_Inicio, Fecha_Final,Cc_Cliente,Placa_Vehiculo], true);
+            await this.DB.Open(sql, [Fecha_Inicio, Fecha_Final,Cc_Cliente,Placa_Vehiculo,Disponible], true);
 
             return ('Guardado Exitosamente')
         }
@@ -21,26 +21,29 @@ class ServicioReservas {
 
     }
 
-    async getMarca() {
+    async getReserva() {
 
         try {
 
-            const sql = "select *from Marcas";
+            const sql = "select * from Reservas";
 
             let result = await this.DB.Open(sql, [], false);
-            const Marcas = [];
+            const Reservas = [];
 
             result.rows.map(propiedad => {
-                let MarcaSchema = {
-                    "ID_MARCA": propiedad[0],
-                    "NOMBRE": propiedad[1],
-                    "Disponible": propiedad[2]
+                let ReservaSchema = {
+                    "ID_Reserva": propiedad[0],
+                    "Fecha_Inicio": propiedad[1],
+                    "Fecha_Final": propiedad[2],
+                    "Cc_Cliente": propiedad[3],
+                    "Placa_Vehiculo": propiedad[4],
+                    "Disponible": propiedad[5]
                 }
 
-                Marcas.push(MarcaSchema);
+                Reservas.push(ReservaSchema);
             })
 
-            return Marcas;
+            return Reservas;
         }
 
         catch (err) {
@@ -51,13 +54,13 @@ class ServicioReservas {
     }
 
 
-    async UpdateMarca(Id_Marca, Nombre) {
+    async UpdateReserva(Id,Fecha_Inicio, Fecha_Final,Cc_Cliente) {
 
         try {
 
-            const sql = "update Marcas set Nombre=:Nombre where ID_MARCA=:Id_Marca";
+            const sql = "update Reservas set Fecha_Inicio=:Fecha_Inicio,Fecha_Final=:Fecha_Final,Cc_Cliente=:Cc_Cliente where ID_RESERVA=:Id";
 
-            await this.DB.Open(sql, [Nombre, Id_Marca], true);
+            await this.DB.Open(sql, [Id,Fecha_Inicio, Fecha_Final,Cc_Cliente], true);
 
             return ('Actualizado Correctamente')
         }
@@ -70,13 +73,13 @@ class ServicioReservas {
     }
 
 
-    async DeleteMarca(Id_Marca) {
+    async DeleteReserva(Id) {
 
         try {
 
-            const sql = "update Marcas set Disponible='NO' where ID_MARCA=:Id_Marca";
+            const sql = "update Reservas set Disponible='NO' where ID_RESERVA=:Id";
 
-            await this.DB.Open(sql, [Id_Marca], true);
+            await this.DB.Open(sql, [Id], true);
 
             return ('Eliminado Correctamente')
         }
@@ -87,26 +90,6 @@ class ServicioReservas {
         }
 
     }
-
-
-    async addMarca(Nombre, Disponible) {
-        try {
-            const sql = "insert into Marcas(ID_MARCA,Nombre,Disponible) values (SEQ_MARCAS.NEXTVAL,:Nombre,:Disponible)";
-
-            await this.DB.Open(sql, [Nombre, Disponible], true);
-
-            return ('Guardado Exitosamente')
-        }
-
-        catch (err) {
-            console.error(err);
-            return ('Guardado errado');
-        }
-
-    }
-
-
-
 
 }
 

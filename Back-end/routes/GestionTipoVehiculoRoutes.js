@@ -34,22 +34,22 @@ module.exports = function (servicio) {
    })
 
 
-   router.put('/api/UpdateMarca', async (req, res) => {
+   router.put('/api/UpdateTipoVehiculo', async (req, res) => {
 
-      const { id, Nombre } = req.body
+      const { Id, Nombre } = req.body
 
-      const Answer = await servicio.UpdateMarca(id, Nombre);
+      const Answer = await servicio.UpdateTipoVehiculo(Id, Nombre);
 
 
       res.json(Answer);
    })
 
 
-   router.delete('/api/DeleteMarca', async (req, res) => {
+   router.delete('/api/DeleteTipoVehiculo', async (req, res) => {
 
-      const { id } = req.body
+      const { Id,Nombre } = req.body
 
-      const Answer = await servicio.DeleteMarca(id);
+      const Answer = await servicio.DeleleTipoVehiculo(Id,Nombre);
 
       res.json(Answer);
    })

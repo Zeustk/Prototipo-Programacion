@@ -5,10 +5,10 @@ class ServicioVehiculos {
     }
 
 
-    async addvehiculo(Placa, Tipo_De_Vehiculo,Modelo,Marca,Tarifa,Disponible) {
+    async addVehiculo(Placa, Tipo_De_Vehiculo,Modelo,Marca,Tarifa,Disponible) {
 
         try {
-            const sql = "insert into Vehiculos(Placa, Tipo_De_Vehiculo,Modelo,Marca,Tarifa,Disponible) values (:Placa, :Tipo_De_Vehiculo,:Modelo,:Marca,:Tarifa,:Disponible)";
+            const sql = "insert into Vehiculos(Placa, Id_Tipovehiculo,Modelo,Id_Marca,Id_Tarifas,Disponible) values (:Placa, :Tipo_De_Vehiculo,:Modelo,:Marca,:Tarifa,:Disponible)";
 
             await this.DB.Open(sql, [Placa, Tipo_De_Vehiculo,Modelo,Marca,Tarifa,Disponible], true);
 
@@ -22,26 +22,29 @@ class ServicioVehiculos {
 
     }
 
-    async getMarca() {
+    async getVehiculo() {
 
         try {
 
             const sql = "select *from Vehiculos";
 
             let result = await this.DB.Open(sql, [], false);
-            const Marcas = [];
+            const Vehiculos = [];
 
             result.rows.map(propiedad => {
-                let MarcaSchema = {
-                    "ID_MARCA": propiedad[0],
-                    "NOMBRE": propiedad[1],
-                    "Disponible": propiedad[2]
+                let VehiculoSchema = {
+                    "Placa": propiedad[0],
+                    "Id_TipoVehiculo": propiedad[1],
+                    "Modelo": propiedad[2],
+                    "Id_Marca":propiedad[3],
+                    "Id_Tarifas":propiedad[4],
+                    "Disponible":propiedad[5]
                 }
 
-                Marcas.push(MarcaSchema);
+                Vehiculos.push(VehiculoSchema);
             })
 
-            return Marcas;
+            return Vehiculos;
         }
 
         catch (err) {
@@ -52,13 +55,13 @@ class ServicioVehiculos {
     }
 
 
-    async UpdateMarca(Id_Marca, Nombre) {
+    async UpdateVehiculo(Placa, Tipo_De_Vehiculo,Modelo,Marca,Tarifa,Disponible) {
 
         try {
 
-            const sql = "update Marcas set Nombre=:Nombre where ID_MARCA=:Id_Marca";
+            const sql = "update VEHICULOS set Id_TipoVehiculo=:Tipo_De_Vehiculo,Modelo=:Modelo,Id_Marca=:Marca,Id_Tarifas=:Tarifa where Placa=:Placa";
 
-            await this.DB.Open(sql, [Nombre, Id_Marca], true);
+            await this.DB.Open(sql, [Placa, Tipo_De_Vehiculo,Modelo,Marca,Tarifa,Disponible], true);
 
             return ('Actualizado Correctamente')
         }
@@ -71,13 +74,13 @@ class ServicioVehiculos {
     }
 
 
-    async DeleteMarca(Id_Marca) {
+    async DeleteVehiculo(Placa) {
 
         try {
 
-            const sql = "update Marcas set Disponible='NO' where ID_MARCA=:Id_Marca";
+            const sql = "update Vehiculos set Disponible='NO' where Placa=:Placa";
 
-            await this.DB.Open(sql, [Id_Marca], true);
+            await this.DB.Open(sql, [Placa], true);
 
             return ('Eliminado Correctamente')
         }
@@ -88,24 +91,6 @@ class ServicioVehiculos {
         }
 
     }
-
-
-    async addMarca(Nombre, Disponible) {
-        try {
-            const sql = "insert into Marcas(ID_MARCA,Nombre,Disponible) values (SEQ_MARCAS.NEXTVAL,:Nombre,:Disponible)";
-
-            await this.DB.Open(sql, [Nombre, Disponible], true);
-
-            return ('Guardado Exitosamente')
-        }
-
-        catch (err) {
-            console.error(err);
-            return ('Guardado errado');
-        }
-
-    }
-
 
 
 

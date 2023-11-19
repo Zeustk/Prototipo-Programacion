@@ -7,9 +7,9 @@ class ServicioTarifas {
 
     async addTarifa(Nombre, Precio,ValorDia,Disponible) {
         try {
-            const sql = "insert into Tarifas(ID,Nombre,Precio,ValorDia,Disponible) values (SEQ_TARIFAS.NEXTVAL,:Nombre,:Precio,:ValorDia,:Disponible)";
+            const sql = "insert into Tarifas(ID,Nombre,Precio,ValorDia,Disponible) values (SEQ_TARIFAS.NEXTVAL,:Id,:Nombre,:Precio,:ValorDia,:Disponible)";
 
-            await this.DB.Open(sql, [Nombre,Precio,ValorDia,Disponible], true);
+            await this.DB.Open(sql, [Id,Nombre, Precio,ValorDia,Disponible], true);
 
             return ('Guardado Exitosamente')
         }
@@ -42,7 +42,7 @@ class ServicioTarifas {
                 Tarifas.push(TarifaSchema);
             })
 
-            return TarifaSchema;
+            return Tarifas;
         }
 
         catch (err) {
@@ -53,13 +53,13 @@ class ServicioTarifas {
     }
 
 
-    async UpdateMarca(Id_Marca, Nombre) {
+    async UpdateTarifa(Id,Nombre, Precio,ValorDia) {
 
         try {
 
-            const sql = "update Marcas set Nombre=:Nombre where ID_MARCA=:Id_Marca";
+            const sql = "update Tarifas set Nombre=:Nombre,Precio=:Precio,ValorDia=:ValorDia where ID=:Id";
 
-            await this.DB.Open(sql, [Nombre, Id_Marca], true);
+            await this.DB.Open(sql, [Id,Nombre, Precio,ValorDia], true);
 
             return ('Actualizado Correctamente')
         }
@@ -72,13 +72,13 @@ class ServicioTarifas {
     }
 
 
-    async DeleteMarca(Id_Marca) {
+    async DeleteTarifa(Id) {
 
         try {
 
-            const sql = "update Marcas set Disponible='NO' where ID_MARCA=:Id_Marca";
+            const sql = "update Tarifas set Disponible='NO' where ID=:Id";
 
-            await this.DB.Open(sql, [Id_Marca], true);
+            await this.DB.Open(sql, [Id], true);
 
             return ('Eliminado Correctamente')
         }
@@ -89,25 +89,6 @@ class ServicioTarifas {
         }
 
     }
-
-
-    async addMarca(Nombre, Disponible) {
-        try {
-            const sql = "insert into Marcas(ID_MARCA,Nombre,Disponible) values (SEQ_MARCAS.NEXTVAL,:Nombre,:Disponible)";
-
-            await this.DB.Open(sql, [Nombre, Disponible], true);
-
-            return ('Guardado Exitosamente')
-        }
-
-        catch (err) {
-            console.error(err);
-            return ('Guardado errado');
-        }
-
-    }
-
-
 
 
 }

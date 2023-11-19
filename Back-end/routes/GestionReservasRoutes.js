@@ -10,9 +10,9 @@ module.exports = function (servicio) {
 
       try {
 
-         const { Fecha_Inicio, Fecha_Final,Cc_Cliente,Placa_Vehiculo } = req.body;
+         const { Fecha_Inicio, Fecha_Final,Cc_Cliente,Placa_Vehiculo,Disponible } = req.body;
 
-         const Answer = await servicio.addReserva(Fecha_Inicio, Fecha_Final,Cc_Cliente,Placa_Vehiculo)
+         const Answer = await servicio.addReserva(Fecha_Inicio, Fecha_Final,Cc_Cliente,Placa_Vehiculo,Disponible)
 
          console.log(Answer);
 
@@ -26,30 +26,30 @@ module.exports = function (servicio) {
 
    })
 
-   router.get('/api/getMarca', async (req, res) => {
+   router.get('/api/getReserva', async (req, res) => {
 
-      const Marcas = await servicio.getMarca();
+      const Reservas = await servicio.getReserva();
 
-      res.json(Marcas);
+      res.json(Reservas);
    })
 
 
-   router.put('/api/UpdateMarca', async (req, res) => {
+   router.put('/api/UpdateReserva', async (req, res) => {
 
-      const { id, Nombre } = req.body
+      const { Id,Fecha_Inicio, Fecha_Final,Cc_Cliente } = req.body
 
-      const Answer = await servicio.UpdateMarca(id, Nombre);
+      const Answer = await servicio.UpdateReserva(Id,Fecha_Inicio, Fecha_Final,Cc_Cliente);
 
 
       res.json(Answer);
    })
 
 
-   router.delete('/api/DeleteMarca', async (req, res) => {
+   router.delete('/api/DeleteReserva', async (req, res) => {
 
-      const { id } = req.body
+      const { Id } = req.body
 
-      const Answer = await servicio.DeleteMarca(id);
+      const Answer = await servicio.DeleteReserva(Id);
 
       res.json(Answer);
    })

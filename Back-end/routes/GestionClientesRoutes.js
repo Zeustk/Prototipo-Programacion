@@ -34,6 +34,26 @@ module.exports = function (servicio) {
         res.json(Clientes);
     })
 
+    router.put('/api/UpdateCliente', async (req, res) => {
+
+        const { CC,Nombre_Completo,Fecha_Nacimiento, N_Licencia,Correo, Telefono,Contraseña } = req.body
+  
+        const Answer = await servicio.UpdateEmpleado(CC,Nombre_Completo,Fecha_Nacimiento, N_Licencia,Correo, Telefono,Contraseña);
+  
+  
+        res.json(Answer);
+     })
+  
+  
+     router.delete('/api/DeleteCliente', async (req, res) => {
+  
+        const { CC } = req.body
+  
+        const Answer = await servicio.DeleteCliente(CC);
+  
+        res.json(Answer);
+     })
+
 
     return router;
 }
