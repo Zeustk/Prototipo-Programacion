@@ -6,6 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./interfaz-consulta.component.css']
 })
 export class InterfazConsultaComponent {
+  mostrarTabla = false;
+  mostrarBoton=false;
 
-  
+  mostrarTablaConsulta() {
+    this.mostrarTabla = true;
+    this.mostrarBoton=true;
+
+  }
 }
