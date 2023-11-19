@@ -26,11 +26,11 @@ module.exports = function (servicio) {
 
    })
 
-   router.get('/api/getMarca', async (req, res) => {
+   router.get('/api/getTipoVehiculo', async (req, res) => {
 
-      const Marcas = await servicio.getMarca();
+      const TipoVehiculo = await servicio.getTipoVehiculo();
 
-      res.json(Marcas);
+      res.json(TipoVehiculo);
    })
 
 

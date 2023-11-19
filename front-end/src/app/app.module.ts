@@ -20,6 +20,7 @@ import { ConsultaModule } from './Consultas/consultas.module';
 import { CarpetaCompartidaModule } from './CarpetaCompartida/carpetacompartida.module';
 import { ReservasModule } from './Reservas/reservas.module';
 import { MarcaService } from './Vehiculos/marca/services/marca.service';
+import { TipoVehiculoService } from './Vehiculos/tipo-vehiculo/services/tipo-vehiculo.service';
 
 
 
@@ -51,7 +52,7 @@ import { MarcaService } from './Vehiculos/marca/services/marca.service';
 
     
   ],
-  providers: [MarcaService],
+  providers: [MarcaService,TipoVehiculoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

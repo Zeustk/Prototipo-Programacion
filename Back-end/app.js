@@ -28,16 +28,19 @@ const app = express()
 app.use(cors());
 
 //Importancion de modulo
-const ControllerMarcas=require('./Controllers/GestionMarcas');
-const ControllerClientes=require('./Controllers/GestionCliente')
+const ControllerMarcas=require('./Controllers/GestionMarca');
+const ControllerClientes=require('./Controllers/GestionCliente');
+const ControllerTipoVehiculo=require('./Controllers/GestionTipoVehiculo');
 
 //Instancias de los modulos
 const serviciomarcaI=new ControllerMarcas(DB);
 const ServicioClienteI=new ControllerClientes(DB);
+const servicioTipoVehiculoI=new ControllerTipoVehiculo(DB);
 
 //Routes (API)
 const MarcasRoutes= require('./routes/GestionMarcasRoutes')(serviciomarcaI); //Se le pasa el servicio con su base
 const ClienteRoutes=require('./routes/GestionClientesRoutes')(ServicioClienteI);
+const TipoVehiculoRoutes=require('./routes/GestionTipoVehiculoRoutes')(servicioTipoVehiculoI)
 
 
 //SETS
@@ -58,6 +61,7 @@ app.use('/public',express.static(path.join(__dirname,'public')))
 //ROUTES (Ejecucion)
 app.use(MarcasRoutes);
 app.use(ClienteRoutes);
+app.use(TipoVehiculoRoutes);
 
 
 //Directorio Publico

@@ -1,15 +1,15 @@
-class ServicioTipoVehiculo {
+class ServicioReservas {
 
     constructor(DB) {
         this.DB = DB;
     }
 
 
-    async addTipoVehiculo(Nombre, Disponible) {
+    async addReserva(Fecha_Inicio, Fecha_Final,Cc_Cliente,Placa_Vehiculo) {
         try {
-            const sql = "insert into TipoVehiculo(ID,Nombre,Disponible) values (SEQ_TIPOVEHICULO.NEXTVAL,:Nombre,:Disponible)";
+            const sql = "insert into Reservas(ID_RESERVA,Fecha_Inicio,Fecha_Final,Cc_Cliente,Placa_Vehiculo) values (SEQ_MARCAS.NEXTVAL,:Fecha_Inicio,:Fecha_Final,:Cc_Cliente,:Placa_Vehiculo)";
 
-            await this.DB.Open(sql, [Nombre, Disponible], true);
+            await this.DB.Open(sql, [Fecha_Inicio, Fecha_Final,Cc_Cliente,Placa_Vehiculo], true);
 
             return ('Guardado Exitosamente')
         }
@@ -21,26 +21,26 @@ class ServicioTipoVehiculo {
 
     }
 
-    async getTipoVehiculo() {
+    async getMarca() {
 
         try {
 
-            const sql = "select *from TipoVehiculo";
+            const sql = "select *from Marcas";
 
             let result = await this.DB.Open(sql, [], false);
-            const TipoVehiculos = [];
+            const Marcas = [];
 
             result.rows.map(propiedad => {
-                let TipoVehiculoSchema = {
-                    "Id": propiedad[0],
-                    "Nombre": propiedad[1],
+                let MarcaSchema = {
+                    "ID_MARCA": propiedad[0],
+                    "NOMBRE": propiedad[1],
                     "Disponible": propiedad[2]
                 }
 
-                TipoVehiculos.push(TipoVehiculoSchema);
+                Marcas.push(MarcaSchema);
             })
 
-            return TipoVehiculos;
+            return Marcas;
         }
 
         catch (err) {
@@ -110,4 +110,4 @@ class ServicioTipoVehiculo {
 
 }
 
-module.exports = ServicioTipoVehiculo;
+module.exports = ServicioReservas;

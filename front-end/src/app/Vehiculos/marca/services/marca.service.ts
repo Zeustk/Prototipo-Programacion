@@ -6,20 +6,22 @@ import { CrudService } from 'src/app/ServiceCrud/crud.service';
 @Injectable()
 export class MarcaService extends CrudService<Marcas>{
 
-  private _marca!: Marcas;
+  private _marcas: Marcas[]=[];
 
-  get Marca(): Marcas {
-    return { ...this._marca }; //Para seguridad, no se acceda facilmente
+  get Marcas(): Marcas[] {
+   
+    return [...this._marcas]; //Para seguridad, no se acceda facilmente
   }
 
   RegistrarMarca(MarcaRecibido:Marcas) {
 
-
-    this._marca=MarcaRecibido;
-   
-    const body = { Nombre: MarcaRecibido.Nombre, Disponible:MarcaRecibido.Disponible };
+    const body = { id_Marca:MarcaRecibido.id_Marca,Nombre: MarcaRecibido.Nombre, Disponible:MarcaRecibido.Disponible };
 
     return this.Agregar(body,'AddMarca');
+  }
+
+  ConsultarMarcas(){
+    return this.Consultar('getMarca');
   }
 
   

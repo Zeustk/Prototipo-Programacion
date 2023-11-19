@@ -27,10 +27,9 @@
                         <div class="col-md-9 mb-3">
   
                             <select class="select form-select py-2" id="Tipo_Vehiculo">
-                              <option value="1">MINIVAN</option>
-                              <option value="2">CONVERTIBLE</option>
-                              <option value="3">MOTOCICLETA</option>
-                              <option value="4">CAMIONETA</option>
+                              <ng-container *ngFor="let TipoVehiculo of TipoVehiculos">
+                                <option [value]="TipoVehiculo.Id">{{ TipoVehiculo.Nombre }}</option>
+                              </ng-container>
                             </select>
                             <br>
                             <label class="form-label" for="Tipo_Vehiculo"> Tipo De Vehiculo</label>
@@ -52,10 +51,9 @@
                           <div class="col-md-9 mb-3">
     
                               <select class="select form-select py-2" id="Marca">
-                                <option value="1">TOYOTA</option>
-                                <option value="2">FORD</option>
-                                <option value="3">HONDA</option>
-                                <option value="4">BMW</option>
+                                <ng-container *ngFor="let Marca of Marcas">
+                                  <option [value]="Marca.id_Marca">{{ Marca.Nombre }}</option>
+                                </ng-container>
                               </select>
                               <br>
                               <label class="form-label" for="Marca"> Marca</label>
