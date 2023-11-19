@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ClienteService } from 'src/app/Cliente/services/cliente.service';
 import { Marcas, TipoVehiculo, Vehiculos } from 'src/app/Vehiculos/Interfaces/vehiculos.interface';
 import { MarcaService } from 'src/app/Vehiculos/marca/services/marca.service';
+import { TarifaService } from 'src/app/Vehiculos/tarifa/services/tarifa.service';
 import { TipoVehiculoService } from 'src/app/Vehiculos/tipo-vehiculo/services/tipo-vehiculo.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { TipoVehiculoService } from 'src/app/Vehiculos/tipo-vehiculo/services/ti
 })
 export class InterfazConsultaComponent {
 
-  constructor(private marcaService: MarcaService, private TipoVehiculoService: TipoVehiculoService,private ClienteService:ClienteService) { };
+  constructor(private marcaService: MarcaService, private TipoVehiculoService: TipoVehiculoService,private ClienteService:ClienteService,private TarifaService:TarifaService) { };
 
   mostrarTabla = false;
   mostrarBoton = false;

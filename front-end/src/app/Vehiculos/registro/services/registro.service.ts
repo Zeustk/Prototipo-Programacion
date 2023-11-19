@@ -32,4 +32,8 @@ export class RegistroService extends CrudService<Vehiculos> {  //VEHICULOS
     return this.Agregar(body,'AddVehiculo')
   }
 
+  ConsultarVehiculo(){
+    return this.Consultar('getVehiculo');
+  }
+
 }
