@@ -5,14 +5,14 @@ const router = express.Router();
 
 module.exports = function (servicio) {
 
-   router.post('/api/AddMarca', async (req, res) => {
+   router.post('/api/AddTarifa', async (req, res) => {
 
 
       try {
 
-         const { Nombre, Disponible } = req.body;
+         const { Nombre, Precio,ValorDia,Disponible } = req.body;
 
-         const Answer = await servicio.addMarca(Nombre, Disponible)
+         const Answer = await servicio.addTarifa(Nombre,Precio,ValorDia, Disponible)
 
          console.log(Answer);
 
@@ -56,4 +56,3 @@ module.exports = function (servicio) {
 
    return router;
 }
-

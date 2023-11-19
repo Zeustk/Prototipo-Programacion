@@ -1,7 +1,6 @@
 import {CommonModule} from '@angular/common'
 import {NgModule} from  '@angular/core';
 import { RegistroComponent } from './registro/registro.component';
-import { TipoClienteComponent } from './tipo-cliente/tipo-cliente.component';
 import { InicioSesionComponent } from './InicioSesionCl/inicio-sesion.component';
 
 
@@ -9,13 +8,11 @@ import { InicioSesionComponent } from './InicioSesionCl/inicio-sesion.component'
     declarations:[
        
         RegistroComponent,
-        TipoClienteComponent,
         InicioSesionComponent,
         
     ],
     exports:[
         RegistroComponent,
-        TipoClienteComponent,
         InicioSesionComponent,
     ],
     imports:[

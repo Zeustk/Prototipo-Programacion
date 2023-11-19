@@ -5,7 +5,7 @@ const router = express.Router();
 
 module.exports = function (servicio) {
 
-   router.post('/api/AddMarca', async (req, res) => {
+   router.post('/api/AddVehiculo', async (req, res) => {
 
 
       try {
@@ -19,14 +19,13 @@ module.exports = function (servicio) {
          res.status(200).json(Answer)
 
       } catch (error) {
-
+         
          res.status(404).json(error);
-
       }
 
    })
 
-   router.get('/api/getMarca', async (req, res) => {
+   router.get('/api/getVehiculo', async (req, res) => {
 
       const Marcas = await servicio.getMarca();
 
@@ -34,7 +33,7 @@ module.exports = function (servicio) {
    })
 
 
-   router.put('/api/UpdateMarca', async (req, res) => {
+   router.put('/api/UpdateVehiculo', async (req, res) => {
 
       const { id, Nombre } = req.body
 
@@ -45,7 +44,7 @@ module.exports = function (servicio) {
    })
 
 
-   router.delete('/api/DeleteMarca', async (req, res) => {
+   router.delete('/api/DeleteVehiculo', async (req, res) => {
 
       const { id } = req.body
 
@@ -56,4 +55,3 @@ module.exports = function (servicio) {
 
    return router;
 }
-

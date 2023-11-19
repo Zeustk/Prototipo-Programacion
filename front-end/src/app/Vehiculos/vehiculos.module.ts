@@ -3,6 +3,7 @@ import {NgModule} from  '@angular/core';
 
 import { FormsModule } from '@angular/forms';
 
+
 import { VehiculoComponent } from './registro/vehiculo.component';
 import { TipoVehiculoComponent } from './tipo-vehiculo/tipo-vehiculo.component';
 import { ClienteModule } from '../Cliente/cliente.module';
@@ -34,6 +35,7 @@ import { GaleriaComponent } from './galeria/galeria.component';
         TarifaComponent,
         CargosComponent,
         GaleriaComponent,
+     
         
   
     ],
@@ -41,6 +43,7 @@ import { GaleriaComponent } from './galeria/galeria.component';
         CommonModule,
         ClienteModule,
         FormsModule,
+
       
    
     ]

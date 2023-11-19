@@ -5,16 +5,16 @@ class ServicioCliente {
     }
 
 
-    async addCliente(Nombre_Completo, CC, Fecha_Nacimiento, Id_TipoCliente, N_Licencia,Disponible, Correo, Telefono) {
+    async addCliente(Nombre_Completo, CC, Fecha_Nacimiento, N_Licencia,Disponible, Correo, Telefono) {
         try {
-            const sql = "insert into Clientes(Nombre_Completo, CC, Fecha_Nacimiento, Id_TipoCliente, N_Licencia,Disponible, Correo, Telefono) values (:Nombre_Completo,:CC,:fechaNacimiento,:idTipoCliente,:N_Licencia,:Disponible,:Correo,:Telefono)";
+            const sql = "insert into Clientes(Nombre_Completo, CC, Fecha_Nacimiento, Id_TipoCliente, N_Licencia,Disponible, Correo, Telefono) values (:Nombre_Completo,:CC,:fechaNacimiento,:N_Licencia,:Disponible,:Correo,:Telefono)";
             
             //Conversiones
             const fechaNacimiento = new Date(Fecha_Nacimiento);
-            const idTipoCliente= parseInt(Id_TipoCliente);
+    
 
 
-            await this.DB.Open(sql, [Nombre_Completo, CC, fechaNacimiento, idTipoCliente, N_Licencia,Disponible, Correo, Telefono], true);
+            await this.DB.Open(sql, [Nombre_Completo, CC, fechaNacimiento, N_Licencia,Disponible, Correo, Telefono], true);
 
             return ('Guardado Exitosamente')
         }
