@@ -21,6 +21,11 @@ import { CarpetaCompartidaModule } from './CarpetaCompartida/carpetacompartida.m
 import { ReservasModule } from './Reservas/reservas.module';
 import { MarcaService } from './Vehiculos/marca/services/marca.service';
 import { TipoVehiculoService } from './Vehiculos/tipo-vehiculo/services/tipo-vehiculo.service';
+import { ClienteService } from './Cliente/services/cliente.service';
+import { RegistroService } from './Vehiculos/registro/services/registro.service';
+import { TarifaService } from './Vehiculos/tarifa/services/tarifa.service';
+import { ReservasService } from './Reservas/services/reservas.service';
+import { EmpleadosService } from './Empleados/services/empleados.service';
 
 
 
@@ -52,7 +57,7 @@ import { TipoVehiculoService } from './Vehiculos/tipo-vehiculo/services/tipo-veh
 
     
   ],
-  providers: [MarcaService,TipoVehiculoService],
+  providers: [MarcaService,TipoVehiculoService,ClienteService,RegistroService,TarifaService,ReservasService,EmpleadosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

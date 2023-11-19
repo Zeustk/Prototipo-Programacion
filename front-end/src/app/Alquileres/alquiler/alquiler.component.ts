@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./alquiler.component.css']
 })
 export class AlquilerComponent {
+  
 
 }

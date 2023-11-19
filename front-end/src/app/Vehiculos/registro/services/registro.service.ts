@@ -4,7 +4,7 @@ import { CrudService } from 'src/app/ServiceCrud/crud.service';
 
 
 @Injectable()
-export class RegistroService extends CrudService<Vehiculos> {
+export class RegistroService extends CrudService<Vehiculos> {  //VEHICULOS
 
   private _vehiculo!:Vehiculos;
 

@@ -32,9 +32,9 @@ class ServicioMarcas {
 
             result.rows.map(propiedad => {
                 let MarcaSchema = {
-                    "Id_Marca": propiedad[0],
-                    "Nombre": propiedad[1],
-                    "Disponible": propiedad[2]
+                    "ID": propiedad[0],
+                    "NOMBRE": propiedad[1],
+                    "DISPONIBLE": propiedad[2]
                 }
 
                 Marcas.push(MarcaSchema);

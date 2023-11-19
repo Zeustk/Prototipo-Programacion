@@ -80,7 +80,7 @@ class ServicioAlquiler {
     }
 
 
-    async DeleteMarca(Id) {
+    async DeleteAlquiler(Id) {
 
         try {
 

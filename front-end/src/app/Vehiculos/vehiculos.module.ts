@@ -35,6 +35,7 @@ import { GaleriaComponent } from './galeria/galeria.component';
         TarifaComponent,
         CargosComponent,
         GaleriaComponent,
+        TipoVehiculoComponent,
      
         
   

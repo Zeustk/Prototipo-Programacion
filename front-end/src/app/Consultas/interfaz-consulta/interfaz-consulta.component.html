@@ -6,10 +6,12 @@
         <hr>
       </div>
       <div>
-        <h1><p>Busqueda</p></h1>
+        <h1>
+          <p>Busqueda</p>
+        </h1>
       </div>
       <div class="input-group mb-3">
-        <div class="col-2"> 
+        <div class="col-2">
           <input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2">
         </div>
         <div class="input-group-append">
@@ -19,14 +21,22 @@
       <br>
       <br>
       <br>
-      <button class="btn btn-primary" type="button" (click)="mostrarTablaConsulta()" id="mover1">Consulta Vehiculos</button>
-      <button class="btn btn-primary" type="button" (click)="mostrarTablaConsulta()"id="mover2" >Consulta Tipo De Vehiculo</button>
-      <button class="btn btn-primary" type="button" (click)="mostrarTablaConsulta()" id="mover3">Consulta Clientes</button>
-      <button class="btn btn-primary" type="button" (click)="mostrarTablaConsulta()" id="mover4" >Consulta Tipo de Clientes</button>
-      <button class="btn btn-primary" type="button" (click)="mostrarTablaConsulta()" id="mover5">Consulta Tarifa</button>
-      <button class="btn btn-primary" type="button" (click)="mostrarTablaConsulta()" id="mover6" >Consulta Marcas</button>
-      <button class="btn btn-primary" type="button" (click)="mostrarTablaConsulta()" id="mover7">Consulta Reservas</button>
-      <button class="btn btn-primary" type="button" (click)="mostrarTablaConsulta()" id="mover8" >Consulta Alquileres</button>
+      <button class="btn btn-primary" type="button" (click)="mostrarTablaConsulta('GK')" id="mover1">Consulta
+        Vehiculos</button>
+      <button class="btn btn-primary" type="button" (click)="mostrarTablaConsulta('T')" id="mover2">Consulta Tipo De
+        Vehiculo</button>
+      <button class="btn btn-primary" type="button" (click)="mostrarTablaConsulta('C')" id="mover3">Consulta
+        Clientes</button>
+      <button class="btn btn-primary" type="button" (click)="mostrarTablaConsulta('H')" id="mover4">Consulta Tipo de
+        Clientes</button>
+      <button class="btn btn-primary" type="button" (click)="mostrarTablaConsulta('TA')" id="mover5">Consulta
+        Tarifa</button>
+      <button class="btn btn-primary" type="button" (click)="mostrarTablaConsulta('M')" id="mover6">Consulta
+        Marcas</button>
+      <button class="btn btn-primary" type="button" (click)="mostrarTablaConsulta('DD')" id="mover7">Consulta
+        Reservas</button>
+      <button class="btn btn-primary" type="button" (click)="mostrarTablaConsulta('GG')" id="mover8">Consulta
+        Alquileres</button>
       <br>
       <br>
       <br>
@@ -35,36 +45,19 @@
       <table class="table table-striped" *ngIf="mostrarTabla">
         <thead>
           <tr>
-            <th scope="col">Placa</th>
-            <th scope="col">id_Tipovehiculo</th>
-            <th scope="col">Modelo</th>
-            <th scope="col">id_Marca</th>
-          </tr>
+            <th *ngFor="let InfoDB of InfoTabla[0] | keyvalue">{{InfoDB.key}}</th>
+            <!--con keyvalue obtengo las propiedades y con marca.key obtengo el nombre de esas cabeceras-->
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>Twitter</td>
+          <!-- Itera sobre los datos y las propiedades para generar las filas y celdas -->
+          <tr *ngFor="let InfoDB of InfoTabla">
+            <td *ngFor="let propiedad of InfoDB| keyvalue">{{ propiedad.value }}</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
-  
+
   <div class="row mt-3">
     <div class="col text-center">
       <button type="button" class="btn btn-info mx-2" *ngIf="mostrarTabla">Actualizar</button>
@@ -72,4 +65,3 @@
     </div>
   </div>
 </div>
-
