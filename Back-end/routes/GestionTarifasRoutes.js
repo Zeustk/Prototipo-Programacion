@@ -26,11 +26,11 @@ module.exports = function (servicio) {
 
    })
 
-   router.get('/api/getMarca', async (req, res) => {
+   router.get('/api/getTarifa', async (req, res) => {
 
-      const Marcas = await servicio.getMarca();
+      const Tarifas = await servicio.getTarifa();
 
-      res.json(Marcas);
+      res.json(Tarifas);
    })
 
 

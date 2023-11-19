@@ -21,26 +21,28 @@ class ServicioTarifas {
 
     }
 
-    async getMarca() {
+    async getTarifa() {
 
         try {
 
-            const sql = "select *from Marcas";
+            const sql = "select *from Tarifas";
 
             let result = await this.DB.Open(sql, [], false);
-            const Marcas = [];
+            const Tarifas = [];
 
             result.rows.map(propiedad => {
-                let MarcaSchema = {
-                    "ID_MARCA": propiedad[0],
-                    "NOMBRE": propiedad[1],
-                    "Disponible": propiedad[2]
+                let TarifaSchema = {
+                    "Id": propiedad[0],
+                    "Nombre": propiedad[1],
+                    "Precio": propiedad[2],
+                    "ValorDia":propiedad[3],
+                    "Disponible":propiedad[4]
                 }
 
-                Marcas.push(MarcaSchema);
+                Tarifas.push(TarifaSchema);
             })
 
-            return Marcas;
+            return TarifaSchema;
         }
 
         catch (err) {

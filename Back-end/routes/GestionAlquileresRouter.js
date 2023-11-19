@@ -26,7 +26,7 @@ module.exports = function (servicio) {
 
    })
 
-   router.get('/api/getMarca', async (req, res) => {
+   router.get('/api/getAlquiler', async (req, res) => {
 
       const Marcas = await servicio.getMarca();
 
