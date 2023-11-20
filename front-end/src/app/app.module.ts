@@ -26,6 +26,7 @@ import { RegistroService } from './Vehiculos/registro/services/registro.service'
 import { TarifaService } from './Vehiculos/tarifa/services/tarifa.service';
 import { ReservasService } from './Reservas/services/reservas.service';
 import { EmpleadosService } from './Empleados/services/empleados.service';
+import { AlquilerService } from './Alquileres/services/alquiler.service';
 
 
 
@@ -57,7 +58,7 @@ import { EmpleadosService } from './Empleados/services/empleados.service';
 
     
   ],
-  providers: [MarcaService,TipoVehiculoService,ClienteService,RegistroService,TarifaService,ReservasService,EmpleadosService],
+  providers: [MarcaService,TipoVehiculoService,ClienteService,RegistroService,TarifaService,ReservasService,EmpleadosService,AlquilerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

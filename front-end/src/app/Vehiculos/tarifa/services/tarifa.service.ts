@@ -20,7 +20,7 @@ export class TarifaService extends CrudService<Tarifas> {
 
     return this.Agregar(body,'AddTarifa');
   }
-
+  
   ConsultarTarifas(){
     return this.Consultar('getTarifa');
   }

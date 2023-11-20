@@ -39,6 +39,7 @@ export class VehiculoComponent {
     
   }
 
+ //Cargar
   CargarTarifas(){
 
     this.TarifaService.ConsultarTarifas().subscribe(
@@ -98,15 +99,23 @@ export class VehiculoComponent {
       }
     );
   }
+  //agregar
 
   AgregarVehiculo() {
 
 
+    console.log(this.Vehiculo.Id_TipoVehiculo);
     this.VehiculoService.RegistrarVehiculo(this.Vehiculo)
       .subscribe(resp => {
         console.log(resp);
       });
 
   }
+
+
+
+  //CONVERSIONES
+  
+  
 
 }

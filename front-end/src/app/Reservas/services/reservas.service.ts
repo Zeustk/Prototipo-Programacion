@@ -4,6 +4,9 @@ import { CrudService } from 'src/app/ServiceCrud/crud.service';
 
 @Injectable()
 export class ReservasService extends CrudService<Reservas> {
+  ConsultarRervas() {
+    throw new Error('Method not implemented.');
+  }
 
   private _Reservas!: Reservas;
 
@@ -19,5 +22,9 @@ export class ReservasService extends CrudService<Reservas> {
     const body = {Fecha_Inicio:ReservasRecibidas.Fecha_Inicio, Fecha_Final:ReservasRecibidas.Fecha_Final,Cc_Cliente:ReservasRecibidas.Cc_Cliente,Placa_Vehiculo:ReservasRecibidas.Placa_Vehiculo };
 
     return this.Agregar(body,'addReserva');
+  }
+
+  ConsultarReservas(){
+    return this.Consultar('getReserva');
   }
 }

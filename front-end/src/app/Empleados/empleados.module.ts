@@ -7,6 +7,7 @@ import { ClienteModule } from '../Cliente/cliente.module';
 import { AlquilerModule } from '../Alquileres/alquileres.module';
 import { ConsultaModule } from '../Consultas/consultas.module';
 import { RegistroempleadosComponent } from './registroempleados/registroempleados.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -38,6 +39,7 @@ import { RegistroempleadosComponent } from './registroempleados/registroempleado
         ClienteModule,
         AlquilerModule,
         ConsultaModule,
+        FormsModule
  
     
         
