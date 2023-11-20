@@ -1,0 +1,89 @@
+#gestiones{
+    position: absolute;
+
+}
+
+.hover-effect:hover {
+    color: #007bff;
+    cursor: pointer; 
+    background-color: aqua;
+}
+.empty-box {
+    width: 1590px; 
+    height: 400px; 
+    background-color: #f0f0f0; 
+    border: 1px solid #ccc; 
+    padding: 10px; 
+    text-align: center;
+    border: 2px solid gray;
+    padding: 360px;
+}
+footer {
+   text-align: center;
+   padding: 2px;
+   background-color: #333;
+   color: white;
+
+}
+
+.footer-text {
+   font-size: 20px;
+}
+
+#header{
+   height: 80px;
+}
+
+
+.mover-con{
+   position: absolute;
+    top:270px;
+    right: 850px;
+    width: 20%;
+}
+
+h6 {
+   position: absolute;
+   right: 269px;
+   top: 87px;
+
+}
+
+
+
+.btn{
+  
+   border:  1px solid #ccc;
+   position: absolute;
+   left: 10px;
+   top: 130px;
+}
+
+.mover-con{
+   border: #ccc solid 6px;
+   background-color: whitesmoke;
+   height: 200px;
+   border-radius: 10px;
+   padding: 12px;
+}
+
+#fondoCargo{
+   width: 100%;
+  background-image: url('/front-end/src/assets/FondoCargo.png'); 
+  background-size: cover; 
+  background-position:center; 
+  background-repeat: no-repeat;
+  border-radius: 10px;
+}
+
+footer {
+   text-align: center;
+   padding: -2px;
+   background-color: #333;
+   color: white;
+
+}
+
+.footer-text {
+   font-size: 20px;
+}

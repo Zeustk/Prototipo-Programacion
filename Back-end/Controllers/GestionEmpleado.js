@@ -6,10 +6,19 @@ class ServicioEmpleados {
 
 
     async addEmpleado(Correo, Clave,Id_Cargo,Disponible) {
-        try {
-            const sql = "insert into Empleados(Correo,Clave,ID,ID_CARGO,Disponible) values (:Correo,:Clave,SEQ_EMPLEADOS.NEXTVAL,:Id_Cargo,:Disponible)";
 
-            await this.DB.Open(sql, [Correo,Clave,Id_Cargo,Disponible], true);
+        try {
+
+            console.log(Correo);
+            console.log(Clave);
+
+
+            const sql = "insert into Empleados(Correo,Clave,ID,ID_CARGO,Disponible) values (:Correo,:Clave,SEQ_EMPLEADOS.NEXTVAL,:CargoNumber,:Disponible)";
+
+            CargoNumber=parseInt(Id_Cargo);
+
+
+            await this.DB.Open(sql, [Correo,Clave,CargoNumber,Disponible], true);
 
             return ('Guardado Exitosamente')
         }
@@ -30,11 +39,11 @@ class ServicioEmpleados {
             const Empleados = [];
             result.rows.map(propiedad => {
                 let EmpleadoSchema = {
-                    "CORREO": propiedad[0],
-                    "CLAVE": propiedad[1],
-                    "ID": propiedad[2],
-                    "ID_CARGO":propiedad[3],
-                    "DISPONIBLE":propiedad[4]
+                    "Correo": propiedad[0],
+                    "Clave": propiedad[1],
+                    "Id": propiedad[2],
+                    "Id_Cargo":propiedad[3],
+                    "Disponible":propiedad[4]
                 }
 
                 Marcas.push(EmpleadoSchema);

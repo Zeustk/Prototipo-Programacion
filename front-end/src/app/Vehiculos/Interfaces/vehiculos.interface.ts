@@ -6,10 +6,10 @@ export interface Marcas{
 
   export interface Vehiculos{
     Placa:string,
-    Id_TipoVehiculo:Number,
-    Modelo: number,
+    Id_Tipovehiculo:number,
+    Modelo: string,
     Id_Marca:number,
-    Id_Tarifa:number,
+    Id_Tarifas:number,
     Disponible:string
   }
 

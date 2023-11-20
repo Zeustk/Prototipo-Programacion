@@ -22,10 +22,10 @@ export class RegistroService extends CrudService<Vehiculos> {  //VEHICULOS
 
       Placa: vehiculoRecibido.Placa,
       Disponible: 'SI',
-      Id_TipoVehiculo: vehiculoRecibido.Id_TipoVehiculo,
+      Id_Tipovehiculo: vehiculoRecibido.Id_Tipovehiculo,
       Modelo: vehiculoRecibido.Modelo,
       Id_Marca: vehiculoRecibido.Id_Marca,
-      Id_Tarifa: vehiculoRecibido.Id_Tarifa,
+      Id_Tarifas: vehiculoRecibido.Id_Tarifas,
 
     };
 

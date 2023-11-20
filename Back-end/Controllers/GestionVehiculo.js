@@ -5,12 +5,29 @@ class ServicioVehiculos {
     }
 
 
-    async addVehiculo(Placa, Tipo_De_Vehiculo,Modelo,Marca,Tarifa,Disponible) {
+    async addVehiculo(Placa, Id_Tipovehiculo,Modelo,Id_Marca,Id_Tarifas,Disponible) {
 
         try {
-            const sql = "insert into Vehiculos(Placa, Id_Tipovehiculo,Modelo,Id_Marca,Id_Tarifas,Disponible) values (:Placa, :Tipo_De_Vehiculo,:Modelo,:Marca,:Tarifa,:Disponible)";
+            console.log(`AQUI ${typeof(Id_Tipovehiculo)}`);
 
-            await this.DB.Open(sql, [Placa, Tipo_De_Vehiculo,Modelo,Marca,Tarifa,Disponible], true);
+            const Id_TipoVehiculoNumber = parseInt(Id_Tipovehiculo);
+            const Id_MarcaNumber = parseInt(Id_Marca);
+            const Id_TarifaNumber =parseInt(Id_Tarifas);
+
+            const sql = "insert into Vehiculos(Placa, Id_Tipovehiculo, Modelo, Id_Marca, Id_Tarifas, Disponible) values (:Placa, :Id_TipoVehiculoNumber, :Modelo, :Id_MarcaNumber, :Id_TarifaNumber, :Disponible)";
+
+
+            
+ 
+            console.log(typeof(Id_MarcaNumber));
+            console.log(typeof(Id_TipoVehiculoNumber));
+
+            console.log(Id_MarcaNumber);
+            console.log(Id_TipoVehiculoNumber);
+            console.log(Id_TarifaNumber);
+
+
+            await this.DB.Open(sql, [Placa, Id_TipoVehiculoNumber,Modelo,Id_MarcaNumber,Id_TarifaNumber,Disponible], true);
 
             return ('Guardado Exitosamente')
         }

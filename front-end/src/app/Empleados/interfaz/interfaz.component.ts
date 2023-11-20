@@ -14,6 +14,7 @@ export class InterfazComponent {
   MostrarComponenteRAlquiler:boolean=false;
   MostrarComponenteIConsulta:boolean=false;
   MostrarComponenteREmpleado:boolean=false;
+  MostrarComponenteRCargo:boolean=false;
 
   CargarREmpleado():void {
     this.MostrarComponenteRVehiculo=false;
@@ -23,6 +24,7 @@ export class InterfazComponent {
     this.MostrarComponenteIConsulta=false;
     this.MostrarComponenteRAlquiler=false;
     this.MostrarComponenteREmpleado=true;
+    this.MostrarComponenteRCargo=false;
   }
 
   CargarRVehiculo():void {
@@ -33,6 +35,7 @@ export class InterfazComponent {
     this.MostrarComponenteIConsulta=false;
     this.MostrarComponenteRAlquiler=false;
     this.MostrarComponenteREmpleado=false;
+    this.MostrarComponenteRCargo=false;
   }
 
   CargarRCliente():void {
@@ -43,6 +46,7 @@ export class InterfazComponent {
     this.MostrarComponenteIConsulta=false;
     this.MostrarComponenteRAlquiler=false;
     this.MostrarComponenteREmpleado=false;
+    this.MostrarComponenteRCargo=false;
   }
   CargarRCategorias():void {
     this.MostrarComponenteRVehiculo=false;
@@ -52,6 +56,7 @@ export class InterfazComponent {
     this.MostrarComponenteIConsulta=false;
     this.MostrarComponenteRAlquiler=false;
     this.MostrarComponenteREmpleado=false;
+    this.MostrarComponenteRCargo=false;
   }
   CargarRTarifas():void{
     this.MostrarComponenteRVehiculo=false;
@@ -61,6 +66,7 @@ export class InterfazComponent {
     this.MostrarComponenteIConsulta=false;
     this.MostrarComponenteRAlquiler=false;
     this.MostrarComponenteREmpleado=false;
+    this.MostrarComponenteRCargo=false;
 
   }
 
@@ -72,6 +78,7 @@ export class InterfazComponent {
     this.MostrarComponenteRAlquiler=true;
     this.MostrarComponenteIConsulta=false;
     this.MostrarComponenteREmpleado=false;
+    this.MostrarComponenteRCargo=false;
 
   }
 
@@ -83,7 +90,19 @@ export class InterfazComponent {
     this.MostrarComponenteRAlquiler=false;
     this.MostrarComponenteIConsulta=true;
     this.MostrarComponenteREmpleado=false;
+    this.MostrarComponenteRCargo=false;
 
+  }
+
+  CargarRCargo():void{
+    this.MostrarComponenteRVehiculo=false;
+    this.MostrarComponenteRCliente= false;
+    this.MostrarComponenteRCategorias=false;
+    this.MostrarComponenteRTarifas=false;
+    this.MostrarComponenteRAlquiler=false;
+    this.MostrarComponenteIConsulta=false;
+    this.MostrarComponenteREmpleado=false;
+    this.MostrarComponenteRCargo=true;
   }
 
 }

@@ -26,7 +26,7 @@
                       <div class="form-outline">
                         <div class="col-md-9 mb-3">
   
-                            <select class="select form-select py-2" id="Tipo_Vehiculo" [(ngModel)]="Vehiculo.Id_TipoVehiculo">
+                            <select class="select form-select py-2" id="Tipo_Vehiculo" [(ngModel)]="Vehiculo.Id_Tipovehiculo">
                               <ng-container *ngFor="let TipoVehiculo of TipoVehiculos">
                                 <option [value]="TipoVehiculo.Id">{{ TipoVehiculo.Nombre }}</option>
                               </ng-container>
@@ -42,15 +42,15 @@
                   <div class="row">
                     <div class="col-md-6 mb-4">
                       <div class="form-outline">
-                        <input type="text" id="Modelo" class="form-control form-control-lg" [(ngModel)]="Vehiculo.Modelo" />
+                        <input type="text" id="Modelo" class="form-control form-control-lg" [(ngModel)]="Vehiculo.Modelo"/>
                         <label class="form-label" for="Modelo">Modelo</label>
                       </div>
                     </div>
                     <div class="col-md-6 mb-4">
                         <div class="form-outline">
-                          <div class="col-md-9 mb-3">
+                          <div class="col-md-9 mb-3">ng 
     
-                              <select class="select form-select py-2" id="Marca">
+                              <select class="select form-select py-2" id="Marca" [(ngModel)]="Vehiculo.Id_Marca">
                                 <ng-container *ngFor="let Marca of Marcas">
                                   <option [value]="Marca.Id_Marca">{{ Marca.Nombre }}</option>
                                 </ng-container>
@@ -62,13 +62,13 @@
                         </div>
                       </div>
                   </div>
-                  <div class="form-outline mb-4" id="Tarifas">
-                    <select class="form-control form-control-lg" id="form3Example9">
+                  <div class="form-outline mb-4">
+                    <select class="form-control form-control-lg" id="Tarifa" [(ngModel)]="Vehiculo.Id_Tarifas">
                       <ng-container *ngFor="let Tarifa of Tarifas">
                       <option [value]="Tarifa.Id">{{ Tarifa.Nombre}}</option>
                     </ng-container>
                     </select>
-                    <label class="form-label" for="form3Example9">Tarifa</label>
+                    <label class="form-label" for="Tarifa">Tarifa</label>
                 </div>
                 
   

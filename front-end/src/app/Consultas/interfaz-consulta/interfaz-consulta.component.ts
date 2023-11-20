@@ -7,7 +7,7 @@ import { MarcaService } from 'src/app/Vehiculos/marca/services/marca.service';
 import { TipoVehiculoService } from 'src/app/Vehiculos/tipo-vehiculo/services/tipo-vehiculo.service';
 import { TarifaService } from '../../Vehiculos/tarifa/services/tarifa.service';
 import { RegistroService } from '../../Vehiculos/registro/services/registro.service';
-import { Empleados } from '../../Vehiculos/Interfaces/empleados.interface';
+import { Empleados } from '../../Empleados/interface/empleados.interface';
 import { ReservasService } from 'src/app/Reservas/services/reservas.service';
 import { Reservas } from '../../Reservas/interface/reserva.interface';
 import { AlquilerService } from 'src/app/Alquileres/services/alquiler.service';

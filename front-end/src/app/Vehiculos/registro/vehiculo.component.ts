@@ -16,10 +16,10 @@ export class VehiculoComponent {
 
   @Input() Vehiculo: Vehiculos = {
     Placa: '',
-    Id_TipoVehiculo:0,
-    Modelo: 0,
+    Id_Tipovehiculo: 0,
+    Modelo: '',
     Id_Marca: 0,
-    Id_Tarifa: 0,
+    Id_Tarifas: 0,
     Disponible: 'SI'
 
   }
@@ -103,8 +103,9 @@ export class VehiculoComponent {
 
   AgregarVehiculo() {
 
+    console.log(this.Vehiculo.Id_Tarifas);
 
-    console.log(this.Vehiculo.Id_TipoVehiculo);
+    console.log(this.Vehiculo.Id_Tipovehiculo);
     this.VehiculoService.RegistrarVehiculo(this.Vehiculo)
       .subscribe(resp => {
         console.log(resp);

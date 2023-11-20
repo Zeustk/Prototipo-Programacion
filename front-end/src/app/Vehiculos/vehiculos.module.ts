@@ -9,7 +9,7 @@ import { TipoVehiculoComponent } from './tipo-vehiculo/tipo-vehiculo.component';
 import { ClienteModule } from '../Cliente/cliente.module';
 import { MarcaComponent } from './marca/marca.component';
 import { TarifaComponent } from './tarifa/tarifa.component';
-import { CargosComponent } from './cargos/cargos.component';
+import { CargosComponent } from '../Empleados/cargos/cargos.component';
 import { GaleriaComponent } from './galeria/galeria.component';
 
 

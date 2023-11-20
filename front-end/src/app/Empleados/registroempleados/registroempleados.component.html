@@ -23,11 +23,26 @@
  
                 required>
             </div>
+
+            <div class="form-outline mb-2">
+              <div>
+                <label for="password" class="form-label">Cargos</label>
+              </div>
+              
+              <select class="form-control form-control-lg w-100" id="Tipo_Vehiculo">
+               
+                <ng-container *ngFor="let Cargo of Cargos">
+                  <option [value]="Cargo.Id_Cargo">{{ Cargo.Nombre}}</option>
+                </ng-container>
+              </select>
+              <br>
+            </div>
+
             <div class="form-group">
   
             </div>
             <!-- PrimerComponente -->
-            <button  type="submit" class="btn btn-primary btn-block">Registrar</button>
+            <button (click)="AgregarEmpleado()" type="submit" class="btn btn-primary btn-block">Registrar</button>
   
           </form>
         </div>
