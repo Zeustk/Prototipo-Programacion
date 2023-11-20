@@ -15,7 +15,7 @@ export class MarcaService extends CrudService<Marcas>{
 
   RegistrarMarca(MarcaRecibido:Marcas) {
 
-    const body = { id_Marca:MarcaRecibido.id_Marca,Nombre: MarcaRecibido.Nombre, Disponible:MarcaRecibido.Disponible };
+    const body = { Id_Marca:MarcaRecibido.Id_Marca,Nombre: MarcaRecibido.Nombre, Disponible:MarcaRecibido.Disponible };
 
     return this.Agregar(body,'AddMarca');
   }

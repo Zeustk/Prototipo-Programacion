@@ -18,7 +18,7 @@
                   <div class="row">
                     <div class="col-md-6 mb-4">
                       <div class="form-outline">
-                        <input type="text" id="Placa" class="form-control form-control-lg" />
+                        <input type="text" id="Placa" class="form-control form-control-lg" [(ngModel)]="Vehiculo.Placa" />
                         <label class="form-label" for="Placa">Placa</label>
                       </div>
                     </div>
@@ -26,7 +26,7 @@
                       <div class="form-outline">
                         <div class="col-md-9 mb-3">
   
-                            <select class="select form-select py-2" id="Tipo_Vehiculo">
+                            <select class="select form-select py-2" id="Tipo_Vehiculo" [(ngModel)]="Vehiculo.Id_TipoVehiculo">
                               <ng-container *ngFor="let TipoVehiculo of TipoVehiculos">
                                 <option [value]="TipoVehiculo.Id">{{ TipoVehiculo.Nombre }}</option>
                               </ng-container>
@@ -42,7 +42,7 @@
                   <div class="row">
                     <div class="col-md-6 mb-4">
                       <div class="form-outline">
-                        <input type="text" id="Modelo" class="form-control form-control-lg" />
+                        <input type="text" id="Modelo" class="form-control form-control-lg" [(ngModel)]="Vehiculo.Modelo" />
                         <label class="form-label" for="Modelo">Modelo</label>
                       </div>
                     </div>
@@ -52,7 +52,7 @@
     
                               <select class="select form-select py-2" id="Marca">
                                 <ng-container *ngFor="let Marca of Marcas">
-                                  <option [value]="Marca.id_Marca">{{ Marca.Nombre }}</option>
+                                  <option [value]="Marca.Id_Marca">{{ Marca.Nombre }}</option>
                                 </ng-container>
                               </select>
                               <br>
@@ -74,8 +74,8 @@
                 
   
                   <div class="d-flex justify-content-center pt-3">
-                    <button type="button" class="btn btn-light btn-lg">Reset all</button>
-                    <button type="button" class="btn btn-warning btn-lg ms-2">Submit form</button>
+                    <button type="button" class="btn btn-light btn-lg">Reiniciar</button>
+                    <button (click)="AgregarVehiculo()" type="button" class="btn btn-warning btn-lg ms-2">Registrar</button>
                   </div>
   
                 </div>

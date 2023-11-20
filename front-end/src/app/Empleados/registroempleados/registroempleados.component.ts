@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Empleados } from 'src/app/Vehiculos/Interfaces/empleados.interface';
 
 @Component({
   selector: 'app-registroempleados',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./registroempleados.component.css']
 })
 export class RegistroempleadosComponent {
-
+  
 }

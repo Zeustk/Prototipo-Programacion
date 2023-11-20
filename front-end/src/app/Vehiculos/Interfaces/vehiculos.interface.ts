@@ -1,15 +1,15 @@
 export interface Marcas{
-    id_Marca:number,
+    Id_Marca:number,
     Nombre:string,
     Disponible:string
   }
 
   export interface Vehiculos{
     Placa:string,
-    Tipo_De_Vehiculo:string,
+    Id_TipoVehiculo:Number,
     Modelo: number,
-    Marca:number,
-    Tarifa:number,
+    Id_Marca:number,
+    Id_Tarifa:number,
     Disponible:string
   }
 

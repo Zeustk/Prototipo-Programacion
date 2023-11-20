@@ -12,9 +12,9 @@ export class MarcaComponent {
   constructor(private marcaService:MarcaService){}
 
   @Input() Marca:Marcas = {
-    id_Marca:0,
-     Nombre:'',
-     Disponible:'SI'
+    Id_Marca:0,
+    Nombre:'',
+    Disponible:'SI'
      
   }
 
@@ -24,15 +24,13 @@ export class MarcaComponent {
 
   AgregarMarca(){
 
-    this.ConsultarMarcas()
+  
 
    if (this.Marca.Nombre==''){
     return;
-
     
    }
    
-
     this.marcaService.RegistrarMarca(this.Marca)
     .subscribe(resp =>{
      console.log(resp);
