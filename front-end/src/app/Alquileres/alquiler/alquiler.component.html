@@ -38,11 +38,11 @@
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="BusquedaPlaca" name="BusquedaPlaca"
                                 placeholder="Digite la placa">
-                            <select class="form-control" id="PlacaVehiculo" name="PlacaVehiculo">
-                                <option value="opcion1">Opción 1</option>
-                                <option value="opcion2">Opción 2</option>
-                                <option value="opcion3">Opción 3</option>
-                            </select>
+                                <select class="select form-select py-2" id="placa">
+                                    <ng-container *ngFor="let placa of Vehiculos">
+                                      <option [value]="placa.Placa">{{ placa.Placa }}</option>
+                                    </ng-container>
+                                  </select>
                         </div>
                     </div>
 
@@ -53,11 +53,11 @@
                         <div class="col-sm-10">
                             <input type="text" class="form-control" id="CedulaCliente" name="CedulaCliente"
                                 placeholder="Digite la Cedula">
-                            <select class="form-control" id="CedulaCliente" name="CedulaCliente">
-                                <option value="opcion1">Opción 1</option>
-                                <option value="opcion2">Opción 2</option>
-                                <option value="opcion3">Opción 3</option>
-                            </select>
+                                <select class="select form-select py-2" id="placa">
+                                    <ng-container *ngFor="let cedula of Clientes">
+                                      <option [value]="cedula.Cc">{{ cedula.Cc }}</option>
+                                    </ng-container>
+                                  </select>
                         </div>
                     </div>
 
