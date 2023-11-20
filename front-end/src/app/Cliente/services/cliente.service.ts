@@ -21,7 +21,8 @@ export class ClienteService extends CrudService<Clientes> {
       N_Licencia: ClienteRecibido.N_Licencia,
       Disponible: ClienteRecibido.Disponible,
       Correo: ClienteRecibido.Correo,
-      Contrasena: ClienteRecibido.Contrasena
+      Contrasena: ClienteRecibido.Contrasena,
+      Telefono:ClienteRecibido.Telefono
     };
 
     return this.Agregar(body, 'AddCliente');
