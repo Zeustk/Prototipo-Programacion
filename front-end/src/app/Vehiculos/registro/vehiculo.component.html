@@ -64,7 +64,9 @@
                   </div>
                   <div class="form-outline mb-4" id="Tarifas">
                     <select class="form-control form-control-lg" id="form3Example9">
-                       
+                      <ng-container *ngFor="let Tarifa of Tarifas">
+                      <option [value]="Tarifa.Id">{{ Tarifa.Nombre}}</option>
+                    </ng-container>
                     </select>
                     <label class="form-label" for="form3Example9">Tarifa</label>
                 </div>

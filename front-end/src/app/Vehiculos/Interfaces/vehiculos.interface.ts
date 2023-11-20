@@ -15,6 +15,7 @@ export interface Marcas{
 
   export interface Tarifas{
 
+    Id:number,
     Nombre:string,
     Precio: number,
     ValorDia:number,

@@ -16,11 +16,14 @@ export class TarifaService extends CrudService<Tarifas> {
 
     this._Tarifa=TarifaRecibida;
    
-    const body = {Nombre:TarifaRecibida.Nombre, Precio:TarifaRecibida.Precio,ValorDia:TarifaRecibida.ValorDia,Disponible:TarifaRecibida.Disponible };
+    const body = {Id:TarifaRecibida.Id,Nombre:TarifaRecibida.Nombre, Precio:TarifaRecibida.Precio,ValorDia:TarifaRecibida.ValorDia,Disponible:TarifaRecibida.Disponible };
 
     return this.Agregar(body,'AddTarifa');
   }
 
+  ConsultarTarifas(){
+    return this.Consultar('getTarifa');
+  }
 
 
 }

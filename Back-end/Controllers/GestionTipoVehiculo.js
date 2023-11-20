@@ -32,7 +32,7 @@ class ServicioTipoVehiculo {
 
             result.rows.map(propiedad => {
                 let TipoVehiculoSchema = {
-                    "ID": propiedad[0],
+                    "Id": propiedad[0],
                     "Nombre": propiedad[1],
                     "Disponible": propiedad[2]
                 }

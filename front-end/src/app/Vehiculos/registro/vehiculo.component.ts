@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
-import { Marcas, TipoVehiculo, Vehiculos } from '../Interfaces/vehiculos.interface';
+import { Marcas, Tarifas, TipoVehiculo, Vehiculos } from '../Interfaces/vehiculos.interface';
 import { MarcaService } from '../marca/services/marca.service';
 import { TipoVehiculoService } from '../tipo-vehiculo/services/tipo-vehiculo.service';
 import { RegistroService } from './services/registro.service';
+import { TarifaService } from '../tarifa/services/tarifa.service';
 
 @Component({
   selector: 'app-vehiculo',
@@ -11,7 +12,7 @@ import { RegistroService } from './services/registro.service';
 })
 export class VehiculoComponent {
 
-  constructor(private marcaService: MarcaService, private TipoVehiculoService: TipoVehiculoService, private VehiculoService: RegistroService) { };
+  constructor(private marcaService: MarcaService, private TipoVehiculoService: TipoVehiculoService,private VehiculoService:RegistroService,private TarifaService:TarifaService) { };
 
   @Input() Vehiculo: Vehiculos = {
     Placa: '',
@@ -25,9 +26,42 @@ export class VehiculoComponent {
 
   Marcas: Marcas[] = [];
   TipoVehiculos: TipoVehiculo[] = [];
+  Tarifas:Tarifas[]=[];
 
 
   ngOnInit(): void {  //NGONInit PERMITE QUE SE CARGUEN LOS DATOS ANTES DE QUE CARGUEN LAS VISRTAS
+    
+
+   this.CargarMarcas();
+   this.CargarTipoVehiculo();
+   this.CargarTarifas();
+
+    
+  }
+
+  CargarTarifas(){
+
+    this.TarifaService.ConsultarTarifas().subscribe(
+
+      (ListTarifas: Tarifas[] | null) => {
+
+        if (ListTarifas != null) {
+
+          console.log('Resultado de la consulta de Tarifas:', ListTarifas);
+
+          this.Tarifas = ListTarifas;
+        }
+
+
+      },
+      (error: any) => {
+        console.error('Error al consultar Vehiculos:', error);
+      }
+    );
+  }
+
+  CargarMarcas(){
+
     this.marcaService.ConsultarMarcas().subscribe(
       (ListMarcas: Marcas[] | null) => {
 
@@ -42,6 +76,9 @@ export class VehiculoComponent {
         console.error('Error al consultar marcas:', error);
       }
     );
+  }
+
+  CargarTipoVehiculo(){
 
     this.TipoVehiculoService.ConsultarTipoVehiculo().subscribe(
 
@@ -62,7 +99,6 @@ export class VehiculoComponent {
     );
   }
 
-
   AgregarVehiculo() {
 
 
@@ -70,8 +106,6 @@ export class VehiculoComponent {
       .subscribe(resp => {
         console.log(resp);
       });
-
-
 
   }
 
