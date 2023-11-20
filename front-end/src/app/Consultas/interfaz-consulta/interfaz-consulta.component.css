@@ -22,38 +22,46 @@
  #mover4{
    position: absolute;
    top: 200px;
-   width: 12%;
+   width: 10%;
    left: 620px;
  }
 
  #mover5{
    position: absolute;
    top: 200px;
-   width: 10%;
-   left: 820px;
+   width: 9%;
+   left: 790px;
  }
 
  #mover6{
    position: absolute;
    top: 200px;
-   width: 11%;
-   left: 988px;
+   width: 9%;
+   left: 943px;
  }
 
  #mover7{
    position: absolute;
    top: 200px;
    width: 10%;
-   left: 1173px;
+   left: 1098px;
  }
 
  #mover8{
    position: absolute;
    top: 200px;
-   width: 12%;
-   left: 1341px;
+   width: 10%;
+   left: 1271px;
    
- } 
+ }
+
+ #mover9{
+  position: absolute;
+  top: 200px;
+  width: 11%;
+  left: 1441px;
+  
+} 
 
 h1{
    text-align: center;

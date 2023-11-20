@@ -7,7 +7,7 @@ export class ClienteService extends CrudService<Clientes> {
 
   private _Cliente: Clientes[] = [];
 
-  get Marcas(): Clientes[] {
+  get Clientes(): Clientes[] {
 
     return [...this._Cliente]; //Para seguridad, no se acceda facilmente
   }
@@ -27,7 +27,7 @@ export class ClienteService extends CrudService<Clientes> {
     return this.Agregar(body, 'AddCliente');
   }
 
-  ConsultarMarcas() {
+  ConsultarCliente() {
     return this.Consultar('getCliente');
   }
 }

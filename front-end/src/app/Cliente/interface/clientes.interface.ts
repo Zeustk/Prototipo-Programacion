@@ -6,5 +6,6 @@ export interface Clientes{
     N_Licencia:string,
     Disponible:string,
     Correo:string,
-    Contrasena:string
+    Contrasena:string,
+    Telefono:string
   }

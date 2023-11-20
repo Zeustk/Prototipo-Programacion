@@ -11,13 +11,13 @@
 
                 <div class="form-outline mb-4">
                   <label class="form-label" for="Nombre">Nombre Completo</label>
-                  <input type="text" id="Nombre" class="form-control form-control-sm" />
+                  <input type="text" id="Nombre" class="form-control form-control-sm" [(ngModel)]=Clientes.Nombre_Completo  />
                  
                 </div>
 
                 <div class="form-outline mb-4">
                   <label class="form-label" for="cedula">Numero De Documento</label>
-                  <input type="text" id="Cedula" class="form-control form-control-sm" />
+                  <input type="text" id="Cedula" class="form-control form-control-sm" [(ngModel)]=Clientes.Cc />
                  
                 </div>
 
@@ -28,33 +28,23 @@
 
                 <div class="form-outline mb-4">
                   <label class="form-label" for="Contraseña">Contraseña</label>
-                  <input type="email" id="Contraseña" class="form-control form-control-sm" />
+                  <input type="email" id="Contraseña" class="form-control form-control-sm" [(ngModel)]=Clientes.Contrasena />
                 </div>
 
                 <div class="form-outline mb-4">
                   <label class="form-label" for="Telefono">Telefono</label>
-                  <input type="text" id="Telefono" class="form-control form-control-sm" />
+                  <input type="text" id="Telefono" class="form-control form-control-sm" [(ngModel)]=Clientes.Telefono />
                 </div>
 
                 <div class="form-outline mb-4">
                   <label class="form-label" for="F_Nacimiento">Fecha de Nacimiento</label>
-                  <input type="date" id="F_Nacimiento" class="form-control form-control-sm" />
+                  <input type="date" id="F_Nacimiento" class="form-control form-control-sm" [(ngModel)]=Clientes.Fecha_Nacimiento />
                 </div>
 
-                <div class="form-group mb-4">
-                  <label class="form-label" for="Tipo_Cliente">Tipo de Cliente</label>
-                  <select class="form-select" id="Tipo_Cliente">
-                      <option value="1">Turista</option>
-                      <option value="2">Estudiantil</option>
-                      <option value="3">Individual</option>
-                      <option value="4">Lujo</option>
-                  </select>
-              </div>
-              
 
                 <div class="form-outline mb-4">
                   <label class="form-label" for="N_Licencia">Numero de Licencia</label>
-                  <input type="text" id="N_Licencia" class="form-control form-control-sm" />
+                  <input type="text" id="N_Licencia" class="form-control form-control-sm" [(ngModel)]=Clientes.N_Licencia/>
                 </div>
 
 

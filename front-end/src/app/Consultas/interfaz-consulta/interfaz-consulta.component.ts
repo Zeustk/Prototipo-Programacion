@@ -12,6 +12,7 @@ import { ReservasService } from 'src/app/Reservas/services/reservas.service';
 import { Reservas } from '../../Reservas/interface/reserva.interface';
 import { AlquilerService } from 'src/app/Alquileres/services/alquiler.service';
 import { Alquileres } from 'src/app/Alquileres/interface/alquiler.interface';
+import { Clientes } from 'src/app/Cliente/interface/clientes.interface';
 
 @Component({
   selector: 'app-interfaz-consulta',
@@ -42,12 +43,13 @@ export class InterfazConsultaComponent {
                  return;
       case 'Gk' :this.CargarVehiculos();
                  return;
-      case 'Gk' :this.CargarEmpleado();
+      case  'EM' :this.CargarEmpleado();
                  return;
-      case 'H' :this.CargarResevas();
+      case 'DD' :this.CargarResevas();
                  return;
       case 'GG' :this.CargarAlquiler();
                  return;
+      case 'C' :this.CargarCliente();
       
     } 
 
@@ -184,6 +186,26 @@ export class InterfazConsultaComponent {
           console.log('Resultado de la consulta de alquileres:', ListAlquiler);
          
           this.InfoTabla=ListAlquiler;
+        }
+        
+      },
+      (error: any) => {
+        console.error('Error al consultar marcas:', error);
+      }
+    );
+
+  }
+
+  CargarCliente() {  //NGONInit PERMITE QUE SE CARGUEN LOS DATOS ANTES DE QUE CARGUEN LAS V
+       
+    this.ClienteService.ConsultarCliente().subscribe(
+      (ListCliente: Clientes[] | null) => {
+
+        if (ListCliente != null) {
+
+          console.log('Resultado de la consulta de alquileres:', ListCliente);
+         
+          this.InfoTabla=ListCliente;
         }
         
       },
