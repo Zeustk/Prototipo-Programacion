@@ -1,7 +1,7 @@
 export interface Alquileres{
 
-    Fecha_Emision:Date,
-    Fecha_Recepcion:Date,
+    Fecha_Emision:Date | undefined,
+    Fecha_Recepcion?:Date | null,
     Id:number,
     KmEmision:Number,
     KmRecepcion?:Number,
