@@ -15,7 +15,7 @@ export class RegistroComponent {
   @Input() Clientes:Clientes = {
     Nombre_Completo: '',
     Cc: '',
-    Fecha_Nacimiento: 0,
+    Fecha_Nacimiento: new Date(),
     N_Licencia: '',
     Disponible: '',
     Correo: '',
@@ -35,7 +35,7 @@ export class RegistroComponent {
     return;
     
    }
-   
+   console.log(this.Clientes.Fecha_Nacimiento);
     this.clienteService.RegistrarCliente(this.Clientes)
     .subscribe(resp =>{
      console.log(resp);

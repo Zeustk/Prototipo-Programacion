@@ -11,50 +11,47 @@
 
                 <div class="form-outline mb-4">
                   <label class="form-label" for="Nombre">Nombre Completo</label>
-                  <input type="text" id="Nombre" class="form-control form-control-sm" [(ngModel)]=Clientes.Nombre_Completo  />
+                  <input type="text" id="Nombre" class="form-control form-control-sm" [(ngModel)]="Clientes.Nombre_Completo" name="Nombre_Completo"  />
                  
                 </div>
 
                 <div class="form-outline mb-4">
                   <label class="form-label" for="cedula">Numero De Documento</label>
-                  <input type="text" id="Cedula" class="form-control form-control-sm" [(ngModel)]=Clientes.Cc />
+                  <input type="text" id="Cedula" class="form-control form-control-sm" [(ngModel)]="Clientes.Cc" name="Cc"/>
                  
                 </div>
 
                 <div class="form-outline mb-4">
                   <label class="form-label" for="Correo">Correo</label>
-                  <input type="email" id="Correo" class="form-control form-control-sm" />
+                  <input type="email" id="Correo" class="form-control form-control-sm" [(ngModel)]="Clientes.Correo" name="Correo" required />
                 </div>
 
                 <div class="form-outline mb-4">
                   <label class="form-label" for="Contraseña">Contraseña</label>
-                  <input type="email" id="Contraseña" class="form-control form-control-sm" [(ngModel)]=Clientes.Contrasena />
+                  <input type="text" id="Contraseña" class="form-control form-control-sm" [(ngModel)]="Clientes.Contrasena" name="Contrasena" required />
                 </div>
 
                 <div class="form-outline mb-4">
                   <label class="form-label" for="Telefono">Telefono</label>
-                  <input type="text" id="Telefono" class="form-control form-control-sm" [(ngModel)]=Clientes.Telefono />
+                  <input type="text" id="Telefono" class="form-control form-control-sm" [(ngModel)]="Clientes.Telefono" name="Telefono" required  />
                 </div>
 
                 <div class="form-outline mb-4">
                   <label class="form-label" for="F_Nacimiento">Fecha de Nacimiento</label>
-                  <input type="date" id="F_Nacimiento" class="form-control form-control-sm" [(ngModel)]=Clientes.Fecha_Nacimiento />
+                  <input type="date" id="F_Nacimiento" class="form-control form-control-sm" [(ngModel)]="Clientes.Fecha_Nacimiento" name="Fecha_Nacimiento" />
                 </div>
 
 
                 <div class="form-outline mb-4">
                   <label class="form-label" for="N_Licencia">Numero de Licencia</label>
-                  <input type="text" id="N_Licencia" class="form-control form-control-sm" [(ngModel)]=Clientes.N_Licencia/>
+                  <input type="text" id="N_Licencia" class="form-control form-control-sm" [(ngModel)]="Clientes.N_Licencia" name="N_Licencia" required />
                 </div>
 
 
                 <div class="d-flex justify-content-center">
                   <button type="button"
-                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Registrar</button>
+                    class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" (click)="AgregarCliente()">Registrar</button>
                 </div>
-
-                <p class="text-center text-muted mt-1 mb-0">¿Ya tiene una Cuenta?<a href="#!"
-                    class="fw-bold text-body"><u> Click Aqui</u></a></p>
 
               </form>
 

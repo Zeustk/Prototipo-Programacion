@@ -17,15 +17,6 @@ class ServicioVehiculos {
             const sql = "insert into Vehiculos(Placa, Id_Tipovehiculo, Modelo, Id_Marca, Id_Tarifas, Disponible) values (:Placa, :Id_TipoVehiculoNumber, :Modelo, :Id_MarcaNumber, :Id_TarifaNumber, :Disponible)";
 
 
-            
- 
-            console.log(typeof(Id_MarcaNumber));
-            console.log(typeof(Id_TipoVehiculoNumber));
-
-            console.log(Id_MarcaNumber);
-            console.log(Id_TipoVehiculoNumber);
-            console.log(Id_TarifaNumber);
-
 
             await this.DB.Open(sql, [Placa, Id_TipoVehiculoNumber,Modelo,Id_MarcaNumber,Id_TarifaNumber,Disponible], true);
 

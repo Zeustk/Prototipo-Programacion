@@ -9,10 +9,12 @@ module.exports = function (servicio) {
 
 
       try {
+         console.log('hola');
 
          const { Correo, Clave,Id_Cargo,Disponible } = req.body;
 
 
+         console.log(Id_Cargo);
          const Answer = await servicio.addEmpleado(Correo, Clave,Id_Cargo,Disponible)
 
          console.log(Answer);

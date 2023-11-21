@@ -5,16 +5,20 @@ class ServicioCliente {
     }
 
 
-    async addCliente(Nombre_Completo, CC, Fecha_Nacimiento, N_Licencia,Disponible, Correo, Telefono,Contraseña) {
+    async addCliente(Nombre_Completo, Cc, Fecha_Nacimiento, N_Licencia,Disponible, Correo, Telefono,Contrasena) {
         try {
-            const sql = "insert into Clientes(Nombre_Completo, CC, Fecha_Nacimiento, Id_TipoCliente, N_Licencia,Disponible, Correo, Telefono,Contraseña) values (:Nombre_Completo,:CC,:fechaNacimiento,:N_Licencia,:Disponible,:Correo,:Telefono,:Contraseña)";
+            const sql = "insert into Clientes(Nombre_Completo, Cc, Fecha_Nacimiento, N_Licencia,Disponible, Correo, Telefono,Contrasena) values (:Nombre_Completo,:Cc,:fechaNacimiento,:N_Licencia,:Disponible,:Correo,:Telefono,:Contrasena)";
             
             //Conversiones
-            const fechaNacimiento = new Date(Fecha_Nacimiento);
+      
+           
+            const fechaNacimiento = new Date(Fecha_Nacimiento)
+
+            fechaNacimiento.setDate(fechaNacimiento.getDate() + 1);
     
+           console.log(fechaNacimiento);
 
-
-            await this.DB.Open(sql, [Nombre_Completo, CC, fechaNacimiento, N_Licencia,Disponible, Correo, Telefono,Contraseña], true);
+            await this.DB.Open(sql, [Nombre_Completo, Cc, fechaNacimiento, N_Licencia,Disponible, Correo, Telefono,Contrasena], true);
 
             return ('Guardado Exitosamente')
         }
@@ -44,7 +48,7 @@ class ServicioCliente {
                     "Disponible":propiedad[4],
                     "Correo":propiedad[5],
                     "Telefono":propiedad[6],
-                    "Contraseña":propiedad[7],
+                    "Contrasena":propiedad[7],
                 }
 
                 Clientes.push(ClienteSchema);
@@ -60,11 +64,11 @@ class ServicioCliente {
 
     }
 
-    async UpdateCliente(CC,Nombre_Completo,Fecha_Nacimiento, N_Licencia,Correo, Telefono,Contraseña) {
+    async UpdateCliente(CC,Nombre_Completo,Fecha_Nacimiento, N_Licencia,Correo, Telefono,Contrasena) {
 
         try {
-            const sql = "update Clientes set Nombre_Completo=:Nombre_Completo,Fecha_Nacimiento=:Fecha_Nacimiento,N_Licencia=:N_Licencia,Correo=:Correo,Telefono=:Telefono,Contraseña=:Contraseña where CC=:CC";
-            await this.DB.Open(sql, [Id,Nombre_Completo, CC, Fecha_Nacimiento, N_Licencia,Correo, Telefono,Contraseña], true);
+            const sql = "update Clientes set Nombre_Completo=:Nombre_Completo,Fecha_Nacimiento=:Fecha_Nacimiento,N_Licencia=:N_Licencia,Correo=:Correo,Telefono=:Telefono,Contrasena=:Contrasena where CC=:CC";
+            await this.DB.Open(sql, [Id,Nombre_Completo, CC, Fecha_Nacimiento, N_Licencia,Correo, Telefono,Contrasena], true);
 
             return ('Actualizado Correctamente')
         }

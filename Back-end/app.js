@@ -35,6 +35,7 @@ const ControllerTarifas=require('./Controllers/GestionTarifa');
 const ControllerVehiculo=require('./Controllers/GestionVehiculo');
 const ControllerReserva=require('./Controllers/GestionReserva');
 const ControllerEmpleado=require('./Controllers/GestionEmpleado');
+const ControllerCargo=require('./Controllers/GestionCargos');
 const ControllerAlquiler=require('./Controllers/GestionAlquiler');
 
 
@@ -50,6 +51,7 @@ const servicioVehiculoI=new ControllerVehiculo(DB);
 const servicioReservaI=new ControllerReserva(DB);
 const servicioEmpleadoI=new ControllerEmpleado(DB);
 const servicioAlquilerI=new ControllerAlquiler(DB);
+const servicioCargoI=new ControllerCargo(DB);
 
 
 //Routes (API)
@@ -59,8 +61,9 @@ const TipoVehiculoRoutes=require('./routes/GestionTipoVehiculoRoutes')(servicioT
 const TarifasRoutes=require('./routes/GestionTarifasRoutes')(servicioTarifaI);
 const VehiculoRoutes=require('./routes/GestionVehiculosRoutes')(servicioVehiculoI);
 const ReservaRoutes=require('./routes/GestionReservasRoutes')(servicioReservaI);
-const EmpleadoRoutes=require('./routes/GestionReservasRoutes')(servicioEmpleadoI);
-const AlquilerRoutes=require('./routes/GestionReservasRoutes')(servicioAlquilerI);
+const EmpleadoRoutes=require('./routes/GestionEmpleadosRoutes')(servicioEmpleadoI);
+const AlquilerRoutes=require('./routes/GestionAlquileresRoutes')(servicioAlquilerI);
+const CargoRoutes=require('./routes/GestionCargosRoutes')(servicioCargoI);
 
 
 
@@ -88,6 +91,7 @@ app.use(VehiculoRoutes);
 app.use(ReservaRoutes);
 app.use(EmpleadoRoutes);
 app.use(AlquilerRoutes);
+app.use(CargoRoutes);
 
 //Directorio Publico
 app.use(express.static('public'))

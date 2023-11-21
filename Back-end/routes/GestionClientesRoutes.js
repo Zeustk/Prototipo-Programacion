@@ -9,11 +9,11 @@ module.exports = function (servicio) {
 
 
         try{
-            const { Nombre_Completo, CC, Fecha_Nacimiento, N_Licencia, Correo, Telefono } = req.body;
+            const { Nombre_Completo, Cc, Fecha_Nacimiento, N_Licencia, Correo, Telefono,Contrasena } = req.body;
 
             const Disponible = "SI";
     
-            const Answer = await servicio.addCliente(Nombre_Completo, CC, Fecha_Nacimiento, N_Licencia, Disponible, Correo, Telefono)
+            const Answer = await servicio.addCliente(Nombre_Completo, Cc, Fecha_Nacimiento, N_Licencia, Disponible, Correo, Telefono,Contrasena)
     
             console.log(Answer);
     

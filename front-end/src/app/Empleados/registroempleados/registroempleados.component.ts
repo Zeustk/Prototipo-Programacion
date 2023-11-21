@@ -34,12 +34,11 @@ export class RegistroempleadosComponent {
   AgregarEmpleado() {
 
 
-
     if (this.Empleados.Correo == '' && this.Empleados.Clave == '') {
       return;
-
-
     }
+    
+    console.log(this.Empleados.Id_Cargo);
 
     this.ServicioEmpleado.RegistrarEmpleado(this.Empleados)
       .subscribe(resp => {

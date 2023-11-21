@@ -24,24 +24,25 @@ class ServicioCargos {
     async getCargo() {
 
         try {
+          
 
             const sql = "select *from Cargos";
 
             let result = await this.DB.Open(sql, [], false);
-            const Marcas = [];
+            const Cargos = [];
 
             result.rows.map(propiedad => {
-                let MarcaSchema = {
+                let CargoSchema = {
                     "Id_Cargo": propiedad[0],
                     "Nombre": propiedad[1],
                     "Administracion": propiedad[2],
                     "Disponible":propiedad[3]
                 }
 
-                Marcas.push(MarcaSchema);
+                Cargos.push(CargoSchema);
             })
 
-            return Marcas;
+            return Cargos;
         }
 
         catch (err) {

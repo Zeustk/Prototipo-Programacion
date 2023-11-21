@@ -8,14 +8,12 @@ class ServicioEmpleados {
     async addEmpleado(Correo, Clave,Id_Cargo,Disponible) {
 
         try {
-
-            console.log(Correo);
-            console.log(Clave);
+           
 
 
             const sql = "insert into Empleados(Correo,Clave,ID,ID_CARGO,Disponible) values (:Correo,:Clave,SEQ_EMPLEADOS.NEXTVAL,:CargoNumber,:Disponible)";
 
-            CargoNumber=parseInt(Id_Cargo);
+            const CargoNumber=parseInt(Id_Cargo);
 
 
             await this.DB.Open(sql, [Correo,Clave,CargoNumber,Disponible], true);

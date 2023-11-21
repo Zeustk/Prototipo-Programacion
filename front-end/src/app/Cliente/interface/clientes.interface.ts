@@ -2,7 +2,7 @@ export interface Clientes{
 
     Nombre_Completo:string,
     Cc: string,
-    Fecha_Nacimiento:number,
+    Fecha_Nacimiento:Date,
     N_Licencia:string,
     Disponible:string,
     Correo:string,

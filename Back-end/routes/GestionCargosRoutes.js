@@ -12,7 +12,7 @@ module.exports = function (servicio) {
 
          const { Nombre,Administracion,Disponible } = req.body;
 
-         const Answer = await servicio.addMarca(Nombre,Administracion,Disponible)
+         const Answer = await servicio.addCargo(Nombre,Administracion,Disponible)
 
          console.log(Answer);
 
