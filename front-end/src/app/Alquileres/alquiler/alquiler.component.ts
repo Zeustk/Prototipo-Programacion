@@ -31,6 +31,7 @@ export class AlquilerComponent {
   ngOnInit(): void {  //NGONInit PERMITE QUE SE CARGUEN LOS DATOS ANTES DE QUE CARGUEN LAS VISRTAS
   
      this.CargarVehiculo();
+     this.CargarCliente();
    }
 
   CargarVehiculo(){

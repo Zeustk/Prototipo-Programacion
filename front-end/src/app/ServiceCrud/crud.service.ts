@@ -19,7 +19,7 @@ export class CrudService<T> {
 
   Consultar(endpoint:string){
 
-    const url = `${this.baseUrl}/${endpoint}`  //HTTP://localhost/api/endpoint
+    const url = `${this.baseUrl}/${endpoint}`  
 
     return this.http.get<T[]>(url);
 

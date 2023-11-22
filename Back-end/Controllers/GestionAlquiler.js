@@ -7,7 +7,7 @@ class ServicioAlquiler {
 
     async addAlquiler(Fecha_Emision,Fecha_Recepcion,KmEmision,KmRecepcion,KmRecorridos,Placa_Vehiculos,Cc_Clientes,Id_Empleados, Disponible) {
         try {
-            const sql = "insert into Marcas(Fecha_Emision,Fecha_Recepcion,ID,KmEmision,KmRecepcion,KmRecorridos,Placa_Vehiculos,Cc_Clientes,Id_Empleados, Disponible) values (:Fecha_Emision,:Fecha_Recepcion,SEQ_Alquiler.NEXTVAL,:KmEmision,:KmRecepcion,:KmRecorridos,:Placa_Vehiculos,Cc_Clientes,Id_Empleados, Disponible)";
+            const sql = "insert into Alquiler(Fecha_Emision,Fecha_Recepcion,ID,KmEmision,KmRecepcion,KmRecorridos,Placa_Vehiculos,Cc_Clientes,Id_Empleados, Disponible) values (:Fecha_Emision,:Fecha_Recepcion,SEQ_Alquiler.NEXTVAL,:KmEmision,:KmRecepcion,:KmRecorridos,:Placa_Vehiculos,Cc_Clientes,Id_Empleados, Disponible)";
 
             await this.DB.Open(sql, [Fecha_Emision,Fecha_Recepcion,KmEmision,KmRecepcion,KmRecorridos,Placa_Vehiculos,Cc_Clientes,Id_Empleados, Disponible], true);
 
