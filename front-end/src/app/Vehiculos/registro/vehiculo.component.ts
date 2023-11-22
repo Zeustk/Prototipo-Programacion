@@ -29,9 +29,8 @@ export class VehiculoComponent {
   Tarifas:Tarifas[]=[];
 
 
-  ngOnInit(): void {  //NGONInit PERMITE QUE SE CARGUEN LOS DATOS ANTES DE QUE CARGUEN LAS VISRTAS
+  ngOnInit(): void {  
     
-
    this.CargarMarcas();
    this.CargarTipoVehiculo();
    this.CargarTarifas();
@@ -103,13 +102,25 @@ export class VehiculoComponent {
 
   AgregarVehiculo() {
 
-    console.log(this.Vehiculo.Id_Tarifas);
-
-    console.log(this.Vehiculo.Id_Tipovehiculo);
+   
     this.VehiculoService.RegistrarVehiculo(this.Vehiculo)
       .subscribe(resp => {
         console.log(resp);
       });
+
+    this.reiniciarDatos();
+
+  }
+
+   reiniciarDatos() {
+    this.Vehiculo={
+    Placa: '',
+    Id_Tipovehiculo: 0,
+    Modelo: '',
+    Id_Marca: 0,
+    Id_Tarifas: 0,
+    Disponible: 'SI'
+    }
 
   }
 

@@ -24,5 +24,14 @@ export class CrudService<T> {
     return this.http.get<T[]>(url);
 
   }
+
+  
+  Actualizar(body:T,endpoint:string){
+
+    const url = `${this.baseUrl}/${endpoint}`  //HTTP://localhost/api/endpoint
+
+    return this.http.put<string>(url, body)
+
+  }
   
 }

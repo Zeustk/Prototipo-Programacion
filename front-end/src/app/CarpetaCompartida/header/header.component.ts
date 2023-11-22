@@ -10,8 +10,8 @@ export class HeaderComponent {
   MostrarInterfazEComponent:boolean = false;
   mostrarComponenteReserva: boolean=false;
   mostrarComponenteLoginCl: boolean= false;
-  mostrarComponenteInicio:   boolean= true;
-  mostrarComponenteEmpleado: boolean=false;
+  mostrarComponenteInicio:  boolean= true;
+  mostrarComponenteEmpleado:boolean=false;
   MostrarComponenteAboutUs: boolean=false;
   MostrarComponenteGaleria:boolean=false;
 

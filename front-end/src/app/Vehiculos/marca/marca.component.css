@@ -1,9 +1,10 @@
-#buttonMarca{
-    background-color:aqua;
-    color:white;
-} 
-
-
-h3{
-    color: aqua;
-}
+ .bg-indigo {
+    background-color: #4835d4;
+    width: 540px;
+    border-radius: 10px;
+   
+    top: 0;
+    bottom: 0;
+    left: 520px;  
+  }
+    

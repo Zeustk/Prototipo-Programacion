@@ -3,6 +3,7 @@ import { ClienteService } from '../services/cliente.service';
 import { Clientes } from '../interface/clientes.interface';
 
 
+
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
@@ -22,6 +23,11 @@ export class RegistroComponent {
     Contrasena: '',
     Telefono:''
   }
+  
+  ngOnInit(): void {  
+    
+  
+   }
 
   ConsultarCliente(){
     console.log(this.clienteService.Clientes)
@@ -29,17 +35,36 @@ export class RegistroComponent {
 
   AgregarCliente(){
 
-  
+   
 
    if (this.Clientes.Cc=='' && this.Clientes.Contrasena==''){
     return;
+
     
    }
-   console.log(this.Clientes.Fecha_Nacimiento);
+  
+   
     this.clienteService.RegistrarCliente(this.Clientes)
     .subscribe(resp =>{
      console.log(resp);
     });
 
+    this.Borrarlabels();
+
   }
+
+  Borrarlabels() {
+    this.Clientes = {
+    Nombre_Completo: '',
+    Cc: '',
+    Fecha_Nacimiento: new Date(),
+    N_Licencia: '',
+    Disponible: '',
+    Correo: '',
+    Contrasena: '',
+    Telefono:''
+    
+    };
+  }
+
 }

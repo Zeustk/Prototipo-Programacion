@@ -4,6 +4,7 @@ import { RegistroService } from '../../Vehiculos/registro/services/registro.serv
 import { Alquileres } from '../interface/alquiler.interface';
 import { Clientes } from '../../Cliente/interface/clientes.interface';
 import { ClienteService } from 'src/app/Cliente/services/cliente.service';
+import { AlquilerService } from '../services/alquiler.service';
 
 @Component({
   selector: 'app-alquiler',
@@ -11,19 +12,23 @@ import { ClienteService } from 'src/app/Cliente/services/cliente.service';
   styleUrls: ['./alquiler.component.css']
 })
 export class AlquilerComponent {
-  constructor(private AlquieresVehiculo:RegistroService, private Clientecedula:ClienteService){}
+  constructor(private AlquieresVehiculo:RegistroService, private Clientecedula:ClienteService,private AlquilerServicio:AlquilerService){}
    
 
-  @Input() Alquileres: Alquileres = {
-    Fecha_Emision:undefined,
-    Fecha_Recepcion:null ,
+  @Input() Alquiler: Alquileres = {
+    Fecha_Emision:new Date(),
+    Fecha_Recepcion:null,
     Id: 0,
     KmEmision:0 ,
+    KmRecepcion:null,
+    KmRecorridos:null,
+    Cargos_Adicionales:null,
     Placa_Vehiculo: '',
-    Cedula_Cliente: '',
-    Id_Empleados: '',
+    Cc_Clientes: '',
+    Id_Empleados:0,
+    Total:null,
     Valor_Inicial: 0,
-    Disponible: ''
+    Disponible: 'SI'
   }
   Vehiculos: Vehiculos[] = [];
   Clientes: Clientes[]=[];
@@ -32,6 +37,16 @@ export class AlquilerComponent {
   
      this.CargarVehiculo();
      this.CargarCliente();
+   }
+
+   RegistrarAlquiler(){
+    
+
+    console.log(this.Alquiler.Id_Empleados);
+    this.AlquilerServicio.RegistrarAlquiler(this.Alquiler)
+      .subscribe(resp => {
+        console.log(resp);
+      });
    }
 
   CargarVehiculo(){

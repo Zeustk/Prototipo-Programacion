@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Cargos, Empleados } from 'src/app/Empleados/interface/empleados.interface';
 import { EmpleadosService } from '../services/empleados.service';
 import { CargosService } from '../services/cargos.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registroempleados',
@@ -19,9 +20,11 @@ export class RegistroempleadosComponent {
     Id_Cargo: 0,
     Disponible: 'SI'
   }
+  
+  mostrarMensaje: boolean = false;
 
-  ngOnInit(): void {  //NGONInit PERMITE QUE SE CARGUEN LOS DATOS ANTES DE QUE CARGUEN LAS VISRTAS
-    
+  ngOnInit(): void {  
+     
 
     this.CargarCargos();
  
@@ -34,9 +37,10 @@ export class RegistroempleadosComponent {
   AgregarEmpleado() {
 
 
-    if (this.Empleados.Correo == '' && this.Empleados.Clave == '') {
+    if (this.Empleados.Correo == '' && this.Empleados.Clave == '') { 
       return;
     }
+    
     
     console.log(this.Empleados.Id_Cargo);
 
@@ -44,6 +48,11 @@ export class RegistroempleadosComponent {
       .subscribe(resp => {
         console.log(resp);
       });
+      this.limpiarEmpleado();
+      Swal.fire('Usuario registrado','','success')
+      
+      
+      
 
   }
 
@@ -66,8 +75,15 @@ export class RegistroempleadosComponent {
         console.error('Error al consultar Cargos:', error);
       }
     );
-  }
 
+    
+  }
+  
+  limpiarEmpleado(){
+    this.Empleados.Correo='';
+    this.Empleados.Clave='';
+    this.Empleados.Id_Cargo=0;
+  }
 
 
 }

@@ -35,9 +35,9 @@ module.exports = function (servicio) {
 
    router.put('/api/UpdateVehiculo', async (req, res) => {
 
-      const { Placa, Tipo_De_Vehiculo,Modelo,Marca,Tarifa,Disponible } = req.body
+      const { Placa, Modelo } = req.body
 
-      const Answer = await servicio.UpdateVehiculo(Placa, Tipo_De_Vehiculo,Modelo,Marca,Tarifa,Disponible);
+      const Answer = await servicio.UpdateVehiculo(Placa, Modelo);
 
 
       res.json(Answer);

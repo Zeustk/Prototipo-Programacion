@@ -1,6 +1,6 @@
 import { Component,Input } from '@angular/core';
 import { TipoVehiculoService } from './services/tipo-vehiculo.service';
-import { TipoVehiculo } from '../Interfaces/vehiculos.interface';
+import { Marcas, TipoVehiculo } from '../Interfaces/vehiculos.interface';
 
 @Component({
   selector: 'app-tipo-vehiculo',
@@ -8,6 +8,7 @@ import { TipoVehiculo } from '../Interfaces/vehiculos.interface';
   styleUrls: ['./tipo-vehiculo.component.css']
 })
 export class TipoVehiculoComponent {
+
   constructor(private ServicioTipoVehiculo:TipoVehiculoService){}
 
   @Input() TipoVehiculos:TipoVehiculo = {
@@ -16,6 +17,8 @@ export class TipoVehiculoComponent {
     Disponible: 'SI'
   }
 
+  
+    
   ConsultarTipoVehiculo(){
     console.log(this.ServicioTipoVehiculo.TipoVehiculo)
   }
@@ -31,11 +34,24 @@ export class TipoVehiculoComponent {
     
    }
    
+ 
 
     this.ServicioTipoVehiculo.RegistrarTipoVehiculo(this.TipoVehiculos)
     .subscribe(resp =>{
      console.log(resp);
     });
-} 
+
+    this.borradatos();
+
+    
+ } 
+
+ borradatos(){
+   this.TipoVehiculos.Nombre='';
+ }
+
+ 
+
+
 
 }

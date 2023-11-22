@@ -36,5 +36,12 @@ export class MarcaComponent {
      console.log(resp);
     });
 
+    this.borrardatosmarca();
+
   }
+  
+  borrardatosmarca(){
+    this.Marca.Nombre='';
+  }
+ 
 }

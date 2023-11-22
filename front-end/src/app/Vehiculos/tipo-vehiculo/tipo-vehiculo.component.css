@@ -45,7 +45,7 @@
         top: 70px;
     }
 
-    #form3Examplev2{
+    #a{
         padding-left: 400px;
     }
 
@@ -72,4 +72,9 @@
         background-color: white;
         position: absolute;
         top: 120px;
+    }
+
+    #inp{
+      margin-right: 40px;
+      width: 400px;
     }

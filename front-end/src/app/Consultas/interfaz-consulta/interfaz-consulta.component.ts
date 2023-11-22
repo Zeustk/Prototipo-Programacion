@@ -24,25 +24,24 @@ export class InterfazConsultaComponent {
 
   constructor(private marcaService: MarcaService, private TipoVehiculoService: TipoVehiculoService,private ClienteService:ClienteService,private TarifaService:TarifaService,private VehiculoServicio:RegistroService,private Empleado:EmpleadosService, private Reserva:ReservasService,private Alquiler:AlquilerService,private CargoService:CargosService) { };
 
-  mostrarTabla = false;
-  mostrarBoton = false;
+  mostrarTabla: boolean = false;
+  mostrarBoton: boolean = false;
+  VehiculosEstaCargado:boolean=false;
+  MarcaEstaCargado:boolean=false;
+  TipoVehiculoEstaCargado:boolean=false;
+  TarifasEstaCargado:boolean=false;
+  EmpleadosEstaCargado:boolean=false;
+  AlquilerEstaCargado:boolean=false;
+  ClienteEstaCargado:boolean=false;
+  CargosEstaCargado:boolean=false;
 
-  columnasNoEditables:string[]=['Id_Marca']
+  FilaEditada:any={};
+
+  
 
   InfoTabla:any[]=[];
 
-  actualizarValor(event: any, infoDB: any, key: string | undefined) {
-    if (key && this.esEditable(key)) {
-      infoDB[key] = event.target.innerText;
-    }
-  }
-  esEditable(columna: string | undefined): boolean {
-    if (columna) {
-      // Devuelve true si la columna especificada debe ser editable, false de lo contrario
-      return this.columnasNoEditables.indexOf(columna) === -1;
-    }
-    return false;
-  }
+ 
   
   mostrarTablaConsulta(boton:string) {
 
@@ -83,6 +82,14 @@ export class InterfazConsultaComponent {
           console.log('Resultado de la consulta de marcas:', ListMarcas);
          
           this.InfoTabla=ListMarcas;
+          this.MarcaEstaCargado=true;
+          this.TipoVehiculoEstaCargado=false;
+          this.VehiculosEstaCargado=false;
+          this.TarifasEstaCargado=false;
+          this.EmpleadosEstaCargado=false;
+          this.AlquilerEstaCargado==false;
+          this.ClienteEstaCargado=false;
+          this.CargosEstaCargado=false;
         }
         
       },
@@ -103,6 +110,14 @@ export class InterfazConsultaComponent {
           console.log('Resultado de la consulta de TipoVehiculo:', ListTipoVehiculo);
          
           this.InfoTabla=ListTipoVehiculo;
+          this.MarcaEstaCargado=false;
+          this.TipoVehiculoEstaCargado=true;
+          this.VehiculosEstaCargado=false;
+          this.TarifasEstaCargado=false;
+          this.EmpleadosEstaCargado=false;
+          this.AlquilerEstaCargado==false;
+          this.ClienteEstaCargado=false;
+          this.CargosEstaCargado=false;
         }
         
       },
@@ -123,6 +138,15 @@ export class InterfazConsultaComponent {
           console.log('Resultado de la consulta de Vehiculo:', listVehiculo);
          
           this.InfoTabla=listVehiculo;
+          this.VehiculosEstaCargado=true;
+          this.MarcaEstaCargado=false;
+          this.TipoVehiculoEstaCargado=false;
+          this.TarifasEstaCargado=false;
+          this.EmpleadosEstaCargado=false;
+          this.AlquilerEstaCargado==false;
+          this.ClienteEstaCargado=false;
+          this.CargosEstaCargado=false;
+     
         }
         
       },
@@ -143,6 +167,14 @@ export class InterfazConsultaComponent {
           console.log('Resultado de la consulta de Tarifa:', ListTarifa);
          
           this.InfoTabla=ListTarifa;
+          this.MarcaEstaCargado=false;
+          this.TipoVehiculoEstaCargado=false;
+          this.VehiculosEstaCargado=false;
+          this.TarifasEstaCargado=true;
+          this.EmpleadosEstaCargado=false;
+          this.AlquilerEstaCargado==false;
+          this.ClienteEstaCargado=false;
+          this.CargosEstaCargado=false;
         }
         
       },
@@ -163,6 +195,14 @@ export class InterfazConsultaComponent {
           console.log('Resultado de la consulta de Empleados:', ListEmpleado);
          
           this.InfoTabla=ListEmpleado;
+          this.MarcaEstaCargado=false;
+          this.TipoVehiculoEstaCargado=false;
+          this.VehiculosEstaCargado=false;
+          this.TarifasEstaCargado=false;
+          this.EmpleadosEstaCargado=true;
+          this.AlquilerEstaCargado==false;
+          this.ClienteEstaCargado=false;
+          this.CargosEstaCargado=false;
         }
         
       },
@@ -183,6 +223,14 @@ export class InterfazConsultaComponent {
           console.log('Resultado de la consulta de reservas:', ListReserva);
          
           this.InfoTabla=ListReserva;
+          this.MarcaEstaCargado=false;
+          this.TipoVehiculoEstaCargado=false;
+          this.VehiculosEstaCargado=false;
+          this.TarifasEstaCargado=false;
+          this.EmpleadosEstaCargado=false;
+          this.AlquilerEstaCargado==false;
+          this.ClienteEstaCargado=false;
+          this.CargosEstaCargado=false;
         }
         
       },
@@ -203,6 +251,14 @@ export class InterfazConsultaComponent {
           console.log('Resultado de la consulta de alquileres:', ListAlquiler);
          
           this.InfoTabla=ListAlquiler;
+          this.MarcaEstaCargado=false;
+          this.TipoVehiculoEstaCargado=false;
+          this.VehiculosEstaCargado=false;
+          this.TarifasEstaCargado=false;
+          this.EmpleadosEstaCargado=false;
+          this.AlquilerEstaCargado==true;
+          this.ClienteEstaCargado=false;
+          this.CargosEstaCargado=false;
         }
         
       },
@@ -223,6 +279,14 @@ export class InterfazConsultaComponent {
           console.log('Resultado de la consulta de alquileres:', ListCliente);
          
           this.InfoTabla=ListCliente;
+          this.MarcaEstaCargado=false;
+          this.TipoVehiculoEstaCargado=false;
+          this.VehiculosEstaCargado=false;
+          this.TarifasEstaCargado=false;
+          this.EmpleadosEstaCargado=false;
+          this.AlquilerEstaCargado==false;
+          this.ClienteEstaCargado=true;
+          this.CargosEstaCargado=false;
         }
         
       },
@@ -243,6 +307,13 @@ export class InterfazConsultaComponent {
           console.log('Resultado de la consulta de Cargos:', ListCargos);
          
           this.InfoTabla=ListCargos;
+          this.MarcaEstaCargado=false;
+          this.TipoVehiculoEstaCargado=false;
+          this.VehiculosEstaCargado=false;
+          this.TarifasEstaCargado=false;
+          this.EmpleadosEstaCargado=false;
+          this.AlquilerEstaCargado==false;
+          this.CargosEstaCargado=true;
         }
         
       },
@@ -253,6 +324,41 @@ export class InterfazConsultaComponent {
 
   }
 
+
+
+  AlmacenarFila(event: any, InfoDB: any, propiedadKey: string | undefined) {
+    if (propiedadKey !== undefined) {
+      this.FilaEditada = { ...InfoDB, [propiedadKey]: event.target.innerText };
+    }
+  }
+  
+
+  ActualizarDatos(){
+
+   
+
+    if (this.FilaEditada && Object.keys(this.FilaEditada).length > 0){
+      
+
+      if (this.VehiculosEstaCargado){
+        this.ActualizarVehiculo();
+      }
+
+      this.FilaEditada={};
+
+    }
+  }
+
+  ActualizarVehiculo(){
+
+    const Vehiculo: Vehiculos=this.FilaEditada;
+
+
+    this.VehiculoServicio.ActualizarVehiculo(Vehiculo)
+    .subscribe(resp => {
+      console.log(resp);
+    });
+  }
  
 
 }
