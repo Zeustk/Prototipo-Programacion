@@ -25,4 +25,11 @@ export class TipoVehiculoService extends CrudService<TipoVehiculo> {
     return this.Consultar('getTipoVehiculo');
   }
 
+  ActualizarTipoVehiculo(TipoVehiculoRecibido:TipoVehiculo){
+    const body = {Id:TipoVehiculoRecibido.Id,Nombre:TipoVehiculoRecibido.Nombre,Disponible:TipoVehiculoRecibido.Disponible };
+
+
+    return this.Actualizar(body,'UpdateTipoVehiculo')
+  }
+
 }

@@ -23,7 +23,12 @@ export class MarcaService extends CrudService<Marcas>{
   ConsultarMarcas(){
     return this.Consultar('getMarca');
   }
+  
+  ActualizarMarca(MarcaRecibida:Marcas){
+    const body = { Id_Marca:MarcaRecibida.Id_Marca,Nombre: MarcaRecibida.Nombre, Disponible:MarcaRecibida.Disponible };
 
+    return this.Actualizar(body,'UpdateMarca')
+  }
   
 
 }

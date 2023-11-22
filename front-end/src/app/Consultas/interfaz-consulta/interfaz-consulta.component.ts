@@ -26,14 +26,14 @@ export class InterfazConsultaComponent {
 
    mostrarTabla: boolean = false;
    mostrarBoton: boolean = false;
-  VehiculosEstaCargado:boolean=false;
-   MarcaEstaCargado:boolean=false;
-   TipoVehiculoEstaCargado:boolean=false;
-  TarifasEstaCargado:boolean=false;
-   EmpleadosEstaCargado:boolean=false;
-   AlquilerEstaCargado:boolean=false;
-  ClienteEstaCargado:boolean=false;
-   CargosEstaCargado:boolean=false;
+  VehiculosEstaCargado:boolean=false;  
+   MarcaEstaCargado:boolean=false;  
+   TipoVehiculoEstaCargado:boolean=false;  
+  TarifasEstaCargado:boolean=false;  
+   EmpleadosEstaCargado:boolean=false; 
+   AlquilerEstaCargado:boolean=false; 
+  ClienteEstaCargado:boolean=false; 
+   CargosEstaCargado:boolean=false;  
 
   FilaEditada:any={};
 
@@ -49,21 +49,21 @@ export class InterfazConsultaComponent {
     this.mostrarBoton = true;
     
     switch(boton){
-      case 'M': this.CargarMarcas();   //MARCA: M, TIPO DE VEHICULO:T
+      case 'M': this.CargarMarcas();  
                   return;
-      case 'T':this.CargarTipoVehiculo();
+      case 'T':this.CargarTipoVehiculo(); 
                  return;
-      case 'TA':this.CargarTarifas();
+      case 'TA':this.CargarTarifas(); 
                  return;
       case 'GK' :this.CargarVehiculos();
                  return;
-      case  'EM' :this.CargarEmpleado();
+      case  'EM' :this.CargarEmpleado(); 
                  return;
-      case 'DD' :this.CargarResevas();
+      case 'DD' :this.CargarResevas(); 
                  return;
-      case 'GG' :this.CargarAlquiler();
+      case 'GG' :this.CargarAlquiler(); 
                  return;
-      case 'C' :this.CargarCliente();
+      case 'C' :this.CargarCliente(); 
                  return;
       case 'CA':this.CargarCargos();
                 return;
@@ -341,20 +341,36 @@ export class InterfazConsultaComponent {
       
      
 
-      if (this.VehiculosEstaCargado){ //PAGINA
+      if (this.VehiculosEstaCargado){ 
         this.ActualizarVehiculo();
       }
 
       console.log(this.AlquilerEstaCargado);
 
       if (this.AlquilerEstaCargado){
-        console.log('hola');
         this.ActualizarAlquiler();
       }
 
       if (this.MarcaEstaCargado){
         this.ActualizarMarca();
       }
+
+      if (this.CargosEstaCargado){
+        this.ActualizarCargos();
+      }
+      
+      if (this.TarifasEstaCargado){
+        this.ActualizarTarifa();
+      }
+
+      if (this.EmpleadosEstaCargado){
+        this.ActualizarEmpleado();
+      }
+
+      if (this.ClienteEstaCargado){
+        this.ActualizarClientes();
+      }
+      
 
       this.FilaEditada={};
 
@@ -383,13 +399,68 @@ export class InterfazConsultaComponent {
   }
 
   ActualizarMarca(){
-    const Alquiler:Alquileres=this.FilaEditada; 
+    const Marcas:Marcas=this.FilaEditada; 
 
-    this.Alquiler.ActualizarAlquilar(Alquiler)
+    this.marcaService.ActualizarMarca(Marcas)
     .subscribe(resp => {
       console.log(resp);
     });
   }
- 
+
+   ActualizarTipovehiculo(){
+    const TipoVehiculo:TipoVehiculo=this.FilaEditada; 
+
+    this.TipoVehiculoService.ActualizarTipoVehiculo(TipoVehiculo)
+    .subscribe(resp => {
+      console.log(resp);
+    });
+  }
+
+  ActualizarTarifa(){
+    const Tarifas:Tarifas=this.FilaEditada; 
+
+    this.TarifaService.ActualizarTarifa(Tarifas)
+    .subscribe(resp => {
+      console.log(resp);
+    });
+  }
+
+  ActualizarEmpleado(){
+    const Empleados:Empleados=this.FilaEditada; 
+
+    this.Empleado.ActualizarEmpleado(Empleados)
+    .subscribe(resp => {
+      console.log(resp);
+    });
+  }
+
+  ActualizarReservas(){
+    const Reservas:Reservas=this.FilaEditada; 
+
+    this.Reserva.ActualizarReserva(Reservas)
+    .subscribe(resp => {
+      console.log(resp);
+    });
+  }
+
+  ActualizarClientes(){
+    const Clientes:Clientes=this.FilaEditada; 
+
+    this.ClienteService.ActualizarCliente(Clientes)
+    .subscribe(resp => {
+      console.log(resp);
+    });
+  }
+
+  //CargoService
+
+  ActualizarCargos(){
+    const Cargos:Cargos=this.FilaEditada; 
+
+    this.CargoService.ActualizarCargos(Cargos)
+    .subscribe(resp => {
+      console.log(resp);
+    });
+  }
 
 }
