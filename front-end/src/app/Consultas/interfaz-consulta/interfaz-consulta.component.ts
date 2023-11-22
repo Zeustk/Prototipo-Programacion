@@ -7,12 +7,13 @@ import { MarcaService } from 'src/app/Vehiculos/marca/services/marca.service';
 import { TipoVehiculoService } from 'src/app/Vehiculos/tipo-vehiculo/services/tipo-vehiculo.service';
 import { TarifaService } from '../../Vehiculos/tarifa/services/tarifa.service';
 import { RegistroService } from '../../Vehiculos/registro/services/registro.service';
-import { Empleados } from '../../Empleados/interface/empleados.interface';
+import { Cargos, Empleados } from '../../Empleados/interface/empleados.interface';
 import { ReservasService } from 'src/app/Reservas/services/reservas.service';
 import { Reservas } from '../../Reservas/interface/reserva.interface';
 import { AlquilerService } from 'src/app/Alquileres/services/alquiler.service';
 import { Alquileres } from 'src/app/Alquileres/interface/alquiler.interface';
 import { Clientes } from 'src/app/Cliente/interface/clientes.interface';
+import { CargosService } from 'src/app/Empleados/services/cargos.service';
 
 @Component({
   selector: 'app-interfaz-consulta',
@@ -21,13 +22,27 @@ import { Clientes } from 'src/app/Cliente/interface/clientes.interface';
 })
 export class InterfazConsultaComponent {
 
-  constructor(private marcaService: MarcaService, private TipoVehiculoService: TipoVehiculoService,private ClienteService:ClienteService,private TarifaService:TarifaService,private RegistroServicio:RegistroService,private Empleado:EmpleadosService, private Reserva:ReservasService,private Alquiler:AlquilerService) { };
+  constructor(private marcaService: MarcaService, private TipoVehiculoService: TipoVehiculoService,private ClienteService:ClienteService,private TarifaService:TarifaService,private VehiculoServicio:RegistroService,private Empleado:EmpleadosService, private Reserva:ReservasService,private Alquiler:AlquilerService,private CargoService:CargosService) { };
 
   mostrarTabla = false;
   mostrarBoton = false;
 
+  columnasNoEditables:string[]=['Id_Marca']
+
   InfoTabla:any[]=[];
-  
+
+  actualizarValor(event: any, infoDB: any, key: string | undefined) {
+    if (key && this.esEditable(key)) {
+      infoDB[key] = event.target.innerText;
+    }
+  }
+  esEditable(columna: string | undefined): boolean {
+    if (columna) {
+      // Devuelve true si la columna especificada debe ser editable, false de lo contrario
+      return this.columnasNoEditables.indexOf(columna) === -1;
+    }
+    return false;
+  }
   
   mostrarTablaConsulta(boton:string) {
 
@@ -41,7 +56,7 @@ export class InterfazConsultaComponent {
                  return;
       case 'TA':this.CargarTarifas();
                  return;
-      case 'Gk' :this.CargarVehiculos();
+      case 'GK' :this.CargarVehiculos();
                  return;
       case  'EM' :this.CargarEmpleado();
                  return;
@@ -50,6 +65,8 @@ export class InterfazConsultaComponent {
       case 'GG' :this.CargarAlquiler();
                  return;
       case 'C' :this.CargarCliente();
+                 return;
+      case 'CA':this.CargarCargos();
       
     } 
 
@@ -98,7 +115,7 @@ export class InterfazConsultaComponent {
 
   CargarVehiculos() {  //NGONInit PERMITE QUE SE CARGUEN LOS DATOS ANTES DE QUE CARGUEN LAS VISRTAS
 
-    this.RegistroServicio.ConsultarVehiculo().subscribe(
+    this.VehiculoServicio.ConsultarVehiculo().subscribe(
       (listVehiculo: Vehiculos[] | null) => {
 
         if (listVehiculo != null) {
@@ -110,7 +127,7 @@ export class InterfazConsultaComponent {
         
       },
       (error: any) => {
-        console.error('Error al consultar marcas:', error);
+        console.error('Error al consultar Vehiculos:', error);
       }
     );
 
@@ -211,6 +228,26 @@ export class InterfazConsultaComponent {
       },
       (error: any) => {
         console.error('Error al consultar marcas:', error);
+      }
+    );
+
+  }
+
+  CargarCargos() {  //NGONInit PERMITE QUE SE CARGUEN LOS DATOS ANTES DE QUE CARGUEN LAS V
+       
+    this.CargoService.ConsultarCargos().subscribe(
+      (ListCargos: Cargos[] | null) => {
+
+        if (ListCargos != null) {
+
+          console.log('Resultado de la consulta de Cargos:', ListCargos);
+         
+          this.InfoTabla=ListCargos;
+        }
+        
+      },
+      (error: any) => {
+        console.error('Error al consultar Cargos:', error);
       }
     );
 

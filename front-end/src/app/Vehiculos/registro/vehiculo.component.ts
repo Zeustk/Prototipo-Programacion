@@ -35,9 +35,8 @@ export class VehiculoComponent {
    this.CargarMarcas();
    this.CargarTipoVehiculo();
    this.CargarTarifas();
-   this.AgregarVehiculo();
 
-    
+
   }
 
  //Cargar

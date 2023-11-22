@@ -7,9 +7,9 @@ class ServicioTarifas {
 
     async addTarifa(Nombre, Precio,ValorDia,Disponible) {
         try {
-            const sql = "insert into Tarifas(ID,Nombre,Precio,ValorDia,Disponible) values (SEQ_TARIFAS.NEXTVAL,:Id,:Nombre,:Precio,:ValorDia,:Disponible)";
+            const sql = "insert into Tarifas(ID,Nombre,Precio,ValorDia,Disponible) values (SEQ_TARIFAS.NEXTVAL,:Nombre,:Precio,:ValorDia,:Disponible)";
 
-            await this.DB.Open(sql, [Id,Nombre, Precio,ValorDia,Disponible], true);
+            await this.DB.Open(sql, [Nombre, Precio,ValorDia,Disponible], true);
 
             return ('Guardado Exitosamente')
         }

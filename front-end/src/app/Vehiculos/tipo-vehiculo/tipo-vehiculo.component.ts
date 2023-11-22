@@ -13,7 +13,7 @@ export class TipoVehiculoComponent {
   @Input() TipoVehiculos:TipoVehiculo = {
     Id: 0,
     Nombre: '',
-    Disponible: ''
+    Disponible: 'SI'
   }
 
   ConsultarTipoVehiculo(){

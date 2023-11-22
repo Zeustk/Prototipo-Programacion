@@ -42,7 +42,7 @@ class ServicioCliente {
             result.rows.map(propiedad => {
                 let ClienteSchema = {
                     "Nombre_Completo": propiedad[0],
-                    "Cedula": propiedad[1],
+                    "Cc": propiedad[1],
                     "Fecha_Nacimiento": propiedad[2],
                     "Numero_Licencia":propiedad[3],
                     "Disponible":propiedad[4],

@@ -28,9 +28,9 @@ module.exports = function (servicio) {
 
    router.get('/api/getAlquiler', async (req, res) => {
 
-      const Marcas = await servicio.getMarca();
+      const Alquileres = await servicio.getAlquiler();
 
-      res.json(Marcas);
+      res.json(Alquileres);
    })
 
 
@@ -49,7 +49,7 @@ module.exports = function (servicio) {
 
       const { Id } = req.body
 
-      const Answer = await servicio.DeleteMarca(Id);
+      const Answer = await servicio.DeleteAlquiler(Id);
 
       res.json(Answer);
    })

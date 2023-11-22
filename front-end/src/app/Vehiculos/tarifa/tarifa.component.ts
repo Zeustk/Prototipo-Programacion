@@ -11,7 +11,7 @@ export class TarifaComponent {
 
   constructor(private ServicioTarifa:TarifaService){}
 
-  @Input() Tarifas:Tarifas = {
+  @Input() Tarifa:Tarifas = {
      Id:0,
      Nombre:'',
      Precio:0,
@@ -27,16 +27,16 @@ export class TarifaComponent {
   RegistrarTarifa(){
 
     this.ConsultarTarifas()
-    console.log(this.Tarifas)
+    console.log(this.Tarifa)
 
-   if (this.Tarifas.Nombre=='' && this.Tarifas.Precio==0){
+   if (this.Tarifa.Nombre=='' && this.Tarifa.Precio==0){
     return;
 
     
    }
    
 
-    this.ServicioTarifa.RegistrarTarifa(this.Tarifas)
+    this.ServicioTarifa.RegistrarTarifa(this.Tarifa)
     .subscribe(resp =>{
      console.log(resp);
     });
