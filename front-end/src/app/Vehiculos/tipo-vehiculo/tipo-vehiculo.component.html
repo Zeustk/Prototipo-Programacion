@@ -1,42 +1,50 @@
+<section class=" h-custom gradient-custom-2" >
+  <img src="assets/Categorias.png" alt="sinfoto" class="img-fluid">
+  <div class="container py-5 " >
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12" >
+        <h1>Gestion Categorias</h1>
+        <div class="card card-registration card-registration-2" style="border-radius: 15px;" id="contenedor-mover">
+          <div class="card-body p-0">
+            <div class="row g-0">
+              <div class="col-lg-6">
+                <div class="p-5">
+                  <h3 class="fw-normal mb-5" style="color: #4835d4;">Tipo de vehiculos</h3>
 
-<section class="h-100 h-custom gradient-custom-2 bg-dark">
-    <div class="container py-4 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-95">
-        <div class="col-12">
-            <h2 class="row d-flex justify-content-center align-items-center"id="titulo">GESTION DE CATEGORIAS</h2>
-          <div class="card card-registration card-registration-2" style="border-radius: 15px;">
-            <div class="card-body p-0">
-              <div class="row g-0">
-                <div class="col-lg-6">
-                  <div class="p-4">
-                    <h3 class="fw-normal mb-5" style="color: #4835d4;">Tipo De Vehiculo</h3>
-  
-                    
-                    <div class="form-outline">
-                        <input type="text" id="form3Examplev2" class="form-control form-control-lg" [(ngModel)]="TipoVehiculos.Nombre"/>
-                      </div>
-                      
-                      <div class="d-flex align-items-center mb-3">
-                        
-                      </div>
-                      <button (click)="RegistrarTipoVehiculo()" id="buttonTipoVehiculo" type="button" class="btn btn-light btn-lg" data-mdb-ripple-color="White">Registrar</button>
-
-                     
-                      <div class="d-flex align-items-right mb-5">
-                        <app-marca></app-marca>
-                    </div>
-                   
-                      
-                    
-                  </div>
                   
-                </div>
-              
+                  <div class="row">
+                    <div class="col-md-6 mb-4 pb-2">
 
+                      <div class="form-outline">
+                        <input type="text" id="form3Examplev2" class="form-control form-control-lg" />
+                        <button type="button" class="btn btn-light btn-lg"
+                    data-mdb-ripple-color="dark" style="background-color: #4835d4; color: white;" id="boton">Register</button>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Contendor de la derecha -->
+              <div class="col-lg-6 bg-indigo text-white">
+                <div class="p-5">
+                  <h3 class="fw-normal mb-5">Marca</h3>
+
+                  <div class="mb-4 pb-2">
+                    <div class="form-outline form-white">
+                      <input type="text" id="form3Examplea2" class="form-control form-control-lg" />
+                    </div>
+                  </div>
+                  <button type="button" class="btn btn-light btn-lg"
+                    data-mdb-ripple-color="dark">Register</button>
+                  
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+  </div>
+</section>
