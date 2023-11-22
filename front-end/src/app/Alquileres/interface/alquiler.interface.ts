@@ -1,7 +1,7 @@
 export interface Alquileres{
 
     Fecha_Emision:Date ,
-    Fecha_Recepcion:Date | null ,
+    Fecha_Contrato:Date,
     Id:number,
     KmEmision:number,
     KmRecepcion:number | null,
@@ -13,6 +13,7 @@ export interface Alquileres{
     Id_Empleados:number,
     Valor_Inicial:number,
     Disponible:string
+    Fecha_Recepcion:Date | null
 
 }
 

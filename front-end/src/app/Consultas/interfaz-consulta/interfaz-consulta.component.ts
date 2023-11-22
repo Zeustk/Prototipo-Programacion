@@ -24,16 +24,16 @@ export class InterfazConsultaComponent {
 
   constructor(private marcaService: MarcaService, private TipoVehiculoService: TipoVehiculoService,private ClienteService:ClienteService,private TarifaService:TarifaService,private VehiculoServicio:RegistroService,private Empleado:EmpleadosService, private Reserva:ReservasService,private Alquiler:AlquilerService,private CargoService:CargosService) { };
 
-  mostrarTabla: boolean = false;
-  mostrarBoton: boolean = false;
+   mostrarTabla: boolean = false;
+   mostrarBoton: boolean = false;
   VehiculosEstaCargado:boolean=false;
-  MarcaEstaCargado:boolean=false;
-  TipoVehiculoEstaCargado:boolean=false;
+   MarcaEstaCargado:boolean=false;
+   TipoVehiculoEstaCargado:boolean=false;
   TarifasEstaCargado:boolean=false;
-  EmpleadosEstaCargado:boolean=false;
-  AlquilerEstaCargado:boolean=false;
+   EmpleadosEstaCargado:boolean=false;
+   AlquilerEstaCargado:boolean=false;
   ClienteEstaCargado:boolean=false;
-  CargosEstaCargado:boolean=false;
+   CargosEstaCargado:boolean=false;
 
   FilaEditada:any={};
 
@@ -66,6 +66,7 @@ export class InterfazConsultaComponent {
       case 'C' :this.CargarCliente();
                  return;
       case 'CA':this.CargarCargos();
+                return;
       
     } 
 
@@ -256,7 +257,7 @@ export class InterfazConsultaComponent {
           this.VehiculosEstaCargado=false;
           this.TarifasEstaCargado=false;
           this.EmpleadosEstaCargado=false;
-          this.AlquilerEstaCargado==true;
+          this.AlquilerEstaCargado=true;
           this.ClienteEstaCargado=false;
           this.CargosEstaCargado=false;
         }
@@ -335,13 +336,24 @@ export class InterfazConsultaComponent {
 
   ActualizarDatos(){
 
-   
 
     if (this.FilaEditada && Object.keys(this.FilaEditada).length > 0){
       
+     
 
-      if (this.VehiculosEstaCargado){
+      if (this.VehiculosEstaCargado){ //PAGINA
         this.ActualizarVehiculo();
+      }
+
+      console.log(this.AlquilerEstaCargado);
+
+      if (this.AlquilerEstaCargado){
+        console.log('hola');
+        this.ActualizarAlquiler();
+      }
+
+      if (this.MarcaEstaCargado){
+        this.ActualizarMarca();
       }
 
       this.FilaEditada={};
@@ -355,6 +367,25 @@ export class InterfazConsultaComponent {
 
 
     this.VehiculoServicio.ActualizarVehiculo(Vehiculo)
+    .subscribe(resp => {
+      console.log(resp);
+    });
+  }
+
+  ActualizarAlquiler(){
+
+    const Alquiler:Alquileres=this.FilaEditada; 
+
+    this.Alquiler.ActualizarAlquilar(Alquiler)
+    .subscribe(resp => {
+      console.log(resp);
+    });
+  }
+
+  ActualizarMarca(){
+    const Alquiler:Alquileres=this.FilaEditada; 
+
+    this.Alquiler.ActualizarAlquilar(Alquiler)
     .subscribe(resp => {
       console.log(resp);
     });

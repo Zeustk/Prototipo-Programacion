@@ -28,6 +28,7 @@ import { ReservasService } from './Reservas/services/reservas.service';
 import { EmpleadosService } from './Empleados/services/empleados.service';
 import { AlquilerService } from './Alquileres/services/alquiler.service';
 import { CargosService } from './Empleados/services/cargos.service';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -59,7 +60,7 @@ import { CargosService } from './Empleados/services/cargos.service';
 
     
   ],
-  providers: [MarcaService,TipoVehiculoService,ClienteService,RegistroService,TarifaService,ReservasService,EmpleadosService,AlquilerService,CargosService],
+  providers: [MarcaService,TipoVehiculoService,ClienteService,RegistroService,TarifaService,ReservasService,EmpleadosService,AlquilerService,CargosService,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -17,7 +17,7 @@ export class AlquilerService extends CrudService<Alquileres>{
     const body = {
 
       Fecha_Emision:AlquilerRecibido.Fecha_Emision,
-      Fecha_Recepcion:AlquilerRecibido.Fecha_Recepcion,
+      Fecha_Contrato:AlquilerRecibido.Fecha_Contrato,
       Id:AlquilerRecibido.Id,
       KmEmision:AlquilerRecibido.KmEmision,
       KmRecepcion:AlquilerRecibido.KmRecepcion,
@@ -28,7 +28,8 @@ export class AlquilerService extends CrudService<Alquileres>{
       Cc_Clientes:AlquilerRecibido.Cc_Clientes,
       Id_Empleados:AlquilerRecibido.Id_Empleados,
       Valor_Inicial:AlquilerRecibido.Valor_Inicial,
-      Disponible:AlquilerRecibido.Disponible
+      Disponible:AlquilerRecibido.Disponible,
+      Fecha_Recepcion:AlquilerRecibido.Fecha_Recepcion
 
     };
 
@@ -38,6 +39,29 @@ export class AlquilerService extends CrudService<Alquileres>{
     return this.Consultar('getAlquiler');
   }
 
+  ActualizarAlquilar(AlquilerRecibido:Alquileres){
 
+    const body = {
+
+      Fecha_Emision:AlquilerRecibido.Fecha_Emision,
+      Fecha_Contrato:AlquilerRecibido.Fecha_Contrato,
+      Id:AlquilerRecibido.Id,
+      KmEmision:AlquilerRecibido.KmEmision,
+      KmRecepcion:AlquilerRecibido.KmRecepcion,
+      KmRecorridos:AlquilerRecibido.KmRecorridos,
+      Cargos_Adicionales:AlquilerRecibido.Cargos_Adicionales,
+      Total:AlquilerRecibido.Total,
+      Placa_Vehiculo:AlquilerRecibido.Placa_Vehiculo,
+      Cc_Clientes:AlquilerRecibido.Cc_Clientes,
+      Id_Empleados:AlquilerRecibido.Id_Empleados,
+      Valor_Inicial:AlquilerRecibido.Valor_Inicial,
+      Disponible:AlquilerRecibido.Disponible,
+      Fecha_Recepcion:AlquilerRecibido.Fecha_Recepcion
+
+    };
+
+    return this.Actualizar(body,'UpdateAlquiler')
+
+  }
 
 }

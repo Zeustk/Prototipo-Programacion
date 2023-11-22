@@ -5,6 +5,7 @@ import { Alquileres } from '../interface/alquiler.interface';
 import { Clientes } from '../../Cliente/interface/clientes.interface';
 import { ClienteService } from 'src/app/Cliente/services/cliente.service';
 import { AlquilerService } from '../services/alquiler.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-alquiler',
@@ -12,12 +13,12 @@ import { AlquilerService } from '../services/alquiler.service';
   styleUrls: ['./alquiler.component.css']
 })
 export class AlquilerComponent {
-  constructor(private AlquieresVehiculo:RegistroService, private Clientecedula:ClienteService,private AlquilerServicio:AlquilerService){}
+  constructor(private AlquieresVehiculo:RegistroService, private Clientecedula:ClienteService,private AlquilerServicio:AlquilerService,private datePipe: DatePipe){}
    
 
   @Input() Alquiler: Alquileres = {
     Fecha_Emision:new Date(),
-    Fecha_Recepcion:null,
+    Fecha_Contrato:new Date(),
     Id: 0,
     KmEmision:0 ,
     KmRecepcion:null,
@@ -28,7 +29,8 @@ export class AlquilerComponent {
     Id_Empleados:0,
     Total:null,
     Valor_Inicial: 0,
-    Disponible: 'SI'
+    Disponible: 'SI',
+    Fecha_Recepcion:null
   }
   Vehiculos: Vehiculos[] = [];
   Clientes: Clientes[]=[];
@@ -41,8 +43,10 @@ export class AlquilerComponent {
 
    RegistrarAlquiler(){
     
+   
 
-    console.log(this.Alquiler.Id_Empleados);
+    console.log(this.Alquiler.Fecha_Emision);
+    console.log(this.Alquiler.Fecha_Contrato);
     this.AlquilerServicio.RegistrarAlquiler(this.Alquiler)
       .subscribe(resp => {
         console.log(resp);

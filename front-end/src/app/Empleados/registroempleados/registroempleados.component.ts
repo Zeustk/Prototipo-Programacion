@@ -43,13 +43,15 @@ export class RegistroempleadosComponent {
     
     
     console.log(this.Empleados.Id_Cargo);
+    
 
     this.ServicioEmpleado.RegistrarEmpleado(this.Empleados)
       .subscribe(resp => {
         console.log(resp);
+        Swal.fire('Msg',resp)
       });
       this.limpiarEmpleado();
-      Swal.fire('Usuario registrado','','success')
+      
       
       
       

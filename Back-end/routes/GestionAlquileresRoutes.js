@@ -10,9 +10,9 @@ module.exports = function (servicio) {
 
       try {
 
-         const { Fecha_Emision,Fecha_Recepcion,KmEmision,KmRecepcion,KmRecorridos,Placa_Vehiculo,Cc_Clientes,Id_Empleados,Valor_Inicial, Disponible,Cargos_Adicionales,Total } = req.body;
+         const { Fecha_Emision,Fecha_Contrato,KmEmision,KmRecepcion,KmRecorridos,Placa_Vehiculo,Cc_Clientes,Id_Empleados,Valor_Inicial, Disponible,Cargos_Adicionales,Total,Fecha_Recepcion } = req.body;
 
-         const Answer = await servicio.addAlquiler(Fecha_Emision,Fecha_Recepcion,KmEmision,KmRecepcion,KmRecorridos,Placa_Vehiculo,Cc_Clientes,Id_Empleados,Valor_Inicial, Disponible,Cargos_Adicionales,Total)
+         const Answer = await servicio.addAlquiler(Fecha_Emision,Fecha_Contrato,KmEmision,KmRecepcion,KmRecorridos,Placa_Vehiculo,Cc_Clientes,Id_Empleados,Valor_Inicial, Disponible,Cargos_Adicionales,Total,Fecha_Recepcion)
 
          console.log(Answer);
 
@@ -36,9 +36,9 @@ module.exports = function (servicio) {
 
    router.put('/api/UpdateAlquiler', async (req, res) => {
 
-      const { Id, Fecha_Recepcion,Disponible,KmRecepcion } = req.body
+      const { Id, Fecha_Recepcion,KmRecepcion } = req.body
 
-      const Answer = await servicio.UpdateAlquiler(Id, Fecha_Recepcion,Disponible,KmRecepcion);
+      const Answer = await servicio.UpdateAlquiler(Id, Fecha_Recepcion,KmRecepcion);
 
 
       res.json(Answer);
