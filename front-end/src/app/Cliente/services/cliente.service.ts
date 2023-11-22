@@ -31,4 +31,20 @@ export class ClienteService extends CrudService<Clientes> {
   ConsultarCliente() {
     return this.Consultar('getCliente');
   }
+
+  ActualizarCliente(ClienteRecibido: Clientes){
+
+    const body = {
+      Nombre_Completo: ClienteRecibido.Nombre_Completo,
+      Cc: ClienteRecibido.Cc,
+      Fecha_Nacimiento: ClienteRecibido.Fecha_Nacimiento,
+      N_Licencia: ClienteRecibido.N_Licencia,
+      Disponible: ClienteRecibido.Disponible,
+      Correo: ClienteRecibido.Correo,
+      Contrasena: ClienteRecibido.Contrasena,
+      Telefono:ClienteRecibido.Telefono
+    };
+    
+    return this.Actualizar(body,'UpdateCliente')
+  }
 }

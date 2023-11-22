@@ -23,4 +23,11 @@ export class EmpleadosService extends CrudService<Empleados> {
     return this.Consultar('getEmpleado');
   }
 
+  ActualizarEmpleado(EmpleadosRecibidos:Empleados){
+    const body = { Correo:EmpleadosRecibidos.Correo,Clave:EmpleadosRecibidos.Clave,Id:EmpleadosRecibidos.Id,Id_Cargo:EmpleadosRecibidos.Id_Cargo,Disponible:EmpleadosRecibidos.Disponible };
+    
+    return this.Actualizar(body,'UpdateEmpleado')
+   
+  }
+
 }

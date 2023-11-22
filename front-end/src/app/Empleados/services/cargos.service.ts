@@ -28,4 +28,16 @@ export class CargosService extends CrudService<Cargos> {
   ConsultarCargos(){
     return this.Consultar('getCargo');
   }
+
+  ActualizarCargos(CargosRecibidos:Cargos){
+    const body = { 
+
+      Id_Cargo:CargosRecibidos.Id_Cargo,
+      Nombre:CargosRecibidos.Nombre,
+      Administracion:CargosRecibidos.Administracion,
+      Disponible:CargosRecibidos.Disponible
+     };
+
+     return this.Actualizar(body,'UpdateCargo')
+  }
 }
