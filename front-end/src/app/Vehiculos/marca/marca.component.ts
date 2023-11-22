@@ -36,13 +36,12 @@ export class MarcaComponent {
      console.log(resp);
     });
 
-  }
+    this.borrardatosmarca();
 
-  borrarMarca(){
-    this.Marca={
-     Id_Marca:0,
-     Nombre:'',
-     Disponible:'SI'
-    }
   }
+  
+  borrardatosmarca(){
+    this.Marca.Nombre='';
+  }
+ 
 }

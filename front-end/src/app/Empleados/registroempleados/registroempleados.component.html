@@ -19,14 +19,12 @@
             </div>
             <div class="mb-3">
               <label for="password" class="form-label">Contraseña</label>
-              <input type="password" class="form-control" id=password name="password" placeholder="Ingresa tu contraseña" [(ngModel)]="Empleados.Clave"
- 
-                required>
+              <input type="password" class="form-control" id=password name="password" placeholder="Ingresa tu contraseña" [(ngModel)]="Empleados.Clave" required>
             </div>
 
             <div class="form-outline mb-2">
               <div>
-                <label for="Cargo" class="form-label">Cargos</label>
+                <label for="Cargo" class="form-label" >Cargos</label>
               </div>
               
               <select class="form-control form-control-lg w-100" id="Cargo" name="cargo" [(ngModel)]="Empleados.Id_Cargo">
@@ -35,19 +33,14 @@
               
               <br>
             </div>
-
-            <div class="form-group">
-  
-            </div>
-            <!-- PrimerComponente -->
             <button (click)="AgregarEmpleado()" type="submit" class="btn btn-primary btn-block">Registrar</button>
-  
+
           </form>
         </div>
       </div>
     </div>
-  
   </section>
+  
   
   
   
