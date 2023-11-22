@@ -12,7 +12,7 @@ export class AlquilerService extends CrudService<Alquileres>{
   }
 
 
-  RegistrarVehiculo(AlquilerRecibido: Alquileres) {
+  RegistrarAlquiler(AlquilerRecibido: Alquileres) {
 
     const body = {
 
@@ -25,7 +25,7 @@ export class AlquilerService extends CrudService<Alquileres>{
       Cargos_Adicionales:AlquilerRecibido.Cargos_Adicionales,
       Total:AlquilerRecibido.Total,
       Placa_Vehiculo:AlquilerRecibido.Placa_Vehiculo,
-      Cedula_Cliente:AlquilerRecibido.Cedula_Cliente,
+      Cc_Clientes:AlquilerRecibido.Cc_Clientes,
       Id_Empleados:AlquilerRecibido.Id_Empleados,
       Valor_Inicial:AlquilerRecibido.Valor_Inicial,
       Disponible:AlquilerRecibido.Disponible

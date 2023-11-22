@@ -10,9 +10,9 @@ module.exports = function (servicio) {
 
       try {
 
-         const { Fecha_Emision,Fecha_Recepcion,KmEmision,KmRecepcion,KmRecorridos,Placa_Vehiculos,Cc_Clientes,Id_Empleados, Disponible } = req.body;
+         const { Fecha_Emision,Fecha_Recepcion,KmEmision,KmRecepcion,KmRecorridos,Placa_Vehiculo,Cc_Clientes,Id_Empleados,Valor_Inicial, Disponible,Cargos_Adicionales,Total } = req.body;
 
-         const Answer = await servicio.addAlquiler(Fecha_Emision,Fecha_Recepcion,KmEmision,KmRecepcion,KmRecorridos,Placa_Vehiculos,Cc_Clientes,Id_Empleados, Disponible)
+         const Answer = await servicio.addAlquiler(Fecha_Emision,Fecha_Recepcion,KmEmision,KmRecepcion,KmRecorridos,Placa_Vehiculo,Cc_Clientes,Id_Empleados,Valor_Inicial, Disponible,Cargos_Adicionales,Total)
 
          console.log(Answer);
 

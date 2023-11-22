@@ -36,4 +36,22 @@ export class RegistroService extends CrudService<Vehiculos> {  //VEHICULOS
     return this.Consultar('getVehiculo');
   }
 
+  ActualizarVehiculo(vehiculoRecibido:Vehiculos){
+
+    const body = {
+
+      Placa: vehiculoRecibido.Placa,
+      Disponible: 'SI',
+      Id_Tipovehiculo: vehiculoRecibido.Id_Tipovehiculo,
+      Modelo: vehiculoRecibido.Modelo,
+      Id_Marca: vehiculoRecibido.Id_Marca,
+      Id_Tarifas: vehiculoRecibido.Id_Tarifas,
+
+    };
+
+    return this.Actualizar(body,'UpdateVehiculo')
+
+  }
+
+
 }

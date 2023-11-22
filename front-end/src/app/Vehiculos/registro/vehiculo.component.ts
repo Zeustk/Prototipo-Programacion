@@ -102,9 +102,7 @@ export class VehiculoComponent {
 
   AgregarVehiculo() {
 
-    console.log(this.Vehiculo.Id_Tarifas);
-
-    console.log(this.Vehiculo.Id_Tipovehiculo);
+   
     this.VehiculoService.RegistrarVehiculo(this.Vehiculo)
       .subscribe(resp => {
         console.log(resp);

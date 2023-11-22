@@ -5,11 +5,39 @@ class ServicioAlquiler {
     }
 
 
-    async addAlquiler(Fecha_Emision,Fecha_Recepcion,KmEmision,KmRecepcion,KmRecorridos,Placa_Vehiculos,Cc_Clientes,Id_Empleados, Disponible) {
+    async addAlquiler(Fecha_Emision,Fecha_Recepcion,KmEmision,KmRecepcion,KmRecorridos,Placa_Vehiculo,Cc_Clientes,Id_Empleados,Valor_Inicial, Disponible,Cargos_Adicionales,Total) {
         try {
-            const sql = "insert into Alquiler(Fecha_Emision,Fecha_Recepcion,ID,KmEmision,KmRecepcion,KmRecorridos,Placa_Vehiculos,Cc_Clientes,Id_Empleados, Disponible) values (:Fecha_Emision,:Fecha_Recepcion,SEQ_Alquiler.NEXTVAL,:KmEmision,:KmRecepcion,:KmRecorridos,:Placa_Vehiculos,Cc_Clientes,Id_Empleados, Disponible)";
+            //conversiones
+            const fechaEmision = new Date(Fecha_Emision)
 
-            await this.DB.Open(sql, [Fecha_Emision,Fecha_Recepcion,KmEmision,KmRecepcion,KmRecorridos,Placa_Vehiculos,Cc_Clientes,Id_Empleados, Disponible], true);
+            fechaEmision.setDate(fechaEmision.getDate() - 1);
+
+           
+           // const kmRecepcion = parseInt(KmRecepcion);
+            //const kmRecorridos =parseInt(KmRecorridos);
+            const id_empleado=parseInt(Id_Empleados);
+            const valorinicial=parseInt(Valor_Inicial);
+           // const cargos_adicionales=parseFloat(Cargos_Adicionales);
+            const total=parseFloat(Total);
+
+            console.log(total);
+
+          
+
+            
+            console.log(fechaEmision);
+            console.log(KmEmision);
+            console.log(KmRecepcion);
+            console.log(Id_Empleados);
+            console.log(Valor_Inicial);
+            console.log(Cargos_Adicionales);
+            console.log(Total);
+            
+
+           
+            const sql = "insert into Alquiler(Fecha_Emision,Fecha_Recepcion,ID,KmEmision,KmRecepcion,KmRecorridos,Cargos_Adicionales,Total,Placa_Vehiculos,CC_CLIENTES,ID_EMPLEADOS,Valor_Inicial,Disponible) values (:fechaEmision,:Fecha_Recepcion,SEQ_ALQUILER.NEXTVAL,:KmEmision,:KmRecepcion,:KmRecorridos,:Cargos_Adicionales,:Total,:Placa_Vehiculo,:Cc_Clientes,:id_empleado,:valorinicial,:Disponible)";
+
+            await this.DB.Open(sql, [fechaEmision,Fecha_Recepcion,KmEmision,KmRecepcion,KmRecorridos,Cargos_Adicionales,Total,Placa_Vehiculo,Cc_Clientes,id_empleado,valorinicial,Disponible], true);
 
             return ('Guardado Exitosamente')
         }
@@ -32,19 +60,19 @@ class ServicioAlquiler {
 
             result.rows.map(propiedad => {
                 let AlquilerSchema = {
-                    "FECHA_EMISION": propiedad[0],
-                    "FECHA_RECEPCION": propiedad[1],
-                    "ID": propiedad[2],
-                    "KMEMISION":propiedad[3],
-                    "KMRECEPCION":propiedad[4],
-                    "KMRECORRIDOS":propiedad[5],
-                    "CARGOS_ADICIONALES":propiedad[6],
-                    "TOTAL":propiedad[7],
-                    "PLACA_VEHICULOS":propiedad[8],
-                    "CC_CLIENTES":propiedad[9],
-                    "ID_EMPLEADOS":propiedad[10],
-                    "VALOR_INICIAL":propiedad[11],
-                    "DISPONIBLE":propiedad[12]
+                    "Fecha_Emision": propiedad[0],
+                    "Fecha_Recepcion": propiedad[1],
+                    "Id": propiedad[2],
+                    "KmEmision":propiedad[3],
+                    "KmRecepcion":propiedad[4],
+                    "KmRecorridos":propiedad[5],
+                    "Cargos_Adicionales":propiedad[6],
+                    "Total":propiedad[7],
+                    "Placa_Vehiculos":propiedad[8],
+                    "Cc_Clientes":propiedad[9],
+                    "Id_Empleados":propiedad[10],
+                    "Valo_Inicial":propiedad[11],
+                    "Disponible":propiedad[12]
                 }
 
                 Alquiler.push(AlquilerSchema);
