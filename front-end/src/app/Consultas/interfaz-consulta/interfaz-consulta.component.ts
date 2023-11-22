@@ -24,25 +24,16 @@ export class InterfazConsultaComponent {
 
   constructor(private marcaService: MarcaService, private TipoVehiculoService: TipoVehiculoService,private ClienteService:ClienteService,private TarifaService:TarifaService,private VehiculoServicio:RegistroService,private Empleado:EmpleadosService, private Reserva:ReservasService,private Alquiler:AlquilerService,private CargoService:CargosService) { };
 
-  mostrarTabla = false;
-  mostrarBoton = false;
+  mostrarTabla: boolean = false;
+  mostrarBoton: boolean = false;
 
-  columnasNoEditables:string[]=['Id_Marca']
+
+
+
 
   InfoTabla:any[]=[];
 
-  actualizarValor(event: any, infoDB: any, key: string | undefined) {
-    if (key && this.esEditable(key)) {
-      infoDB[key] = event.target.innerText;
-    }
-  }
-  esEditable(columna: string | undefined): boolean {
-    if (columna) {
-      // Devuelve true si la columna especificada debe ser editable, false de lo contrario
-      return this.columnasNoEditables.indexOf(columna) === -1;
-    }
-    return false;
-  }
+ 
   
   mostrarTablaConsulta(boton:string) {
 

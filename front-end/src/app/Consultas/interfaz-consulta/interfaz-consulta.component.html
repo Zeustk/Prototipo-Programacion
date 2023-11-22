@@ -51,7 +51,7 @@
         <tbody>
           <!-- Itera sobre los datos y las propiedades para generar las filas y celdas -->
           <tr *ngFor="let InfoDB of InfoTabla">
-            <td *ngFor="let propiedad of InfoDB| keyvalue">{{ propiedad.value }} conten</td>
+            <td *ngFor="let propiedad of InfoDB| keyvalue" contenteditable="true">{{ propiedad.value }} </td>
           </tr>
         </tbody>
       </table>

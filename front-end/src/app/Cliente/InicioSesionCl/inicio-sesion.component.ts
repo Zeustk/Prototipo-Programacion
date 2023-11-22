@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Clientes } from '../interface/clientes.interface';
 
 @Component({
   selector: 'app-inicio-sesion',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./inicio-sesion.component.css']
 })
 export class InicioSesionComponent {
+  
 
 }
