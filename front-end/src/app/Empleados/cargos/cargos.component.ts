@@ -1,6 +1,8 @@
 import { Component,Input } from '@angular/core';
 import { Cargos } from '../interface/empleados.interface';
 import { CargosService } from '../services/cargos.service';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-cargos',
@@ -22,24 +24,34 @@ export class CargosComponent {
 
   AgregarCargo() {
 
-    if ((this.Cargo.Nombre=='') || (this.Cargo.Administracion=='')){
+    if (this.Cargo.Nombre==''){
+      Swal.fire('Oops!','El campo nombre se encuentra vacio','error')
       return;
     }
 
     this.CargoServicio.RegistrarCargo(this.Cargo)
       .subscribe(resp => {
         console.log(resp);
+        
       });
+
+      this.limpiarDatos();
+      Swal.fire()
+      
+
 
   }
 
   onCheckboxChange(event: any) {
-    // Verificar el estado del checkbox utilizando la propiedad checked
     if (event.target.checked) {
       this.Cargo.Administracion = 'EA';  //EMPLEADO ADMINISTRADOR
     } else {
       this.Cargo.Administracion = 'EN'; //EMPLEADO NORMAL
     }
+  }
+
+  limpiarDatos(){
+    this.Cargo.Nombre='';
   }
 
 }

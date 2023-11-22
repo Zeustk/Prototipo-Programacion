@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { MarcaService } from './services/marca.service';
 import { Marcas } from '../Interfaces/vehiculos.interface';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-marca',
@@ -27,6 +28,12 @@ export class MarcaComponent {
   
 
    if (this.Marca.Nombre==''){
+    Swal.fire({
+      title: 'Oops!',
+      text: 'Error al Registrar Datos',
+      icon: 'error',
+      confirmButtonText: 'Aceptar'
+    });
     return;
     
    }
@@ -34,6 +41,11 @@ export class MarcaComponent {
     this.marcaService.RegistrarMarca(this.Marca)
     .subscribe(resp =>{
      console.log(resp);
+     Swal.fire({
+      title: '',
+      text: `Mensaje : ${resp}`,
+      confirmButtonText: 'Aceptar'
+    });
     });
 
     this.borrardatosmarca();
