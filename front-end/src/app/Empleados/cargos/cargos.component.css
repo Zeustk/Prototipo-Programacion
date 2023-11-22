@@ -91,3 +91,14 @@ label p{
    top: 55px;
    right: 320px;
 }
+
+h1{
+   font-family: 'Times New Roman', Times, serif;
+   border-radius: 10px;
+   border: 2px solid white;
+   color: rgb(17, 14, 11);
+   position: absolute;
+   background-color: white;
+   top: 330px;
+   right: 750px;
+}
