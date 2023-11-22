@@ -14,11 +14,14 @@
                   
                   <div class="row">
                     <div class="col-md-6 mb-4 pb-2">
-
                       <div class="form-outline">
-                        <input type="text" id="form3Examplev2" class="form-control form-control-lg" />
+                        <div class="mb-4 pb-2">
+                          <div class="form-outline form-white">
+                            <input type="text" id="inp" class="form-control form-control-lg" />
+                          </div>
+                        </div>
                         <button type="button" class="btn btn-light btn-lg"
-                    data-mdb-ripple-color="dark" style="background-color: #4835d4; color: white;" id="boton">Register</button>
+                    data-mdb-ripple-color="dark" style="background-color: #4835d4; color: white;" id="boton" (click)="borradatos()" >Register</button>
                       </div>
 
                     </div>
@@ -36,7 +39,7 @@
                       <input type="text" id="form3Examplea2" class="form-control form-control-lg" />
                     </div>
                   </div>
-                  <button type="button" class="btn btn-light btn-lg"
+                  <button (click)="borradatos" type="button" class="btn btn-light btn-lg"
                     data-mdb-ripple-color="dark">Register</button>
                   
               </div>

@@ -37,4 +37,12 @@ export class MarcaComponent {
     });
 
   }
+
+  borrarMarca(){
+    this.Marca={
+     Id_Marca:0,
+     Nombre:'',
+     Disponible:'SI'
+    }
+  }
 }

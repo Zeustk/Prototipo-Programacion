@@ -23,7 +23,7 @@
 
                 <div class="form-outline mb-4">
                   <label class="form-label" for="Correo">Correo</label>
-                  <input type="email" id="Correo" class="form-control form-control-sm" />
+                  <input type="email" id="Correo" class="form-control form-control-sm" [(ngModel)]=Clientes.Correo />
                 </div>
 
                 <div class="form-outline mb-4">
@@ -48,8 +48,8 @@
                 </div>
 
 
-                <div class="d-flex justify-content-center">
-                  <button type="button"
+                <div class= "justify-content-center">
+                  <button (click)="AgregarCliente()" type="button"
                     class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">Registrar</button>
                 </div>
 

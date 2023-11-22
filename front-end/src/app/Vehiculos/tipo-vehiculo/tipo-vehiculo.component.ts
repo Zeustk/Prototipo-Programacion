@@ -1,6 +1,6 @@
 import { Component,Input } from '@angular/core';
 import { TipoVehiculoService } from './services/tipo-vehiculo.service';
-import { TipoVehiculo } from '../Interfaces/vehiculos.interface';
+import { Marcas, TipoVehiculo } from '../Interfaces/vehiculos.interface';
 
 @Component({
   selector: 'app-tipo-vehiculo',
@@ -16,6 +16,8 @@ export class TipoVehiculoComponent {
     Disponible: ''
   }
 
+  
+    
   ConsultarTipoVehiculo(){
     console.log(this.ServicioTipoVehiculo.TipoVehiculo)
   }
@@ -36,6 +38,14 @@ export class TipoVehiculoComponent {
     .subscribe(resp =>{
      console.log(resp);
     });
-} 
+ } 
+
+ borradatos(){
+   this.TipoVehiculos.Nombre='';
+ }
+
+ 
+
+
 
 }
