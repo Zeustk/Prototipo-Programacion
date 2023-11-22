@@ -46,6 +46,7 @@ export class TipoVehiculoComponent {
     this.ServicioTipoVehiculo.RegistrarTipoVehiculo(this.TipoVehiculos)
     .subscribe(resp =>{
      console.log(resp);
+     Swal.fire('Msj',resp);
     });
 
     this.borradatos();

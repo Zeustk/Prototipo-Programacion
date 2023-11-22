@@ -80,7 +80,7 @@ class ServicioAlquiler {
                     "Placa_Vehiculos":propiedad[8],
                     "Cc_Clientes":propiedad[9],
                     "Id_Empleados":propiedad[10],
-                    "Valo_Inicial":propiedad[11],
+                    "Valor_Inicial":propiedad[11],
                     "Disponible":propiedad[12],
                     "Fecha_Recepcion":propiedad[13]
                 }
@@ -98,47 +98,50 @@ class ServicioAlquiler {
 
     }
 
-
-    async UpdateAlquiler(Id, Fecha_Recepcion,KmRecepcion) {
-
+    async UpdateAlquiler(Id, Fecha_Recepcion, KmRecepcion) {
         try {
-            console.log('aqui');
+            console.log('Hola DDDDD');
+            console.log('TT');
     
-            const fechaRecepcion = new Date(Fecha_Recepcion);
+            console.log('Id:', Id);
+            console.log('Fecha_Recepcion:', Fecha_Recepcion);
     
-            console.log(fechaRecepcion);
-            console.log(typeof(fechaRecepcion));
-    
-            console.log(typeof(KmRecepcion));
-            console.log(KmRecepcion);
-
-            const IdAlquiler=parseInt(Id);
-
-            console.log(IdAlquiler);
-    
-            if (KmRecepcion != null) {
-                console.log('km')
-    
-                const kmrecepcion = parseInt(KmRecepcion);
-                const sql = "update Alquiler set Fecha_Recepcion = :fechaRecepcion, KmRecepcion = :kmrecepcion where ID = :IdAlquiler";
-                await this.DB.Open(sql, [IdAlquiler, fechaRecepcion, kmrecepcion], true);
-    
-            } else {
-                console.log('fecha');
-                console.log(typeof(IdAlquiler));
-                const sql = "UPDATE Alquiler SET Fecha_Recepcion = TO_DATE(:fechaRecepcion, 'YYYY-MM-DD') WHERE ID =:IdAlquiler";
-    
-                await this.DB.Open(sql, [IdAlquiler, fechaRecepcion], true);
-    
+            // Validar si la fecha es válida antes de continuar
+            if (isNaN(new Date(Fecha_Recepcion).getTime())) {
+                throw new Error('Fecha_Recepcion no es una fecha válida.');
             }
     
-            return ('Actualizado Correctamente')
+            const fecha = new Date(Fecha_Recepcion);
+    
+            // Obtén la fecha formateada sin milisegundos
+            const fechaFormateada = fecha.toISOString().slice(0, 19).replace("T", " ");
+    
+            console.log('Tipo de Id:', typeof(Id));
+            console.log('Tipo de Fecha_Recepcion:', typeof(Fecha_Recepcion));
+    
+            const sql = "UPDATE Alquiler SET Fecha_Recepcion = TO_DATE(:1, 'YYYY-MM-DD HH24:MI:SS') WHERE Id = :2";
+    
+            // Añade un bloque catch para manejar errores
+            await this.DB.Open(sql, [fechaFormateada, Id]).catch(err => {
+                console.error('Error en la consulta SQL:', err);
+                throw err; // Lanza el error nuevamente si es necesario
+            });
+    
+            return 'Actualizado Correctamente';
         } catch (err) {
-            console.error(err);
-            return ('Error al actualizar');
+            console.error('Error:', err.message || err);
+    
+            // Puedes lanzar el error nuevamente si necesitas que sea manejado en un nivel superior
+            // throw err;
+    
+            return 'Error al actualizar';
         }
-
     }
+    
+   
+    
+    
+    
 
 
     async DeleteAlquiler(Id) {

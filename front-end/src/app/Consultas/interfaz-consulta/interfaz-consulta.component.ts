@@ -209,7 +209,7 @@ export class InterfazConsultaComponent {
         
       },
       (error: any) => {
-        console.error('Error al consultar marcas:', error);
+        console.error('Error al consultar Empleados:', error);
       }
     );
 
@@ -346,7 +346,6 @@ export class InterfazConsultaComponent {
         this.ActualizarVehiculo();
       }
 
-      console.log(this.AlquilerEstaCargado);
 
       if (this.AlquilerEstaCargado){
         this.ActualizarAlquiler();
@@ -393,19 +392,7 @@ export class InterfazConsultaComponent {
 
     const Alquiler:Alquileres=this.FilaEditada; 
 
-
-     const fecha:string | Date | null=Alquiler.Fecha_Recepcion;
-
-     if (fecha !== null) {
-      Alquiler.Fecha_Recepcion = new Date(fecha);
-    }
-
-     const kmrecepcion: number | null=Alquiler.KmRecepcion;
-
     
-     
-    console.log(typeof(Alquiler.Fecha_Recepcion));
-
     this.Alquiler.ActualizarAlquilar(Alquiler)
     .subscribe(resp => {
       console.log(resp);

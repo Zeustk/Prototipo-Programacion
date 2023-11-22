@@ -12,7 +12,7 @@ export interface Alquileres{
     Cc_Clientes:string,
     Id_Empleados:number,
     Valor_Inicial:number,
-    Disponible:string
+    Disponible:string,
     Fecha_Recepcion:Date | null | string
 
 }

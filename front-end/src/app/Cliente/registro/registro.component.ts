@@ -55,7 +55,7 @@ export class RegistroComponent {
     .subscribe(resp =>{
      console.log(resp);
      
-
+      Swal.fire('Msj',resp)
     });
 
     this.Borrarlabels();

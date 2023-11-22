@@ -32,11 +32,13 @@ export class CargosComponent {
     this.CargoServicio.RegistrarCargo(this.Cargo)
       .subscribe(resp => {
         console.log(resp);
+        Swal.fire('MSJ',resp);
+        this.limpiarDatos();
         
       });
 
-      this.limpiarDatos();
-      Swal.fire()
+     
+      
       
 
 
