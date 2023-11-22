@@ -14,6 +14,7 @@ import { AlquilerService } from 'src/app/Alquileres/services/alquiler.service';
 import { Alquileres } from 'src/app/Alquileres/interface/alquiler.interface';
 import { Clientes } from 'src/app/Cliente/interface/clientes.interface';
 import { CargosService } from 'src/app/Empleados/services/cargos.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-interfaz-consulta',
@@ -22,7 +23,7 @@ import { CargosService } from 'src/app/Empleados/services/cargos.service';
 })
 export class InterfazConsultaComponent {
 
-  constructor(private marcaService: MarcaService, private TipoVehiculoService: TipoVehiculoService,private ClienteService:ClienteService,private TarifaService:TarifaService,private VehiculoServicio:RegistroService,private Empleado:EmpleadosService, private Reserva:ReservasService,private Alquiler:AlquilerService,private CargoService:CargosService) { };
+  constructor(private marcaService: MarcaService, private TipoVehiculoService: TipoVehiculoService,private ClienteService:ClienteService,private TarifaService:TarifaService,private VehiculoServicio:RegistroService,private Empleado:EmpleadosService, private Reserva:ReservasService,private Alquiler:AlquilerService,private CargoService:CargosService,private datePipe: DatePipe) { };
 
    mostrarTabla: boolean = false;
    mostrarBoton: boolean = false;
@@ -375,6 +376,19 @@ export class InterfazConsultaComponent {
   ActualizarAlquiler(){
 
     const Alquiler:Alquileres=this.FilaEditada; 
+
+
+     const fecha:string | Date | null=Alquiler.Fecha_Recepcion;
+
+     if (fecha !== null) {
+      Alquiler.Fecha_Recepcion = new Date(fecha);
+    }
+
+     const kmrecepcion: number | null=Alquiler.KmRecepcion;
+
+    
+     
+    console.log(typeof(Alquiler.Fecha_Recepcion));
 
     this.Alquiler.ActualizarAlquilar(Alquiler)
     .subscribe(resp => {

@@ -102,15 +102,38 @@ class ServicioAlquiler {
     async UpdateAlquiler(Id, Fecha_Recepcion,KmRecepcion) {
 
         try {
+            console.log('aqui');
+    
+            const fechaRecepcion = new Date(Fecha_Recepcion);
+    
+            console.log(fechaRecepcion);
+            console.log(typeof(fechaRecepcion));
+    
+            console.log(typeof(KmRecepcion));
+            console.log(KmRecepcion);
 
-            const sql = "update Alquiler set Fecha_Recepcion=:Fecha_Recepcion,KmRecepcion=:KmRecepcion where ID=:Id";
+            const IdAlquiler=parseInt(Id);
 
-            await this.DB.Open(sql, [Id, Fecha_Recepcion,KmRecepcion], true);
-
+            console.log(IdAlquiler);
+    
+            if (KmRecepcion != null) {
+                console.log('km')
+    
+                const kmrecepcion = parseInt(KmRecepcion);
+                const sql = "update Alquiler set Fecha_Recepcion = :fechaRecepcion, KmRecepcion = :kmrecepcion where ID = :IdAlquiler";
+                await this.DB.Open(sql, [IdAlquiler, fechaRecepcion, kmrecepcion], true);
+    
+            } else {
+                console.log('fecha');
+                console.log(typeof(IdAlquiler));
+                const sql = "UPDATE Alquiler SET Fecha_Recepcion = TO_DATE(:fechaRecepcion, 'YYYY-MM-DD') WHERE ID =:IdAlquiler";
+    
+                await this.DB.Open(sql, [IdAlquiler, fechaRecepcion], true);
+    
+            }
+    
             return ('Actualizado Correctamente')
-        }
-
-        catch (err) {
+        } catch (err) {
             console.error(err);
             return ('Error al actualizar');
         }
