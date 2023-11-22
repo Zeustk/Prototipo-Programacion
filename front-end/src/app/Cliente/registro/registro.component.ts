@@ -1,6 +1,7 @@
 import { Component , Input} from '@angular/core';
 import { ClienteService } from '../services/cliente.service';
 import { Clientes } from '../interface/clientes.interface';
+import Swal from 'sweetalert2';
 
 
 
@@ -38,6 +39,12 @@ export class RegistroComponent {
    
 
    if (this.Clientes.Cc=='' && this.Clientes.Contrasena==''){
+    Swal.fire({
+      title: 'Oops!',
+      text: 'Error al Registrar Datos',
+      icon: 'error',
+      confirmButtonText: 'Aceptar'
+    });
     return;
 
     
@@ -47,6 +54,8 @@ export class RegistroComponent {
     this.clienteService.RegistrarCliente(this.Clientes)
     .subscribe(resp =>{
      console.log(resp);
+     
+
     });
 
     this.Borrarlabels();

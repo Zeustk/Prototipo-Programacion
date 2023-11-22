@@ -4,6 +4,7 @@ import { MarcaService } from '../marca/services/marca.service';
 import { TipoVehiculoService } from '../tipo-vehiculo/services/tipo-vehiculo.service';
 import { RegistroService } from './services/registro.service';
 import { TarifaService } from '../tarifa/services/tarifa.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-vehiculo',
@@ -102,13 +103,36 @@ export class VehiculoComponent {
 
   AgregarVehiculo() {
 
-   
-    this.VehiculoService.RegistrarVehiculo(this.Vehiculo)
-      .subscribe(resp => {
-        console.log(resp);
+    if (this.Vehiculo.Placa=='' &&
+     this.Vehiculo.Modelo=='' &&
+     this.Vehiculo.Id_Marca<=0 &&
+     this.Vehiculo.Id_Tipovehiculo<=0 &&
+     this.Vehiculo.Id_Tarifas<=0
+     ){
+      
+      Swal.fire({
+        title: 'Oops!',
+        text: 'Error al Registrar Datos',
+        icon: 'error',
+        confirmButtonText: 'Aceptar'
       });
-
+      return;
+  
+      
+     }
+     
+    this.VehiculoService.RegistrarVehiculo(this.Vehiculo)
+.subscribe(resp => {
+        console.log(resp);
+        Swal.fire({
+          text: `Mensaje ${resp}`,
+          confirmButtonText: 'Aceptar'
+        });
+      });
+      
     this.reiniciarDatos();
+    
+    
 
   }
 

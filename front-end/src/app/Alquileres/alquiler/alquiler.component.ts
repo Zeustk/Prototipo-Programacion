@@ -5,6 +5,7 @@ import { Alquileres } from '../interface/alquiler.interface';
 import { Clientes } from '../../Cliente/interface/clientes.interface';
 import { ClienteService } from 'src/app/Cliente/services/cliente.service';
 import { AlquilerService } from '../services/alquiler.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-alquiler',
@@ -37,16 +38,31 @@ export class AlquilerComponent {
   
      this.CargarVehiculo();
      this.CargarCliente();
+     
    }
 
    RegistrarAlquiler(){
     
-
-    console.log(this.Alquiler.Id_Empleados);
+    if (this.Alquiler.KmEmision==0 || this.Alquiler.Id_Empleados==0){
+      Swal.fire({
+        title: 'Oops!',
+        text: 'Error al Registrar Datos',
+        icon: 'error',
+        confirmButtonText: 'Aceptar'
+      });
+      return;
+     }
+    
+   
     this.AlquilerServicio.RegistrarAlquiler(this.Alquiler)
       .subscribe(resp => {
         console.log(resp);
+        Swal.fire({
+          text: `Mensaje ${resp}`,
+          confirmButtonText: 'Aceptar'
+        });
       });
+      this.limpiarAlquiler()
    }
 
   CargarVehiculo(){
@@ -83,5 +99,10 @@ export class AlquilerComponent {
         console.error('Error al consultar Cedulas:', error);
       }
     );
+  }
+
+  limpiarAlquiler(){
+    this.Alquiler.Cc_Clientes='';
+    this.Alquiler.Placa_Vehiculo='';
   }
 }

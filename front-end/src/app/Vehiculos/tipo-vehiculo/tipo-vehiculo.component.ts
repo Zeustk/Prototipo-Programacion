@@ -1,6 +1,7 @@
 import { Component,Input } from '@angular/core';
 import { TipoVehiculoService } from './services/tipo-vehiculo.service';
 import { Marcas, TipoVehiculo } from '../Interfaces/vehiculos.interface';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-tipo-vehiculo',
@@ -29,6 +30,12 @@ export class TipoVehiculoComponent {
     console.log(this.TipoVehiculos)
 
    if (this.TipoVehiculos.Nombre=='' && this.TipoVehiculos.Id==0){
+    Swal.fire({
+      title: 'Oops!',
+      text: 'Error al Registrar Datos',
+      icon: 'error',
+      confirmButtonText: 'Aceptar'
+    });
     return;
 
     

@@ -38,6 +38,12 @@ export class RegistroempleadosComponent {
 
 
     if (this.Empleados.Correo == '' && this.Empleados.Clave == '') { 
+      Swal.fire({
+        title: 'Oops!',
+        text: 'Error al Registrar Datos',
+        icon: 'error',
+        confirmButtonText: 'Aceptar'
+      });
       return;
     }
     
@@ -47,9 +53,13 @@ export class RegistroempleadosComponent {
     this.ServicioEmpleado.RegistrarEmpleado(this.Empleados)
       .subscribe(resp => {
         console.log(resp);
+        Swal.fire({
+          text: `Mensaje ${resp}`,
+          confirmButtonText: 'Aceptar'
+        });
       });
       this.limpiarEmpleado();
-      Swal.fire('Usuario registrado','','success')
+      
       
       
       
