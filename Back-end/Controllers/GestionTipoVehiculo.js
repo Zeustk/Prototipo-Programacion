@@ -54,10 +54,11 @@ class ServicioTipoVehiculo {
     async UpdateTipoVehiculo(Id, Nombre) {
 
         try {
+            Id=parseInt(Id);
 
             const sql = "update TipoVehiculo set Nombre=:Nombre where ID=:Id";
 
-            await this.DB.Open(sql, [Id, Nombre], true);
+            await this.DB.Open(sql, [Nombre, Id], true);
 
             return ('Actualizado Correctamente')
         }

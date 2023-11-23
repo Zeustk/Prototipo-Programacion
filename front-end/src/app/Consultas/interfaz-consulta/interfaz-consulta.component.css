@@ -76,7 +76,8 @@ hr{
 #contenedor{
    background-color:aliceblue;
    min-height: 100vh;
-
+   overflow-x: auto; /* Permite el scroll horizontal si es necesario */
+   white-space: nowrap;
    
 }
 

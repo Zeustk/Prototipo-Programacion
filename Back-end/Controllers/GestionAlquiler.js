@@ -99,12 +99,9 @@ class ServicioAlquiler {
     }
 
     async UpdateAlquiler(Id, Fecha_Recepcion, KmRecepcion) {
+
         try {
-            console.log('Hola DDDDD');
-            console.log('TT');
-    
-            console.log('Id:', Id);
-            console.log('Fecha_Recepcion:', Fecha_Recepcion);
+           
     
             // Validar si la fecha es válida antes de continuar
             if (isNaN(new Date(Fecha_Recepcion).getTime())) {
@@ -115,18 +112,24 @@ class ServicioAlquiler {
     
             // Obtén la fecha formateada sin milisegundos
             const fechaFormateada = fecha.toISOString().slice(0, 19).replace("T", " ");
-    
-            console.log('Tipo de Id:', typeof(Id));
-            console.log('Tipo de Fecha_Recepcion:', typeof(Fecha_Recepcion));
-    
-            const sql = "UPDATE Alquiler SET Fecha_Recepcion = TO_DATE(:1, 'YYYY-MM-DD HH24:MI:SS') WHERE Id = :2";
-    
-            // Añade un bloque catch para manejar errores
-            await this.DB.Open(sql, [fechaFormateada, Id]).catch(err => {
-                console.error('Error en la consulta SQL:', err);
-                throw err; // Lanza el error nuevamente si es necesario
-            });
-    
+            
+            
+            if (KmRecepcion==null){
+
+                
+            const sql = "UPDATE Alquiler SET Fecha_Recepcion = TO_DATE(:fechaFormateada, 'YYYY-MM-DD HH24:MI:SS') WHERE Id = :Id";
+
+            await this.DB.Open(sql, [fechaFormateada, Id], true);
+
+            }
+            else{
+
+                KmRecepcion=parseInt(KmRecepcion);
+
+                const sql = "UPDATE Alquiler SET Fecha_Recepcion = TO_DATE(:fechaFormateada, 'YYYY-MM-DD HH24:MI:SS'),KmRecepcion=:KmRecepcion WHERE Id = :Id";
+
+                await this.DB.Open(sql, [fechaFormateada, KmRecepcion,Id], true);
+            }
             return 'Actualizado Correctamente';
         } catch (err) {
             console.error('Error:', err.message || err);

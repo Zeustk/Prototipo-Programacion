@@ -52,7 +52,16 @@ module.exports = function (servicio) {
 
       const { Id } = req.body
 
-      const Answer = await servicio.DeleteMarca(Id);
+      const Answer = await servicio.DeleteEmpleado(Id);
+
+      res.json(Answer);
+   })
+
+   router.get('/api/BuscarEmpleado', async (req, res) => {
+
+      const { Correo,Contrasena } = req.body
+
+      const Answer = await servicio.BuscarEmpleado(Id);
 
       res.json(Answer);
    })

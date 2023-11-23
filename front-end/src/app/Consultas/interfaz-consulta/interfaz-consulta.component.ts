@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ErrorHandler } from '@angular/core';
 import { ClienteService } from 'src/app/Cliente/services/cliente.service';
 import { Marcas, Tarifas, TipoVehiculo, Vehiculos } from 'src/app/Vehiculos/Interfaces/vehiculos.interface';
 
@@ -15,6 +15,8 @@ import { Alquileres } from 'src/app/Alquileres/interface/alquiler.interface';
 import { Clientes } from 'src/app/Cliente/interface/clientes.interface';
 import { CargosService } from 'src/app/Empleados/services/cargos.service';
 import { DatePipe } from '@angular/common';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-interfaz-consulta',
@@ -346,6 +348,10 @@ export class InterfazConsultaComponent {
         this.ActualizarVehiculo();
       }
 
+      if (this.TipoVehiculoEstaCargado){
+        this.ActualizarTipovehiculo();
+      }
+
 
       if (this.AlquilerEstaCargado){
         this.ActualizarAlquiler();
@@ -392,10 +398,33 @@ export class InterfazConsultaComponent {
 
     const Alquiler:Alquileres=this.FilaEditada; 
 
-    
+    if (Alquiler.KmRecepcion!=null){
+
+      const KMEmision:number=Alquiler.KmEmision;
+      const KmRecepcion:number=Alquiler.KmRecepcion;
+
+      if (KmRecepcion<=KMEmision){
+        Swal.fire('ERROR DE KILOMETROS','LOS KILOMETROS DE RECEPCION DEBEN SER MAYORES A LOS KILOMETROS DE EMISION','error');
+        return;
+      }
+    }
+
+    if (Alquiler.Fecha_Recepcion!=null){
+
+      const FechaEmision:Date=new Date(Alquiler.Fecha_Emision);
+      const FechaRecepcion:Date=new Date(Alquiler.Fecha_Recepcion);
+
+      if (FechaRecepcion<FechaEmision){
+        Swal.fire('ERROR DE FECHA','LA FECHA DE RECEPCION DEBEN SER MAYOR O IGUAL A LA FECHA DE EMISION','error');
+        return;
+      }
+    }
+
+  
     this.Alquiler.ActualizarAlquilar(Alquiler)
     .subscribe(resp => {
       console.log(resp);
+      Swal.fire('RESPUESTA',resp);
     });
   }
 
@@ -405,6 +434,7 @@ export class InterfazConsultaComponent {
     this.marcaService.ActualizarMarca(Marcas)
     .subscribe(resp => {
       console.log(resp);
+      Swal.fire('RESPUESTA',resp);
     });
   }
 
@@ -414,6 +444,7 @@ export class InterfazConsultaComponent {
     this.TipoVehiculoService.ActualizarTipoVehiculo(TipoVehiculo)
     .subscribe(resp => {
       console.log(resp);
+      Swal.fire('RESPUESTA',resp);
     });
   }
 
@@ -423,6 +454,7 @@ export class InterfazConsultaComponent {
     this.TarifaService.ActualizarTarifa(Tarifas)
     .subscribe(resp => {
       console.log(resp);
+      Swal.fire('RESPUESTA',resp);
     });
   }
 
@@ -432,6 +464,7 @@ export class InterfazConsultaComponent {
     this.Empleado.ActualizarEmpleado(Empleados)
     .subscribe(resp => {
       console.log(resp);
+      Swal.fire('RESPUESTA',resp);
     });
   }
 
@@ -441,6 +474,7 @@ export class InterfazConsultaComponent {
     this.Reserva.ActualizarReserva(Reservas)
     .subscribe(resp => {
       console.log(resp);
+      Swal.fire('RESPUESTA',resp);
     });
   }
 
@@ -450,6 +484,7 @@ export class InterfazConsultaComponent {
     this.ClienteService.ActualizarCliente(Clientes)
     .subscribe(resp => {
       console.log(resp);
+      Swal.fire('RESPUESTA',resp);
     });
   }
 
@@ -461,6 +496,7 @@ export class InterfazConsultaComponent {
     this.CargoService.ActualizarCargos(Cargos)
     .subscribe(resp => {
       console.log(resp);
+      Swal.fire('RESPUESTA',resp);
     });
   }
 
