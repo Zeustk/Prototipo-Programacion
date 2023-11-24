@@ -45,16 +45,27 @@
       <table class="table table-striped" *ngIf="mostrarTabla">
         <thead>
           <tr>
-            <th *ngFor="let InfoDB of InfoTabla[0] | keyvalue">{{InfoDB.key}}</th>
+            <th>Seleccionar</th>
+
+            <th *ngFor="let columna of ColumnasOrden">{{ ColumnasNombres[columna] }}</th>
+
+          
             <!--con keyvalue obtengo las propiedades y con marca.key obtengo el nombre de esas cabeceras-->
         </thead>
         <tbody>
           <!-- Itera sobre los datos y las propiedades para generar las filas y celdas -->
-          <tr *ngFor="let InfoDB of InfoTabla">
-            <td *ngFor="let propiedad of InfoDB | keyvalue" contenteditable="true"  
-            (input)="AlmacenarFila($event, InfoDB, $any(propiedad).key)">
-              {{ propiedad.value }}
+          <tr *ngFor="let InfoDB of InfoTabla" [style.backgroundColor]="InfoDB === FilaSeleccionada ? 'red' : 'inherit'">
+
+            <td>
+              <input type="checkbox" [checked]="InfoDB === FilaSeleccionada" (change)="seleccionarFila(InfoDB)">
+
             </td>
+
+            <td *ngFor="let columna of ColumnasOrden" contenteditable="true" (input)="AlmacenarFila($event, InfoDB, columna)">
+              {{ formatearValor(InfoDB[columna], columna) }}
+            </td>
+
+           
           </tr>          
           
         </tbody>
@@ -65,7 +76,7 @@
   <div class="row mt-3">
     <div class="col text-center">
       <button (click)="ActualizarDatos()" type="button" class="btn btn-info mx-2" *ngIf="mostrarTabla">Actualizar</button>
-      <button type="button" class="btn btn-danger mx-2" *ngIf="mostrarTabla">Eliminar</button>
+      <button (click)="EliminarDatos()" type="button" class="btn btn-danger mx-2" *ngIf="mostrarTabla">Eliminar</button>
     </div>
   </div>
 </div>

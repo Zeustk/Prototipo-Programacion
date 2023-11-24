@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
@@ -32,6 +32,12 @@ export class CrudService<T> {
 
     return this.http.put<string>(url, body)
 
+  }
+
+  Eliminar(Id:string | number,endpoint:string){
+
+    const url = `${this.baseUrl}/${endpoint}/${Id}`;
+  return this.http.delete<string>(url);
   }
   
 }

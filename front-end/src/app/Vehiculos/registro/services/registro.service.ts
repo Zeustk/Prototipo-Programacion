@@ -53,5 +53,6 @@ export class RegistroService extends CrudService<Vehiculos> {  //VEHICULOS
 
   }
 
+  
 
 }

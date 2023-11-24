@@ -32,4 +32,12 @@ export class TipoVehiculoService extends CrudService<TipoVehiculo> {
     return this.Actualizar(body,'UpdateTipoVehiculo')
   }
 
+  EliminarTipoVehiculo(TipoVehiculoRecibido:TipoVehiculo){
+
+    
+
+    return this.Eliminar(TipoVehiculoRecibido.Id,'DeleteTipoVehiculo')
+  }
+
+
 }

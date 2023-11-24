@@ -77,7 +77,7 @@ class ServicioAlquiler {
                     "KmRecorridos":propiedad[5],
                     "Cargos_Adicionales":propiedad[6],
                     "Total":propiedad[7],
-                    "Placa_Vehiculos":propiedad[8],
+                    "Placa_Vehiculo":propiedad[8],
                     "Cc_Clientes":propiedad[9],
                     "Id_Empleados":propiedad[10],
                     "Valor_Inicial":propiedad[11],

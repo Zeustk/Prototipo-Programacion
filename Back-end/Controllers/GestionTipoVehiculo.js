@@ -71,13 +71,13 @@ class ServicioTipoVehiculo {
     }
 
 
-    async DeleleTipoVehiculo(Id,Nombre) {
+    async DeleleTipoVehiculo(Id) {
 
         try {
 
-            const sql = "update TipoVehiculos set Nombre=:Nombre where ID=:Id";
+            const sql = "update TipoVehiculo set Disponible='NO' where ID=:Id";
 
-            await this.DB.Open(sql, [Id,Nombre], true);
+            await this.DB.Open(sql, [Id], true);
 
             return ('Eliminado Correctamente')
         }
