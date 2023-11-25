@@ -54,7 +54,8 @@ class ServicioMarcas {
     async UpdateMarca(Id_Marca, Nombre) {
 
         try {
-
+            /* console.log(Id_Marca);
+            console.log(Nombre); */
             const sql = "update Marcas set Nombre=:Nombre where ID_MARCA=:Id_Marca";
 
             await this.DB.Open(sql, [Nombre, Id_Marca], true);

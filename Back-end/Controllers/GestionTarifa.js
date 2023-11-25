@@ -55,11 +55,16 @@ class ServicioTarifas {
 
     async UpdateTarifa(Id,Nombre, Precio,ValorDia) {
 
-        try {
+        try { 
+            
+            /* console.log(Id);
+            console.log(Nombre);
+            console.log(Precio);
+            console.log(ValorDia); */
+            
+            const sql = "update Tarifas set Nombre=:Nombre,Precio=:Precio,ValorDia=:ValorDia where Id=:Id";
 
-            const sql = "update Tarifas set Nombre=:Nombre,Precio=:Precio,ValorDia=:ValorDia where ID=:Id";
-
-            await this.DB.Open(sql, [Id,Nombre, Precio,ValorDia], true);
+            await this.DB.Open(sql, [Nombre, Precio,ValorDia,Id], true);
 
             return ('Actualizado Correctamente')
         }

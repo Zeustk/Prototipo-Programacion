@@ -44,7 +44,7 @@ class ServicioCliente {
                     "Nombre_Completo": propiedad[0],
                     "Cc": propiedad[1],
                     "Fecha_Nacimiento": propiedad[2],
-                    "Numero_Licencia":propiedad[3],
+                    "N_Licencia":propiedad[3],
                     "Disponible":propiedad[4],
                     "Correo":propiedad[5],
                     "Telefono":propiedad[6],
@@ -64,11 +64,27 @@ class ServicioCliente {
 
     }
 
-    async UpdateCliente(CC,Nombre_Completo,Fecha_Nacimiento, N_Licencia,Correo, Telefono,Contrasena) {
+    async UpdateCliente(Nombre_Completo,Fecha_Nacimiento, N_Licencia,Correo, Telefono,Contrasena,Cc) {
 
         try {
-            const sql = "update Clientes set Nombre_Completo=:Nombre_Completo,Fecha_Nacimiento=:Fecha_Nacimiento,N_Licencia=:N_Licencia,Correo=:Correo,Telefono=:Telefono,Contrasena=:Contrasena where CC=:CC";
-            await this.DB.Open(sql, [Id,Nombre_Completo, CC, Fecha_Nacimiento, N_Licencia,Correo, Telefono,Contrasena], true);
+            
+            /* console.log(Nombre_Completo);
+            
+            console.log(N_Licencia);
+            console.log(Correo);
+            console.log(Telefono);
+            console.log(Contrasena);
+            console.log(Cc); */
+            if (isNaN(new Date(Fecha_Nacimiento).getTime())) {
+                throw new Error('Fecha_Recepcion no es una fecha válida.');
+            }
+    
+            const fecha = new Date(Fecha_Nacimiento);
+    
+            // Obtén la fecha formateada sin milisegundos
+            const fechaFormateada = fecha.toISOString().slice(0, 19).replace("T", " ");
+            const sql = "update Clientes set Nombre_Completo=:Nombre_Completo,Fecha_Nacimiento=TO_DATE(:fechaFormateada, 'YYYY-MM-DD HH24:MI:SS'),N_Licencia=:N_Licencia,Correo=:Correo,Telefono=:Telefono,Contrasena=:Contrasena where Cc=:Cc";
+            await this.DB.Open(sql, [Nombre_Completo,fechaFormateada, N_Licencia,Correo, Telefono,Contrasena,Cc], true);
 
             return ('Actualizado Correctamente')
         }
