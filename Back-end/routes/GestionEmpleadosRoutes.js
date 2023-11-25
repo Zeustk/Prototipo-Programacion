@@ -39,9 +39,9 @@ module.exports = function (servicio) {
 
    router.put('/api/UpdateEmpleado', async (req, res) => {
 
-      const { Id,Correo, Clave,Id_Cargo } = req.body
+      const {Correo, Clave,Id} = req.body
 
-      const Answer = await servicio.UpdateEmpleado(Id,Correo, Clave,Id_Cargo);
+      const Answer = await servicio.UpdateEmpleado(Correo, Clave,Id);
 
 
       res.json(Answer);
@@ -51,7 +51,7 @@ module.exports = function (servicio) {
    router.delete('/api/DeleteEmpleado/:Id', async (req, res) => {
 
       const { Id } = req.params
-
+      console.log(Id)
       const Answer = await servicio.DeleteEmpleado(Id);
 
       res.json(Answer);

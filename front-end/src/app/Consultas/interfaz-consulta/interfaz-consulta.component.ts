@@ -311,7 +311,18 @@ export class InterfazConsultaComponent {
           this.AlquilerEstaCargado == false;
           this.ClienteEstaCargado = false;
           this.CargosEstaCargado = false;
+          this.AlquilerEstaCargado=false;
         }
+
+        this.ColumnasOrden = [
+
+          'Correo',
+          'Clave',
+          'Id',
+          'Id_Cargo',
+          'Disponible'
+        ]
+
 
       },
       (error: any) => {
@@ -720,7 +731,7 @@ export class InterfazConsultaComponent {
        }
         
        if (this.EmpleadosEstaCargado){
-        this.EliminarCargos();
+        this.EliminarEmpleado();
        }
 
        if (this.ResevasEstaCargado){
@@ -906,14 +917,17 @@ export class InterfazConsultaComponent {
     Year:'Año',
 
    //Cargos
-    Id_Cargo:'Cargo',
+    Id_Cargo:'Id Cargo',
     Administracion:'Administra',
     
 
     //Tarifas
     Precio:'Precio',
-    ValorDia:'ValorDia'
+    ValorDia:'ValorDia',
 
+
+    //Empleados
+    Clave:'Clave'
 
 
 
