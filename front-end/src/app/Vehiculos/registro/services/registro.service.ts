@@ -54,6 +54,14 @@ export class RegistroService extends CrudService<Vehiculos> {  //VEHICULOS
     return this.Actualizar(body,'UpdateVehiculo')
 
   }
+  EliminarVehiculo(vehiculoRecibido:Vehiculos){
+
+    
+
+    return this.Eliminar(vehiculoRecibido.Placa,'DeleteVehiculo')
+  }
+
+  
 
   
 

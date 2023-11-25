@@ -30,4 +30,11 @@ export class EmpleadosService extends CrudService<Empleados> {
    
   }
 
-}
+  EliminarEmpleado(EmpleadosRecibidos:Empleados){
+
+    
+
+    return this.Eliminar(EmpleadosRecibidos.Id,'DeleteEmpleado')
+  }
+
+} 

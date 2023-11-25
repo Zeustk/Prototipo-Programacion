@@ -147,13 +147,13 @@ class ServicioAlquiler {
     
 
 
-    async DeleteAlquiler(Id) {
+    async DeleteAlquiler(ID) {
 
         try {
 
-            const sql = "update Alquiler set Disponible='NO' where ID=:Id";
+            const sql = "update Alquiler set Disponible='NO' where ID=:ID";
 
-            await this.DB.Open(sql, [Id], true);
+            await this.DB.Open(sql, [ID], true);
 
             return ('Eliminado Correctamente')
         }

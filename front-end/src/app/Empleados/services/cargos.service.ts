@@ -40,4 +40,12 @@ export class CargosService extends CrudService<Cargos> {
 
      return this.Actualizar(body,'UpdateCargo')
   }
+
+  EliminarCargo(CargosRecibidos:Cargos){
+
+    
+
+    return this.Eliminar(CargosRecibidos.Id_Cargo,'Deletecargo')
+  }
+
 }

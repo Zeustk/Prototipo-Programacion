@@ -40,6 +40,7 @@ export class InterfazConsultaComponent {
   AlquilerEstaCargado: boolean = false;
   ClienteEstaCargado: boolean = false;
   CargosEstaCargado: boolean = false;
+  ResevasEstaCargado: boolean = false;
 
 
   InfoTabla: any[] = [];
@@ -74,19 +75,19 @@ export class InterfazConsultaComponent {
     switch (boton) {
       case 'M': this.CargarMarcas();
         return;
-      case 'T': this.CargarTipoVehiculo();
+      case 'T': this.CargarTipoVehiculo(); 
         return;
-      case 'TA': this.CargarTarifas();
+      case 'TA': this.CargarTarifas(); 
         return;
-      case 'GK': this.CargarVehiculos();
+      case 'GK': this.CargarVehiculos(); 
         return;
-      case 'EM': this.CargarEmpleado();
+      case 'EM': this.CargarEmpleado(); 
         return;
-      case 'DD': this.CargarResevas();
+      case 'DD': this.CargarResevas(); 
         return;
-      case 'GG': this.CargarAlquiler();
+      case 'GG': this.CargarAlquiler(); 
         return;
-      case 'C': this.CargarCliente();
+      case 'C': this.CargarCliente(); 
         return;
       case 'CA': this.CargarCargos();
         return;
@@ -450,7 +451,18 @@ export class InterfazConsultaComponent {
           this.EmpleadosEstaCargado = false;
           this.AlquilerEstaCargado == false;
           this.CargosEstaCargado = true;
+          this.ClienteEstaCargado=false;
+
+
+          this.ColumnasOrden = [
+            'Id_Cargo',
+            'Nombre',
+            'Administracion',
+            'Disponible'
+          ]
         }
+
+
 
       },
       (error: any) => {
@@ -465,10 +477,11 @@ export class InterfazConsultaComponent {
 
   AlmacenarFila(event: any, InfoDB: any, propiedadKey: string | undefined) {
     if (propiedadKey !== undefined) {
-      this.FilaEditada = { ...InfoDB, [propiedadKey]: event.target.innerText };
+      // Asegúrate de que this.FilaEditada esté inicializado como un objeto vacío en otro lugar de tu código
+      const edicionTemporal = { [propiedadKey]: event.target.innerText };
+      this.FilaEditada = { ...InfoDB, ...edicionTemporal };
     }
   }
-
 
   ActualizarDatos() {
 
@@ -640,7 +653,8 @@ export class InterfazConsultaComponent {
 
   ActualizarCargos() {
     const Cargos: Cargos = this.FilaEditada;
-
+     console.log(this.FilaEditada);
+     console.log(Cargos.Id_Cargo);
     this.CargoService.ActualizarCargos(Cargos)
       .subscribe(resp => {
         console.log(resp);
@@ -662,13 +676,55 @@ export class InterfazConsultaComponent {
       }
 
       if (this.MarcaEstaCargado){
-
+         this.EliminarMarca();
       }
+
+        if (this.TarifasEstaCargado){
+          this.EliminarTarifa();
+       }
+
+       if (this.VehiculosEstaCargado){
+        this.EliminarVehiculo();
+       }
+        
+       if (this.EmpleadosEstaCargado){
+        this.EliminarCargos();
+       }
+
+       if (this.ResevasEstaCargado){
+        this.EliminarReservas();
+       }
+
+       if (this.AlquilerEstaCargado){
+        this.EliminarAlquiler();
+       }
+
+       if (this.ClienteEstaCargado){
+        this.EliminarCliente();
+       }
+
+       if (this.CargosEstaCargado){
+        this.EliminarCargos();
+       }
+     
+
+
     }
 
 
   }
+ 
+  EliminarMarca() {
 
+    const Marcas: Marcas = this.FilaSeleccionada;
+
+    this.marcaService.EliminarMarca(Marcas)
+      .subscribe(resp => {
+        console.log(resp);
+        Swal.fire('RESPUESTA', resp);
+      });
+
+  }
 
   EliminarTipoVehiculo() {
 
@@ -681,6 +737,92 @@ export class InterfazConsultaComponent {
       });
 
   }
+
+  EliminarTarifa() {
+
+    const Tarifas: Tarifas = this.FilaSeleccionada;
+
+    this.TarifaService.EliminarTarifa(Tarifas)
+      .subscribe(resp => {
+        console.log(resp);
+        Swal.fire('RESPUESTA', resp);
+      });
+
+  }
+
+  EliminarVehiculo() {
+
+    const Vehiculos: Vehiculos = this.FilaSeleccionada;
+
+    this.VehiculoServicio.EliminarVehiculo(Vehiculos)
+      .subscribe(resp => {
+        console.log(resp);
+        Swal.fire('RESPUESTA', resp);
+      });
+
+  }
+
+  EliminarEmpleado() {
+
+    const Empleados: Empleados = this.FilaSeleccionada;
+
+    this.Empleado.EliminarEmpleado(Empleados)
+      .subscribe(resp => {
+        console.log(resp);
+        Swal.fire('RESPUESTA', resp);
+      });
+
+  }
+
+  EliminarReservas() {
+
+    const Reservas: Reservas = this.FilaSeleccionada;
+
+    this.Reserva.EliminarReserva(Reservas)
+      .subscribe(resp => {
+        console.log(resp);
+        Swal.fire('RESPUESTA', resp);
+      });
+
+  }
+
+  EliminarAlquiler() {
+
+    const Alquileres: Alquileres = this.FilaSeleccionada;
+
+    this.Alquiler.EliminarAlquiler(Alquileres)
+      .subscribe(resp => {
+        console.log(resp);
+        Swal.fire('RESPUESTA', resp);
+      });
+
+  }
+
+  EliminarCliente() {
+
+    const Clientes: Clientes = this.FilaSeleccionada;
+
+    this.ClienteService.EliminarCliente(Clientes)
+      .subscribe(resp => {
+        console.log(resp);
+        Swal.fire('RESPUESTA', resp);
+      });
+
+  }
+
+  EliminarCargos() {
+
+    const Cargos: Cargos = this.FilaSeleccionada;
+
+    this.CargoService.EliminarCargo(Cargos)
+      .subscribe(resp => {
+        console.log(resp);
+        Swal.fire('RESPUESTA', resp);
+      });
+
+  }
+
+
 
 
 
@@ -727,7 +869,13 @@ export class InterfazConsultaComponent {
     Modelo: 'Modelo',
     Id_Marca: 'Marca',
     Id_Tarifas: 'Tarifa',
-    Year:'Año'
+    Year:'Año',
+
+   //Cargos
+    Id_Cargo:'Cargo',
+    Administracion:'Administra',
+
+
 
 
 
