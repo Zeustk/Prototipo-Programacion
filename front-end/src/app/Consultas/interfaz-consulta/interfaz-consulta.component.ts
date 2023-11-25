@@ -48,6 +48,8 @@ export class InterfazConsultaComponent {
   ColumnasOrden: string[] = []
   columnasFecha: string[] = [] //SIRVE PARA DECIR QUE COLUMNAS SON DE FECHA PARA EL FORMATO
   FilaSeleccionada: any | null = null; //Para saber que fila se selecciono
+// Asegúrate de inicializar FilasEditadas como un objeto vacío
+  FilasEditadas: { [key: string]: any } = {};
 
 
   FilaEditada: any = {};
@@ -463,19 +465,28 @@ export class InterfazConsultaComponent {
 
   //ACTUALIZAR
 
-  AlmacenarFila(event: any, InfoDB: any, propiedadKey: string | undefined) {
-    if (propiedadKey !== undefined) {
-      this.FilaEditada = { ...InfoDB, [propiedadKey]: event.target.innerText };
-    }
+  AlmacenarFila(event: any, InfoDB: any) {
+    // Almacena todas las celdas editadas en una única fila editada
+    this.FilasEditadas[InfoDB] = { ...InfoDB, ...this.FilasEditadas[InfoDB], [event.target.getAttribute('data-columna')]: event.target.innerText };
   }
+  
+  
+
 
 
   ActualizarDatos() {
 
 
-    if (this.FilaEditada && Object.keys(this.FilaEditada).length > 0) {
+    if (this.FilasEditadas && Object.keys(this.FilasEditadas).length > 0) {
 
 
+      for (const infoKey in this.FilasEditadas) {
+        if (this.FilasEditadas.hasOwnProperty(infoKey)) {
+          this.FilaEditada = this.FilasEditadas[infoKey];
+          // Ahora puedes usar filaEditada según tus necesidades, por ejemplo, enviarla al servidor
+        }
+      }
+    
 
       if (this.VehiculosEstaCargado) {
         this.ActualizarVehiculo();
@@ -588,7 +599,10 @@ export class InterfazConsultaComponent {
   }
 
   ActualizarTipovehiculo() {
+
+   
     const TipoVehiculo: TipoVehiculo = this.FilaEditada;
+    console.log(TipoVehiculo);
 
     this.TipoVehiculoService.ActualizarTipoVehiculo(TipoVehiculo)
       .subscribe(resp => {
@@ -671,6 +685,8 @@ export class InterfazConsultaComponent {
 
 
   EliminarTipoVehiculo() {
+
+    
 
     const TipoVehiculo: TipoVehiculo = this.FilaSeleccionada;
 

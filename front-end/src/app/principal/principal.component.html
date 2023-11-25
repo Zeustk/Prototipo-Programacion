@@ -1,15 +1,51 @@
 <section id="principal">
   <div class="container-fluid pt-2 px-lg-5 mb-4">
+    <!-- Agregar el formulario de búsqueda -->
     <div class="row">
-      <!-- Aquí se agregarán los autos dinámicamente -->
-      <div *ngFor="let vehiculo of ListaVehiculos" class="col-4 mb-4">
-        <img class="img-fluid mb-4" src="assets/car-rent-4.png" alt="" />
-        <h6 class="text-uppercase mb-4">{{vehiculo.Modelo}}</h6>
-        <div class="d-flex mb-4">
-          <i class="text-primary"></i>
-          <span>{{vehiculo.Year}}</span>
+      <form class="row">
+        <div class="col-auto">
+          <input
+            type="text"
+            readonly
+            class="form-control-plaintext"
+            value="Búsqueda de auto:"
+          />
         </div>
-        <a class="btn btn-primary" href=""> /día</a>
+        <div class="col-5">
+          <input
+            type="text"
+            class="form-control"
+            id="inputtext"
+            placeholder="Modelo"
+          />
+        </div>
+        <div class="col-auto">
+          <button type="submit" class="btn btn-primary mb-3">Buscar</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Agregar el título -->
+    <div class="row">
+      <div class="col">
+        <h1 class="display-4 text-uppercase text-center mb-2">
+          Encuentra tu auto
+        </h1>
+      </div>
+    </div>
+
+    <!-- Aquí se agregarán los autos dinámicamente -->
+    <div class="row">
+      <div *ngFor="let vehiculo of ListaVehiculos" class="col-md-3 mb-4" id="text">
+        <div class="vehiculo-container">
+          <img class="img-fluid mb-4 vehiculo-img" src="assets/car-rent-4.png" alt="{{vehiculo.Modelo}}" />
+          <h6 class="text-uppercase mb-4">{{vehiculo.Modelo}}</h6>
+          <div class="d-flex mb-4">
+            <i class="text-primary"></i>
+            <span id="Reservatext">{{vehiculo.Year}}</span>
+          </div>
+          <a class="btn btn-primary" id="ReservaButton" href="#">Reservar</a>
+        </div>
       </div>
     </div>
   </div>

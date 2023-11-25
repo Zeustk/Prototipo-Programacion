@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
 })
 export class VehiculoComponent {
 
-  constructor(private marcaService: MarcaService, private TipoVehiculoService: TipoVehiculoService,private VehiculoService:RegistroService,private TarifaService:TarifaService) { };
+  constructor(private marcaService: MarcaService, private TipoVehiculoService: TipoVehiculoService, private VehiculoService: RegistroService, private TarifaService: TarifaService) { };
 
   @Input() Vehiculo: Vehiculos = {
     Placa: '',
@@ -22,26 +22,26 @@ export class VehiculoComponent {
     Id_Marca: 0,
     Id_Tarifas: 0,
     Disponible: 'SI',
-    Year:'1992'
+    Year: '1992'
 
   }
 
   Marcas: Marcas[] = [];
   TipoVehiculos: TipoVehiculo[] = [];
-  Tarifas:Tarifas[]=[];
+  Tarifas: Tarifas[] = [];
 
 
-  ngOnInit(): void {  
-    
-   this.CargarMarcas();
-   this.CargarTipoVehiculo();
-   this.CargarTarifas();
+  ngOnInit(): void {
+
+    this.CargarMarcas();
+    this.CargarTipoVehiculo();
+    this.CargarTarifas();
 
 
   }
 
- //Cargar
-  CargarTarifas(){
+  //Cargar
+  CargarTarifas() {
 
     this.TarifaService.ConsultarTarifas().subscribe(
 
@@ -62,7 +62,7 @@ export class VehiculoComponent {
     );
   }
 
-  CargarMarcas(){
+  CargarMarcas() {
 
     this.marcaService.ConsultarMarcas().subscribe(
       (ListMarcas: Marcas[] | null) => {
@@ -80,7 +80,7 @@ export class VehiculoComponent {
     );
   }
 
-  CargarTipoVehiculo(){
+  CargarTipoVehiculo() {
 
     this.TipoVehiculoService.ConsultarTipoVehiculo().subscribe(
 
@@ -104,13 +104,13 @@ export class VehiculoComponent {
 
   AgregarVehiculo() {
 
-    if (this.Vehiculo.Placa=='' ||
-     this.Vehiculo.Modelo=='' ||
-     this.Vehiculo.Id_Marca<=0 ||
-     this.Vehiculo.Id_Tipovehiculo<=0 ||
-     this.Vehiculo.Id_Tarifas<=0
-     ){
-      
+    if (this.Vehiculo.Placa == '' ||
+      this.Vehiculo.Modelo == '' ||
+      this.Vehiculo.Id_Marca <= 0 ||
+      this.Vehiculo.Id_Tipovehiculo <= 0 ||
+      this.Vehiculo.Id_Tarifas <= 0
+    ) {
+
       Swal.fire({
         title: 'Oops!',
         text: 'Error al Registrar Datos',
@@ -118,34 +118,34 @@ export class VehiculoComponent {
         confirmButtonText: 'Aceptar'
       });
       return;
-  
-      
-     }
-     
+
+
+    }
+
     this.VehiculoService.RegistrarVehiculo(this.Vehiculo)
-.subscribe(resp => {
+      .subscribe(resp => {
         console.log(resp);
         Swal.fire({
           text: `Mensaje ${resp}`,
           confirmButtonText: 'Aceptar'
         });
       });
-      
+
     this.reiniciarDatos();
-    
-    
+
+
 
   }
 
-   reiniciarDatos() {
-    this.Vehiculo={
-    Placa: '',
-    Id_Tipovehiculo: 0,
-    Modelo: '',
-    Id_Marca: 0,
-    Id_Tarifas: 0,
-    Disponible: 'SI',
-    Year:'1992'
+  reiniciarDatos() {
+    this.Vehiculo = {
+      Placa: '',
+      Id_Tipovehiculo: 0,
+      Modelo: '',
+      Id_Marca: 0,
+      Id_Tarifas: 0,
+      Disponible: 'SI',
+      Year: '1992'
     }
 
   }
@@ -153,7 +153,7 @@ export class VehiculoComponent {
 
 
   //CONVERSIONES
-  
-  
+
+
 
 }

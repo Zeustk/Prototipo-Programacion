@@ -5,6 +5,7 @@
 
 h1 {
   color: #F5F7F8;
+
 }
 
 h6 {
@@ -13,7 +14,7 @@ h6 {
 }
 
 .img-fluid {
-  max-width: 100%;
+  max-width: 50%;
   height: auto;
 }
 
@@ -21,3 +22,32 @@ h6 {
   margin-right: 0;
   margin-left: 0;
 }
+
+/* Agrega estilos personalizados para ajustar el tamaño de las imágenes */
+.vehiculo-img {
+  max-width: 30%; /* Ajusta el ancho máximo al 100% del contenedor */
+  height: auto; /* Mantiene la proporción original de la imagen */
+}
+
+.vehiculo-col{
+  margin-right: 0; /* Puedes ajustar este valor según tus necesidades */
+  margin-left: 100px; 
+}
+
+.row {
+  margin-right: 20%; /* Puedes ajustar este valor según tus necesidades */
+  margin-left: 0;
+ 
+}
+
+#Reservatext,ReservaButton{
+  margin-left: 30px;
+}
+
+.col-auto {
+  /* Ajusta los márgenes según sea necesario */
+  margin-right: 0;
+  margin-left: 0;
+}
+
+
