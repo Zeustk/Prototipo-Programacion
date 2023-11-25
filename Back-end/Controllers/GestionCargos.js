@@ -53,10 +53,11 @@ class ServicioCargos {
     }
 
 
-    async UpdateCargo(Id_Cargo,Nombre,Administracion) {
+    async UpdateCargo(Nombre,Administracion,Id_Cargo) {
            
         try {
             console.log(typeof(Id_Cargo));
+            console.log(Id_Cargo);
             Id_Cargo=parseInt(Id_Cargo);
             console.log(Nombre);
             console.log(Administracion);

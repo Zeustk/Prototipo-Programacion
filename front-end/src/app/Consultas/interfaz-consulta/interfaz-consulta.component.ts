@@ -534,7 +534,8 @@ export class InterfazConsultaComponent {
       }
 
 
-      this.FilaEditada = {};
+      this.FilasEditadas = {}; //SIRVE PARA BUSCAR LA FILA EDITADA
+      this.FilasEditadas={};
 
     }
     else {
