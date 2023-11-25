@@ -28,7 +28,7 @@ export class CrudService<T> {
   
   Actualizar(body:T,endpoint:string){
 
-    const url = `${this.baseUrl}/${endpoint}`  //HTTP://localhost/api/endpoint
+    const url = `${this.baseUrl}/${endpoint}`  
 
     return this.http.put<string>(url, body)
 
@@ -36,7 +36,7 @@ export class CrudService<T> {
 
   Eliminar(Id:string | number,endpoint:string){
 
-    const url = `${this.baseUrl}/${endpoint}/${Id}`;
+    const url = `${this.baseUrl}/${endpoint}/${Id}`; //HTTP://localhost/api/EliminarVehiculo/3333
   return this.http.delete<string>(url);
   }
   

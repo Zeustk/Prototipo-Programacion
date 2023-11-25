@@ -229,7 +229,9 @@ export class InterfazConsultaComponent {
             'Id_Marca',
             'Id_Tarifas',
             'Placa',
-            'Disponible'
+            'Year',
+            'Disponible',
+          
 
           ]
 
@@ -570,6 +572,7 @@ export class InterfazConsultaComponent {
     this.Alquiler.ActualizarAlquilar(Alquiler)
       .subscribe(resp => {
         console.log(resp);
+        this.CargarAlquiler();
         Swal.fire('RESPUESTA', resp);
       });
   }
@@ -657,6 +660,10 @@ export class InterfazConsultaComponent {
         this.EliminarTipoVehiculo();
 
       }
+
+      if (this.MarcaEstaCargado){
+
+      }
     }
 
 
@@ -703,7 +710,7 @@ export class InterfazConsultaComponent {
 
     Cc: 'Cedula',
     Fecha_Nacimiento: 'Fecha De Nacimiento',
-    Nombre_Completo: 'Nombre_Completo',
+    Nombre_Completo: 'Nombre Completo',
     Numero_Licencia: 'Numero De Licencia',
     Telefono: 'Telefono',
     Correo: 'Correo',
@@ -711,6 +718,7 @@ export class InterfazConsultaComponent {
 
     //Tipo-Vehiuclo
     Nombre: 'Nombre',
+   
 
     //VEHICULOS
 
@@ -719,11 +727,10 @@ export class InterfazConsultaComponent {
     Modelo: 'Modelo',
     Id_Marca: 'Marca',
     Id_Tarifas: 'Tarifa',
+    Year:'Año'
 
 
 
   }; //Con esto se pueden mapear  los nombres para que aparezcan de la manera deseada
-
-  
 
 }

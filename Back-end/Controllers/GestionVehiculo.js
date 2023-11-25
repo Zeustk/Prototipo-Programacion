@@ -5,7 +5,7 @@ class ServicioVehiculos {
     }
 
 
-    async addVehiculo(Placa, Id_Tipovehiculo,Modelo,Id_Marca,Id_Tarifas,Disponible) {
+    async addVehiculo(Placa, Id_Tipovehiculo,Modelo,Id_Marca,Id_Tarifas,Disponible,Year) {
 
         try {
             console.log(`AQUI ${typeof(Id_Tipovehiculo)}`);
@@ -14,11 +14,11 @@ class ServicioVehiculos {
             const Id_MarcaNumber = parseInt(Id_Marca);
             const Id_TarifaNumber =parseInt(Id_Tarifas);
 
-            const sql = "insert into Vehiculos(Placa, Id_Tipovehiculo, Modelo, Id_Marca, Id_Tarifas, Disponible) values (:Placa, :Id_TipoVehiculoNumber, :Modelo, :Id_MarcaNumber, :Id_TarifaNumber, :Disponible)";
+            const sql = "insert into Vehiculos(Placa, Id_Tipovehiculo, Modelo, Id_Marca, Id_Tarifas, Disponible,Year) values (:Placa, :Id_TipoVehiculoNumber, :Modelo, :Id_MarcaNumber, :Id_TarifaNumber, :Disponible,:Year)";
 
 
 
-            await this.DB.Open(sql, [Placa, Id_TipoVehiculoNumber,Modelo,Id_MarcaNumber,Id_TarifaNumber,Disponible], true);
+            await this.DB.Open(sql, [Placa, Id_TipoVehiculoNumber,Modelo,Id_MarcaNumber,Id_TarifaNumber,Disponible,Year], true);
 
             return ('Guardado Exitosamente')
         }
@@ -46,7 +46,8 @@ class ServicioVehiculos {
                     "Modelo": propiedad[2],
                     "Id_Marca":propiedad[3],
                     "Id_Tarifas":propiedad[4],
-                    "Disponible":propiedad[5]
+                    "Disponible":propiedad[5],
+                    "Year":propiedad[6]
                 }
 
                 Vehiculos.push(VehiculoSchema);

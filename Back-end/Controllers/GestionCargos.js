@@ -91,7 +91,21 @@ class ServicioCargos {
     }
 
 
-    
+    async addMarca(Nombre, Disponible) {
+        try {
+            const sql = "insert into Marcas(ID_MARCA,Nombre,Disponible) values (SEQ_MARCAS.NEXTVAL,:Nombre,:Disponible)";
+
+            await this.DB.Open(sql, [Nombre, Disponible], true);
+
+            return ('Guardado Exitosamente')
+        }
+
+        catch (err) {
+            console.error(err);
+            return ('Guardado errado');
+        }
+
+    }
 
 
 
