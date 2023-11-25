@@ -92,9 +92,35 @@ class ServicioEmpleados {
 
     }
 
+    async BuscarEmpleado(Correo,Clave){
+        try {
+            const sql="select * from where Correo=:Correo AND Clave=:Clave ";
+            let consulta=await this.DB.Open(sql, [Correo,Clave], false);
+            if (consulta.rows.length > 0) {
+                let Propiedad = consulta.rows[0];
+            
+                let Empleado = {
+                    "Correo": Propiedad[0],
+                    "Clave": Propiedad[1],
+                    "Id": Propiedad[2],
+                    "Id_Cargo": Propiedad[3],
+                    "Disponible": Propiedad[4]
+                };
+            
+                console.log(Empleado);
+            } 
+
+            return Empleado;
+
+        } catch (error) {
+            console.error(err);
+            return ('Error de consultar Contraseña y Clave');
+            
+        }
 
 
-    
+
+    }
 
 }
 

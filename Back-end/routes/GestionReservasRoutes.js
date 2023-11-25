@@ -45,9 +45,9 @@ module.exports = function (servicio) {
    })
 
 
-   router.delete('/api/DeleteReserva', async (req, res) => {
+   router.delete('/api/DeleteReserva/:Id', async (req, res) => {
 
-      const { Id } = req.body
+      const { Id } = req.params
 
       const Answer = await servicio.DeleteReserva(Id);
 

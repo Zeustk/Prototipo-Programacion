@@ -45,9 +45,9 @@ module.exports = function (servicio) {
    })
 
 
-   router.delete('/api/DeleteTarifa', async (req, res) => {
+   router.delete('/api/DeleteTarifa/:Id', async (req, res) => {
 
-      const { Id} = req.body
+      const { Id} = req.params
 
       const Answer = await servicio.DeleteTarifa(Id);
 

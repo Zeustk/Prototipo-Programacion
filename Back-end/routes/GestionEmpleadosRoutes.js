@@ -48,9 +48,9 @@ module.exports = function (servicio) {
    })
 
 
-   router.delete('/api/DeleteEmpleado', async (req, res) => {
+   router.delete('/api/DeleteEmpleado/:Id', async (req, res) => {
 
-      const { Id } = req.body
+      const { Id } = req.params
 
       const Answer = await servicio.DeleteEmpleado(Id);
 
@@ -61,11 +61,12 @@ module.exports = function (servicio) {
 
       const { Correo,Contrasena } = req.body
 
-      const Answer = await servicio.BuscarEmpleado(Id);
+      const Answer = await servicio.BuscarEmpleado(Correo,Contrasena);
 
       res.json(Answer);
    })
 
    return router;
 }
+
 

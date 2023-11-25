@@ -62,12 +62,17 @@
                     </div>
                   </div>
                 </div>
+                
                 <div class="form-outline mb-4">
                   <select class="form-control form-control-lg" id="Tarifa" [(ngModel)]="Vehiculo.Id_Tarifas">
                     <ng-container *ngFor="let Tarifa of Tarifas">
                       <option [value]="Tarifa.Id">{{ Tarifa.Nombre}}</option>
                     </ng-container>
                   </select>
+                  <div class="year">
+                    <input type="text" id="year" class="form-control form-control-lg"  />
+                    <label class="form-label" >Año</label>
+                  </div>
                   <label class="form-label" for="Tarifa">Tarifa</label>
                 </div>
 

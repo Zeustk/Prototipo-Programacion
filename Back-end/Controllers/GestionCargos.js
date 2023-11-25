@@ -53,13 +53,17 @@ class ServicioCargos {
     }
 
 
-    async UpdateMarca(Id_Marca, Nombre) {
-
+    async UpdateCargo(Id_Cargo,Nombre,Administracion) {
+           
         try {
+            console.log(typeof(Id_Cargo));
+            Id_Cargo=parseInt(Id_Cargo);
+            console.log(Nombre);
+            console.log(Administracion);
+            console.log(Id_Cargo);
+            const sql = "update cargos set Nombre=:Nombre,Administracion=:Administracion where Id_Cargo=:Id_Cargo";
 
-            const sql = "update Marcas set Nombre=:Nombre where ID_MARCA=:Id_Marca";
-
-            await this.DB.Open(sql, [Nombre, Id_Marca], true);
+            await this.DB.Open(sql, [Nombre,Administracion,Id_Cargo], true);
 
             return ('Actualizado Correctamente')
         }
@@ -72,13 +76,13 @@ class ServicioCargos {
     }
 
 
-    async DeleteMarca(Id_Marca) {
+    async DeleteCargo(ID_CARGO) {
 
         try {
 
-            const sql = "update Marcas set Disponible='NO' where ID_MARCA=:Id_Marca";
+            const sql = "update CARGOS set Disponible='NO' where Id_Cargo=:Id_Cargo";
 
-            await this.DB.Open(sql, [Id_Marca], true);
+            await this.DB.Open(sql, [ID_CARGO], true);
 
             return ('Eliminado Correctamente')
         }
@@ -91,21 +95,7 @@ class ServicioCargos {
     }
 
 
-    async addMarca(Nombre, Disponible) {
-        try {
-            const sql = "insert into Marcas(ID_MARCA,Nombre,Disponible) values (SEQ_MARCAS.NEXTVAL,:Nombre,:Disponible)";
-
-            await this.DB.Open(sql, [Nombre, Disponible], true);
-
-            return ('Guardado Exitosamente')
-        }
-
-        catch (err) {
-            console.error(err);
-            return ('Guardado errado');
-        }
-
-    }
+    
 
 
 

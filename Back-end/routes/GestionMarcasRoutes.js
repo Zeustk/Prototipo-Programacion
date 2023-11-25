@@ -45,11 +45,11 @@ module.exports = function (servicio) {
    })
 
 
-   router.delete('/api/DeleteMarca', async (req, res) => {
+   router.delete('/api/DeleteMarca/:Id', async (req, res) => {
 
-      const { id } = req.body
+      const { Id } = req.params
 
-      const Answer = await servicio.DeleteMarca(id);
+      const Answer = await servicio.DeleteMarca(Id);
 
       res.json(Answer);
    })

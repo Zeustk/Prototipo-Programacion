@@ -21,4 +21,16 @@ app-vehiculo {
     width: 100%; /* O la anchura deseada */
     height: 100%; /* O la altura deseada */
   }
+
+
+  #Tarifa{
+    width: 47%;
+  }
   
+
+  .year{
+    width: 20%;
+    position: absolute;
+    left: 300px;
+    top: 368px;
+  }

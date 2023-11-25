@@ -47,4 +47,15 @@ export class ClienteService extends CrudService<Clientes> {
     
     return this.Actualizar(body,'UpdateCliente')
   }
+  EliminarCliente(ClienteRecibido: Clientes){
+
+    
+
+    return this.Eliminar(ClienteRecibido.Cc,'DeleteCliente')
+  }
+
+
+
+
+
 }

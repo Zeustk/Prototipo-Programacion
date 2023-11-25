@@ -33,4 +33,11 @@ export class ReservasService extends CrudService<Reservas> {
 
     return this.Actualizar(body,'UpdateReserva')
   }
+
+  EliminarReserva(ReservasRecibidas:Reservas){
+
+    
+
+    return this.Eliminar(ReservasRecibidas.Cc_Cliente,'DeleteReserva')
+  }
 }

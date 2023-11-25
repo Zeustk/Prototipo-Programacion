@@ -29,6 +29,13 @@ export class MarcaService extends CrudService<Marcas>{
 
     return this.Actualizar(body,'UpdateMarca')
   }
+
+  EliminarMarca(MarcaRecibida:Marcas){
+
+    
+
+    return this.Eliminar(MarcaRecibida.Id_Marca,'DeleteMarca')
+  }
   
 
 }

@@ -38,16 +38,16 @@ module.exports = function (servicio) {
 
         const { CC,Nombre_Completo,Fecha_Nacimiento, N_Licencia,Correo, Telefono,Contraseña } = req.body
   
-        const Answer = await servicio.UpdateEmpleado(CC,Nombre_Completo,Fecha_Nacimiento, N_Licencia,Correo, Telefono,Contraseña);
+        const Answer = await servicio.UpdateCliente(CC,Nombre_Completo,Fecha_Nacimiento, N_Licencia,Correo, Telefono,Contraseña);
   
   
         res.json(Answer);
      })
   
   
-     router.delete('/api/DeleteCliente', async (req, res) => {
+     router.delete('/api/DeleteCliente/:CC', async (req, res) => {
   
-        const { CC } = req.body
+        const { CC } = req.params
   
         const Answer = await servicio.DeleteCliente(CC);
   

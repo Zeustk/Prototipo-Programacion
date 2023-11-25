@@ -10,9 +10,9 @@ module.exports = function (servicio) {
 
       try {
 
-         const { Placa, Id_Tipovehiculo,Modelo,Id_Marca,Id_Tarifas,Disponible,Year} = req.body;
+         const { Placa, Id_Tipovehiculo,Modelo,Id_Marca,Id_Tarifas,Disponible} = req.body;
 
-         const Answer = await servicio.addVehiculo(Placa, Id_Tipovehiculo,Modelo,Id_Marca,Id_Tarifas,Disponible,Year)
+         const Answer = await servicio.addVehiculo(Placa, Id_Tipovehiculo,Modelo,Id_Marca,Id_Tarifas,Disponible)
 
          console.log(Answer);
 
@@ -44,9 +44,9 @@ module.exports = function (servicio) {
    })
 
 
-   router.delete('/api/DeleteVehiculo', async (req, res) => {
+   router.delete('/api/DeleteVehiculo/:Placa', async (req, res) => {
 
-      const { Placa } = req.body
+      const { Placa } = req.params
 
       const Answer = await servicio.DeleteVehiculo(Placa);
 

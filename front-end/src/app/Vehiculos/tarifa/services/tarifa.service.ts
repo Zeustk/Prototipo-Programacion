@@ -31,5 +31,12 @@ export class TarifaService extends CrudService<Tarifas> {
     return this.Actualizar(body,'UpdateTarifa')
   }
 
+  EliminarTarifa(TarifaRecibida:Tarifas){
+
+    
+
+    return this.Eliminar(TarifaRecibida.Id,'DeleteTarifa')
+  }
+
 
 }
