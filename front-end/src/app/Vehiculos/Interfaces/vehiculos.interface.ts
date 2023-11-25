@@ -10,7 +10,8 @@ export interface Marcas{
     Modelo: string,
     Id_Marca:number,
     Id_Tarifas:number,
-    Disponible:string
+    Disponible:string,
+    Year:string
   }
 
   export interface Tarifas{

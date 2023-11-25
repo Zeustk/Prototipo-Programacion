@@ -21,7 +21,8 @@ export class VehiculoComponent {
     Modelo: '',
     Id_Marca: 0,
     Id_Tarifas: 0,
-    Disponible: 'SI'
+    Disponible: 'SI',
+    Year:'1992'
 
   }
 
@@ -143,7 +144,8 @@ export class VehiculoComponent {
     Modelo: '',
     Id_Marca: 0,
     Id_Tarifas: 0,
-    Disponible: 'SI'
+    Disponible: 'SI',
+    Year:'1992'
     }
 
   }

@@ -1,15 +1,23 @@
-#principal{
+#principal {
   background-color: #A9A9A9;
-
+  overflow-x: auto;
 }
 
-
-h1{
-    color: #F5F7F8;    /* Letra grande */
+h1 {
+  color: #F5F7F8;
 }
 
-h6{
-    color:#DDE6ED;
-    font-weight: bold;
+h6 {
+  color: #DDE6ED;
+  font-weight: bold;
 }
 
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.container-fluid {
+  margin-right: 0;
+  margin-left: 0;
+}

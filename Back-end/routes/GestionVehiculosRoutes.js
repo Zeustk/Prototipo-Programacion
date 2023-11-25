@@ -10,9 +10,9 @@ module.exports = function (servicio) {
 
       try {
 
-         const { Placa, Id_Tipovehiculo,Modelo,Id_Marca,Id_Tarifas,Disponible} = req.body;
+         const { Placa, Id_Tipovehiculo,Modelo,Id_Marca,Id_Tarifas,Disponible,Year} = req.body;
 
-         const Answer = await servicio.addVehiculo(Placa, Id_Tipovehiculo,Modelo,Id_Marca,Id_Tarifas,Disponible)
+         const Answer = await servicio.addVehiculo(Placa, Id_Tipovehiculo,Modelo,Id_Marca,Id_Tarifas,Disponible,Year)
 
          console.log(Answer);
 
