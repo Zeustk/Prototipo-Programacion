@@ -20,13 +20,7 @@
             <a class="nav-link" href="#" (click)="CargarComponenteGaleria()">Galeria</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#"(click)="CargarComponenteReserva()">Reservas</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="#" (click)="CargarComponenteAboutUs()">Acerca de Nosotros</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" (click)="CargarComponenteLoginCl()">Inicia Sesion</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#"(click)="CargarComponenteEmpleado()">Empleado</a>
@@ -41,7 +35,6 @@
   <app-inicio-sesion *ngIf="mostrarComponenteLoginCl"></app-inicio-sesion>
   <app-principal *ngIf="mostrarComponenteInicio"></app-principal>
   <app-inicio-sesion-emp *ngIf="mostrarComponenteEmpleado" (cambiarVisibilidadComponenteEmpleado)="actualizarVisibilidadEmpleado($event)"></app-inicio-sesion-emp>
-  <app-reserva *ngIf="mostrarComponenteReserva"></app-reserva>
   <app-interfaz *ngIf="MostrarInterfazEComponent"></app-interfaz>
   <app-about-us *ngIf="MostrarComponenteAboutUs"></app-about-us>
   <app-galeria *ngIf="MostrarComponenteGaleria"></app-galeria>

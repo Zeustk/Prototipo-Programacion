@@ -16,7 +16,8 @@ export class PrincipalComponent {
   ListaVehiculos:Vehiculos[]=[];
 
 
-
+ // Variable para controlar la cantidad de vehículos a mostrar
+ cantidadVehiculosAMostrar = 12;
 
   ngOnInit(): void {
 
@@ -26,7 +27,9 @@ export class PrincipalComponent {
   }
 
 
-
+  cargarMasVehiculos() {
+    this.cantidadVehiculosAMostrar += 12; // Puedes ajustar la cantidad según tus necesidades
+  }
 
   CargarVehiculos() {
 
