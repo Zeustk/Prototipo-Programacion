@@ -38,7 +38,7 @@ export class RegistroComponent {
 
    
 
-   if (this.Clientes.Cc=='' && this.Clientes.Contrasena==''){
+   if (this.Clientes.Cc.trim()=='' && this.Clientes.Contrasena.trim()==''){
     Swal.fire({
       title: 'Oops!',
       text: 'Error al Registrar Datos',

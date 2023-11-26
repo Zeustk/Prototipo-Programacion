@@ -29,7 +29,7 @@ export class TipoVehiculoComponent {
     this.ConsultarTipoVehiculo()
     console.log(this.TipoVehiculos)
 
-   if (this.TipoVehiculos.Nombre=='' && this.TipoVehiculos.Id==0){
+   if (this.TipoVehiculos.Nombre.trim()=='' && this.TipoVehiculos.Id==0){
     Swal.fire({
       title: 'Oops!',
       text: 'Error al Registrar Datos',

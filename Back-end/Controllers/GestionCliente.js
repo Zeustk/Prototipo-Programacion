@@ -7,7 +7,7 @@ class ServicioCliente {
 
     async addCliente(Nombre_Completo, Cc, Fecha_Nacimiento, N_Licencia,Disponible, Correo, Telefono,Contrasena) {
         try {
-            const sql = "insert into Clientes(Nombre_Completo, Cc, Fecha_Nacimiento, N_Licencia,Disponible, Correo, Telefono,Contrasena) values (:Nombre_Completo,:Cc,:fechaNacimiento,:N_Licencia,:Disponible,:Correo,:Telefono,:Contrasena)";
+           
             
             //Conversiones
       
@@ -15,6 +15,7 @@ class ServicioCliente {
             const fechaNacimiento = new Date(Fecha_Nacimiento)
 
             fechaNacimiento.setDate(fechaNacimiento.getDate() + 1);
+            const sql = "insert into Clientes(Nombre_Completo, Cc, Fecha_Nacimiento, N_Licencia,Disponible, Correo, Telefono,Contrasena) values (:Nombre_Completo,:Cc,:fechaNacimiento,:N_Licencia,:Disponible,:Correo,:Telefono,:Contrasena)";
     
            console.log(fechaNacimiento);
 

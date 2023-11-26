@@ -125,8 +125,8 @@ export class VehiculoComponent {
 
   AgregarVehiculo() {
 
-    if (this.Vehiculo.Placa == '' ||
-      this.Vehiculo.Modelo == '' ||
+    if (this.Vehiculo.Placa.trim() == '' ||
+      this.Vehiculo.Modelo.trim() == '' ||
       this.Vehiculo.Id_Marca <= 0 ||
       this.Vehiculo.Id_Tipovehiculo <= 0 ||
       this.Vehiculo.Id_Tarifas <= 0

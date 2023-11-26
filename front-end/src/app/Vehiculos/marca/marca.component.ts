@@ -27,7 +27,7 @@ export class MarcaComponent {
 
   
 
-   if (this.Marca.Nombre==''){
+   if (this.Marca.Nombre.trim()==''){
     Swal.fire({
       title: 'Oops!',
       text: 'Error al Registrar Datos',

@@ -24,7 +24,7 @@ export class CargosComponent {
 
   AgregarCargo() {
 
-    if (this.Cargo.Nombre==''){
+    if (this.Cargo.Nombre.trim()==''){
       Swal.fire('Oops!','El campo nombre se encuentra vacio','error')
       return;
     }

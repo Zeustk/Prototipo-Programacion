@@ -37,7 +37,7 @@ export class RegistroempleadosComponent {
   AgregarEmpleado() {
 
 
-    if (this.Empleados.Correo == '' && this.Empleados.Clave == '') { 
+    if (this.Empleados.Correo.trim() == '' && this.Empleados.Clave.trim() == '') { 
       Swal.fire({
         title: 'Oops!',
         text: 'Error al Registrar Datos',

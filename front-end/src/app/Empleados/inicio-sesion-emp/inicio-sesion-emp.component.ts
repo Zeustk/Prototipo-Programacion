@@ -22,7 +22,28 @@ export class InicioSesionEmpComponent {
     Disponible: ''
   }
   
- 
+
+  buscarEmpleado(){
+    if(this.Empleados.Correo.trim()=='' || this.Empleados.Clave.trim()==''){
+      Swal.fire({
+        title: 'Oops!',
+        text: 'Error al Registrar Datos',
+        icon: 'error',
+        confirmButtonText: 'Aceptar'
+      });
+    }
+    return
+  }
+
+  BuscarEmpleadoNew(){
+    return this.DatoslimpiosEmpleado();
+  }
+
+  DatoslimpiosEmpleado(){
+    this.Empleados.Correo='';
+    this.Empleados.Clave='';
+  }
+  
   
   CargarInterfazE(){
    
@@ -31,8 +52,8 @@ export class InicioSesionEmpComponent {
   }
 
 
-  /* CargarunEmpleado() {
-    this.BuscarEmpleado.ConsultarUnEmpleado().subscribe(
+  /*  CargarunEmpleadoo() {
+    this.BuscarEmpleadoo.ConsultarEmpleados().subscribe(
       (Empleado:Empleados) =>{
         if (Empleado != null) {
           console.log('Resultado de la consulta del empleado:', Empleado);
@@ -43,7 +64,7 @@ export class InicioSesionEmpComponent {
         console.error('Error al consultar TipoVehiculo:', error);
       }
     );
-  } */
+  }  */
   
 
 }

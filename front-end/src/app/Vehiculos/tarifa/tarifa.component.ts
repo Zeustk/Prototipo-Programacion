@@ -30,8 +30,13 @@ export class TarifaComponent {
     this.ConsultarTarifas()
     console.log(this.Tarifa)
 
-   if (this.Tarifa.Nombre=='' && this.Tarifa.Precio==0){
-    
+   if (this.Tarifa.Nombre.trim()=='' || this.Tarifa.Precio==0){
+    Swal.fire({
+      title: 'Oops!',
+      text: 'Error al Registrar Datos',
+      icon: 'error',
+      confirmButtonText: 'Aceptar'
+    });
     return;
    }
    
