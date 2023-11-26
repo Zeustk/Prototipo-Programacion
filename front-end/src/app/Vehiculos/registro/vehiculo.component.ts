@@ -22,7 +22,7 @@ export class VehiculoComponent {
     Id_Marca: 0,
     Id_Tarifas: 0,
     Disponible: 'SI',
-    Year: '1992',
+    Year: '',
     Url:'assets/Imagenes/car-rent-10.png'
 
   }
@@ -129,18 +129,19 @@ export class VehiculoComponent {
       this.Vehiculo.Modelo.trim() == '' ||
       this.Vehiculo.Id_Marca <= 0 ||
       this.Vehiculo.Id_Tipovehiculo <= 0 ||
-      this.Vehiculo.Id_Tarifas <= 0
+      this.Vehiculo.Id_Tarifas <= 0 ||
+      this.Vehiculo.Year=='' ||
+      this.Vehiculo.Url=='assets/Imagenes/car-rent-10.png'
     ) 
     {
 
       Swal.fire({
         title: 'Oops!',
-        text: 'Error al Registrar Datos',
+        text: 'VERIFIQUE IMAGENES Y CAMPOS',
         icon: 'error',
         confirmButtonText: 'Aceptar'
       });
       return;
-
 
     }
 
@@ -169,7 +170,7 @@ export class VehiculoComponent {
       Id_Marca: 0,
       Id_Tarifas: 0,
       Disponible: 'SI',
-      Year: '1992',
+      Year: '',
       Url:'assets/Imagenes/car-rent-10.png'
     }
 

@@ -21,9 +21,12 @@ module.exports = function (servicio) {
 
          const { Placa, Id_Tipovehiculo, Modelo, Id_Marca, Id_Tarifas, Disponible, Year, Url } = req.body;
 
+         console.log(Url);
+
          if (!Url) {
             return res.status(400).json({ error: 'La URL de la imagen es requerida.' });
          }
+
 
 
          const response = await axios.get(Url, { responseType: 'arraybuffer' });
@@ -41,6 +44,8 @@ module.exports = function (servicio) {
 
 
          console.log(relativePath);
+
+        
 
          const Answer = await servicio.addVehiculo(Placa, Id_Tipovehiculo, Modelo, Id_Marca, Id_Tarifas, Disponible, Year, relativePath);
 
