@@ -9,6 +9,7 @@ class ServicioVehiculos {
 
         try {
           
+            console.log(Url);
 
             const Id_TipoVehiculoNumber = parseInt(Id_Tipovehiculo);
             const Id_MarcaNumber = parseInt(Id_Marca);
