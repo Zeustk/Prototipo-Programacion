@@ -23,7 +23,7 @@ export class VehiculoComponent {
     Id_Tarifas: 0,
     Disponible: 'SI',
     Year: '1992',
-    Url:'assets/car-rent-10.png'
+    Url:'assets/Imagenes/car-rent-10.png'
 
   }
 
@@ -41,7 +41,7 @@ export class VehiculoComponent {
       reader.readAsDataURL(file);
     } else {
       // Usuario eliminó la imagen actual
-      this.Vehiculo.Url = 'assets/car-rent-10.png'; // Reemplaza con la ruta correcta
+      this.Vehiculo.Url = 'assets/Imagenes/car-rent-10.png'; // Reemplaza con la ruta correcta
     }
   }
   
@@ -170,7 +170,7 @@ export class VehiculoComponent {
       Id_Tarifas: 0,
       Disponible: 'SI',
       Year: '1992',
-      Url:'assets/car-rent-10.png'
+      Url:'assets/Imagenes/car-rent-10.png'
     }
 
   }
