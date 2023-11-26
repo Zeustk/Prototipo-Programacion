@@ -5,20 +5,22 @@ class ServicioVehiculos {
     }
 
 
-    async addVehiculo(Placa, Id_Tipovehiculo,Modelo,Id_Marca,Id_Tarifas,Disponible,Year) {
+    async addVehiculo(Placa, Id_Tipovehiculo,Modelo,Id_Marca,Id_Tarifas,Disponible,Year,Url) {
 
         try {
-            console.log(`AQUI ${typeof(Id_Tipovehiculo)}`);
+          
 
             const Id_TipoVehiculoNumber = parseInt(Id_Tipovehiculo);
             const Id_MarcaNumber = parseInt(Id_Marca);
             const Id_TarifaNumber =parseInt(Id_Tarifas);
-
-            const sql = "insert into Vehiculos(Placa, Id_Tipovehiculo, Modelo, Id_Marca, Id_Tarifas, Disponible,Year) values (:Placa, :Id_TipoVehiculoNumber, :Modelo, :Id_MarcaNumber, :Id_TarifaNumber, :Disponible,:Year)";
-
+            //URL: URL DE IMAGEN
 
 
-            await this.DB.Open(sql, [Placa, Id_TipoVehiculoNumber,Modelo,Id_MarcaNumber,Id_TarifaNumber,Disponible,Year], true);
+            const sql = "insert into Vehiculos(Placa, Id_Tipovehiculo, Modelo, Id_Marca, Id_Tarifas, Disponible,Year,Url) values (:Placa, :Id_TipoVehiculoNumber, :Modelo, :Id_MarcaNumber, :Id_TarifaNumber, :Disponible,:Year,:Url)";
+
+
+
+            await this.DB.Open(sql, [Placa, Id_TipoVehiculoNumber,Modelo,Id_MarcaNumber,Id_TarifaNumber,Disponible,Year,Url], true);
 
             return ('Guardado Exitosamente')
         }
@@ -47,7 +49,8 @@ class ServicioVehiculos {
                     "Id_Marca":propiedad[3],
                     "Id_Tarifas":propiedad[4],
                     "Disponible":propiedad[5],
-                    "Year":propiedad[6]
+                    "Year":propiedad[6],
+                    "Url":propiedad[7]
                 }
 
                 Vehiculos.push(VehiculoSchema);

@@ -11,7 +11,8 @@ export interface Marcas{
     Id_Marca:number,
     Id_Tarifas:number,
     Disponible:string,
-    Year:string
+    Year:string,
+    Url:string
   }
 
   export interface Tarifas{

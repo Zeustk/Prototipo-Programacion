@@ -22,10 +22,29 @@ export class VehiculoComponent {
     Id_Marca: 0,
     Id_Tarifas: 0,
     Disponible: 'SI',
-    Year: '1992'
+    Year: '1992',
+    Url:'assets/car-rent-10.png'
 
   }
 
+
+  handleImageUpload(event: any): void {
+    const file = event.target.files[0];
+  
+    if (file) {
+      const reader = new FileReader();
+  
+      reader.onload = (e: any) => {
+        this.Vehiculo.Url = e.target.result;
+      };
+  
+      reader.readAsDataURL(file);
+    } else {
+      // Usuario eliminó la imagen actual
+      this.Vehiculo.Url = 'assets/car-rent-10.png'; // Reemplaza con la ruta correcta
+    }
+  }
+  
   Marcas: Marcas[] = [];
   TipoVehiculos: TipoVehiculo[] = [];
   Tarifas: Tarifas[] = [];
@@ -109,7 +128,8 @@ export class VehiculoComponent {
       this.Vehiculo.Id_Marca <= 0 ||
       this.Vehiculo.Id_Tipovehiculo <= 0 ||
       this.Vehiculo.Id_Tarifas <= 0
-    ) {
+    ) 
+    {
 
       Swal.fire({
         title: 'Oops!',
@@ -121,6 +141,8 @@ export class VehiculoComponent {
 
 
     }
+
+    console.log(this.Vehiculo.Url);
 
     this.VehiculoService.RegistrarVehiculo(this.Vehiculo)
       .subscribe(resp => {
@@ -145,7 +167,8 @@ export class VehiculoComponent {
       Id_Marca: 0,
       Id_Tarifas: 0,
       Disponible: 'SI',
-      Year: '1992'
+      Year: '1992',
+      Url:'assets/car-rent-10.png'
     }
 
   }

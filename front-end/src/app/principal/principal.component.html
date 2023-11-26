@@ -38,7 +38,7 @@
     <div class="row">
       <div *ngFor="let vehiculo of ListaVehiculos" class="col-md-3 mb-4" id="text">
         <div class="vehiculo-container">
-          <img class="img-fluid mb-4 vehiculo-img" src="assets/car-rent-4.png" alt="{{vehiculo.Modelo}}" />
+          <img class="img-fluid mb-4 vehiculo-img" src="{{vehiculo.Url}}" alt="{{vehiculo.Modelo}}" />
           <h6 class="text-uppercase mb-4">{{vehiculo.Modelo}}</h6>
           <div class="d-flex mb-4">
             <i class="text-primary"></i>

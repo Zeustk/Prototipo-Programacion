@@ -75,7 +75,7 @@ app.set('views',path.join(__dirname,'views'));
 
 
 //MIDLEWARE
-app.use(express.json()) //Para que comprenda formato Json
+app.use(express.json({ limit: '5mb' })); //Para que comprenda formato Json
 app.use(express.text()) //Para que comprenda formato text
 app.use(morgan('dev')); //ejecutar el midleware
 app.use(express.urlencoded({extended:false})) //Para que entienda los datos de formulario y el extended significa que solo es texto, no es algo complicado

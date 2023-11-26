@@ -1,25 +1,54 @@
 const express = require("express");
+const axios = require('axios');
+const fs = require('fs');
+const path = require('path');
+const { v4: uuidv4 } = require('uuid');
 
 const router = express.Router();
+router.use('/Imagenes', express.static(path.join(__dirname, '..', 'front-end', 'src', 'assets', 'Imagenes')));
 
+
+
+//Para poder enviarla al assets del front-end
 
 module.exports = function (servicio) {
 
    router.post('/api/AddVehiculo', async (req, res) => {
 
 
+
       try {
 
-         const { Placa, Id_Tipovehiculo,Modelo,Id_Marca,Id_Tarifas,Disponible} = req.body;
+         const { Placa, Id_Tipovehiculo, Modelo, Id_Marca, Id_Tarifas, Disponible, Year, Url } = req.body;
 
-         const Answer = await servicio.addVehiculo(Placa, Id_Tipovehiculo,Modelo,Id_Marca,Id_Tarifas,Disponible)
+         if (!Url) {
+            return res.status(400).json({ error: 'La URL de la imagen es requerida.' });
+         }
 
-         console.log(Answer);
+
+         const response = await axios.get(Url, { responseType: 'arraybuffer' });
+         const imageData = Buffer.from(response.data, 'binary');
+
+         const uniqueFileName = uuidv4();
+         const imagePath = path.join(__dirname, '..', '..', 'front-end', 'src', 'assets', 'Imagenes', `${uniqueFileName}.png`);
+
+
+
+         fs.writeFileSync(imagePath, imageData);
+
+         const relativePath = imagePath.replace(/^.*?assets/, 'assets').replace(/\\/g, '/'); //RUTA RELATIVA
+
+
+
+         console.log(relativePath);
+
+         const Answer = await servicio.addVehiculo(Placa, Id_Tipovehiculo, Modelo, Id_Marca, Id_Tarifas, Disponible, Year, relativePath);
+
 
          res.status(200).json(Answer)
 
       } catch (error) {
-         
+
          res.status(404).json(error);
       }
 

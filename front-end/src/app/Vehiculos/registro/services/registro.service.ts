@@ -26,7 +26,8 @@ export class RegistroService extends CrudService<Vehiculos> {  //VEHICULOS
       Modelo: vehiculoRecibido.Modelo,
       Id_Marca: vehiculoRecibido.Id_Marca,
       Id_Tarifas: vehiculoRecibido.Id_Tarifas,
-      Year:vehiculoRecibido.Year
+      Year:vehiculoRecibido.Year,
+      Url:vehiculoRecibido.Url
 
     };
 
@@ -47,7 +48,9 @@ export class RegistroService extends CrudService<Vehiculos> {  //VEHICULOS
       Modelo: vehiculoRecibido.Modelo,
       Id_Marca: vehiculoRecibido.Id_Marca,
       Id_Tarifas: vehiculoRecibido.Id_Tarifas,
-      Year:vehiculoRecibido.Year
+      Year:vehiculoRecibido.Year,
+      Url:vehiculoRecibido.Url
+     
 
     };
 
