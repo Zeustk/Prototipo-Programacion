@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RegistroService } from '../Vehiculos/registro/services/registro.service';
 import { Vehiculos } from '../Vehiculos/Interfaces/vehiculos.interface';
 
@@ -14,6 +14,8 @@ export class PrincipalComponent {
   // Agregar una clase al contenedor principal para usar el sistema de cuadrícula de Bootstrap
 
   ListaVehiculos:Vehiculos[]=[];
+
+ @Input() BuscarPorModelo:string='';
 
 
  // Variable para controlar la cantidad de vehículos a mostrar
@@ -37,8 +39,16 @@ export class PrincipalComponent {
       (ListVehiculos: Vehiculos[] | null) => {
 
         if (ListVehiculos != null) {
+
+          if (this.BuscarPorModelo==''){
+            this.ListaVehiculos=ListVehiculos;
+          }
+          else{
+            console.log('hola')
+            this.ListaVehiculos=ListVehiculos.filter(item => item.Modelo.toLocaleUpperCase().startsWith(this.BuscarPorModelo.toLocaleUpperCase()));
+          }
            
-          this.ListaVehiculos=ListVehiculos;
+
         }
 
       }

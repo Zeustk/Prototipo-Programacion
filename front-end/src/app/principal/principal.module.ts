@@ -1,6 +1,7 @@
 import {CommonModule} from '@angular/common'
 import {NgModule} from  '@angular/core';
 import { PrincipalComponent } from './principal.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { PrincipalComponent } from './principal.component';
         PrincipalComponent
     ],
     imports:[
-        CommonModule
+        CommonModule,
+        FormsModule
     ]
 
 })

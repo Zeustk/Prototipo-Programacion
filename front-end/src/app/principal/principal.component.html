@@ -16,11 +16,11 @@
             type="text"
             class="form-control"
             id="inputtext"
-            placeholder="Modelo"
+            placeholder="Modelo" [(ngModel)]="BuscarPorModelo" name="Busqueda"
           />
         </div>
         <div class="col-auto">
-          <button type="submit" class="btn btn-primary mb-3">Buscar</button>
+          <button (click)="CargarVehiculos()"type="submit" class="btn btn-primary mb-3">Buscar</button>
         </div>
       </form>
     </div>
@@ -37,7 +37,7 @@
 
     <!-- Aquí se agregarán los autos dinámicamente -->
     <div class="row" id="carros">
-      <div *ngFor="let vehiculo of ListaVehiculos" class="col-md-3 mb-4">
+      <div *ngFor="let vehiculo of ListaVehiculos.slice(0, cantidadVehiculosAMostrar)" class="col-md-3 mb-4">
         <div class="vehiculo-container">
           <img style="max-width: 60%; height: auto;" class="img-fluid mb-4 vehiculo-img" src="{{vehiculo.Url}}" alt="{{vehiculo.Modelo}}" />
           <h6 class="text-uppercase mb-4">{{vehiculo.Modelo}}</h6>
@@ -49,7 +49,12 @@
         </div>
       </div>
     </div>
-    
+
+    <div class="row justify-content-end">
+      <div class="col-auto">
+        <button *ngIf="cantidadVehiculosAMostrar < ListaVehiculos.length" (click)="cargarMasVehiculos()" class="btn btn-primary">Cargar más</button>
+      </div>
+    </div>
   </div>
   <div class="mb-5"></div>
   <script src="/js/bootstrap.bundle.min.js"></script>
