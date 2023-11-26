@@ -26,7 +26,7 @@ class ServicioCargos {
         try {
           
 
-            const sql = "select *from Cargos";
+            const sql = "select *from Cargos where Disponible='SI'";
 
             let result = await this.DB.Open(sql, [], false);
             const Cargos = [];

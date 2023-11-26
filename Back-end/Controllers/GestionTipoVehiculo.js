@@ -25,7 +25,7 @@ class ServicioTipoVehiculo {
 
         try {
 
-            const sql = "select *from TipoVehiculo";
+            const sql = "select *from TipoVehiculo where Disponible='SI'";
 
             let result = await this.DB.Open(sql, [], false);
             const TipoVehiculos = [];

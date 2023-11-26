@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input ,Output} from '@angular/core';
 import { Clientes } from '../interface/clientes.interface';
 import Swal from 'sweetalert2';
+import { ClienteService } from '../services/cliente.service';
 
 @Component({
   selector: 'app-inicio-sesion',
@@ -9,6 +10,8 @@ import Swal from 'sweetalert2';
 })
 export class InicioSesionComponent {
   
+  @Output() cambiarVisibilidadComponenteCliente = new EventEmitter<boolean>();
+  constructor(private ClienteService:ClienteService){};
 
   @Input() Clientes:Clientes = {
     Nombre_Completo: '',
@@ -23,17 +26,41 @@ export class InicioSesionComponent {
    
   BuscarCliente(){
     
-    if(this.Clientes.Correo.trim()=='' || this.Clientes.Contrasena.trim()==''){
+     /* if(this.Clientes.Correo.trim()=='' || this.Clientes.Contrasena.trim()==''){
       Swal.fire({
         title: 'Oops!',
-        text: 'Error al Registrar Datos',
+        text: 'Si entro aqui con o sin datos',
         icon: 'error',
         confirmButtonText: 'Aceptar'
       });
-    }
+
+      return;
+    }  */
+    this.ClienteService.BuscarCliente(this.Clientes).subscribe(resp=>{
+      console.log(resp)
+      if(resp){
+        this.cambiarVisibilidadComponenteCliente.emit(false);
+      }
+      else{
+        Swal.fire({
+          text: 'FAVOR VERIFIQUE EL CORREO Y/O CONTRASEÑA',
+          confirmButtonText: 'Aceptar'
+        });
+
+      }
+
+    });
     
-    return
+   this.BorrarDatoCliente();
+    
+
+
   } 
+
+  
+
+
+
 
   BorrarDatoCliente(){
     this.Clientes.Contrasena='';

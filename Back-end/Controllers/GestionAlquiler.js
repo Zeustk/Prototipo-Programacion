@@ -62,7 +62,7 @@ class ServicioAlquiler {
 
         try {
 
-            const sql = "select * from Alquiler";
+            const sql = "select * from Alquiler where Disponible='SI'";
 
             let result = await this.DB.Open(sql, [], false);
             const Alquiler = [];

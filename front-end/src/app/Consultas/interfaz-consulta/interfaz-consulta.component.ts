@@ -612,12 +612,17 @@ export class InterfazConsultaComponent {
 
       const FechaEmision: Date = new Date(Alquiler.Fecha_Emision);
       const FechaRecepcion: Date = new Date(Alquiler.Fecha_Recepcion);
+      
 
       if (FechaRecepcion < FechaEmision) {
         Swal.fire('ERROR DE FECHA', 'LA FECHA DE RECEPCION DEBEN SER MAYOR O IGUAL A LA FECHA DE EMISION', 'error');
         return;
       }
+
+      
     }
+
+
 
 
     this.Alquiler.ActualizarAlquilar(Alquiler)

@@ -25,7 +25,7 @@ class ServicioMarcas {
 
         try {
 
-            const sql = "select *from Marcas";
+            const sql = "select *from Marcas where Disponible='SI'";
 
             let result = await this.DB.Open(sql, [], false);
             const Marcas = [];

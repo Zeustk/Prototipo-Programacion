@@ -25,7 +25,7 @@ class ServicioReservas {
 
         try {
 
-            const sql = "select * from Reservas";
+            const sql = "select * from Reservas where Disponible='SI'";
 
             let result = await this.DB.Open(sql, [], false);
             const Reservas = [];

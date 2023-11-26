@@ -54,6 +54,20 @@ module.exports = function (servicio) {
      })
 
 
+     router.post('/api/BuscarCliente', async (req, res) => {
+
+        const {Correo,Contrasena } = req.body
+        console.log(typeof(Correo));
+        console.log('aqui es router');
+        console.log(Contrasena);
+  
+        const Answer = await servicio.BuscarCliente(Correo,Contrasena);
+  
+        res.json(Answer);
+       
+     })
+
+
     return router;
 }
 

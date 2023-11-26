@@ -37,7 +37,7 @@ class ServicioVehiculos {
 
         try {
 
-            const sql = "select *from Vehiculos";
+            const sql = "select *from Vehiculos where Disponible='SI'";
 
             let result = await this.DB.Open(sql, [], false);
             const Vehiculos = [];

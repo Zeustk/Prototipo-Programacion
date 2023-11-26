@@ -32,7 +32,7 @@ class ServicioEmpleados {
 
         try {
 
-            const sql = "select * from Empleados";
+            const sql = "select * from Empleados  where Disponible='SI' ";
             let result = await this.DB.Open(sql, [], false);
             const Empleados = [];
             result.rows.map(propiedad => {

@@ -25,7 +25,7 @@ class ServicioTarifas {
 
         try {
 
-            const sql = "select *from Tarifas";
+            const sql = "select *from tarifas where Disponible='SI' ";
 
             let result = await this.DB.Open(sql, [], false);
             const Tarifas = [];

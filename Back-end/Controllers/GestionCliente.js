@@ -35,7 +35,7 @@ class ServicioCliente {
 
         try {
 
-            const sql = "select * from Clientes";
+            const sql = "select * from Clientes where Disponible='SI'";
 
             let result = await this.DB.Open(sql, [], false);
             const Clientes = [];
@@ -112,6 +112,29 @@ class ServicioCliente {
         catch (err) {
             console.error(err);
             return ('Error al Eliminar');
+        }
+
+    }
+
+    async BuscarCliente(Correo,Contrasena){
+        try {
+            console.log(Correo);
+            console.log(typeof(Correo));
+            console.log(Contrasena);
+            const sql = "SELECT * FROM Clientes WHERE Correo = :Correo AND Contrasena = :Contrasena";
+            let consulta = await this.DB.Open(sql, [Correo, Contrasena], false);
+    
+            if (consulta && consulta.rows.length > 0) {
+
+                return true;
+
+            } else {
+               return false;
+            }
+    
+        } catch (error) {
+            console.error(error);
+            return 'Error al consultar Correo y Contrasena';
         }
 
     }
