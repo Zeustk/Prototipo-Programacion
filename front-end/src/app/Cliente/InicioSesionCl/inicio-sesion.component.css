@@ -34,6 +34,12 @@ nav{
   margin-top: -25px;
 }
 
+button{
+  position: relative;
+  width: 42%;
+  left: 160px;
+}
+
 #img{
     background-image: url('https://rentautosloki.com/wp-content/uploads/2022/09/renta-de-vehiculos-bogota-1-768x512.jpg');
     background-repeat: no-repeat;
@@ -44,3 +50,5 @@ nav{
 #test{
   background-color: #F0F0F0;
 }
+
+

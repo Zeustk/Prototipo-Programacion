@@ -58,10 +58,14 @@ h2 {
   border-radius: 8px; 
   transition: color 0.3s ease-in-out, border-color 0.3s ease-in-out; 
   position: relative;
-  left: 900px;
-  top: 60px;
+  left: 800px;
+  top: 30px;
   width: 20%;
   background-color: gray;
+}
+
+hr{
+  border: 2px solid gray;
 }
 
 
