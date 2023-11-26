@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { Empleados } from '../Empleados/interface/empleados.interface';
 
 @Injectable()
 export class CrudService<T> {
@@ -39,5 +40,13 @@ export class CrudService<T> {
     const url = `${this.baseUrl}/${endpoint}/${Id}`; //HTTP://localhost/api/EliminarVehiculo/3333
   return this.http.delete<string>(url);
   }
+
+
+  /* ConsultarUsuario(body: T, endpoint: string) {
+    const url = `${this.baseUrl}/${endpoint}`;
+  
+  
+    return this.http.get<Empleados>(url,body);
+  } */
   
 }

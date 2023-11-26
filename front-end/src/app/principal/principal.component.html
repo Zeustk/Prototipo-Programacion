@@ -26,7 +26,7 @@
     </div>
 
     <!-- Agregar el título -->
-    <div class="row">
+    <div class="row" id="encuentra">
       <div class="col">
         <h1 class="display-4 text-uppercase text-center mb-2">
           Encuentra tu auto
@@ -35,7 +35,7 @@
     </div>
 
     <!-- Aquí se agregarán los autos dinámicamente -->
-    <div class="row">
+    <div class="row" id="carros">
       <div *ngFor="let vehiculo of ListaVehiculos" class="col-md-3 mb-4" id="text">
         <div class="vehiculo-container">
           <img class="img-fluid mb-4 vehiculo-img" src="{{vehiculo.Url}}" alt="{{vehiculo.Modelo}}" />

@@ -1,4 +1,7 @@
-import { Component,EventEmitter,Output } from '@angular/core';
+import { Component,EventEmitter,Input,Output } from '@angular/core';
+import { EmpleadosService } from '../services/empleados.service';
+import { Empleados } from '../interface/empleados.interface';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-inicio-sesion-emp',
@@ -9,6 +12,17 @@ export class InicioSesionEmpComponent {
 
   @Output() cambiarVisibilidadComponenteEmpleado = new EventEmitter<boolean>();
 
+  constructor(private BuscarEmpleado:EmpleadosService){};
+
+  @Input() Empleados: Empleados = {
+    Correo:'',
+    Clave: '',
+    Id: 0,
+    Id_Cargo: 0,
+    Disponible: ''
+  }
+  
+ 
   
   CargarInterfazE(){
    
@@ -16,5 +30,20 @@ export class InicioSesionEmpComponent {
   
   }
 
+
+  /* CargarunEmpleado() {
+    this.BuscarEmpleado.ConsultarUnEmpleado().subscribe(
+      (Empleado:Empleados) =>{
+        if (Empleado != null) {
+          console.log('Resultado de la consulta del empleado:', Empleado);
+          this.Empleados = Empleado;
+        }
+      },
+      (error: any) => {
+        console.error('Error al consultar TipoVehiculo:', error);
+      }
+    );
+  } */
+  
 
 }

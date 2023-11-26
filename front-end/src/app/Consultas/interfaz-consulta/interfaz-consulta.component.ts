@@ -152,6 +152,11 @@ export class InterfazConsultaComponent {
           this.ClienteEstaCargado = false;
           this.CargosEstaCargado = false;
         }
+        this.ColumnasOrden = [
+          'Id_Marca',
+          'Nombre',
+          'Disponible'
+        ]
 
       },
       (error: any) => {
@@ -268,6 +273,16 @@ export class InterfazConsultaComponent {
           this.AlquilerEstaCargado == false;
           this.ClienteEstaCargado = false;
           this.CargosEstaCargado = false;
+
+
+          this.ColumnasOrden = [
+
+            'Id',
+            'Nombre',
+            'Precio',
+            'ValorDia',
+            'Disponible'
+          ]
         }
 
       },
@@ -296,7 +311,18 @@ export class InterfazConsultaComponent {
           this.AlquilerEstaCargado == false;
           this.ClienteEstaCargado = false;
           this.CargosEstaCargado = false;
+          this.AlquilerEstaCargado=false;
         }
+
+        this.ColumnasOrden = [
+
+          'Correo',
+          'Clave',
+          'Id',
+          'Id_Cargo',
+          'Disponible'
+        ]
+
 
       },
       (error: any) => {
@@ -395,7 +421,7 @@ export class InterfazConsultaComponent {
 
         if (ListCliente != null) {
 
-          console.log('Resultado de la consulta de alquileres:', ListCliente);
+          console.log('Resultado de la consulta de Clientes:', ListCliente);
 
           this.InfoTabla = ListCliente;
           this.MarcaEstaCargado = false;
@@ -430,7 +456,7 @@ export class InterfazConsultaComponent {
 
       },
       (error: any) => {
-        console.error('Error al consultar marcas:', error);
+        console.error('Error al consultar Clientes:', error);
       }
     );
 
@@ -530,6 +556,7 @@ export class InterfazConsultaComponent {
       }
 
       if (this.ClienteEstaCargado) {
+       
         this.ActualizarClientes();
       }
 
@@ -626,6 +653,7 @@ export class InterfazConsultaComponent {
 
   ActualizarTarifa() {
     const Tarifas: Tarifas = this.FilaEditada;
+    
 
     this.TarifaService.ActualizarTarifa(Tarifas)
       .subscribe(resp => {
@@ -656,7 +684,8 @@ export class InterfazConsultaComponent {
 
   ActualizarClientes() {
     const Clientes: Clientes = this.FilaEditada;
-
+    console.log(this.FilaEditada);
+    console.log(Clientes);
     this.ClienteService.ActualizarCliente(Clientes)
       .subscribe(resp => {
         console.log(resp);
@@ -702,7 +731,7 @@ export class InterfazConsultaComponent {
        }
         
        if (this.EmpleadosEstaCargado){
-        this.EliminarCargos();
+        this.EliminarEmpleado();
        }
 
        if (this.ResevasEstaCargado){
@@ -869,7 +898,7 @@ export class InterfazConsultaComponent {
     Cc: 'Cedula',
     Fecha_Nacimiento: 'Fecha De Nacimiento',
     Nombre_Completo: 'Nombre Completo',
-    Numero_Licencia: 'Numero De Licencia',
+    N_Licencia: 'Numero De Licencia',
     Telefono: 'Telefono',
     Correo: 'Correo',
     Contrasena: 'Contraseña',
@@ -883,14 +912,22 @@ export class InterfazConsultaComponent {
     Placa: 'Placa',
     Id_TipoVehiculo: 'Tipo De Vehiculo',
     Modelo: 'Modelo',
-    Id_Marca: 'Marca',
+    Id_Marca: 'Id',
     Id_Tarifas: 'Tarifa',
     Year:'Año',
 
    //Cargos
-    Id_Cargo:'Cargo',
+    Id_Cargo:'Id Cargo',
     Administracion:'Administra',
+    
 
+    //Tarifas
+    Precio:'Precio',
+    ValorDia:'ValorDia',
+
+
+    //Empleados
+    Clave:'Clave'
 
 
 

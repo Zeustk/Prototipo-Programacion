@@ -41,6 +41,12 @@ nav{
     
 }
 
+button{
+  position: relative;
+  width: 42%;
+  left: 140px;
+}
+
 #test{
   background-color: #F0F0F0;
 }

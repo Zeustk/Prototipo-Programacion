@@ -44,7 +44,7 @@ class ServicioEmpleados {
                     "Disponible":propiedad[4]
                 }
 
-                Marcas.push(EmpleadoSchema);
+                Empleados.push(EmpleadoSchema);
             })
 
             return Empleados;
@@ -57,11 +57,12 @@ class ServicioEmpleados {
     }
 
 
-    async UpdateEmpleado(Id,Correo, Clave,Id_Cargo) {
+    async UpdateEmpleado(Correo, Clave,Id) {
 
         try {
-            const sql = "update Empleados set Correo=:Correo,Clave=:Clave,Id_Cargo=:Id_Cargo where ID=:Id";
-            await this.DB.Open(sql, [Id,Correo, Clave,Id_Cargo], true);
+            
+            const sql = "update Empleados set Correo=:Correo,Clave=:Clave where Id=:Id";
+            await this.DB.Open(sql, [Correo, Clave,Id], true);
 
             return ('Actualizado Correctamente')
         }
@@ -78,7 +79,8 @@ class ServicioEmpleados {
 
         try {
 
-            const sql = "update Empleados set Disponible='NO' where ID=:Id";
+            console.log(Id);
+            const sql = "update Empleados set Disponible='NO' where Id=:Id";
 
             await this.DB.Open(sql, [Id], true);
 

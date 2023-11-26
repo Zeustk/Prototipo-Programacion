@@ -67,15 +67,16 @@ class ServicioVehiculos {
     }
 
 
-    async UpdateVehiculo(Placa, Modelo) {
+    async UpdateVehiculo(Year, Modelo,Placa) {
 
         try {
-            console.log(Placa);
+            console.log(Year);
             console.log(Modelo);
+            console.log(Placa)
 
-            const sql = "update VEHICULOS set Modelo=:Modelo where Placa=:Placa";
+            const sql = "update VEHICULOS set Modelo=:Modelo,Year=:Year where Placa=:Placa";
 
-            await this.DB.Open(sql, [Modelo, Placa], true);
+            await this.DB.Open(sql, [Modelo, Year,Placa], true);
 
             return ('Actualizado Correctamente')
         }
