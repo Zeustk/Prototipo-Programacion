@@ -42,11 +42,11 @@ export class CrudService<T> {
   }
 
 
-  /* ConsultarUsuario(body: T, endpoint: string) {
+   BuscarUsuario(body: T, endpoint: string) {
     const url = `${this.baseUrl}/${endpoint}`;
   
   
-    return this.http.get<Empleados>(url,body);
-  } */
+    return this.http.post<boolean>(url,body);
+  } 
   
 }

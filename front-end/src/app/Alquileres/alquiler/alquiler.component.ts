@@ -33,6 +33,10 @@ export class AlquilerComponent {
     Disponible: 'SI',
     Fecha_Recepcion:null
   }
+
+  @Input() BuscarPorCedula:string='';
+  @Input() BuscarPorPlaca:string='';
+
   Vehiculos: Vehiculos[] = [];
   Clientes: Clientes[]=[];
 
@@ -74,8 +78,12 @@ export class AlquilerComponent {
 
         if (listVehiculo != null) {
 
+          if (this.BuscarPorPlaca!=''){
+            this.Vehiculos= listVehiculo.filter(item => item.Placa.toLocaleUpperCase().startsWith(this.BuscarPorPlaca.toLocaleUpperCase()));
+          }
+
           console.log('Resultado de la consulta de placas:', listVehiculo);
-          this.Vehiculos = listVehiculo;
+       
         }
 
       },
@@ -92,8 +100,11 @@ export class AlquilerComponent {
 
         if (listCedula != null) {
 
+          if (this.BuscarPorCedula!=''){
+            this.Clientes= listCedula.filter(item => item.Cc.startsWith(this.BuscarPorCedula));
+          }
+          
           console.log('Resultado de la consulta de Cedulas:', listCedula);
-          this.Clientes = listCedula;
         }
 
       },

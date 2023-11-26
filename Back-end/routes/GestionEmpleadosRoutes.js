@@ -57,11 +57,11 @@ module.exports = function (servicio) {
       res.json(Answer);
    })
 
-   router.get('/api/BuscarEmpleado', async (req, res) => {
+   router.post('/api/BuscarEmpleado', async (req, res) => {
 
-      const { Correo,Contrasena } = req.body
+      const { Correo,Clave } = req.body
 
-      const Answer = await servicio.BuscarEmpleado(Correo,Contrasena);
+      const Answer = await servicio.BuscarEmpleado(Correo,Clave);
 
       res.json(Answer);
    })

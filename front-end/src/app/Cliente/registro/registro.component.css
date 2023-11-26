@@ -7,7 +7,7 @@
   padding: 0;
   margin: 0;
   
-  height: 400%; /* Ajusta la altura al 100% de la ventana */
+  height: 100%; /* Ajusta la altura al 100% de la ventana */
 }
 
 body, html {

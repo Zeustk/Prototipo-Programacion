@@ -24,13 +24,7 @@ export class EmpleadosService extends CrudService<Empleados> {
   }
 
 
-  /* ConsultarUnEmpleado(EmpleadosRecibidos:Empleados){
 
-    const body = { Correo:EmpleadosRecibidos.Correo,Clave:EmpleadosRecibidos.Clave,Id:EmpleadosRecibidos.Id,Id_Cargo:EmpleadosRecibidos.Id_Cargo,Disponible:EmpleadosRecibidos.Disponible };
-
-    return this.ConsultarUsuario(body,'BuscarEmpleado');
-    
-  } */
 
   ActualizarEmpleado(EmpleadosRecibidos:Empleados){
     const body = { Correo:EmpleadosRecibidos.Correo,Clave:EmpleadosRecibidos.Clave,Id:EmpleadosRecibidos.Id,Id_Cargo:EmpleadosRecibidos.Id_Cargo,Disponible:EmpleadosRecibidos.Disponible };
@@ -45,5 +39,13 @@ export class EmpleadosService extends CrudService<Empleados> {
 
     return this.Eliminar(EmpleadosRecibidos.Id,'DeleteEmpleado')
   }
+
+  BuscarEmpleado(EmpleadosRecibidos:Empleados){
+
+    const body = { Correo:EmpleadosRecibidos.Correo.toUpperCase(),Clave:EmpleadosRecibidos.Clave.toUpperCase(),Id:EmpleadosRecibidos.Id,Id_Cargo:EmpleadosRecibidos.Id_Cargo,Disponible:EmpleadosRecibidos.Disponible, };
+
+    return this.BuscarUsuario(body,'BuscarEmpleado');
+    
+  } 
 
 } 

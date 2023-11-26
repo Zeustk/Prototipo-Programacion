@@ -96,31 +96,21 @@ class ServicioEmpleados {
 
     async BuscarEmpleado(Correo,Clave){
         try {
-            const sql="select * from where Correo=:Correo AND Clave=:Clave ";
-            let consulta=await this.DB.Open(sql, [Correo,Clave], false);
-            if (consulta.rows.length > 0) {
-                let Propiedad = consulta.rows[0];
-            
-                let Empleado = {
-                    "Correo": Propiedad[0],
-                    "Clave": Propiedad[1],
-                    "Id": Propiedad[2],
-                    "Id_Cargo": Propiedad[3],
-                    "Disponible": Propiedad[4]
-                };
-            
-                console.log(Empleado);
-            } 
+            const sql = "SELECT * FROM empleados WHERE Correo = :Correo AND Clave = :Clave";
+            let consulta = await this.DB.Open(sql, [Correo, Clave], false);
+    
+            if (consulta && consulta.rows.length > 0) {
 
-            return Empleado;
+                return true;
 
+            } else {
+               return false;
+            }
+    
         } catch (error) {
-            console.error(err);
-            return ('Error de consultar Contraseña y Clave');
-            
+            console.error(error);
+            return 'Error al consultar Correo y Clave';
         }
-
-
 
     }
 

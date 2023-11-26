@@ -12,7 +12,7 @@ export class InicioSesionEmpComponent {
 
   @Output() cambiarVisibilidadComponenteEmpleado = new EventEmitter<boolean>();
 
-  constructor(private BuscarEmpleado:EmpleadosService){};
+  constructor(private EmpleadoService:EmpleadosService){};
 
   @Input() Empleados: Empleados = {
     Correo:'',
@@ -23,48 +23,45 @@ export class InicioSesionEmpComponent {
   }
   
 
-  buscarEmpleado(){
+  BuscarEmpleado(){
+
     if(this.Empleados.Correo.trim()=='' || this.Empleados.Clave.trim()==''){
+
       Swal.fire({
         title: 'Oops!',
-        text: 'Error al Registrar Datos',
+        text: 'FAVOR VERIFIQUE',
         icon: 'error',
         confirmButtonText: 'Aceptar'
       });
+
+      return;
     }
-    return
-  }
+    
+    this.EmpleadoService.BuscarEmpleado(this.Empleados)
+    .subscribe(resp => {
+      console.log(resp);
 
-  BuscarEmpleadoNew(){
-    return this.DatoslimpiosEmpleado();
-  }
-
-  DatoslimpiosEmpleado(){
-    this.Empleados.Correo='';
-    this.Empleados.Clave='';
-  }
-  
-  
-  CargarInterfazE(){
-   
-    this.cambiarVisibilidadComponenteEmpleado.emit(false);
-  
-  }
-
-
-  /*  CargarunEmpleadoo() {
-    this.BuscarEmpleadoo.ConsultarEmpleados().subscribe(
-      (Empleado:Empleados) =>{
-        if (Empleado != null) {
-          console.log('Resultado de la consulta del empleado:', Empleado);
-          this.Empleados = Empleado;
-        }
-      },
-      (error: any) => {
-        console.error('Error al consultar TipoVehiculo:', error);
+      if (resp){
+        this.cambiarVisibilidadComponenteEmpleado.emit(false);
       }
-    );
-  }  */
+      else{
+        Swal.fire({
+          text: 'FAVOR VERIFIQUE EL CORREO Y/O CONTRASEÑA',
+          confirmButtonText: 'Aceptar'
+        });
+
+      }
   
+     
+    });
+
+    
+  }
+
+
+  
+ 
+
+
 
 }
