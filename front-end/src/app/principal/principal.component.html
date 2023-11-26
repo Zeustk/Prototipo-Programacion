@@ -11,18 +11,16 @@
             value="Búsqueda de auto:"
           />
         </div>
-        <div class="col-5">
-          <input
+      </form>
+    </div>
+    <input
             type="text"
             class="form-control"
             id="inputtext"
             placeholder="Modelo" [(ngModel)]="BuscarPorModelo" name="Busqueda"
           />
-        </div>
-        <div class="col-auto">
-          <button (click)="CargarVehiculos()"type="submit" class="btn btn-primary mb-3">Buscar</button>
-        </div>
-      </form>
+    <div class="col-auto">
+      <button (click)="CargarVehiculos()"type="submit" class="btn btn-primary mb-3" id="moverboton">Buscar</button>
     </div>
 
     <!-- Agregar el título -->

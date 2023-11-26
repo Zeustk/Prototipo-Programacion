@@ -48,6 +48,21 @@ h6 {
   /* Ajusta los márgenes según sea necesario */
   margin-right: 0;
   margin-left: 0;
+  
+}
+
+#inputtext{
+  position: relative;
+  bottom: 35px;
+  width: 10%;
+  left: 200px;
+  
+}
+
+#moverboton{
+  position: relative;
+  bottom:74px;
+  left: 382px;
 }
 
 #encuentra{
