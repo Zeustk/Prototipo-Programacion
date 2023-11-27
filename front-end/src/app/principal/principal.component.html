@@ -50,10 +50,16 @@
 
     <div class="row justify-content-end">
       <div class="col-auto">
-        <button *ngIf="cantidadVehiculosAMostrar < ListaVehiculos.length" (click)="cargarMasVehiculos()" class="btn btn-primary">Cargar más</button>
+        <button *ngIf="cantidadVehiculosAMostrar < ListaVehiculos.length" (click)="cargarMasVehiculos()" class="btn btn-dark px-5 py-3 text-uppercase" id="botonnose"><i class="fas fa-plus icono-mas"></i> Ver Mas</button>
       </div>
     </div>
   </div>
   <div class="mb-5"></div>
   <script src="/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
 </section>
