@@ -6,8 +6,8 @@
                 <div (click)="CargarRVehiculo()" class="p-3 border bg-light text-center hover-effect"><h5>Registrar Vehiculos</h5></div>
                 <div (click)="CargarRCliente()"class="p-3 border bg-light text-center hover-effect"><h5>Registrar Clientes</h5></div>
                 <div (click)="CargarRCategorias()"class="p-3 border bg-light text-center hover-effect"><h5>Registrar Categoria</h5></div>
-                <div (click)=" CargarREmpleado()"class="p-3 border bg-light text-center hover-effect"><h5>Registrar Empleados</h5></div>
-                <div (click)=" CargarRCargo()"class="p-3 border bg-light text-center hover-effect"><h5>Registrar Cargos</h5></div>
+                <div *ngIf="TipoEmpleado === 'EA'" (click)=" CargarREmpleado()"class="p-3 border bg-light text-center hover-effect"><h5>Registrar Empleados</h5></div>
+                <div *ngIf="TipoEmpleado === 'EA'" (click)=" CargarRCargo()"class="p-3 border bg-light text-center hover-effect"><h5>Registrar Cargos</h5></div>
                 <div (click)="CargarRTarifas()"class="p-3 border bg-light text-center hover-effect"><h5>Registrar Tarifa</h5></div>
                 <div (click)="CargarRAlquiler()"class="p-3 border bg-light text-center hover-effect"><h5>Registrar Alquiler</h5></div>
                 <div (click)=" CargarIConsulta()"class="p-3 border bg-light text-center hover-effect"><h5>Gestion Avanzada</h5></div>

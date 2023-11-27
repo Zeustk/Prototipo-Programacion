@@ -61,6 +61,9 @@ module.exports = function (servicio) {
 
       const { Correo,Clave } = req.body
 
+      console.log(Correo);
+      console.log(Clave);
+
       const Answer = await servicio.BuscarEmpleado(Correo,Clave);
 
       res.json(Answer);

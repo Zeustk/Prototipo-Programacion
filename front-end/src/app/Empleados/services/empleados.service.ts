@@ -5,12 +5,18 @@ import { Empleados } from 'src/app/Empleados/interface/empleados.interface';
 @Injectable()
 export class EmpleadosService extends CrudService<Empleados> {
 
-  private _Empleados:Empleados []=[];
-
-  get Empleados(): Empleados[] {
-   
-    return [...this._Empleados]; //Para seguridad, no se acceda facilmente
+  Empleado:Empleados={
+    Correo: '',
+    Clave: '',
+    Id: 0,
+    Id_Cargo: 0,
+    Disponible: 'SI'
   }
+
+  setEmpleado(Empleado:Empleados){
+    this.Empleado=Empleado;
+  }
+
 
   RegistrarEmpleado(EmpleadosRecibidos:Empleados) {
 

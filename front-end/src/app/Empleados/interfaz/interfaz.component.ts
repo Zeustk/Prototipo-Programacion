@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { EmpleadosService } from '../services/empleados.service';
 
 @Component({
   selector: 'app-interfaz',
@@ -6,6 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./interfaz.component.css']
 })
 export class InterfazComponent {
+
+  constructor(private EmpleadoServicio:EmpleadosService){};
 
   MostrarComponenteRVehiculo: boolean =false;
   MostrarComponenteRCliente: boolean= false;
@@ -15,6 +18,34 @@ export class InterfazComponent {
   MostrarComponenteIConsulta:boolean=false;
   MostrarComponenteREmpleado:boolean=false;
   MostrarComponenteRCargo:boolean=false;
+
+  TipoEmpleado:string='';
+
+  ngOnInit() {
+    this.verificarTipoUsuario();
+  }
+  
+
+  verificarTipoUsuario() {
+    this.EmpleadoServicio.BuscarEmpleado(this.EmpleadoServicio.Empleado)
+      .subscribe(resp => {
+        console.log(resp);
+  
+        if (resp === 'EA') {
+          console.log('El usuario es Administrador');
+          this.TipoEmpleado = 'EA';
+        } else if (resp === 'EN') {
+          console.log('El usuario es Empleado Normal');
+          this.TipoEmpleado = 'EN';
+        } 
+        // Puedes realizar más acciones o asignaciones aquí según tu lógica
+      });
+  }
+
+
+
+
+
 
   CargarREmpleado():void {
     this.MostrarComponenteRVehiculo=false;

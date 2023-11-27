@@ -96,22 +96,21 @@ class ServicioEmpleados {
 
     async BuscarEmpleado(Correo,Clave){
         try {
-            const sql = "SELECT * FROM empleados WHERE Correo = :Correo AND Clave = :Clave";
+            console.log(Correo);
+            console.log(Clave);
+            const sql = "SELECT t.Administracion FROM Empleados e JOIN Cargos t ON e.ID_Cargo = t.ID_Cargo where CORREO=:Correo AND CLAVE=:Clave";
             let consulta = await this.DB.Open(sql, [Correo, Clave], false);
     
             if (consulta && consulta.rows.length > 0) {
-
-                return true;
-
+                const administracion = consulta.rows[0][0]; // Acceder al valor específico
+                return administracion;
             } else {
-               return false;
+                return null;
             }
-    
         } catch (error) {
             console.error(error);
             return 'Error al consultar Correo y Clave';
         }
-
     }
 
 }

@@ -46,7 +46,7 @@ export class CrudService<T> {
     const url = `${this.baseUrl}/${endpoint}`;
   
   
-    return this.http.post<boolean>(url,body);
+    return this.http.post<boolean | string>(url,body);
   } 
   
 }

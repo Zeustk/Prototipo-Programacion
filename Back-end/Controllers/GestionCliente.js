@@ -124,10 +124,10 @@ class ServicioCliente {
     
             if (consulta && consulta.rows.length > 0) {
 
-                return true;
+                return consulta;
 
             } else {
-               return false;
+               return null;
             }
     
         } catch (error) {

@@ -41,9 +41,12 @@ export class InicioSesionEmpComponent {
     .subscribe(resp => {
       console.log(resp);
 
-      if (resp){
+      if (typeof resp === 'string' && (resp === 'EN' || resp === 'EA')) {
+        console.log(resp);
         this.cambiarVisibilidadComponenteEmpleado.emit(false);
-      }
+        this.EmpleadoService.setEmpleado(this.Empleados);
+        console.log(this.EmpleadoService.Empleado);
+    }
       else{
         Swal.fire({
           text: 'FAVOR VERIFIQUE EL CORREO Y/O CONTRASEÑA',

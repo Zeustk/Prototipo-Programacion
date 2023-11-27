@@ -12,6 +12,8 @@ export class CargosService extends CrudService<Cargos> {
     return [...this._Cargos]; //Para seguridad, no se acceda facilmente
   }
 
+ 
+
   RegistrarCargo(CargosRecibidos:Cargos) {
 
     const body = { 

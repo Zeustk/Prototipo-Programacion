@@ -68,7 +68,29 @@ export class InterfazConsultaComponent {
   }
 
 
+//VALIDAR USUARIO ADMINISTRADOR O NORMAL
+TipoEmpleado:string='';
 
+  ngOnInit() {
+    this.verificarTipoUsuario();
+  }
+  
+
+  verificarTipoUsuario() {
+    this.Empleado.BuscarEmpleado(this.Empleado.Empleado)
+      .subscribe(resp => {
+        console.log(resp);
+  
+        if (resp === 'EA') {
+          console.log('El usuario es Administrador');
+          this.TipoEmpleado = 'EA';
+        } else if (resp === 'EN') {
+          console.log('El usuario es Empleado Normal');
+          this.TipoEmpleado = 'EN';
+        } 
+        // Puedes realizar más acciones o asignaciones aquí según tu lógica
+      });
+  }
 
 
   mostrarTablaConsulta(boton: string) {
