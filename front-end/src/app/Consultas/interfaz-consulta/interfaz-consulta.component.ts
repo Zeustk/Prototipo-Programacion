@@ -143,10 +143,17 @@ export class InterfazConsultaComponent {
         if (ListMarcas != null) {
 
           this.PlaceHolderPorTipo='Marca';
+          
+          if (this.BuscarPorTipo==''){
+            this.InfoTabla = ListMarcas;
+          }
+          else{
+            this.InfoTabla=ListMarcas.filter(item => item.Nombre.toLocaleUpperCase().startsWith(this.BuscarPorTipo.toLocaleUpperCase()));
+          }
 
           console.log('Resultado de la consulta de marcas:', ListMarcas);
 
-          this.InfoTabla = ListMarcas;
+          
           this.MarcaEstaCargado = true;
           this.TipoVehiculoEstaCargado = false;
           this.VehiculosEstaCargado = false;
@@ -158,8 +165,7 @@ export class InterfazConsultaComponent {
         }
         this.ColumnasOrden = [
           'Id_Marca',
-          'Nombre',
-          'Disponible'
+          'Nombre'
         ]
 
       },
@@ -179,7 +185,7 @@ export class InterfazConsultaComponent {
 
           this.PlaceHolderPorTipo='Tipo';
 
-          if (this.BuscarPorTipo!=''){
+          if (this.BuscarPorTipo==''){
             this.InfoTabla = ListTipoVehiculo;
           }
           else{
@@ -209,7 +215,6 @@ export class InterfazConsultaComponent {
 
             'Id',
             'Nombre',
-            'Disponible'
           ]
 
 
@@ -235,7 +240,7 @@ export class InterfazConsultaComponent {
 
           console.log('Resultado de la consulta de Vehiculo:', listVehiculo);
 
-          if (this.BuscarPorTipo!=''){
+          if (this.BuscarPorTipo==''){
             this.InfoTabla = listVehiculo;
           }
           else{
@@ -290,7 +295,7 @@ export class InterfazConsultaComponent {
 
           console.log('Resultado de la consulta de Tarifa:', ListTarifa);
 
-          if (this.BuscarPorTipo!=''){
+          if (this.BuscarPorTipo==''){
             this.InfoTabla = ListTarifa;
           }
           else{
@@ -312,8 +317,7 @@ export class InterfazConsultaComponent {
             'Id',
             'Nombre',
             'Precio',
-            'ValorDia',
-            'Disponible'
+            'ValorDia'
           ]
         }
 
@@ -336,7 +340,7 @@ export class InterfazConsultaComponent {
 
           console.log('Resultado de la consulta de Empleados:', ListEmpleado);
 
-          if (this.BuscarPorTipo!=''){
+          if (this.BuscarPorTipo==''){
             this.InfoTabla = ListEmpleado;
           }
           else{
@@ -359,8 +363,8 @@ export class InterfazConsultaComponent {
           'Correo',
           'Clave',
           'Id',
-          'Id_Cargo',
-          'Disponible'
+          'Id_Cargo'
+          
         ]
 
 
@@ -413,7 +417,7 @@ export class InterfazConsultaComponent {
 
 
           //Cargar Datos y saber si Alquiler es el que está cargado
-          if (this.BuscarPorTipo!=''){
+          if (this.BuscarPorTipo==''){
             this.InfoTabla = ListAlquiler;
           }
           else{
@@ -472,7 +476,7 @@ export class InterfazConsultaComponent {
 
           console.log('Resultado de la consulta de Clientes:', ListCliente);
 
-          if (this.BuscarPorTipo!=''){
+          if (this.BuscarPorTipo==''){
             this.InfoTabla = ListCliente;
           }
           else{
@@ -499,8 +503,8 @@ export class InterfazConsultaComponent {
             'Numero_Licencia',
             'Telefono',
             'Correo',
-            'Contrasena',
-            'Disponible'
+            'Contrasena'
+            
 
 
           ]
@@ -528,7 +532,7 @@ export class InterfazConsultaComponent {
 
           console.log('Resultado de la consulta de Cargos:', ListCargos);
 
-          if (this.BuscarPorTipo!=''){
+          if (this.BuscarPorTipo==''){
             this.InfoTabla = ListCargos;
           }
           else{
@@ -548,8 +552,8 @@ export class InterfazConsultaComponent {
           this.ColumnasOrden = [
             'Id_Cargo',
             'Nombre',
-            'Administracion',
-            'Disponible'
+            'Administracion'
+            
           ]
         }
 
