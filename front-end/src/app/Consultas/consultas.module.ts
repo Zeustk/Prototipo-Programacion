@@ -4,6 +4,7 @@ import {NgModule} from  '@angular/core';
 import { InterfazConsultaComponent } from './interfaz-consulta/interfaz-consulta.component';
 import { VehiculoModule } from '../Vehiculos/vehiculos.module';
 import { ClienteModule } from '../Cliente/cliente.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -22,6 +23,7 @@ import { ClienteModule } from '../Cliente/cliente.module';
     ],
     imports:[
         CommonModule,
+        FormsModule
        
     
         

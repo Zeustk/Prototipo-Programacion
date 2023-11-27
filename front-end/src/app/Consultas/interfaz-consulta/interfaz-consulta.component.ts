@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ErrorHandler } from '@angular/core';
+import { ChangeDetectorRef, Component, ErrorHandler, Input } from '@angular/core';
 import { ClienteService } from 'src/app/Cliente/services/cliente.service';
 import { Marcas, Tarifas, TipoVehiculo, Vehiculos } from 'src/app/Vehiculos/Interfaces/vehiculos.interface';
 
@@ -42,7 +42,9 @@ export class InterfazConsultaComponent {
   CargosEstaCargado: boolean = false;
   ResevasEstaCargado: boolean = false;
 
-
+  PlaceHolderPorTipo:string=''; //Para mostrar el placeholder por tipo de vehiculo, vehiculo, etc
+ @Input() BuscarPorTipo:string='';
+  
   InfoTabla: any[] = [];
 
 
@@ -140,6 +142,8 @@ export class InterfazConsultaComponent {
 
         if (ListMarcas != null) {
 
+          this.PlaceHolderPorTipo='Marca';
+
           console.log('Resultado de la consulta de marcas:', ListMarcas);
 
           this.InfoTabla = ListMarcas;
@@ -173,11 +177,21 @@ export class InterfazConsultaComponent {
 
         if (ListTipoVehiculo != null) {
 
+          this.PlaceHolderPorTipo='Tipo';
+
+          if (this.BuscarPorTipo!=''){
+            this.InfoTabla = ListTipoVehiculo;
+          }
+          else{
+            this.InfoTabla=ListTipoVehiculo.filter(item => item.Nombre.toLocaleUpperCase().startsWith(this.BuscarPorTipo.toLocaleUpperCase()));
+          }
+
           console.log('Resultado de la consulta de TipoVehiculo:', ListTipoVehiculo);
 
 
+          console.log(this.InfoTabla);
 
-          this.InfoTabla = ListTipoVehiculo;
+
           this.MarcaEstaCargado = false;
           this.TipoVehiculoEstaCargado = true;
           this.VehiculosEstaCargado = false;
@@ -217,9 +231,19 @@ export class InterfazConsultaComponent {
 
         if (listVehiculo != null) {
 
+          this.PlaceHolderPorTipo='Placa';
+
           console.log('Resultado de la consulta de Vehiculo:', listVehiculo);
 
-          this.InfoTabla = listVehiculo;
+          if (this.BuscarPorTipo!=''){
+            this.InfoTabla = listVehiculo;
+          }
+          else{
+            this.InfoTabla=listVehiculo.filter(item => item.Placa.toLocaleUpperCase().startsWith(this.BuscarPorTipo.toLocaleUpperCase()));
+          }
+
+          console.log(this.InfoTabla);
+
           this.VehiculosEstaCargado = true;
           this.MarcaEstaCargado = false;
           this.TipoVehiculoEstaCargado = false;
@@ -237,8 +261,8 @@ export class InterfazConsultaComponent {
             'Id_Marca',
             'Id_Tarifas',
             'Placa',
-            'Year',
-            'Disponible',
+            'Year'
+       
           
 
           ]
@@ -262,9 +286,17 @@ export class InterfazConsultaComponent {
 
         if (ListTarifa != null) {
 
+          this.PlaceHolderPorTipo='Tarifa';
+
           console.log('Resultado de la consulta de Tarifa:', ListTarifa);
 
-          this.InfoTabla = ListTarifa;
+          if (this.BuscarPorTipo!=''){
+            this.InfoTabla = ListTarifa;
+          }
+          else{
+            this.InfoTabla=ListTarifa.filter(item => item.Nombre.toLocaleUpperCase().startsWith(this.BuscarPorTipo.toLocaleUpperCase()));
+          }
+
           this.MarcaEstaCargado = false;
           this.TipoVehiculoEstaCargado = false;
           this.VehiculosEstaCargado = false;
@@ -300,9 +332,17 @@ export class InterfazConsultaComponent {
 
         if (ListEmpleado != null) {
 
+          this.PlaceHolderPorTipo='Correo';
+
           console.log('Resultado de la consulta de Empleados:', ListEmpleado);
 
-          this.InfoTabla = ListEmpleado;
+          if (this.BuscarPorTipo!=''){
+            this.InfoTabla = ListEmpleado;
+          }
+          else{
+            this.InfoTabla=ListEmpleado.filter(item => item.Correo.toLocaleUpperCase().startsWith(this.BuscarPorTipo.toLocaleUpperCase()));
+          }
+
           this.MarcaEstaCargado = false;
           this.TipoVehiculoEstaCargado = false;
           this.VehiculosEstaCargado = false;
@@ -341,7 +381,7 @@ export class InterfazConsultaComponent {
 
           console.log('Resultado de la consulta de reservas:', ListReserva);
 
-          this.InfoTabla = ListReserva;
+          
           this.MarcaEstaCargado = false;
           this.TipoVehiculoEstaCargado = false;
           this.VehiculosEstaCargado = false;
@@ -367,11 +407,19 @@ export class InterfazConsultaComponent {
 
         if (ListAlquiler != null) {
 
+          this.PlaceHolderPorTipo='Cedula';
+
           console.log('Resultado de la consulta de alquileres:', ListAlquiler);
 
 
           //Cargar Datos y saber si Alquiler es el que está cargado
-          this.InfoTabla = ListAlquiler;
+          if (this.BuscarPorTipo!=''){
+            this.InfoTabla = ListAlquiler;
+          }
+          else{
+            this.InfoTabla=ListAlquiler.filter(item => item.Cc_Clientes.toLocaleUpperCase().startsWith(this.BuscarPorTipo.toLocaleUpperCase()));
+          }
+
           this.MarcaEstaCargado = false;
           this.TipoVehiculoEstaCargado = false;
           this.VehiculosEstaCargado = false;
@@ -399,8 +447,8 @@ export class InterfazConsultaComponent {
             'KmRecorridos',
             'Valor_Inicial',
             'Cargos_Adicionales',
-            'Total',
-            'Disponible'
+            'Total'
+      
           ]
 
 
@@ -420,10 +468,17 @@ export class InterfazConsultaComponent {
       (ListCliente: Clientes[] | null) => {
 
         if (ListCliente != null) {
+          this.PlaceHolderPorTipo='Cedula';
 
           console.log('Resultado de la consulta de Clientes:', ListCliente);
 
-          this.InfoTabla = ListCliente;
+          if (this.BuscarPorTipo!=''){
+            this.InfoTabla = ListCliente;
+          }
+          else{
+            this.InfoTabla=ListCliente.filter(item => item.Cc.toLocaleUpperCase().startsWith(this.BuscarPorTipo.toLocaleUpperCase()));
+          }
+
           this.MarcaEstaCargado = false;
           this.TipoVehiculoEstaCargado = false;
           this.VehiculosEstaCargado = false;
@@ -469,9 +524,17 @@ export class InterfazConsultaComponent {
 
         if (ListCargos != null) {
 
+          this.PlaceHolderPorTipo='Cargo';
+
           console.log('Resultado de la consulta de Cargos:', ListCargos);
 
-          this.InfoTabla = ListCargos;
+          if (this.BuscarPorTipo!=''){
+            this.InfoTabla = ListCargos;
+          }
+          else{
+            this.InfoTabla=ListCargos.filter(item => item.Nombre.toLocaleUpperCase().startsWith(this.BuscarPorTipo.toLocaleUpperCase()));
+          }
+
           this.MarcaEstaCargado = false;
           this.TipoVehiculoEstaCargado = false;
           this.VehiculosEstaCargado = false;
@@ -873,6 +936,45 @@ export class InterfazConsultaComponent {
   }
 
 
+  //BUSCAR POR TIPO
+
+  
+  BuscandoPorTipo() {
+
+    if (this.MarcaEstaCargado){
+      this.mostrarTablaConsulta('M');
+    }
+
+    if (this.TipoVehiculoEstaCargado){
+      this.mostrarTablaConsulta('T');
+    }
+
+    if (this.TarifasEstaCargado){
+      this.mostrarTablaConsulta('TA');
+    }
+
+    if (this.VehiculosEstaCargado){
+      this.mostrarTablaConsulta('GK');
+    }
+
+    if (this.EmpleadosEstaCargado){
+      this.mostrarTablaConsulta('EM');
+    }
+
+    if (this.AlquilerEstaCargado){
+      this.mostrarTablaConsulta('GG');
+    }
+
+    if (this.ClienteEstaCargado){
+      this.mostrarTablaConsulta('C');
+    }
+
+    if (this.CargosEstaCargado){
+      this.mostrarTablaConsulta('CA');
+    }
+
+   
+  }
 
 
 
@@ -896,7 +998,7 @@ export class InterfazConsultaComponent {
     Cc_Clientes: 'Cedula',
     Id_Empleados: 'Id Empleado',
     Valor_Inicial: 'Valor Base',
-    Disponible: 'Disponible',
+  
     Fecha_Recepcion: 'Fecha De Recepcion',
     //Clientes
 

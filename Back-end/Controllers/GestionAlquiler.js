@@ -14,11 +14,11 @@ class ServicioAlquiler {
 
             console.log(fechaEmision);
 
-      
+            fechaEmision.setDate(fechaEmision.getDate() + 1);
 
             const fechacontrato = new Date(Fecha_Contrato)
 
-      
+            fechacontrato.setDate(fechacontrato.getDate() + 1);
 
 
            
