@@ -111,7 +111,7 @@ class ServicioVehiculos {
     async BuscarVehiculo(Placa){
         try {
             
-            const sql = "SELECT * FROM Vehiculos WHERE UPPER(Placa) = UPPER(:Placa)";
+            const sql = "SELECT * FROM Vehiculos WHERE UPPER(Placa) = UPPER(:Placa) AND DISPONIBLE='SI'";
             let consulta = await this.DB.Open(sql, [Placa], false);
     
             if (consulta && consulta.rows.length > 0) {

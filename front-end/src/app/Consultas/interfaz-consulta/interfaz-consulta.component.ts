@@ -376,7 +376,7 @@ TipoEmpleado:string='';
           this.AlquilerEstaCargado == false;
           this.ClienteEstaCargado = false;
           this.CargosEstaCargado = false;
-          this.AlquilerEstaCargado=false;
+
         }
 
         this.ColumnasOrden = [
@@ -809,38 +809,47 @@ TipoEmpleado:string='';
       if (this.TipoVehiculoEstaCargado) {
         this.EliminarTipoVehiculo();
 
+        return;
       }
 
       if (this.MarcaEstaCargado){
          this.EliminarMarca();
+         return;
       }
 
         if (this.TarifasEstaCargado){
           this.EliminarTarifa();
+          return;
        }
 
        if (this.VehiculosEstaCargado){
         this.EliminarVehiculo();
+        return;
        }
         
        if (this.EmpleadosEstaCargado){
         this.EliminarEmpleado();
+        return;
        }
 
        if (this.ResevasEstaCargado){
         this.EliminarReservas();
+        return;
        }
 
        if (this.AlquilerEstaCargado){
         this.EliminarAlquiler();
+        return;
        }
 
        if (this.ClienteEstaCargado){
         this.EliminarCliente();
+        return;
        }
 
        if (this.CargosEstaCargado){
         this.EliminarCargos();
+        return;
        }
      
 
@@ -968,18 +977,22 @@ TipoEmpleado:string='';
 
     if (this.MarcaEstaCargado){
       this.mostrarTablaConsulta('M');
+      return;
     }
 
     if (this.TipoVehiculoEstaCargado){
       this.mostrarTablaConsulta('T');
+      return;
     }
 
     if (this.TarifasEstaCargado){
       this.mostrarTablaConsulta('TA');
+      return;
     }
 
     if (this.VehiculosEstaCargado){
       this.mostrarTablaConsulta('GK');
+      return;
     }
 
     if (this.EmpleadosEstaCargado){
@@ -988,14 +1001,17 @@ TipoEmpleado:string='';
 
     if (this.AlquilerEstaCargado){
       this.mostrarTablaConsulta('GG');
+      return;
     }
 
     if (this.ClienteEstaCargado){
       this.mostrarTablaConsulta('C');
+      return;
     }
 
     if (this.CargosEstaCargado){
       this.mostrarTablaConsulta('CA');
+      return;
     }
 
    

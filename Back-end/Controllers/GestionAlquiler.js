@@ -109,7 +109,9 @@ class ServicioAlquiler {
             }
     
             const fecha = new Date(Fecha_Recepcion);
-    
+
+            fecha.setDate(fecha.getDate() + 1);
+            
             // Obtén la fecha formateada sin milisegundos
             const fechaFormateada = fecha.toISOString().slice(0, 19).replace("T", " ");
             
@@ -117,18 +119,18 @@ class ServicioAlquiler {
             if (KmRecepcion==null){
 
                 
-            const sql = "UPDATE Alquiler SET Fecha_Recepcion = TO_DATE(:fechaFormateada, 'YYYY-MM-DD HH24:MI:SS') WHERE Id = :Id";
+            const sql = "UPDATE Alquiler SET Fecha_Recepcion = :fecha WHERE Id = :Id";
 
-            await this.DB.Open(sql, [fechaFormateada, Id], true);
+            await this.DB.Open(sql, [fecha, Id], true);
 
             }
             else{
 
                 KmRecepcion=parseInt(KmRecepcion);
 
-                const sql = "UPDATE Alquiler SET Fecha_Recepcion = TO_DATE(:fechaFormateada, 'YYYY-MM-DD HH24:MI:SS'),KmRecepcion=:KmRecepcion WHERE Id = :Id";
+                const sql = "UPDATE Alquiler SET Fecha_Recepcion = :fecha,KmRecepcion=:KmRecepcion WHERE Id = :Id";
 
-                await this.DB.Open(sql, [fechaFormateada, KmRecepcion,Id], true);
+                await this.DB.Open(sql, [fecha, KmRecepcion,Id], true);
             }
             return 'Actualizado Correctamente';
         } catch (err) {
