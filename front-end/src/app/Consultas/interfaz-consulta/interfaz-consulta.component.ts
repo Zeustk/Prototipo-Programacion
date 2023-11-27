@@ -669,7 +669,7 @@ TipoEmpleado:string='';
     this.VehiculoServicio.ActualizarVehiculo(Vehiculo)
       .subscribe(resp => {
         console.log(resp);
-
+        Swal.fire('RESPUESTA', resp);
       });
 
 

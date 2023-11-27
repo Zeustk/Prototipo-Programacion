@@ -10,10 +10,11 @@ class ServicioEmpleados {
         try {
            
 
-
+            const CargoNumber=parseInt(Id_Cargo);
+            
             const sql = "insert into Empleados(Correo,Clave,ID,ID_CARGO,Disponible) values (:Correo,:Clave,SEQ_EMPLEADOS.NEXTVAL,:CargoNumber,:Disponible)";
 
-            const CargoNumber=parseInt(Id_Cargo);
+            
 
 
             await this.DB.Open(sql, [Correo,Clave,CargoNumber,Disponible], true);

@@ -34,7 +34,7 @@ export class RegistroempleadosComponent {
 
   Cargos: Cargos[] = []
 
-  AgregarEmpleado() {
+  async AgregarEmpleado() {
 
 
     if (this.Empleados.Correo.trim() == '' && this.Empleados.Clave.trim() == '') { 
@@ -47,22 +47,21 @@ export class RegistroempleadosComponent {
       return;
     }
     
-    
+    const clienteExistente = await this.ServicioEmpleado.BuscarEmpleado(this.Empleados).toPromise();
+
+    if (typeof clienteExistente === 'string' && (clienteExistente=== 'EN' || clienteExistente === 'EA')) {
+     Swal.fire('Msj', 'EMPLEADO YA REGISTRADO');
+   } else {
+     const respuestaRegistro = await this.ServicioEmpleado.RegistrarEmpleado(this.Empleados).toPromise();
+     Swal.fire({
+      text: `Mensaje ${respuestaRegistro}`,
+      confirmButtonText: 'Aceptar'
+    });
+   }
+
     console.log(this.Empleados.Id_Cargo);
     
-
-    this.ServicioEmpleado.RegistrarEmpleado(this.Empleados)
-      .subscribe(resp => {
-        console.log(resp);
-        Swal.fire({
-          text: `Mensaje ${resp}`,
-          confirmButtonText: 'Aceptar'
-        });
-      });
       this.limpiarEmpleado();
-      
-      
-      
       
 
   }
