@@ -65,6 +65,27 @@ export class RegistroService extends CrudService<Vehiculos> {  //VEHICULOS
   }
 
   
+  BuscarVehiculo(vehiculoRecibido: Vehiculos){
+    
+    const body = {
+      Placa: vehiculoRecibido.Placa,
+      Disponible: 'SI',
+      Id_Tipovehiculo: vehiculoRecibido.Id_Tipovehiculo,
+      Modelo: vehiculoRecibido.Modelo,
+      Id_Marca: vehiculoRecibido.Id_Marca,
+      Id_Tarifas: vehiculoRecibido.Id_Tarifas,
+      Year:vehiculoRecibido.Year,
+      Url:vehiculoRecibido.Url
+    };
+
+    console.log(body)
+
+    
+
+    return this.BuscarUsuario(body,'BuscarVehiculo');
+
+  }
+
 
   
 

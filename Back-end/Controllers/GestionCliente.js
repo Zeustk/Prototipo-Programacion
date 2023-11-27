@@ -116,13 +116,11 @@ class ServicioCliente {
 
     }
 
-    async BuscarCliente(Correo,Contrasena){
+    async BuscarCliente(Cc){
         try {
-            console.log(Correo);
-            console.log(typeof(Correo));
-            console.log(Contrasena);
-            const sql = "SELECT * FROM Clientes WHERE Correo = :Correo AND Contrasena = :Contrasena";
-            let consulta = await this.DB.Open(sql, [Correo, Contrasena], false);
+            
+            const sql = "SELECT * FROM Clientes WHERE Cc = :Cc";
+            let consulta = await this.DB.Open(sql, [Cc], false);
     
             if (consulta && consulta.rows.length > 0) {
 
@@ -134,7 +132,7 @@ class ServicioCliente {
     
         } catch (error) {
             console.error(error);
-            return 'Error al consultar Correo y Contrasena';
+            return 'Error al BUSCAR CLIENTE';
         }
 
     }

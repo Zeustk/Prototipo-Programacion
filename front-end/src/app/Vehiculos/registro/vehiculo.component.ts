@@ -123,7 +123,7 @@ export class VehiculoComponent {
   
   //agregar
 
-  AgregarVehiculo() {
+  async AgregarVehiculo() {
 
     if (this.Vehiculo.Placa.trim() == '' ||
       this.Vehiculo.Modelo.trim() == '' ||
@@ -147,14 +147,21 @@ export class VehiculoComponent {
 
     console.log(this.Vehiculo.Url);
 
-    this.VehiculoService.RegistrarVehiculo(this.Vehiculo)
-      .subscribe(resp => {
-        console.log(resp);
-        Swal.fire({
-          text: `Mensaje ${resp}`,
-          confirmButtonText: 'Aceptar'
-        });
-      });
+    const VehiculoExistente = await this.VehiculoService.BuscarVehiculo(this.Vehiculo).toPromise();
+
+   if (VehiculoExistente) {
+    Swal.fire({
+      text: `Mensaje ${'VEHICULO YA REGISTRADO'}`,
+      confirmButtonText: 'Aceptar'
+    });
+  } else {
+    const respuestaRegistro = await this.VehiculoService.RegistrarVehiculo(this.Vehiculo).toPromise();
+    Swal.fire({
+      text: `Mensaje ${respuestaRegistro}`,
+      confirmButtonText: 'Aceptar'
+    });
+  }
+
 
     this.reiniciarDatos();
 

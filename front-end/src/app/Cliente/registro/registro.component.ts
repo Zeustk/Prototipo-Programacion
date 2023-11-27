@@ -24,6 +24,8 @@ export class RegistroComponent {
     Contrasena: '',
     Telefono:''
   }
+
+
   
   ngOnInit(): void {  
     
@@ -34,11 +36,11 @@ export class RegistroComponent {
     console.log(this.clienteService.Clientes)
   }
 
-  AgregarCliente(){
+   async AgregarCliente(){
 
-   
+  
 
-   if (this.Clientes.Cc.trim()=='' && this.Clientes.Contrasena.trim()==''){
+   if (this.Clientes.Cc.trim()=='' || this.Clientes.Contrasena.trim()=='' || this.Clientes.Cc.trim()=='' || this.Clientes.Telefono.trim()=='' || this.Clientes.N_Licencia.trim()==''){
     Swal.fire({
       title: 'Oops!',
       text: 'Error al Registrar Datos',
@@ -47,17 +49,20 @@ export class RegistroComponent {
     });
     return;
 
+    
+
    }
 
+   const clienteExistente = await this.clienteService.BuscarCliente(this.Clientes).toPromise();
+
+   if (clienteExistente) {
+    Swal.fire('Msj', 'CLIENTE YA REGISTRADO');
+  } else {
+    const respuestaRegistro = await this.clienteService.RegistrarCliente(this.Clientes).toPromise();
+    Swal.fire('Msj', respuestaRegistro);
+  }
    
   
-   
-    this.clienteService.RegistrarCliente(this.Clientes)
-    .subscribe(resp =>{
-     console.log(resp);
-     
-      Swal.fire('Msj',resp)
-    });
 
     this.Borrarlabels();
 

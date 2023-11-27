@@ -87,5 +87,16 @@ module.exports = function (servicio) {
       res.json(Answer);
    })
 
+   router.post('/api/BuscarVehiculo', async (req, res) => {
+
+      const {Placa} = req.body
+      
+
+      const Answer = await servicio.BuscarVehiculo(Placa);
+
+      res.json(Answer);
+     
+   })
+
    return router;
 }
