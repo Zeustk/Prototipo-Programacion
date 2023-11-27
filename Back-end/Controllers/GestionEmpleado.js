@@ -98,7 +98,7 @@ class ServicioEmpleados {
         try {
             console.log(Correo);
             console.log(Clave);
-            const sql = "SELECT t.Administracion FROM Empleados e JOIN Cargos t ON e.ID_Cargo = t.ID_Cargo where CORREO=:Correo AND CLAVE=:Clave";
+            const sql = "SELECT t.Administracion FROM Empleados e JOIN Cargos t ON e.ID_Cargo = t.ID_Cargo where UPPER(CORREO)=UPPER(:Correo) AND CLAVE=:Clave";
             let consulta = await this.DB.Open(sql, [Correo, Clave], false);
     
             if (consulta && consulta.rows.length > 0) {
