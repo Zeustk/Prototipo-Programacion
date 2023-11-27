@@ -262,8 +262,7 @@ export class InterfazConsultaComponent {
             'Id_Tarifas',
             'Placa',
             'Year'
-       
-          
+
 
           ]
 

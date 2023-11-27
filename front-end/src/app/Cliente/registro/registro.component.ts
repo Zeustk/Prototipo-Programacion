@@ -47,8 +47,9 @@ export class RegistroComponent {
     });
     return;
 
-    
    }
+
+   
   
    
     this.clienteService.RegistrarCliente(this.Clientes)
