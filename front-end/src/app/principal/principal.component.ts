@@ -13,6 +13,8 @@ export class PrincipalComponent {
 
   // Agregar una clase al contenedor principal para usar el sistema de cuadrícula de Bootstrap
 
+  
+
   ListaVehiculos:Vehiculos[]=[];
 
  @Input() BuscarPorModelo:string='';
