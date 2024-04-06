@@ -1,0 +1,22 @@
+config:
+  target: "http://localhost:5000"  # La URL base de tu aplicación
+  phases:
+    - duration: 60  # Duración de la primera fase en segundos
+      arrivalRate: 10  # Tasa de llegada inicial de solicitudes por segundo
+      name: "Fase de carga ligera"
+    - duration: 60  # Duración de la primera fase en segundos
+      arrivalRate: 100  # Tasa de llegada inicial de solicitudes por segundo
+      name: "Fase de carga Media"  
+    - duration: 120  # Duración de la segunda fase en segundos
+      arrivalRate: 200  # Tasa de llegada durante la carga máxima
+      name: "Fase de carga grave"
+
+scenarios:
+  - flow:
+      - post:
+          url: "/api/AddTarifa"  # La ruta para la solicitud POST de registro de vehículos
+          json:
+            Nombre: "Tarifa Mensual Testing"
+            Precio: 2500
+            ValorDia: 100
+            Disponible: "SI"

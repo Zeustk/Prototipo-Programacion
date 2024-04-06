@@ -37,11 +37,6 @@ export class CargosComponent {
         
       });
 
-     
-      
-      
-
-
   }
 
   onCheckboxChange(event: any) {

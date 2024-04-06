@@ -15,7 +15,7 @@ module.exports = function (servicio) {
 
    router.post('/api/AddVehiculo', async (req, res) => {
 
-
+      
 
       try {
 
@@ -27,11 +27,10 @@ module.exports = function (servicio) {
             return res.status(400).json({ error: 'La URL de la imagen es requerida.' });
          }
 
-
+         
 
          const response = await axios.get(Url, { responseType: 'arraybuffer' });
          const imageData = Buffer.from(response.data, 'binary');
-
          const uniqueFileName = uuidv4();
          const imagePath = path.join(__dirname, '..', '..', 'front-end', 'src', 'assets', 'Imagenes', `${uniqueFileName}.png`);
 
