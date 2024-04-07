@@ -89,6 +89,24 @@ class ServicioTipoVehiculo {
 
     }
 
+    VerificarLongitudes(Nombre) {
+        const longitudNombre = Nombre.length;
+        let Estado = true;
+        let mensaje = '';
+    
+        if (longitudNombre > 20) {
+            Estado = false;
+            mensaje = "Error: El tipo de vehiculo no debe tener más de 20 caracteres.";
+        }
+    
+        const longitud = {
+            "EsCorrecta": Estado,
+            "Mensaje": mensaje
+        };
+    
+        return longitud;
+    }
+
 
 }
 

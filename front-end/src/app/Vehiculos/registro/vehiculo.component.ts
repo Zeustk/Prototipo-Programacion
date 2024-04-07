@@ -125,42 +125,26 @@ export class VehiculoComponent {
 
   async AgregarVehiculo() {
 
-    if (this.Vehiculo.Placa.trim() == '' ||
-      this.Vehiculo.Modelo.trim() == '' ||
-      this.Vehiculo.Id_Marca <= 0 ||
-      this.Vehiculo.Id_Tipovehiculo <= 0 ||
-      this.Vehiculo.Id_Tarifas <= 0 ||
-      this.Vehiculo.Year=='' ||
-      this.Vehiculo.Url=='assets/Imagenes/car-rent-10.png'
-    ) 
-    {
 
-      Swal.fire({
-        title: 'Oops!',
-        text: 'VERIFIQUE IMAGENES Y CAMPOS',
-        icon: 'error',
-        confirmButtonText: 'Aceptar'
-      });
-      return;
+   try{
 
-    }
-
-    console.log(this.Vehiculo.Url);
-
-    const VehiculoExistente = await this.VehiculoService.BuscarVehiculo(this.Vehiculo).toPromise();
-
-   if (VehiculoExistente) {
-    Swal.fire({
-      text: `Mensaje ${'VEHICULO YA REGISTRADO'}`,
-      confirmButtonText: 'Aceptar'
-    });
-  } else {
     const respuestaRegistro = await this.VehiculoService.RegistrarVehiculo(this.Vehiculo).toPromise();
     Swal.fire({
       text: `Mensaje ${respuestaRegistro}`,
       confirmButtonText: 'Aceptar'
     });
-  }
+   }catch(error){
+
+    const errorMessage = (error as any).error;
+    Swal.fire({
+      text: `Mensaje ${errorMessage}`,
+      confirmButtonText: 'Aceptar'
+    });
+    return;
+   }
+       
+    
+  
 
 
     this.reiniciarDatos();

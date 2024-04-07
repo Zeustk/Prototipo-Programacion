@@ -37,15 +37,6 @@ export class RegistroempleadosComponent {
   async AgregarEmpleado() {
 
 
-    if (this.Empleados.Correo.trim() == '' && this.Empleados.Clave.trim() == '') { 
-      Swal.fire({
-        title: 'Oops!',
-        text: 'Error al Registrar Datos',
-        icon: 'error',
-        confirmButtonText: 'Aceptar'
-      });
-      return;
-    }
     
     const clienteExistente = await this.ServicioEmpleado.BuscarEmpleado(this.Empleados).toPromise();
 

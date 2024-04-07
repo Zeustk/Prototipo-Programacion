@@ -131,7 +131,37 @@ class ServicioVehiculos {
 
 
 
+    VerificarLongitudes(Placa,Year){
 
+        const longitudPlaca=Placa.length;
+        const longitudYear=Year.length;
+        let Estado=true;
+        let mensaje='';
+
+        if ((longitudPlaca<7) || (longitudPlaca>7)){
+            Estado=false;
+            mensaje="Error: La placa debe tener exactamente 7 caracteres y seguir el formato 'XX-X999', donde 'X' es un dígito y '-' es un guión."
+
+        }
+
+        
+        if ((longitudYear<4) || (longitudYear>4)){
+            Estado=false;
+            mensaje="Error: El año debe tener exactamente 4 caracteres ,ejemplo: 1990";
+
+        }
+
+
+        const longitud = {
+            "EsCorrecta":Estado,
+            "Mensaje":mensaje,
+
+
+        }
+
+        return longitud;
+
+    }
 
 }
 

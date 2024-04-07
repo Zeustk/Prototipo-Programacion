@@ -29,25 +29,19 @@ export class TipoVehiculoComponent {
     this.ConsultarTipoVehiculo()
     console.log(this.TipoVehiculos)
 
-   if (this.TipoVehiculos.Nombre.trim()=='' && this.TipoVehiculos.Id==0){
-    Swal.fire({
-      title: 'Oops!',
-      text: 'Error al Registrar Datos',
-      icon: 'error',
-      confirmButtonText: 'Aceptar'
-    });
-    return;
-
-    
-   }
-   
- 
 
     this.ServicioTipoVehiculo.RegistrarTipoVehiculo(this.TipoVehiculos)
-    .subscribe(resp =>{
-     console.log(resp);
-     Swal.fire('Msj',resp);
+    .subscribe(resp => {
+        console.log(resp);
+        Swal.fire('Mensaje', resp);
+    }, error => {
+        const errorMessage = error.error;
+        Swal.fire({
+            text: `Mensaje ${errorMessage}`,
+            confirmButtonText: 'Aceptar'
+        });
     });
+   
 
     this.borradatos();
 

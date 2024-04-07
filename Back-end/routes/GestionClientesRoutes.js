@@ -9,7 +9,40 @@ module.exports = function (servicio) {
 
 
         try{
+
             const { Nombre_Completo, Cc, Fecha_Nacimiento, N_Licencia, Correo, Telefono,Contrasena } = req.body;
+
+       
+            if (Cc.trim()=='' || Contrasena.trim()=='' || Telefono.trim()=='' || N_Licencia.trim()==''){
+            
+                return res.status(400).json('VERIFIQUE CAMPOS');
+            }
+
+            const TieneLetra= servicio.ValidarFormato(Cc,Telefono,Telefono,N_Licencia);
+
+            if (!TieneLetra.EsCorrecta){
+            
+                return res.status(400).json(TieneLetra.Mensaje);
+            }
+
+          
+           
+            const validarLongitud=servicio.VerificarLongitudes(Cc,Correo,Contrasena,Telefono,N_Licencia);
+            console.log('hola');
+        
+            if (!validarLongitud.EsCorrecta){
+    
+                return res.status(400).json(validarLongitud.Mensaje);
+            }
+
+            const ExisteCliente= await servicio.BuscarCliente(Cc);
+
+            if (ExisteCliente){
+                return res.status(400).json('Ya Existe Este Cliente,Verifique');
+            }
+
+
+
 
             const Disponible = "SI";
     

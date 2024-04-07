@@ -106,6 +106,24 @@ class ServicioMarcas {
 
     }
 
+    VerificarLongitudes(Nombre) {
+        const longitudNombre = Nombre.length;
+        let Estado = true;
+        let mensaje = '';
+    
+        if (longitudNombre > 10) {
+            Estado = false;
+            mensaje = "Error: La marca no debe tener más de 10 caracteres.";
+        }
+    
+        const longitud = {
+            "EsCorrecta": Estado,
+            "Mensaje": mensaje
+        };
+    
+        return longitud;
+    }
+
 
 
 

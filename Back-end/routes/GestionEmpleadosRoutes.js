@@ -9,9 +9,14 @@ module.exports = function (servicio) {
 
 
       try {
-         console.log('hola');
+    
 
          const { Correo, Clave,Id_Cargo,Disponible } = req.body;
+
+         if (this.Empleados.Correo.trim() == '' || this.Empleados.Clave.trim() == '' || Id_Cargo<=0) { 
+            return res.status(400).json('VERIFIQUE CAMPOS');
+          }
+          
 
 
          console.log(Id_Cargo);

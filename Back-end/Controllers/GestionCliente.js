@@ -137,6 +137,97 @@ class ServicioCliente {
 
     }
 
+    VerificarLongitudes(Cedula,Correo,Contrasena,telefono,N_Licencia){
+
+        const longitudCedula=Cedula.length;
+        const longitudCorreo=Correo.length
+        const longitudContrasena=Contrasena.length;
+        const longitudtelefono=telefono.length;
+        const longitudN_licencia=N_Licencia.length;
+        let Estado=true;
+        let mensaje='';
+
+        if ((longitudCedula<5) || (longitudCedula>10)){
+            Estado=false;
+            mensaje="Error: La Cedula Debe estar entre 5 y 10 Caracteres"
+
+        }
+
+        
+        if (longitudCorreo>30){
+            Estado=false;
+            mensaje="Error: El correo debe tener solo longitud max 30";
+
+        }
+
+        if (longitudContrasena<4){
+            Estado=false;
+            mensaje="Error: La Contraseña debe ser mayor o igual a 4 caracteres";
+
+        }
+
+        if ((longitudtelefono<10) || (longitudtelefono>10)){
+            Estado=false;
+            mensaje="Error: el telefono debe tener exactamente 10 caracteres"
+
+        }
+
+        if ((longitudN_licencia<10) || (longitudN_licencia>12)){
+            Estado=false;
+            mensaje="Error: La licencia debe estar entre 10 y 12 caracteres"
+
+        }
+
+
+
+        const longitud = {
+            "EsCorrecta":Estado,
+            "Mensaje":mensaje,
+
+
+        }
+
+        return longitud;
+
+    }
+
+    ValidarFormato(Cedula,Telefono,N_Licencia){
+
+
+        const regex = /^\d+$/;
+        let Estado=true;
+        let mensaje='';
+
+        if (!regex.test(Cedula)){ //Si tiene letra
+            Estado=false;
+            mensaje="Error: Verifique La Cedula"
+
+        }
+
+        if (!regex.test(Telefono)){ //Si tiene letra
+            Estado=false;
+            mensaje="Error: Verifique El Telefono"
+
+        }
+
+        if (!regex.test(N_Licencia)){ //Si tiene letra
+            Estado=false;
+            mensaje="Error: Verifique La Licencia"
+
+        }
+
+        const formato = {
+            "EsCorrecta":Estado,
+            "Mensaje":mensaje,
+
+        }
+
+        console.log(formato.Estado);
+
+        return formato;
+
+    }
+
 
 }
 

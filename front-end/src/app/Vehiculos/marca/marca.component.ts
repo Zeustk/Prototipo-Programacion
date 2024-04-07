@@ -27,25 +27,16 @@ export class MarcaComponent {
 
   
 
-   if (this.Marca.Nombre.trim()==''){
-    Swal.fire({
-      title: 'Oops!',
-      text: 'Error al Registrar Datos',
-      icon: 'error',
-      confirmButtonText: 'Aceptar'
-    });
-    return;
-    
-   }
-   
     this.marcaService.RegistrarMarca(this.Marca)
-    .subscribe(resp =>{
-     console.log(resp);
-     Swal.fire({
-      title: '',
-      text: `Mensaje : ${resp}`,
-      confirmButtonText: 'Aceptar'
-    });
+    .subscribe(resp => {
+        console.log(resp);
+        Swal.fire('Mensaje', resp);
+    }, error => {
+        const errorMessage = error.error;
+        Swal.fire({
+            text: `Mensaje ${errorMessage}`,
+            confirmButtonText: 'Aceptar'
+        });
     });
 
     this.borrardatosmarca();

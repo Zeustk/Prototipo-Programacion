@@ -15,19 +15,39 @@ module.exports = function (servicio) {
 
    router.post('/api/AddVehiculo', async (req, res) => {
 
-      
+
 
       try {
 
          const { Placa, Id_Tipovehiculo, Modelo, Id_Marca, Id_Tarifas, Disponible, Year, Url } = req.body;
 
-         console.log(Url);
-
-         if (!Url) {
-            return res.status(400).json({ error: 'La URL de la imagen es requerida.' });
+         if (Placa.trim() == '' ||
+            Modelo.trim() == '' ||
+            Id_Marca <= 0 ||
+            Id_Tipovehiculo <= 0 ||
+            Id_Tarifas <= 0 ||
+            Year == '' ||
+            Url == 'assets/Imagenes/car-rent-10.png'
+         ) {
+          return res.status(400).json('VERIFIQUE IMAGENES Y CAMPOS');
          }
 
-         
+         if (Placa.trim() == ''){
+            return res.status(400).json('VERIFIQUE IMAGENES Y CAMPOS');
+         } 
+
+          const ExisteVehiculo= await servicio.BuscarVehiculo(Placa);
+
+          if (ExisteVehiculo){
+            return res.status(400).json('Ya Existe Este Vehiculo,Verifique');
+          }
+
+         const validarLongitud=servicio.VerificarLongitudes(Placa,Year);
+
+          if (!validarLongitud.EsCorrecta){
+            return res.status(400).json(validarLongitud.Mensaje);
+          }
+
 
          const response = await axios.get(Url, { responseType: 'arraybuffer' });
          const imageData = Buffer.from(response.data, 'binary');
@@ -44,7 +64,7 @@ module.exports = function (servicio) {
 
          console.log(relativePath);
 
-        
+
 
          const Answer = await servicio.addVehiculo(Placa, Id_Tipovehiculo, Modelo, Id_Marca, Id_Tarifas, Disponible, Year, relativePath);
 
@@ -68,9 +88,9 @@ module.exports = function (servicio) {
 
    router.put('/api/UpdateVehiculo', async (req, res) => {
 
-      const { Year, Modelo,Placa } = req.body
+      const { Year, Modelo, Placa } = req.body
 
-      const Answer = await servicio.UpdateVehiculo(Year, Modelo,Placa);
+      const Answer = await servicio.UpdateVehiculo(Year, Modelo, Placa);
 
 
       res.json(Answer);
@@ -88,13 +108,13 @@ module.exports = function (servicio) {
 
    router.post('/api/BuscarVehiculo', async (req, res) => {
 
-      const {Placa} = req.body
-      
+      const { Placa } = req.body
+
 
       const Answer = await servicio.BuscarVehiculo(Placa);
 
       res.json(Answer);
-     
+
    })
 
    return router;
