@@ -10,9 +10,17 @@ module.exports = function (servicio) {
 
       try {
 
-         const { Fecha_Emision,Fecha_Contrato,KmEmision,KmRecepcion,KmRecorridos,Placa_Vehiculo,Cc_Clientes,Id_Empleados,Valor_Inicial, Disponible,Cargos_Adicionales,Total,Fecha_Recepcion } = req.body;
+         const { Fecha_Emision, Fecha_Contrato, KmEmision, KmRecepcion, KmRecorridos, Placa_Vehiculo, Cc_Clientes, Id_Empleados, Valor_Inicial, Disponible, Cargos_Adicionales, Total, Fecha_Recepcion } = req.body;
 
-         const Answer = await servicio.addAlquiler(Fecha_Emision,Fecha_Contrato,KmEmision,KmRecepcion,KmRecorridos,Placa_Vehiculo,Cc_Clientes,Id_Empleados,Valor_Inicial, Disponible,Cargos_Adicionales,Total,Fecha_Recepcion)
+         const FechaContrato = new Date(Fecha_Contrato);
+         const FechaEmision = new Date(Fecha_Emision);
+
+         if (KmEmision == 0 || Id_Empleados == 0 || Cc_Clientes == '' || FechaContrato < FechaEmision || Placa_Vehiculo == '') {
+            return res.status(400).json('VERIFIQUE CAMPOS');
+         }
+
+
+         const Answer = await servicio.addAlquiler(Fecha_Emision, Fecha_Contrato, KmEmision, KmRecepcion, KmRecorridos, Placa_Vehiculo, Cc_Clientes, Id_Empleados, Valor_Inicial, Disponible, Cargos_Adicionales, Total, Fecha_Recepcion)
 
          console.log(Answer);
 
@@ -36,9 +44,9 @@ module.exports = function (servicio) {
 
    router.put('/api/UpdateAlquiler', async (req, res) => {
 
-      const { Id, Fecha_Recepcion,KmRecepcion } = req.body
+      const { Id, Fecha_Recepcion, KmRecepcion } = req.body
 
-      const Answer = await servicio.UpdateAlquiler(Id, Fecha_Recepcion,KmRecepcion);
+      const Answer = await servicio.UpdateAlquiler(Id, Fecha_Recepcion, KmRecepcion);
 
 
       res.json(Answer);

@@ -12,6 +12,16 @@ module.exports = function (servicio) {
 
          const { Nombre,Administracion,Disponible } = req.body;
 
+         if (Nombre.trim()==''){
+            return res.status(400).json('VERIFIQUE CAMPOS');
+          }
+
+          const validarLongitud = servicio.VerificarLongitudes(Nombre);
+
+         if (!validarLongitud.EsCorrecta) {
+            return res.status(400).json(validarLongitud.Mensaje);
+         }
+
          const Answer = await servicio.addCargo(Nombre,Administracion,Disponible)
 
          console.log(Answer);

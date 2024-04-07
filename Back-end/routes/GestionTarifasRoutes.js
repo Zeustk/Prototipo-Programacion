@@ -12,6 +12,11 @@ module.exports = function (servicio) {
 
          const { Nombre, Precio,ValorDia,Disponible } = req.body;
 
+         if (Nombre.trim()=='' || Precio==0 || ValorDia==0){
+           
+            return res.status(400).json('VERIFIQUE CAMPOS');
+         }
+
          const Answer = await servicio.addTarifa(Nombre,Precio,ValorDia, Disponible)
 
          console.log(Answer);

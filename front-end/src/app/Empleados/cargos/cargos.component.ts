@@ -24,18 +24,19 @@ export class CargosComponent {
 
   AgregarCargo() {
 
-    if (this.Cargo.Nombre.trim()==''){
-      Swal.fire('Oops!','El campo nombre se encuentra vacio','error')
-      return;
-    }
-
     this.CargoServicio.RegistrarCargo(this.Cargo)
-      .subscribe(resp => {
+    .subscribe(resp => {
         console.log(resp);
-        Swal.fire('MSJ',resp);
-        this.limpiarDatos();
-        
-      });
+        Swal.fire('Mensaje', resp);
+    }, error => {
+        const errorMessage = error.error;
+        Swal.fire({
+            text: `Mensaje ${errorMessage}`,
+            confirmButtonText: 'Aceptar'
+        });
+    });
+    this.limpiarDatos();
+
 
   }
 

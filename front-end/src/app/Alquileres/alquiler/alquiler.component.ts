@@ -49,28 +49,20 @@ export class AlquilerComponent {
 
    RegistrarAlquiler(){
         
-     const FechaContrato=new Date(this.Alquiler.Fecha_Contrato);
-     const FechaEmision= new Date(this.Alquiler.Fecha_Emision);
-
-    if (this.Alquiler.KmEmision==0 || this.Alquiler.Id_Empleados==0 || this.Alquiler.Cc_Clientes=='' || FechaContrato<FechaEmision || this.Alquiler.Placa_Vehiculo==''){
-      Swal.fire({
-        title: 'Oops!',
-        text: 'Error al Registrar Datos en Alquiler',
-        icon: 'error',
-        confirmButtonText: 'Aceptar'
-      });
-      return;
-     }
-    
+     
    
     this.AlquilerServicio.RegistrarAlquiler(this.Alquiler)
-      .subscribe(resp => {
+    .subscribe(resp => {
         console.log(resp);
+        Swal.fire('Mensaje', resp);
+    }, error => {
+        const errorMessage = error.error;
         Swal.fire({
-          text: `Mensaje ${resp}`,
-          confirmButtonText: 'Aceptar'
+            text: ` ${errorMessage}`,
+            confirmButtonText: 'Aceptar'
         });
-      });
+        return;
+    });
       this.limpiarAlquiler()
    }
 

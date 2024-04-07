@@ -9,18 +9,30 @@ module.exports = function (servicio) {
 
 
       try {
-    
 
-         const { Correo, Clave,Id_Cargo,Disponible } = req.body;
 
-         if (this.Empleados.Correo.trim() == '' || this.Empleados.Clave.trim() == '' || Id_Cargo<=0) { 
+         const { Correo, Clave, Id_Cargo, Disponible } = req.body;
+
+         if (Correo.trim() == '' || Clave.trim() == '' || Id_Cargo <= 0) {
             return res.status(400).json('VERIFIQUE CAMPOS');
-          }
-          
+         }
+
+         const clienteExistente = await servicio.BuscarEmpleado(Correo, Clave);
+
+         if (typeof clienteExistente === 'string' && (clienteExistente === 'EN' || clienteExistente === 'EA')) {
+            return res.status(400).json('EMPLEADO YA REGISTRADO');
+         }
+
+         const validarLongitud = servicio.VerificarLongitudes(Clave);
+
+         if (!validarLongitud.EsCorrecta) {
+            return res.status(400).json(validarLongitud.Mensaje);
+         }
+
 
 
          console.log(Id_Cargo);
-         const Answer = await servicio.addEmpleado(Correo, Clave,Id_Cargo,Disponible)
+         const Answer = await servicio.addEmpleado(Correo, Clave, Id_Cargo, Disponible)
 
          console.log(Answer);
 
@@ -44,9 +56,9 @@ module.exports = function (servicio) {
 
    router.put('/api/UpdateEmpleado', async (req, res) => {
 
-      const {Correo, Clave,Id} = req.body
+      const { Correo, Clave, Id } = req.body
 
-      const Answer = await servicio.UpdateEmpleado(Correo, Clave,Id);
+      const Answer = await servicio.UpdateEmpleado(Correo, Clave, Id);
 
 
       res.json(Answer);
@@ -64,12 +76,12 @@ module.exports = function (servicio) {
 
    router.post('/api/BuscarEmpleado', async (req, res) => {
 
-      const { Correo,Clave } = req.body
+      const { Correo, Clave } = req.body
 
       console.log(Correo);
       console.log(Clave);
 
-      const Answer = await servicio.BuscarEmpleado(Correo,Clave);
+      const Answer = await servicio.BuscarEmpleado(Correo, Clave);
 
       res.json(Answer);
    })

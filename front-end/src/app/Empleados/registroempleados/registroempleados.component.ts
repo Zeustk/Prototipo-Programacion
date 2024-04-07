@@ -38,18 +38,22 @@ export class RegistroempleadosComponent {
 
 
     
-    const clienteExistente = await this.ServicioEmpleado.BuscarEmpleado(this.Empleados).toPromise();
+    try{
 
-    if (typeof clienteExistente === 'string' && (clienteExistente=== 'EN' || clienteExistente === 'EA')) {
-     Swal.fire('Msj', 'EMPLEADO YA REGISTRADO');
-   } else {
-     const respuestaRegistro = await this.ServicioEmpleado.RegistrarEmpleado(this.Empleados).toPromise();
-     Swal.fire({
-      text: `Mensaje ${respuestaRegistro}`,
-      confirmButtonText: 'Aceptar'
-    });
-   }
-
+      const respuestaRegistro = await this.ServicioEmpleado.RegistrarEmpleado(this.Empleados).toPromise();
+      Swal.fire({
+        text: `Mensaje ${respuestaRegistro}`,
+        confirmButtonText: 'Aceptar'
+      });
+     }catch(error){
+  
+      const errorMessage = (error as any).error;
+      Swal.fire({
+        text: `Mensaje ${errorMessage}`,
+        confirmButtonText: 'Aceptar'
+      });
+      return;
+     }
     console.log(this.Empleados.Id_Cargo);
     
       this.limpiarEmpleado();

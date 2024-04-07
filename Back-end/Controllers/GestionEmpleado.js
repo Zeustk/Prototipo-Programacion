@@ -114,6 +114,25 @@ class ServicioEmpleados {
         }
     }
 
+    VerificarLongitudes(clave) {
+        const longitudClave = clave.length;
+        let Estado = true;
+        let mensaje = '';
+    
+        if (longitudClave < 4) {
+            Estado = false;
+            mensaje = "Error: La contraseña debe ser mayor o igual a 4 caracteres";
+        }
+    
+        const longitud = {
+            "EsCorrecta": Estado,
+            "Mensaje": mensaje
+        };
+    
+        return longitud;
+    }
+    
+
 }
 
 module.exports = ServicioEmpleados;

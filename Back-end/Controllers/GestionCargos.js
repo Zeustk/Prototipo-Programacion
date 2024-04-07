@@ -95,6 +95,24 @@ class ServicioCargos {
 
     }
 
+    VerificarLongitudes(cargo) {
+        const longitudCargo = cargo.length;
+        let Estado = true;
+        let mensaje = '';
+    
+        if (longitudCargo > 25) {
+            Estado = false;
+            mensaje = "Error: El Cargo no puede ser mayor a 25 caracteres";
+        }
+    
+        const longitud = {
+            "EsCorrecta": Estado,
+            "Mensaje": mensaje
+        };
+    
+        return longitud;
+    }
+
 
     
 

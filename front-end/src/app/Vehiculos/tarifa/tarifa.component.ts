@@ -30,24 +30,20 @@ export class TarifaComponent {
     this.ConsultarTarifas()
     console.log(this.Tarifa)
 
-   if (this.Tarifa.Nombre.trim()=='' || this.Tarifa.Precio==0){
-    Swal.fire({
-      title: 'Oops!',
-      text: 'Error al Registrar Datos',
-      icon: 'error',
-      confirmButtonText: 'Aceptar'
-    });
-    return;
-   }
+   
    
 
     this.ServicioTarifa.RegistrarTarifa(this.Tarifa)
-    .subscribe(resp =>{
-     console.log(resp);
-     Swal.fire({
-      text: `Mensaje ${resp}`,
-      confirmButtonText: 'Aceptar'
-    });
+    .subscribe(resp => {
+        console.log(resp);
+        Swal.fire('Mensaje', resp);
+    }, error => {
+        const errorMessage = error.error;
+        Swal.fire({
+            text: `${errorMessage}`,
+            confirmButtonText: 'Aceptar'
+        });
+        return;
     });
     this.limpiartarifas();
 
