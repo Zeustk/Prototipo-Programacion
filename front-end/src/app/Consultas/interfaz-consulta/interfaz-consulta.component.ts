@@ -139,6 +139,10 @@ export class InterfazConsultaComponent {
         return;
       case 'CA': this.CargarCargos(); this.mostrarCheckboxes = false;
         return;
+        /* Modificacion nueva para informes */
+      case 'IN': this.CargarCargos(); this.mostrarCheckboxes = false;
+        return;
+      
 
     }
 

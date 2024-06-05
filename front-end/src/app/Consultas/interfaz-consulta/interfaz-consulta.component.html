@@ -62,6 +62,11 @@
         id="mover8">
         Consultar Empleados
       </button>
+      <button *ngIf="TipoEmpleado === 'EA'" class="btn btn-primary" type="button" (click)="mostrarTablaConsulta('EM')"
+        id="mover9">
+        Informes
+      </button>
+      
 
       <br />
       <br />
@@ -87,7 +92,7 @@
               InfoDB === FilaSeleccionada ? 'red' : 'inherit'
             ">
             <td>
-              <input type="checkbox" [checked]="InfoDB === FilaSeleccionada" (change)="seleccionarFila(InfoDB)" />
+              <input type="checkbox" [checked]="InfoDB === FilaSeleccionada" (change)="seleccionarFila(InfoDB)" class="check" />
             </td>
 
             <td *ngFor="let columna of ColumnasOrden" contenteditable="true" (input)="AlmacenarFila($event, InfoDB)"
