@@ -99,7 +99,7 @@ class ServicioAlquiler {
 
     }
 
-    async UpdateAlquiler(Id, Fecha_Recepcion, KmRecepcion) {
+    async UpdateAlquiler(Id, Fecha_Recepcion, KmRecepcion,Pago_Inicial) {
 
         try {
            
@@ -120,7 +120,7 @@ class ServicioAlquiler {
             if (KmRecepcion==null){
 
                 
-            const sql = "UPDATE Alquiler SET Fecha_Recepcion = :fecha WHERE Id = :Id";
+            const sql = "UPDATE Alquiler SET Fecha_Recepcion = :fecha WHERE Id = :Id and Pago_Inicial=:Pago_Inicial" ;
 
             await this.DB.Open(sql, [fecha, Id], true);
 
@@ -131,7 +131,7 @@ class ServicioAlquiler {
 
                 const sql = "UPDATE Alquiler SET Fecha_Recepcion = :fecha,KmRecepcion=:KmRecepcion WHERE Id = :Id";
 
-                await this.DB.Open(sql, [fecha, KmRecepcion,Id], true);
+                await this.DB.Open(sql, [fecha, KmRecepcion,Id,Pago_Inicial], true);
             }
             return 'Actualizado Correctamente';
         } catch (err) {
