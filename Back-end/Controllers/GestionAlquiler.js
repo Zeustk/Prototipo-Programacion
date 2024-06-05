@@ -44,7 +44,7 @@ class ServicioAlquiler {
             
 
            
-            const sql = "insert into Alquiler(Fecha_Emision,Fecha_Contrato,ID,KmEmision,KmRecepcion,KmRecorridos,Cargos_Adicionales,Total,Placa_Vehiculos,CC_CLIENTES,ID_EMPLEADOS,Valor_Inicial,Disponible,Fecha_Recepcion) values (:fechaEmision,:fechacontrato,SEQ_ALQUILER.NEXTVAL,:KmEmision,:KmRecepcion,:KmRecorridos,:Cargos_Adicionales,:Total,:Placa_Vehiculo,:Cc_Clientes,:id_empleado,:valorinicial,:Disponible,:Fecha_Recepcion,Pago_Inicial)";
+            const sql = "insert into Alquiler(Fecha_Emision,Fecha_Contrato,ID,KmEmision,KmRecepcion,KmRecorridos,Cargos_Adicionales,Total,Placa_Vehiculos,CC_CLIENTES,ID_EMPLEADOS,Valor_Inicial,Disponible,Fecha_Recepcion,Pago_Inicial) values (:fechaEmision,:fechacontrato,SEQ_ALQUILER.NEXTVAL,:KmEmision,:KmRecepcion,:KmRecorridos,:Cargos_Adicionales,:Total,:Placa_Vehiculo,:Cc_Clientes,:id_empleado,:valorinicial,:Disponible,:Fecha_Recepcion,:Pago_Inicial)";
 
             await this.DB.Open(sql, [fechaEmision, fechacontrato,KmEmision,KmRecepcion,KmRecorridos,Cargos_Adicionales,Total,Placa_Vehiculo,Cc_Clientes,id_empleado,valorinicial,Disponible,Fecha_Recepcion,Pago_Inicial], true);
 
@@ -63,7 +63,7 @@ class ServicioAlquiler {
         try {
 
             const sql = "select * from Alquiler where Disponible='SI'";
-
+            const q= 'nose';
             let result = await this.DB.Open(sql, [], false);
             const Alquiler = [];
 
@@ -122,14 +122,14 @@ class ServicioAlquiler {
                 
             const sql = "UPDATE Alquiler SET Fecha_Recepcion = :fecha WHERE Id = :Id and Pago_Inicial=:Pago_Inicial" ;
 
-            await this.DB.Open(sql, [fecha, Id], true);
+            await this.DB.Open(sql, [fecha, Id,Pago_Inicial], true);
 
             }
             else{
 
                 KmRecepcion=parseInt(KmRecepcion);
 
-                const sql = "UPDATE Alquiler SET Fecha_Recepcion = :fecha,KmRecepcion=:KmRecepcion WHERE Id = :Id";
+                const sql = "UPDATE Alquiler SET Fecha_Recepcion = :fecha,KmRecepcion=:KmRecepcion WHERE Id = :Id and Pago_Inicial=:Pago_Inicial";
 
                 await this.DB.Open(sql, [fecha, KmRecepcion,Id,Pago_Inicial], true);
             }

@@ -33,6 +33,8 @@ export class AlquilerComponent {
     Disponible: 'SI',
     Fecha_Recepcion:null,
     Pago_Inicial:0,
+    Fecha_Recepcion:null,
+    Pago_Inicial:0
   }
 
   @Input() BuscarPorCedula:string='';
