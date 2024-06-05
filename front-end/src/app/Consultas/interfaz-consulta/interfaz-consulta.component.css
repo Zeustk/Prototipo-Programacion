@@ -1,6 +1,6 @@
 #mover1{
    position: absolute;
-   top: 200px;
+   top: 220px;
    width: 12%;
    left: 35px;
     
@@ -8,48 +8,48 @@
 
  #mover2{
    position: absolute;
-   top: 200px;
+   top: 220px;
    width: 13%;
    left: 235px;
  }
 
  #mover3{
    position: absolute;
-   top: 200px;
+   top: 220px;
    width: 10%;
    left: 452px;
  }
  #mover4{
    position: absolute;
-   top: 200px;
+   top: 220px;
    width: 10%;
    left: 620px;
  }
 
  #mover5{
    position: absolute;
-   top: 200px;
+   top: 220px;
    width: 9%;
    left: 790px;
  }
 
  #mover6{
    position: absolute;
-   top: 200px;
+   top: 220px;
    width: 9%;
    left: 943px;
  }
 
  #mover7{
    position: absolute;
-   top: 200px;
+   top: 220px;
    width: 10%;
    left: 1098px;
  }
 
  #mover8{
    position: absolute;
-   top: 200px;
+   top: 220px;
    width: 12%;
    left: 1271px;
    
@@ -57,7 +57,7 @@
 
  #mover9{
   position: absolute;
-  top: 200px;
+  top: 220px;
   width: 11%;
   left: 1441px;
   
@@ -109,4 +109,14 @@ table.table-striped tbody tr.selected {
 .table-striped tbody tr:hover {
   background-color: #f5f5f5; /* Cambia el color de fondo al pasar el ratón sobre una fila */
 }
+
+.check{
+  
+  text-decoration: solid;
+  padding-left: 10px;
+  border-radius: 100px;
+  border: blue;
+  
+}
+
 

@@ -66,7 +66,21 @@ export class InterfazConsultaComponent {
       console.log(this.FilaSeleccionada);
     }
   }
-
+  /* Checbox*/
+  options = [
+    { value: 'En curso', selected: false },
+    { value: 'Completados', selected: false },
+    { value: 'Todos', selected: false }
+  ];
+   
+  handleChange(selectedOption: any) {
+    this.options.forEach(option => {
+      if (option !== selectedOption) {
+        option.selected = false;
+      }
+    });
+  }
+  
 
 //VALIDAR USUARIO ADMINISTRADOR O NORMAL
 TipoEmpleado:string='';
@@ -97,6 +111,7 @@ TipoEmpleado:string='';
 
     this.mostrarTabla = true;
     this.mostrarBoton = true;
+   
 
     switch (boton) {
       case 'M': this.CargarMarcas();
