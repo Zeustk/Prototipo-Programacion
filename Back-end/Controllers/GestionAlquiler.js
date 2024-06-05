@@ -5,7 +5,7 @@ class ServicioAlquiler {
     }
 
 
-    async addAlquiler(Fecha_Emision,Fecha_Contrato,KmEmision,KmRecepcion,KmRecorridos,Placa_Vehiculo,Cc_Clientes,Id_Empleados,Valor_Inicial, Disponible,Cargos_Adicionales,Total,Fecha_Recepcion) {
+    async addAlquiler(Fecha_Emision,Fecha_Contrato,KmEmision,KmRecepcion,KmRecorridos,Placa_Vehiculo,Cc_Clientes,Id_Empleados,Valor_Inicial, Disponible,Cargos_Adicionales,Total,Fecha_Recepcion,Pago_Inicial) {
         try {
             //conversiones
 
@@ -44,9 +44,9 @@ class ServicioAlquiler {
             
 
            
-            const sql = "insert into Alquiler(Fecha_Emision,Fecha_Contrato,ID,KmEmision,KmRecepcion,KmRecorridos,Cargos_Adicionales,Total,Placa_Vehiculos,CC_CLIENTES,ID_EMPLEADOS,Valor_Inicial,Disponible,Fecha_Recepcion) values (:fechaEmision,:fechacontrato,SEQ_ALQUILER.NEXTVAL,:KmEmision,:KmRecepcion,:KmRecorridos,:Cargos_Adicionales,:Total,:Placa_Vehiculo,:Cc_Clientes,:id_empleado,:valorinicial,:Disponible,:Fecha_Recepcion)";
+            const sql = "insert into Alquiler(Fecha_Emision,Fecha_Contrato,ID,KmEmision,KmRecepcion,KmRecorridos,Cargos_Adicionales,Total,Placa_Vehiculos,CC_CLIENTES,ID_EMPLEADOS,Valor_Inicial,Disponible,Fecha_Recepcion) values (:fechaEmision,:fechacontrato,SEQ_ALQUILER.NEXTVAL,:KmEmision,:KmRecepcion,:KmRecorridos,:Cargos_Adicionales,:Total,:Placa_Vehiculo,:Cc_Clientes,:id_empleado,:valorinicial,:Disponible,:Fecha_Recepcion,Pago_Inicial)";
 
-            await this.DB.Open(sql, [fechaEmision, fechacontrato,KmEmision,KmRecepcion,KmRecorridos,Cargos_Adicionales,Total,Placa_Vehiculo,Cc_Clientes,id_empleado,valorinicial,Disponible,Fecha_Recepcion], true);
+            await this.DB.Open(sql, [fechaEmision, fechacontrato,KmEmision,KmRecepcion,KmRecorridos,Cargos_Adicionales,Total,Placa_Vehiculo,Cc_Clientes,id_empleado,valorinicial,Disponible,Fecha_Recepcion,Pago_Inicial], true);
 
             return ('Guardado Exitosamente')
         }
@@ -82,7 +82,8 @@ class ServicioAlquiler {
                     "Id_Empleados":propiedad[10],
                     "Valor_Inicial":propiedad[11],
                     "Disponible":propiedad[12],
-                    "Fecha_Recepcion":propiedad[13]
+                    "Fecha_Recepcion":propiedad[13],
+                    "Pago_Inicial" :propiedad[14]
                 }
 
                 Alquiler.push(AlquilerSchema);
