@@ -39,10 +39,17 @@ export class InicioSesionEmpComponent {
     
     this.EmpleadoService.BuscarEmpleado(this.Empleados)
     .subscribe(resp => {
+
+
+      console.log(typeof(resp));
       
 
-      if (typeof resp === 'string' && (resp === 'EN' || resp === 'EA')) {
+      if  (resp && (resp.Administracion === 'EN' || resp.Administracion === 'EA')) {
         console.log(resp);
+
+          // Guardar el JSON en localStorage
+        localStorage.setItem('empleado', JSON.stringify(resp));
+
         this.cambiarVisibilidadComponenteEmpleado.emit(false);
         this.EmpleadoService.setEmpleado(this.Empleados);
         console.log(this.EmpleadoService.Empleado);

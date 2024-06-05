@@ -99,12 +99,24 @@ class ServicioEmpleados {
         try {
             console.log(Correo);
             console.log(Clave);
-            const sql = "SELECT t.Administracion FROM Empleados e JOIN Cargos t ON e.ID_Cargo = t.ID_Cargo where UPPER(CORREO)=UPPER(:Correo) AND CLAVE=:Clave";
+            const sql = "SELECT t.Administracion,e.Correo,e.Clave,e.Id FROM Empleados e JOIN Cargos t ON e.ID_Cargo = t.ID_Cargo where UPPER(CORREO)=UPPER(:Correo) AND CLAVE=:Clave";
             let consulta = await this.DB.Open(sql, [Correo, Clave], false);
     
             if (consulta && consulta.rows.length > 0) {
                 const administracion = consulta.rows[0][0]; // Acceder al valor específico
-                return administracion;
+                const correo = consulta.rows[0][1];
+                const clave = consulta.rows[0][2];
+                const id = consulta.rows[0][3];
+    
+                // Construir el objeto JSON
+                const resultado = {
+                    "Administracion": administracion,
+                    "Correo": correo,
+                    "clave": clave,
+                    "Id":id,
+                };
+    
+                return resultado; // Retornar el objeto JSON
             } else {
                 return null;
             }

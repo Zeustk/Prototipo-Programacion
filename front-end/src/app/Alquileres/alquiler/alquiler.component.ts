@@ -17,6 +17,8 @@ export class AlquilerComponent {
   constructor(private AlquieresVehiculo:RegistroService, private Clientecedula:ClienteService,private AlquilerServicio:AlquilerService,private datePipe: DatePipe){}
    
 
+   empleadoStorage = JSON.parse(localStorage.getItem('empleado')!);
+
   @Input() Alquiler: Alquileres = {
     Fecha_Emision:new Date(),
     Fecha_Contrato:new Date(),
@@ -27,7 +29,7 @@ export class AlquilerComponent {
     Cargos_Adicionales:null,
     Placa_Vehiculo: '',
     Cc_Clientes: '',
-    Id_Empleados:0,
+    Id_Empleados:this.empleadoStorage.Id,
     Total:null,
     Valor_Inicial: 0,
     Disponible: 'SI',
