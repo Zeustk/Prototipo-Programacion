@@ -42,16 +42,16 @@ export class InterfazConsultaComponent {
   CargosEstaCargado: boolean = false;
   ResevasEstaCargado: boolean = false;
 
-  PlaceHolderPorTipo:string=''; //Para mostrar el placeholder por tipo de vehiculo, vehiculo, etc
- @Input() BuscarPorTipo:string='';
-  
+  PlaceHolderPorTipo: string = ''; //Para mostrar el placeholder por tipo de vehiculo, vehiculo, etc
+  @Input() BuscarPorTipo: string = '';
+
   InfoTabla: any[] = [];
 
 
   ColumnasOrden: string[] = []
   columnasFecha: string[] = [] //SIRVE PARA DECIR QUE COLUMNAS SON DE FECHA PARA EL FORMATO
   FilaSeleccionada: any | null = null; //Para saber que fila se selecciono
-// Asegúrate de inicializar FilasEditadas como un objeto vacío
+  // Asegúrate de inicializar FilasEditadas como un objeto vacío
   FilasEditadas: { [key: string]: any } = {};
 
 
@@ -82,26 +82,26 @@ export class InterfazConsultaComponent {
   }
   
 
-//VALIDAR USUARIO ADMINISTRADOR O NORMAL
-TipoEmpleado:string='';
+  //VALIDAR USUARIO ADMINISTRADOR O NORMAL
+  TipoEmpleado: string = '';
 
   ngOnInit() {
     this.verificarTipoUsuario();
   }
-  
+
 
   verificarTipoUsuario() {
     this.Empleado.BuscarEmpleado(this.Empleado.Empleado)
       .subscribe(resp => {
         console.log(resp);
-  
+
         if (resp === 'EA') {
           console.log('El usuario es Administrador');
           this.TipoEmpleado = 'EA';
         } else if (resp === 'EN') {
           console.log('El usuario es Empleado Normal');
           this.TipoEmpleado = 'EN';
-        } 
+        }
         // Puedes realizar más acciones o asignaciones aquí según tu lógica
       });
   }
@@ -116,19 +116,19 @@ TipoEmpleado:string='';
     switch (boton) {
       case 'M': this.CargarMarcas();
         return;
-      case 'T': this.CargarTipoVehiculo(); 
+      case 'T': this.CargarTipoVehiculo();
         return;
-      case 'TA': this.CargarTarifas(); 
+      case 'TA': this.CargarTarifas();
         return;
-      case 'GK': this.CargarVehiculos(); 
+      case 'GK': this.CargarVehiculos();
         return;
-      case 'EM': this.CargarEmpleado(); 
+      case 'EM': this.CargarEmpleado();
         return;
-      case 'DD': this.CargarResevas(); 
+      case 'DD': this.CargarResevas();
         return;
-      case 'GG': this.CargarAlquiler(); 
+      case 'GG': this.CargarAlquiler();
         return;
-      case 'C': this.CargarCliente(); 
+      case 'C': this.CargarCliente();
         return;
       case 'CA': this.CargarCargos();
         return;
@@ -179,18 +179,18 @@ TipoEmpleado:string='';
 
         if (ListMarcas != null) {
 
-          this.PlaceHolderPorTipo='Marca';
-          
-          if (this.BuscarPorTipo==''){
+          this.PlaceHolderPorTipo = 'Marca';
+
+          if (this.BuscarPorTipo == '') {
             this.InfoTabla = ListMarcas;
           }
-          else{
-            this.InfoTabla=ListMarcas.filter(item => item.Nombre.toLocaleUpperCase().startsWith(this.BuscarPorTipo.toLocaleUpperCase()));
+          else {
+            this.InfoTabla = ListMarcas.filter(item => item.Nombre.toLocaleUpperCase().startsWith(this.BuscarPorTipo.toLocaleUpperCase()));
           }
 
           console.log('Resultado de la consulta de marcas:', ListMarcas);
 
-          
+
           this.MarcaEstaCargado = true;
           this.TipoVehiculoEstaCargado = false;
           this.VehiculosEstaCargado = false;
@@ -220,13 +220,13 @@ TipoEmpleado:string='';
 
         if (ListTipoVehiculo != null) {
 
-          this.PlaceHolderPorTipo='Tipo';
+          this.PlaceHolderPorTipo = 'Tipo';
 
-          if (this.BuscarPorTipo==''){
+          if (this.BuscarPorTipo == '') {
             this.InfoTabla = ListTipoVehiculo;
           }
-          else{
-            this.InfoTabla=ListTipoVehiculo.filter(item => item.Nombre.toLocaleUpperCase().startsWith(this.BuscarPorTipo.toLocaleUpperCase()));
+          else {
+            this.InfoTabla = ListTipoVehiculo.filter(item => item.Nombre.toLocaleUpperCase().startsWith(this.BuscarPorTipo.toLocaleUpperCase()));
           }
 
           console.log('Resultado de la consulta de TipoVehiculo:', ListTipoVehiculo);
@@ -273,15 +273,15 @@ TipoEmpleado:string='';
 
         if (listVehiculo != null) {
 
-          this.PlaceHolderPorTipo='Placa';
+          this.PlaceHolderPorTipo = 'Placa';
 
           console.log('Resultado de la consulta de Vehiculo:', listVehiculo);
 
-          if (this.BuscarPorTipo==''){
+          if (this.BuscarPorTipo == '') {
             this.InfoTabla = listVehiculo;
           }
-          else{
-            this.InfoTabla=listVehiculo.filter(item => item.Placa.toLocaleUpperCase().startsWith(this.BuscarPorTipo.toLocaleUpperCase()));
+          else {
+            this.InfoTabla = listVehiculo.filter(item => item.Placa.toLocaleUpperCase().startsWith(this.BuscarPorTipo.toLocaleUpperCase()));
           }
 
           console.log(this.InfoTabla);
@@ -327,15 +327,15 @@ TipoEmpleado:string='';
 
         if (ListTarifa != null) {
 
-          this.PlaceHolderPorTipo='Tarifa';
+          this.PlaceHolderPorTipo = 'Tarifa';
 
           console.log('Resultado de la consulta de Tarifa:', ListTarifa);
 
-          if (this.BuscarPorTipo==''){
+          if (this.BuscarPorTipo == '') {
             this.InfoTabla = ListTarifa;
           }
-          else{
-            this.InfoTabla=ListTarifa.filter(item => item.Nombre.toLocaleUpperCase().startsWith(this.BuscarPorTipo.toLocaleUpperCase()));
+          else {
+            this.InfoTabla = ListTarifa.filter(item => item.Nombre.toLocaleUpperCase().startsWith(this.BuscarPorTipo.toLocaleUpperCase()));
           }
 
           this.MarcaEstaCargado = false;
@@ -372,15 +372,15 @@ TipoEmpleado:string='';
 
         if (ListEmpleado != null) {
 
-          this.PlaceHolderPorTipo='Correo';
+          this.PlaceHolderPorTipo = 'Correo';
 
           console.log('Resultado de la consulta de Empleados:', ListEmpleado);
 
-          if (this.BuscarPorTipo==''){
+          if (this.BuscarPorTipo == '') {
             this.InfoTabla = ListEmpleado;
           }
-          else{
-            this.InfoTabla=ListEmpleado.filter(item => item.Correo.toLocaleUpperCase().startsWith(this.BuscarPorTipo.toLocaleUpperCase()));
+          else {
+            this.InfoTabla = ListEmpleado.filter(item => item.Correo.toLocaleUpperCase().startsWith(this.BuscarPorTipo.toLocaleUpperCase()));
           }
 
           this.MarcaEstaCargado = false;
@@ -400,7 +400,7 @@ TipoEmpleado:string='';
           'Clave',
           'Id',
           'Id_Cargo'
-          
+
         ]
 
 
@@ -421,7 +421,7 @@ TipoEmpleado:string='';
 
           console.log('Resultado de la consulta de reservas:', ListReserva);
 
-          
+
           this.MarcaEstaCargado = false;
           this.TipoVehiculoEstaCargado = false;
           this.VehiculosEstaCargado = false;
@@ -445,19 +445,40 @@ TipoEmpleado:string='';
     this.Alquiler.ConsultarAlquileres().subscribe(
       (ListAlquiler: Alquileres[] | null) => {
 
+
+
         if (ListAlquiler != null) {
 
-          this.PlaceHolderPorTipo='Cedula';
+          this.PlaceHolderPorTipo = 'Cedula';
 
           console.log('Resultado de la consulta de alquileres:', ListAlquiler);
 
 
+          let ListaEnCurso: Alquileres[] = [];
+
+          for (var alquiler of ListAlquiler) {
+
+            if (alquiler.Fecha_Recepcion != null) {
+              ListaEnCurso.push(alquiler);
+            };
+          };
+
+
+          console.log('Completados',ListaEnCurso);
+
+
+        
+          
+
+
+
+
           //Cargar Datos y saber si Alquiler es el que está cargado
-          if (this.BuscarPorTipo==''){
+          if (this.BuscarPorTipo == '') {
             this.InfoTabla = ListAlquiler;
           }
-          else{
-            this.InfoTabla=ListAlquiler.filter(item => item.Cc_Clientes.toLocaleUpperCase().startsWith(this.BuscarPorTipo.toLocaleUpperCase()));
+          else {
+            this.InfoTabla = ListAlquiler.filter(item => item.Cc_Clientes.toLocaleUpperCase().startsWith(this.BuscarPorTipo.toLocaleUpperCase()));
           }
 
           this.MarcaEstaCargado = false;
@@ -488,7 +509,7 @@ TipoEmpleado:string='';
             'Valor_Inicial',
             'Cargos_Adicionales',
             'Total'
-      
+
           ]
 
 
@@ -508,15 +529,15 @@ TipoEmpleado:string='';
       (ListCliente: Clientes[] | null) => {
 
         if (ListCliente != null) {
-          this.PlaceHolderPorTipo='Cedula';
+          this.PlaceHolderPorTipo = 'Cedula';
 
           console.log('Resultado de la consulta de Clientes:', ListCliente);
 
-          if (this.BuscarPorTipo==''){
+          if (this.BuscarPorTipo == '') {
             this.InfoTabla = ListCliente;
           }
-          else{
-            this.InfoTabla=ListCliente.filter(item => item.Cc.toLocaleUpperCase().startsWith(this.BuscarPorTipo.toLocaleUpperCase()));
+          else {
+            this.InfoTabla = ListCliente.filter(item => item.Cc.toLocaleUpperCase().startsWith(this.BuscarPorTipo.toLocaleUpperCase()));
           }
 
           this.MarcaEstaCargado = false;
@@ -540,7 +561,7 @@ TipoEmpleado:string='';
             'Telefono',
             'Correo',
             'Contrasena'
-            
+
 
 
           ]
@@ -564,15 +585,15 @@ TipoEmpleado:string='';
 
         if (ListCargos != null) {
 
-          this.PlaceHolderPorTipo='Cargo';
+          this.PlaceHolderPorTipo = 'Cargo';
 
           console.log('Resultado de la consulta de Cargos:', ListCargos);
 
-          if (this.BuscarPorTipo==''){
+          if (this.BuscarPorTipo == '') {
             this.InfoTabla = ListCargos;
           }
-          else{
-            this.InfoTabla=ListCargos.filter(item => item.Nombre.toLocaleUpperCase().startsWith(this.BuscarPorTipo.toLocaleUpperCase()));
+          else {
+            this.InfoTabla = ListCargos.filter(item => item.Nombre.toLocaleUpperCase().startsWith(this.BuscarPorTipo.toLocaleUpperCase()));
           }
 
           this.MarcaEstaCargado = false;
@@ -582,14 +603,14 @@ TipoEmpleado:string='';
           this.EmpleadosEstaCargado = false;
           this.AlquilerEstaCargado == false;
           this.CargosEstaCargado = true;
-          this.ClienteEstaCargado=false;
+          this.ClienteEstaCargado = false;
 
 
           this.ColumnasOrden = [
             'Id_Cargo',
             'Nombre',
             'Administracion'
-            
+
           ]
         }
 
@@ -610,8 +631,8 @@ TipoEmpleado:string='';
     // Almacena todas las celdas editadas en una única fila editada
     this.FilasEditadas[InfoDB] = { ...InfoDB, ...this.FilasEditadas[InfoDB], [event.target.getAttribute('data-columna')]: event.target.innerText };
   }
-  
-  
+
+
 
 
 
@@ -627,7 +648,7 @@ TipoEmpleado:string='';
           // Ahora puedes usar filaEditada según tus necesidades, por ejemplo, enviarla al servidor
         }
       }
-    
+
 
       if (this.VehiculosEstaCargado) {
         this.ActualizarVehiculo();
@@ -659,13 +680,13 @@ TipoEmpleado:string='';
       }
 
       if (this.ClienteEstaCargado) {
-       
+
         this.ActualizarClientes();
       }
 
 
       this.FilasEditadas = {}; //SIRVE PARA BUSCAR LA FILA EDITADA
-      this.FilasEditadas={};
+      this.FilasEditadas = {};
 
     }
     else {
@@ -715,14 +736,14 @@ TipoEmpleado:string='';
 
       const FechaEmision: Date = new Date(Alquiler.Fecha_Emision);
       const FechaRecepcion: Date = new Date(Alquiler.Fecha_Recepcion);
-      
+
 
       if (FechaRecepcion < FechaEmision) {
         Swal.fire('ERROR DE FECHA', 'LA FECHA DE RECEPCION DEBEN SER MAYOR O IGUAL A LA FECHA DE EMISION', 'error');
         return;
       }
 
-      
+
     }
 
 
@@ -748,7 +769,7 @@ TipoEmpleado:string='';
 
   ActualizarTipovehiculo() {
 
-   
+
     const TipoVehiculo: TipoVehiculo = this.FilaEditada;
     console.log(TipoVehiculo);
 
@@ -761,7 +782,7 @@ TipoEmpleado:string='';
 
   ActualizarTarifa() {
     const Tarifas: Tarifas = this.FilaEditada;
-    
+
 
     this.TarifaService.ActualizarTarifa(Tarifas)
       .subscribe(resp => {
@@ -804,8 +825,8 @@ TipoEmpleado:string='';
 
   ActualizarCargos() {
     const Cargos: Cargos = this.FilaEditada;
-     console.log(this.FilaEditada);
-     console.log(Cargos.Id_Cargo);
+    console.log(this.FilaEditada);
+    console.log(Cargos.Id_Cargo);
     this.CargoService.ActualizarCargos(Cargos)
       .subscribe(resp => {
         console.log(resp);
@@ -827,53 +848,53 @@ TipoEmpleado:string='';
         return;
       }
 
-      if (this.MarcaEstaCargado){
-         this.EliminarMarca();
-         return;
+      if (this.MarcaEstaCargado) {
+        this.EliminarMarca();
+        return;
       }
 
-        if (this.TarifasEstaCargado){
-          this.EliminarTarifa();
-          return;
-       }
+      if (this.TarifasEstaCargado) {
+        this.EliminarTarifa();
+        return;
+      }
 
-       if (this.VehiculosEstaCargado){
+      if (this.VehiculosEstaCargado) {
         this.EliminarVehiculo();
         return;
-       }
-        
-       if (this.EmpleadosEstaCargado){
+      }
+
+      if (this.EmpleadosEstaCargado) {
         this.EliminarEmpleado();
         return;
-       }
+      }
 
-       if (this.ResevasEstaCargado){
+      if (this.ResevasEstaCargado) {
         this.EliminarReservas();
         return;
-       }
+      }
 
-       if (this.AlquilerEstaCargado){
+      if (this.AlquilerEstaCargado) {
         this.EliminarAlquiler();
         return;
-       }
+      }
 
-       if (this.ClienteEstaCargado){
+      if (this.ClienteEstaCargado) {
         this.EliminarCliente();
         return;
-       }
+      }
 
-       if (this.CargosEstaCargado){
+      if (this.CargosEstaCargado) {
         this.EliminarCargos();
         return;
-       }
-     
+      }
+
 
 
     }
 
 
   }
- 
+
   EliminarMarca() {
 
     const Marcas: Marcas = this.FilaSeleccionada;
@@ -888,7 +909,7 @@ TipoEmpleado:string='';
 
   EliminarTipoVehiculo() {
 
-    
+
 
     const TipoVehiculo: TipoVehiculo = this.FilaSeleccionada;
 
@@ -987,49 +1008,49 @@ TipoEmpleado:string='';
 
   //BUSCAR POR TIPO
 
-  
+
   BuscandoPorTipo() {
 
-    if (this.MarcaEstaCargado){
+    if (this.MarcaEstaCargado) {
       this.mostrarTablaConsulta('M');
       return;
     }
 
-    if (this.TipoVehiculoEstaCargado){
+    if (this.TipoVehiculoEstaCargado) {
       this.mostrarTablaConsulta('T');
       return;
     }
 
-    if (this.TarifasEstaCargado){
+    if (this.TarifasEstaCargado) {
       this.mostrarTablaConsulta('TA');
       return;
     }
 
-    if (this.VehiculosEstaCargado){
+    if (this.VehiculosEstaCargado) {
       this.mostrarTablaConsulta('GK');
       return;
     }
 
-    if (this.EmpleadosEstaCargado){
+    if (this.EmpleadosEstaCargado) {
       this.mostrarTablaConsulta('EM');
     }
 
-    if (this.AlquilerEstaCargado){
+    if (this.AlquilerEstaCargado) {
       this.mostrarTablaConsulta('GG');
       return;
     }
 
-    if (this.ClienteEstaCargado){
+    if (this.ClienteEstaCargado) {
       this.mostrarTablaConsulta('C');
       return;
     }
 
-    if (this.CargosEstaCargado){
+    if (this.CargosEstaCargado) {
       this.mostrarTablaConsulta('CA');
       return;
     }
 
-   
+
   }
 
 
@@ -1054,7 +1075,7 @@ TipoEmpleado:string='';
     Cc_Clientes: 'Cedula',
     Id_Empleados: 'Id Empleado',
     Valor_Inicial: 'Valor Base',
-  
+
     Fecha_Recepcion: 'Fecha De Recepcion',
     //Clientes
 
@@ -1068,7 +1089,7 @@ TipoEmpleado:string='';
 
     //Tipo-Vehiuclo
     Nombre: 'Nombre',
-   
+
 
     //VEHICULOS
 
@@ -1077,20 +1098,20 @@ TipoEmpleado:string='';
     Modelo: 'Modelo',
     Id_Marca: 'Id',
     Id_Tarifas: 'Tarifa',
-    Year:'Año',
+    Year: 'Año',
 
-   //Cargos
-    Id_Cargo:'Id Cargo',
-    Administracion:'Administra',
-    
+    //Cargos
+    Id_Cargo: 'Id Cargo',
+    Administracion: 'Administra',
+
 
     //Tarifas
-    Precio:'Precio',
-    ValorDia:'ValorDia',
+    Precio: 'Precio',
+    ValorDia: 'ValorDia',
 
 
     //Empleados
-    Clave:'Clave'
+    Clave: 'Clave'
 
 
 
