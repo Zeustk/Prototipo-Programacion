@@ -51,7 +51,7 @@
    position: absolute;
    top: 220px;
    width: 12%;
-   left: 1271px;
+   left: 1268px;
    
  }
 
@@ -59,7 +59,7 @@
   position: absolute;
   top: 220px;
   width: 11%;
-  left: 1441px;
+  left: 1471px;
   
 } 
 
@@ -111,9 +111,9 @@ table.table-striped tbody tr.selected {
 }
 
 .check{
-  
+  margin-left: 50px;
   text-decoration: solid;
-  padding-left: 10px;
+  padding-left: 50px;
   border-radius: 100px;
   border: blue;
   
