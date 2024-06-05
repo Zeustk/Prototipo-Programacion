@@ -503,12 +503,14 @@ export class InterfazConsultaComponent {
             'Fecha_Emision',
             'Fecha_Contrato',
             'Fecha_Recepcion',
+            'Pago_Inicial',
             'KmEmision',
             'KmRecepcion',
             'KmRecorridos',
             'Valor_Inicial',
             'Cargos_Adicionales',
             'Total'
+            
 
           ]
 
@@ -1075,6 +1077,7 @@ export class InterfazConsultaComponent {
     Cc_Clientes: 'Cedula',
     Id_Empleados: 'Id Empleado',
     Valor_Inicial: 'Valor Base',
+    Pago_Inicial:'Pago Inicial',
 
     Fecha_Recepcion: 'Fecha De Recepcion',
     //Clientes

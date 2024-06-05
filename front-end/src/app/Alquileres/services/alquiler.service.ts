@@ -29,7 +29,8 @@ export class AlquilerService extends CrudService<Alquileres>{
       Id_Empleados:AlquilerRecibido.Id_Empleados,
       Valor_Inicial:AlquilerRecibido.Valor_Inicial,
       Disponible:AlquilerRecibido.Disponible,
-      Fecha_Recepcion:AlquilerRecibido.Fecha_Recepcion
+      Fecha_Recepcion:AlquilerRecibido.Fecha_Recepcion,
+      Pago_Inicial:AlquilerRecibido.Pago_Inicial
 
     };
 
@@ -56,7 +57,8 @@ export class AlquilerService extends CrudService<Alquileres>{
       Id_Empleados:AlquilerRecibido.Id_Empleados,
       Valor_Inicial:AlquilerRecibido.Valor_Inicial,
       Disponible:AlquilerRecibido.Disponible,
-      Fecha_Recepcion:AlquilerRecibido.Fecha_Recepcion
+      Fecha_Recepcion:AlquilerRecibido.Fecha_Recepcion,
+      Pago_Inicial:AlquilerRecibido.Pago_Inicial
 
     };
 

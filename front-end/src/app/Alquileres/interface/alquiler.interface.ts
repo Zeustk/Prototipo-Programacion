@@ -13,7 +13,8 @@ export interface Alquileres{
     Id_Empleados:number,
     Valor_Inicial:number,
     Disponible:string,
-    Fecha_Recepcion:Date | null | string
+    Fecha_Recepcion:Date | null | string,
+    Pago_Inicial: number
 
 }
 
