@@ -57,6 +57,10 @@ export class InterfazConsultaComponent {
 
   FilaEditada: any = {};
 
+  mostrarCheckboxes: boolean = false;
+
+  valorCheckBox: String = 'Todos';
+
 
   seleccionarFila(InfoDB: any) {
     if (this.FilaSeleccionada === InfoDB) {
@@ -70,17 +74,20 @@ export class InterfazConsultaComponent {
   options = [
     { value: 'En curso', selected: false },
     { value: 'Completados', selected: false },
-    { value: 'Todos', selected: false }
+    { value: 'Todos', selected: true }
   ];
-   
+
   handleChange(selectedOption: any) {
     this.options.forEach(option => {
       if (option !== selectedOption) {
         option.selected = false;
       }
     });
+    this.CargarAlquiler();
+    console.log(selectedOption.value);
+    this.valorCheckBox = selectedOption.value;
   }
-  
+
 
   //VALIDAR USUARIO ADMINISTRADOR O NORMAL
   TipoEmpleado: string = '';
@@ -111,26 +118,26 @@ export class InterfazConsultaComponent {
 
     this.mostrarTabla = true;
     this.mostrarBoton = true;
-   
+
 
     switch (boton) {
-      case 'M': this.CargarMarcas();
+      case 'M': this.CargarMarcas(); this.mostrarCheckboxes = false;
         return;
-      case 'T': this.CargarTipoVehiculo();
+      case 'T': this.CargarTipoVehiculo(); this.mostrarCheckboxes = false;
         return;
-      case 'TA': this.CargarTarifas();
+      case 'TA': this.CargarTarifas(); this.mostrarCheckboxes = false;
         return;
-      case 'GK': this.CargarVehiculos();
+      case 'GK': this.CargarVehiculos(); this.mostrarCheckboxes = false;
         return;
-      case 'EM': this.CargarEmpleado();
+      case 'EM': this.CargarEmpleado(); this.mostrarCheckboxes = false;
         return;
-      case 'DD': this.CargarResevas();
+      case 'DD': this.CargarResevas(); this.mostrarCheckboxes = false;
         return;
-      case 'GG': this.CargarAlquiler();
+      case 'GG': this.CargarAlquiler(); this.mostrarCheckboxes = true;
         return;
-      case 'C': this.CargarCliente();
+      case 'C': this.CargarCliente(); this.mostrarCheckboxes = false;
         return;
-      case 'CA': this.CargarCargos();
+      case 'CA': this.CargarCargos(); this.mostrarCheckboxes = false;
         return;
 
     }
@@ -322,6 +329,7 @@ export class InterfazConsultaComponent {
 
   CargarTarifas() {  //NGONInit PERMITE QUE SE CARGUEN LOS DATOS ANTES DE QUE CARGUEN LAS VISRTAS
 
+    this.mostrarCheckboxes = false;
     this.TarifaService.ConsultarTarifas().subscribe(
       (ListTarifa: Tarifas[] | null) => {
 
@@ -453,24 +461,35 @@ export class InterfazConsultaComponent {
 
           console.log('Resultado de la consulta de alquileres:', ListAlquiler);
 
+          if (this.valorCheckBox.toUpperCase() == 'EN CURSO') {
 
-          let ListaEnCurso: Alquileres[] = [];
+            let ListaEnCurso: Alquileres[] = [];
 
-          for (var alquiler of ListAlquiler) {
+            for (var alquiler of ListAlquiler) {
 
-            if (alquiler.Fecha_Recepcion != null) {
-              ListaEnCurso.push(alquiler);
+              if (alquiler.Fecha_Recepcion == null) {
+                ListaEnCurso.push(alquiler);
+              };
             };
-          };
+
+            ListAlquiler=ListaEnCurso;
+
+          }
 
 
-          console.log('Completados',ListaEnCurso);
+          if (this.valorCheckBox.toUpperCase() == 'COMPLETADOS') {
 
+            let ListaCompletados: Alquileres[] = [];
 
-        
-          
+            for (var alquiler of ListAlquiler) {
 
+              if (alquiler.Fecha_Recepcion != null) {
+                ListaCompletados.push(alquiler);
+              };
+            };
+            ListAlquiler=ListaCompletados;
 
+          }
 
 
           //Cargar Datos y saber si Alquiler es el que está cargado
@@ -503,6 +522,7 @@ export class InterfazConsultaComponent {
             'Fecha_Emision',
             'Fecha_Contrato',
             'Fecha_Recepcion',
+            'Pago_Inicial',
             'KmEmision',
             'KmRecepcion',
             'KmRecorridos',
@@ -1075,6 +1095,7 @@ export class InterfazConsultaComponent {
     Cc_Clientes: 'Cedula',
     Id_Empleados: 'Id Empleado',
     Valor_Inicial: 'Valor Base',
+    Pago_Inicial: 'Pago Inicial',
 
     Fecha_Recepcion: 'Fecha De Recepcion',
     //Clientes
