@@ -32,8 +32,6 @@ export class AlquilerComponent {
     Valor_Inicial: 0,
     Disponible: 'SI',
     Fecha_Recepcion:null,
-    Pago_Inicial:0,
-    Fecha_Recepcion:null,
     Pago_Inicial:0
   }
 

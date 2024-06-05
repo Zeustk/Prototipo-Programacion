@@ -14,8 +14,6 @@ export interface Alquileres{
     Valor_Inicial:number,
     Disponible:string,
     Fecha_Recepcion:Date | null | string,
-    Pago_Inicial:number | 0
-    Fecha_Recepcion:Date | null | string,
     Pago_Inicial: number
 
 }

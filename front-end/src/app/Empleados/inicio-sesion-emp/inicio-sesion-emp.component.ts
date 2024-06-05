@@ -39,7 +39,7 @@ export class InicioSesionEmpComponent {
     
     this.EmpleadoService.BuscarEmpleado(this.Empleados)
     .subscribe(resp => {
-      console.log(resp);
+      
 
       if (typeof resp === 'string' && (resp === 'EN' || resp === 'EA')) {
         console.log(resp);

@@ -1097,7 +1097,7 @@ export class InterfazConsultaComponent {
     Id_Empleados: 'Id Empleado',
     Valor_Inicial: 'Valor Base',
     Pago_Inicial: 'Pago Inicial',
-    Pago_Inicial:'Pago Inicial',
+
 
     Fecha_Recepcion: 'Fecha De Recepcion',
     //Clientes

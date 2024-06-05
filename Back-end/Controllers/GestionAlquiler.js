@@ -115,23 +115,45 @@ class ServicioAlquiler {
             
             // Obtén la fecha formateada sin milisegundos
             const fechaFormateada = fecha.toISOString().slice(0, 19).replace("T", " ");
-            
-            
-            if (KmRecepcion==null){
 
-                
-            const sql = "UPDATE Alquiler SET Fecha_Recepcion = :fecha WHERE Id = :Id and Pago_Inicial=:Pago_Inicial" ;
+            if ((Pago_Inicial!=0) || (Pago_Inicial==0)){
 
-            await this.DB.Open(sql, [fecha, Id,Pago_Inicial], true);
+                const sql = "UPDATE Alquiler SET Pago_Inicial = :Pago_Inicial WHERE Id = :Id" ;
+
+            await this.DB.Open(sql, [Pago_Inicial,Id], true);
 
             }
-            else{
+            
+            
+            if (Fecha_Recepcion!=null){
+
+                
+            const sql = "UPDATE Alquiler SET Fecha_Recepcion = :fecha WHERE Id = :Id" ;
+
+            await this.DB.Open(sql, [fecha,Id], true);
+
+            }
+
+
+            if (KmRecepcion!=null){
 
                 KmRecepcion=parseInt(KmRecepcion);
 
-                const sql = "UPDATE Alquiler SET Fecha_Recepcion = :fecha,KmRecepcion=:KmRecepcion WHERE Id = :Id and Pago_Inicial=:Pago_Inicial";
+                const sql = "UPDATE Alquiler SET KmRecepcion = :KmRecepcion WHERE Id = :Id" ;
 
-                await this.DB.Open(sql, [fecha, KmRecepcion,Id,Pago_Inicial], true);
+                await this.DB.Open(sql, [KmRecepcion,Id], true);
+            }
+
+            
+            if ((KmRecepcion!=null) && (Fecha_Recepcion!=null) && (Pago_Inicial!=0)){
+
+                KmRecepcion=parseInt(KmRecepcion);
+
+                console.log('hola');
+
+                const sql = "UPDATE Alquiler SET Pago_Inicial=: Pago_Inicial,Fecha_Recepcion = :fecha,KmRecepcion=:KmRecepcion WHERE Id = :Id";
+
+                await this.DB.Open(sql, [Pago_Inicial,fecha, KmRecepcion,Id], true);
             }
             return 'Actualizado Correctamente';
         } catch (err) {
