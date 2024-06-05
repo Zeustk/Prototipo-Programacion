@@ -111,9 +111,9 @@ table.table-striped tbody tr.selected {
 }
 
 .check{
-  margin-left: 50px;
+  margin-left: 25px;
   text-decoration: solid;
-  padding-left: 50px;
+  
   border-radius: 100px;
   border: blue;
   
