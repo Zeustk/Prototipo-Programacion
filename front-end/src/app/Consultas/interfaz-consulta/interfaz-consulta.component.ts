@@ -41,11 +41,15 @@ export class InterfazConsultaComponent {
   ClienteEstaCargado: boolean = false;
   CargosEstaCargado: boolean = false;
   ResevasEstaCargado: boolean = false;
+  ReporteEstaCargado:boolean=false;
 
   PlaceHolderPorTipo: string = ''; //Para mostrar el placeholder por tipo de vehiculo, vehiculo, etc
   @Input() BuscarPorTipo: string = '';
 
   InfoTabla: any[] = [];
+
+
+  mostrarBotonesActuEliminar: boolean = false;
 
 
   ColumnasOrden: string[] = []
@@ -102,10 +106,10 @@ export class InterfazConsultaComponent {
       .subscribe(resp => {
         console.log(resp);
 
-        if (resp === 'EA') {
+        if (resp && (resp.Administracion === 'EA')) {
           console.log('El usuario es Administrador');
           this.TipoEmpleado = 'EA';
-        } else if (resp === 'EN') {
+        } else if (resp && (resp.Administracion === 'EN')) {
           console.log('El usuario es Empleado Normal');
           this.TipoEmpleado = 'EN';
         }
@@ -121,26 +125,26 @@ export class InterfazConsultaComponent {
 
 
     switch (boton) {
-      case 'M': this.CargarMarcas(); this.mostrarCheckboxes = false;
+      case 'M': this.CargarMarcas(); this.mostrarCheckboxes = false;this.mostrarBotonesActuEliminar=true;
         return;
-      case 'T': this.CargarTipoVehiculo(); this.mostrarCheckboxes = false;
+      case 'T': this.CargarTipoVehiculo(); this.mostrarCheckboxes = false;this.mostrarBotonesActuEliminar=true;
         return;
-      case 'TA': this.CargarTarifas(); this.mostrarCheckboxes = false;
+      case 'TA': this.CargarTarifas(); this.mostrarCheckboxes = false;this.mostrarBotonesActuEliminar=true;
         return;
-      case 'GK': this.CargarVehiculos(); this.mostrarCheckboxes = false;
+      case 'GK': this.CargarVehiculos(); this.mostrarCheckboxes = false;this.mostrarBotonesActuEliminar=true;
         return;
-      case 'EM': this.CargarEmpleado(); this.mostrarCheckboxes = false;
+      case 'EM': this.CargarEmpleado(); this.mostrarCheckboxes = false;this.mostrarBotonesActuEliminar=true;
         return;
-      case 'DD': this.CargarResevas(); this.mostrarCheckboxes = false;
+      case 'DD': this.CargarResevas(); this.mostrarCheckboxes = false;this.mostrarBotonesActuEliminar=true;
         return;
-      case 'GG': this.CargarAlquiler(); this.mostrarCheckboxes = true;
+      case 'GG': this.CargarAlquiler(); this.mostrarCheckboxes = true;this.mostrarBotonesActuEliminar=true;
         return;
-      case 'C': this.CargarCliente(); this.mostrarCheckboxes = false;
+      case 'C': this.CargarCliente(); this.mostrarCheckboxes = false;this.mostrarBotonesActuEliminar=true;
         return;
-      case 'CA': this.CargarCargos(); this.mostrarCheckboxes = false;
+      case 'CA': this.CargarCargos(); this.mostrarCheckboxes = false;this.mostrarBotonesActuEliminar=true;
         return;
         /* Modificacion nueva para informes */
-      case 'IN': this.CargarCargos(); this.mostrarCheckboxes = false;
+      case 'IF': this.CargarReporte(); this.mostrarCheckboxes = false;this.mostrarBotonesActuEliminar=false;
         return;
       
 
@@ -210,6 +214,7 @@ export class InterfazConsultaComponent {
           this.AlquilerEstaCargado == false;
           this.ClienteEstaCargado = false;
           this.CargosEstaCargado = false;
+          this.ReporteEstaCargado=false;
         }
         this.ColumnasOrden = [
           'Id_Marca',
@@ -254,6 +259,7 @@ export class InterfazConsultaComponent {
           this.AlquilerEstaCargado == false;
           this.ClienteEstaCargado = false;
           this.CargosEstaCargado = false;
+          this.ReporteEstaCargado=false;
 
           //Se colocan las Columnas en que la fecha se quiere formatear
           this.columnasFecha = ['Fecha_Emision', 'Fecha_Recepcion', 'Fecha_Contrato']
@@ -305,6 +311,7 @@ export class InterfazConsultaComponent {
           this.AlquilerEstaCargado == false;
           this.ClienteEstaCargado = false;
           this.CargosEstaCargado = false;
+          this.ReporteEstaCargado=false;
 
           //ORDEN DE LAS COLUMNAS
           this.ColumnasOrden = [
@@ -358,6 +365,7 @@ export class InterfazConsultaComponent {
           this.AlquilerEstaCargado == false;
           this.ClienteEstaCargado = false;
           this.CargosEstaCargado = false;
+          this.ReporteEstaCargado=false;
 
 
           this.ColumnasOrden = [
@@ -403,6 +411,7 @@ export class InterfazConsultaComponent {
           this.AlquilerEstaCargado == false;
           this.ClienteEstaCargado = false;
           this.CargosEstaCargado = false;
+          this.ReporteEstaCargado=false;
 
         }
 
@@ -442,6 +451,7 @@ export class InterfazConsultaComponent {
           this.AlquilerEstaCargado == false;
           this.ClienteEstaCargado = false;
           this.CargosEstaCargado = false;
+          this.ReporteEstaCargado=false;
         }
 
       },
@@ -512,6 +522,7 @@ export class InterfazConsultaComponent {
           this.AlquilerEstaCargado = true;
           this.ClienteEstaCargado = false;
           this.CargosEstaCargado = false;
+          this.ReporteEstaCargado=false;
 
           //Se colocan las Columnas en que la fecha se quiere formatear
           this.columnasFecha = ['Fecha_Emision', 'Fecha_Recepcion', 'Fecha_Contrato']
@@ -533,6 +544,68 @@ export class InterfazConsultaComponent {
             'Valor_Inicial',
             'Cargos_Adicionales',
             'Total'
+            
+
+          ]
+
+
+        }
+
+      },
+      (error: any) => {
+        console.error('Error al consultar marcas:', error);
+      }
+    );
+
+  }
+
+
+
+  CargarReporte() {  //NGONInit PERMITE QUE SE CARGUEN LOS DATOS ANTES DE QUE CARGUEN LAS V
+
+    this.Alquiler.GenerarReporte().subscribe(
+      (data:any) => {
+
+
+
+        if ((data != null) && (Array.isArray(data))) {
+
+          this.PlaceHolderPorTipo = 'Placa';
+
+          console.log('Resultado de Reporte:', data);
+
+          
+
+          //Cargar Datos y saber si Alquiler es el que está cargado
+          if (this.BuscarPorTipo == '') {
+            this.InfoTabla = data;
+          }
+          else {
+            this.InfoTabla = data.filter((item: any) => item.Placa.toLocaleUpperCase().startsWith(this.BuscarPorTipo.toLocaleUpperCase()));
+          }
+
+          this.MarcaEstaCargado = false;
+          this.TipoVehiculoEstaCargado = false;
+          this.VehiculosEstaCargado = false;
+          this.TarifasEstaCargado = false;
+          this.EmpleadosEstaCargado = false;
+          this.AlquilerEstaCargado = false;
+          this.ClienteEstaCargado = false;
+          this.CargosEstaCargado = false;
+          this.ReporteEstaCargado=true;
+
+          //Se colocan las Columnas en que la fecha se quiere formatear
+         // this.columnasFecha = ['Fecha_Emision', 'Fecha_Recepcion', 'Fecha_Contrato']
+
+          //ORDEN DE LAS COLUMNAS
+          this.ColumnasOrden = [
+
+            'Placa',
+            'Numero_Alquileres',
+            'Mes_Mas_Alquilado',
+            'Max_Alquileres',
+            'Total_Alquilado',
+           
             
 
           ]
@@ -573,6 +646,7 @@ export class InterfazConsultaComponent {
           this.AlquilerEstaCargado == false;
           this.ClienteEstaCargado = true;
           this.CargosEstaCargado = false;
+          this.ReporteEstaCargado=false;
 
           this.columnasFecha = ['Fecha_Nacimiento'];
 
@@ -629,6 +703,7 @@ export class InterfazConsultaComponent {
           this.AlquilerEstaCargado == false;
           this.CargosEstaCargado = true;
           this.ClienteEstaCargado = false;
+          this.ReporteEstaCargado=false;
 
 
           this.ColumnasOrden = [
@@ -1075,6 +1150,10 @@ export class InterfazConsultaComponent {
       return;
     }
 
+    if (this.ReporteEstaCargado){
+      this.mostrarTablaConsulta('IF');
+    }
+
 
   }
 
@@ -1138,9 +1217,15 @@ export class InterfazConsultaComponent {
 
 
     //Empleados
-    Clave: 'Clave'
+    Clave: 'Clave',
 
 
+    //Reportes
+
+    Numero_Alquileres: 'Total Alquileres',
+    Mes_Mas_Alquilado: 'Mes Mas Rentado',
+    Max_Alquileres:  'Alquileres en Mes Pico',
+    Total_Alquilado: 'Total Alquilado'
 
 
   }; //Con esto se pueden mapear  los nombres para que aparezcan de la manera deseada

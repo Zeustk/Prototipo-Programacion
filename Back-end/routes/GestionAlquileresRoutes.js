@@ -62,6 +62,13 @@ module.exports = function (servicio) {
       res.json(Answer);
    })
 
+   router.get('/api/getReporte', async (req, res) => {
+
+      const Reportes = await servicio.getReporte();
+
+      res.json(Reportes);
+   })
+
    return router;
 }
 

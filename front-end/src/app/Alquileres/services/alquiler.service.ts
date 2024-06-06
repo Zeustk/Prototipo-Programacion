@@ -73,4 +73,8 @@ export class AlquilerService extends CrudService<Alquileres>{
     return this.Eliminar(AlquilerRecibido.Id,'DeleteAlquiler')
   }
 
+  GenerarReporte(){
+    return this.ConsultarReporte('getReporte');
+  }
+
 }

@@ -45,7 +45,7 @@ export class InicioSesionEmpComponent {
       
 
       if  (resp && (resp.Administracion === 'EN' || resp.Administracion === 'EA')) {
-        console.log(resp);
+        console.log(resp.Administracion);
 
           // Guardar el JSON en localStorage
         localStorage.setItem('empleado', JSON.stringify(resp));

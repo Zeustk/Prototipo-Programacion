@@ -48,5 +48,14 @@ export class CrudService<T> {
   
     return this.http.post<any>(url,body);
   } 
+
+
+  ConsultarReporte(endpoint:string){
+
+    const url = `${this.baseUrl}/${endpoint}`  
+
+    return this.http.get<any[]>(url);
+
+  }
   
 }

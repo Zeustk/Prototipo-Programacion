@@ -31,13 +31,13 @@ export class InterfazComponent {
       .subscribe(resp => {
         console.log(resp);
   
-        if (resp === 'EA') {
+        if (resp && (resp.Administracion === 'EA')) {
           console.log('El usuario es Administrador');
           this.TipoEmpleado = 'EA';
-        } else if (resp === 'EN') {
+        } else if (resp && (resp.Administracion === 'EN')) {
           console.log('El usuario es Empleado Normal');
           this.TipoEmpleado = 'EN';
-        } 
+        }
         // Puedes realizar más acciones o asignaciones aquí según tu lógica
       });
   }
