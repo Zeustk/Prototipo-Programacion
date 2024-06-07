@@ -16,7 +16,7 @@ module.exports = function (servicio) {
          const FechaEmision = new Date(Fecha_Emision);
 
 
-         if (KmEmision < 0 || Id_Empleados == 0 || Cc_Clientes == '' || Placa_Vehiculo == '' || KmEmision==null) {
+         if (KmEmision < 0 || Id_Empleados == 0 || Cc_Clientes == '' || Placa_Vehiculo == '' || KmEmision==null || Id_Empleados==null) {
             return res.status(400).json('VERIFIQUE CAMPOS');
          }
 
