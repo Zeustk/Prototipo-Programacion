@@ -255,10 +255,9 @@ class ServicioAlquiler {
         const regex = /^\d+$/;
       
 
-        if (!regex.test(KmEmision)){ //Si tiene letra
+        if (!regex.test(KmEmision)) //Si tiene letra
             return true;
-
-        }
+        
 
         return false;
 
