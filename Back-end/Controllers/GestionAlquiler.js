@@ -5,7 +5,7 @@ class ServicioAlquiler {
     }
 
 
-    async addAlquiler(Fecha_Emision, Fecha_Contrato, KmEmision, KmRecepcion, KmRecorridos, Placa_Vehiculo, Cc_Clientes, Id_Empleados, Valor_Inicial, Disponible, Cargos_Adicionales, Total, Fecha_Recepcion, Pago_Inicial) {
+    async addAlquiler({Fecha_Emision, Fecha_Contrato, KmEmision, KmRecepcion, KmRecorridos, Placa_Vehiculo, Cc_Clientes, Id_Empleados, Valor_Inicial, Disponible, Cargos_Adicionales, Total, Fecha_Recepcion, Pago_Inicial}) {
         try {
             //conversiones
 
@@ -23,16 +23,9 @@ class ServicioAlquiler {
             
             const id_empleado = parseInt(Id_Empleados);
             const valorinicial = parseInt(Valor_Inicial);
-<<<<<<< HEAD
             
-            
-
-            
-=======
-            // const cargos_adicionales=parseFloat(Cargos_Adicionales);
             const total = parseFloat(Total);
 
->>>>>>> 8e49c8a490d04c90818e609e2a494c1cf72e55b9
 
 
             const sql = "insert into Alquiler(Fecha_Emision,Fecha_Contrato,ID,KmEmision,KmRecepcion,KmRecorridos,Cargos_Adicionales,Total,Placa_Vehiculos,CC_CLIENTES,ID_EMPLEADOS,Valor_Inicial,Disponible,Fecha_Recepcion,Pago_Inicial) values (:fechaEmision,:fechacontrato,SEQ_ALQUILER.NEXTVAL,:KmEmision,:KmRecepcion,:KmRecorridos,:Cargos_Adicionales,:Total,:Placa_Vehiculo,:Cc_Clientes,:id_empleado,:valorinicial,:Disponible,:Fecha_Recepcion,:Pago_Inicial)";

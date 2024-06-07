@@ -5,7 +5,7 @@ class ServicioVehiculos {
     }
 
 
-    async addVehiculo(Placa, Id_Tipovehiculo,Modelo,Id_Marca,Id_Tarifas,Disponible,Year,Url) {
+    async addVehiculo({Placa, Id_Tipovehiculo,Modelo,Id_Marca,Id_Tarifas,Disponible,Year,Url}) {
 
         try {
           
