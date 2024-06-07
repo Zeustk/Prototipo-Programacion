@@ -15,14 +15,26 @@ module.exports = function (servicio) {
          const FechaContrato = new Date(Fecha_Contrato);
          const FechaEmision = new Date(Fecha_Emision);
 
-         if (KmEmision == 0 || Id_Empleados == 0 || Cc_Clientes == '' || FechaContrato < FechaEmision || Placa_Vehiculo == '') {
+         if (KmEmision == 0 || Id_Empleados == 0 || Cc_Clientes == '' || Placa_Vehiculo == '' || KmEmision=='') {
             return res.status(400).json('VERIFIQUE CAMPOS');
          }
+
+         if (FechaContrato < FechaEmision ){
+            return res.status(400).json('La Fecha De Recepcion debe ser mayor a la Fecha de Emision');
+         }
+
+         if (await servicio.VehiculoEstaEnCurso(Placa_Vehiculo)) {
+            console.log('placa');
+            console.log(await servicio.VehiculoEstaEnCurso(Placa_Vehiculo));
+            return res.status(400).json('Este Vehiculo Ya está en Curso');
+         }
+
+         console.log('nani');
+         console.log(await servicio.VehiculoEstaEnCurso(Placa_Vehiculo));
 
 
          const Answer = await servicio.addAlquiler(Fecha_Emision, Fecha_Contrato, KmEmision, KmRecepcion, KmRecorridos, Placa_Vehiculo, Cc_Clientes, Id_Empleados, Valor_Inicial, Disponible, Cargos_Adicionales, Total, Fecha_Recepcion,Pago_Inicial)
 
-         console.log(Answer);
 
          res.status(200).json(Answer)
 

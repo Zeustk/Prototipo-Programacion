@@ -12,8 +12,6 @@ class ServicioAlquiler {
 
             const fechaEmision = new Date(Fecha_Emision)
 
-            console.log(fechaEmision);
-
             fechaEmision.setDate(fechaEmision.getDate() + 1);
 
             const fechacontrato = new Date(Fecha_Contrato)
@@ -28,19 +26,6 @@ class ServicioAlquiler {
             const valorinicial = parseInt(Valor_Inicial);
             // const cargos_adicionales=parseFloat(Cargos_Adicionales);
             const total = parseFloat(Total);
-
-            console.log(total);
-
-
-
-
-            console.log(fechaEmision);
-            console.log(KmEmision);
-            console.log(KmRecepcion);
-            console.log(Id_Empleados);
-            console.log(Valor_Inicial);
-            console.log(Cargos_Adicionales);
-            console.log(Total);
 
 
 
@@ -149,7 +134,7 @@ class ServicioAlquiler {
 
                 KmRecepcion = parseInt(KmRecepcion);
 
-                console.log('hola');
+        
 
                 const sql = "UPDATE Alquiler SET Pago_Inicial=: Pago_Inicial,Fecha_Recepcion = :fecha,KmRecepcion=:KmRecepcion WHERE Id = :Id";
 
@@ -242,6 +227,32 @@ class ServicioAlquiler {
         }
 
     }
+
+    async VehiculoEstaEnCurso(Placa) {
+        try {
+            const sql = "SELECT COUNT(Placa_Vehiculos) AS count FROM alquiler WHERE Fecha_Recepcion IS NULL AND Placa_Vehiculos = :Placa";
+            let consulta = await this.DB.Open(sql, [Placa], false);
+    
+            console.log('Resultado de la consulta:', consulta); // Depuración
+            console.log('Número de filas:', consulta.rows.length); // Depuración
+    
+            // Accede al conteo correctamente
+            if (consulta.rows.length > 0 && consulta.rows[0][0] > 0) {
+                console.log('Vehículo está en curso'); // Depuración
+                return true;
+            } else {
+                console.log('hola'); // Depuración
+                return false;
+            }
+    
+        } catch (error) {
+            console.error("Error al buscar vehículo en curso:", error);
+            return 'Error al buscar vehículo';
+        }
+    }
+    
+    
+    
 
 
 
