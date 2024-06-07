@@ -89,8 +89,11 @@ class ServicioMarcas {
     }
 
 
+<<<<<<< HEAD
     
 
+=======
+>>>>>>> 8e49c8a490d04c90818e609e2a494c1cf72e55b9
     VerificarLongitudes(Nombre) {
         const longitudNombre = Nombre.length;
         let Estado = true;

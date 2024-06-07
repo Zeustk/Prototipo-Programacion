@@ -12,8 +12,6 @@ class ServicioAlquiler {
 
             const fechaEmision = new Date(Fecha_Emision)
 
-            console.log(fechaEmision);
-
             fechaEmision.setDate(fechaEmision.getDate() + 1);
 
             const fechacontrato = new Date(Fecha_Contrato)
@@ -25,10 +23,16 @@ class ServicioAlquiler {
             
             const id_empleado = parseInt(Id_Empleados);
             const valorinicial = parseInt(Valor_Inicial);
+<<<<<<< HEAD
             
             
 
             
+=======
+            // const cargos_adicionales=parseFloat(Cargos_Adicionales);
+            const total = parseFloat(Total);
+
+>>>>>>> 8e49c8a490d04c90818e609e2a494c1cf72e55b9
 
 
             const sql = "insert into Alquiler(Fecha_Emision,Fecha_Contrato,ID,KmEmision,KmRecepcion,KmRecorridos,Cargos_Adicionales,Total,Placa_Vehiculos,CC_CLIENTES,ID_EMPLEADOS,Valor_Inicial,Disponible,Fecha_Recepcion,Pago_Inicial) values (:fechaEmision,:fechacontrato,SEQ_ALQUILER.NEXTVAL,:KmEmision,:KmRecepcion,:KmRecorridos,:Cargos_Adicionales,:Total,:Placa_Vehiculo,:Cc_Clientes,:id_empleado,:valorinicial,:Disponible,:Fecha_Recepcion,:Pago_Inicial)";
@@ -136,7 +140,7 @@ class ServicioAlquiler {
 
                 KmRecepcion = parseInt(KmRecepcion);
 
-                console.log('hola');
+        
 
                 const sql = "UPDATE Alquiler SET Pago_Inicial=: Pago_Inicial,Fecha_Recepcion = :fecha,KmRecepcion=:KmRecepcion WHERE Id = :Id";
 
@@ -227,6 +231,52 @@ class ServicioAlquiler {
         }
 
     }
+
+    async VehiculoEstaEnCurso(Placa) {
+        try {
+            const sql = "SELECT COUNT(Placa_Vehiculos) AS count FROM alquiler WHERE Fecha_Recepcion IS NULL AND Placa_Vehiculos = :Placa";
+            let consulta = await this.DB.Open(sql, [Placa], false);
+    
+            console.log('Resultado de la consulta:', consulta); // Depuración
+            console.log('Número de filas:', consulta.rows.length); // Depuración
+    
+            // Accede al conteo correctamente
+            if (consulta.rows.length > 0 && consulta.rows[0][0] > 0) {
+                console.log('Vehículo está en curso'); // Depuración
+                return true;
+            } else {
+                console.log('hola'); // Depuración
+                return false;
+            }
+    
+        } catch (error) {
+            console.error("Error al buscar vehículo en curso:", error);
+            return 'Error al buscar vehículo';
+        }
+    }
+    
+    
+    KmEmisionTieneLetra(KmEmision){
+
+
+        const regex = /^\d+$/;
+      
+
+        if (!regex.test(KmEmision)){ //Si tiene letra
+            return true;
+
+        }
+
+        else {
+            return false;
+        }
+
+
+
+      
+
+    }
+
 
 
 

@@ -14,15 +14,29 @@ module.exports = function (servicio) {
 
          const FechaContrato = new Date(Fecha_Contrato);
          const FechaEmision = new Date(Fecha_Emision);
-         
-         if (KmEmision == 0 || Id_Empleados == 0 || Cc_Clientes == '' || FechaContrato < FechaEmision || Placa_Vehiculo == '' ) {
+
+
+         if (KmEmision < 0 || Id_Empleados == 0 || Cc_Clientes == '' || Placa_Vehiculo == '' || KmEmision==null || Id_Empleados==null) {
             return res.status(400).json('VERIFIQUE CAMPOS');
          }
+
+         if (FechaContrato < FechaEmision ){
+            return res.status(400).json('La Fecha De Recepcion debe ser mayor a la Fecha de Emision');
+         }
+
+         if (servicio.KmEmisionTieneLetra(KmEmision)){
+            return res.status(400).json('Verifique los Km De Emision');
+         }
+
+         if (await servicio.VehiculoEstaEnCurso(Placa_Vehiculo)) {
+     
+            return res.status(400).json('Este Vehiculo Ya está en Curso');
+         }
+
 
 
          const Answer = await servicio.addAlquiler(Fecha_Emision, Fecha_Contrato, KmEmision, KmRecepcion, KmRecorridos, Placa_Vehiculo, Cc_Clientes, Id_Empleados, Valor_Inicial, Disponible, Cargos_Adicionales, Total, Fecha_Recepcion,Pago_Inicial)
 
-         console.log(Answer);
 
          res.status(200).json(Answer)
 
@@ -45,14 +59,23 @@ module.exports = function (servicio) {
    router.put('/api/UpdateAlquiler', async (req, res) => {
 
       const { Id, Fecha_Recepcion, KmRecepcion, Pago_Inicial,Valor_Inicial} = req.body
+
+      const Pago_InicialParse=parseFloat(Pago_Inicial);
+
+      console.log(typeof(Pago_InicialParse));
       
-      if(Pago_Inicial>=1000 || Pago_Inicial<=Valor_Inicial){
-         return res.status(404).json('El Pago inicial debe ser mayor a 1000');
+      if(Pago_InicialParse<1000){
+         return res.status(404).json('El Pago inicial debe ser mayor  o igual a 1000');
       }
-      const Answer = await servicio.UpdateAlquiler(Id, Fecha_Recepcion, KmRecepcion,Pago_Inicial,Valor_Inicial);
+
+      if(Pago_InicialParse>Valor_Inicial){
+         return res.status(404).json('El Pago Inicial debe ser menor o igual al Valor Base');
+      }
+
+      const Answer = await servicio.UpdateAlquiler(Id, Fecha_Recepcion, KmRecepcion,Pago_InicialParse,Valor_Inicial);
 
 
-      res.json(Answer);
+      res.status(200).json(Answer);
    })
 
 
