@@ -260,13 +260,7 @@ class ServicioAlquiler {
 
         }
 
-        else {
-            return false;
-        }
-
-
-
-      
+        return false;
 
     }
 
