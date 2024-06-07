@@ -97,8 +97,7 @@ class ServicioEmpleados {
 
     async BuscarEmpleado(Correo,Clave){
         try {
-            console.log(Correo);
-            console.log(Clave);
+            
             const sql = "SELECT t.Administracion,e.Correo,e.Clave,e.Id FROM Empleados e JOIN Cargos t ON e.ID_Cargo = t.ID_Cargo where UPPER(CORREO)=UPPER(:Correo) AND CLAVE=:Clave";
             let consulta = await this.DB.Open(sql, [Correo, Clave], false);
     

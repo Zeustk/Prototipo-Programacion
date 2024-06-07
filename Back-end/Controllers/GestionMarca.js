@@ -54,8 +54,7 @@ class ServicioMarcas {
     async UpdateMarca(Id_Marca, Nombre) {
 
         try {
-            /* console.log(Id_Marca);
-            console.log(Nombre); */
+            
             const sql = "update Marcas set Nombre=:Nombre where ID_MARCA=:Id_Marca";
 
             await this.DB.Open(sql, [Nombre, Id_Marca], true);
@@ -90,21 +89,7 @@ class ServicioMarcas {
     }
 
 
-    async addMarca(Nombre, Disponible) {
-        try {
-            const sql = "insert into Marcas(ID_MARCA,Nombre,Disponible) values (SEQ_MARCAS.NEXTVAL,:Nombre,:Disponible)";
-
-            await this.DB.Open(sql, [Nombre, Disponible], true);
-
-            return ('Guardado Exitosamente')
-        }
-
-        catch (err) {
-            console.error(err);
-            return ('Guardado errado');
-        }
-
-    }
+    
 
     VerificarLongitudes(Nombre) {
         const longitudNombre = Nombre.length;

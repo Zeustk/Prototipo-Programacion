@@ -15,7 +15,7 @@ async function Open(sql, binds, autoCommit) {
 
         let cnn = await oracledb.getConnection(cns);
         let result = await cnn.execute(sql, binds, { autoCommit });
-        cnn.release(); //librar la conexion
+        cnn.release(); 
         return result;
 
     }catch(error){

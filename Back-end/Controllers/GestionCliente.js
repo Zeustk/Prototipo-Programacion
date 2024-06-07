@@ -9,7 +9,7 @@ class ServicioCliente {
         try {
            
             
-            //Conversiones
+           
       
            
             const fechaNacimiento = new Date(Fecha_Nacimiento)
@@ -17,7 +17,7 @@ class ServicioCliente {
             fechaNacimiento.setDate(fechaNacimiento.getDate() + 1);
             const sql = "insert into Clientes(Nombre_Completo, Cc, Fecha_Nacimiento, N_Licencia,Disponible, Correo, Telefono,Contrasena) values (:Nombre_Completo,:Cc,:fechaNacimiento,:N_Licencia,:Disponible,:Correo,:Telefono,:Contrasena)";
     
-           console.log(fechaNacimiento);
+           
 
             await this.DB.Open(sql, [Nombre_Completo, Cc, fechaNacimiento, N_Licencia,Disponible, Correo, Telefono,Contrasena], true);
 
@@ -69,20 +69,14 @@ class ServicioCliente {
 
         try {
             
-            /* console.log(Nombre_Completo);
             
-            console.log(N_Licencia);
-            console.log(Correo);
-            console.log(Telefono);
-            console.log(Contrasena);
-            console.log(Cc); */
             if (isNaN(new Date(Fecha_Nacimiento).getTime())) {
                 throw new Error('Fecha_Recepcion no es una fecha válida.');
             }
     
             const fecha = new Date(Fecha_Nacimiento);
     
-            // Obtén la fecha formateada sin milisegundos
+            
             const fechaFormateada = fecha.toISOString().slice(0, 19).replace("T", " ");
             const sql = "update Clientes set Nombre_Completo=:Nombre_Completo,Fecha_Nacimiento=TO_DATE(:fechaFormateada, 'YYYY-MM-DD HH24:MI:SS'),N_Licencia=:N_Licencia,Correo=:Correo,Telefono=:Telefono,Contrasena=:Contrasena where Cc=:Cc";
             await this.DB.Open(sql, [Nombre_Completo,fechaFormateada, N_Licencia,Correo, Telefono,Contrasena,Cc], true);
@@ -198,19 +192,19 @@ class ServicioCliente {
         let Estado=true;
         let mensaje='';
 
-        if (!regex.test(Cedula)){ //Si tiene letra
+        if (!regex.test(Cedula)){ 
             Estado=false;
             mensaje="Error: Verifique La Cedula"
 
         }
 
-        if (!regex.test(Telefono)){ //Si tiene letra
+        if (!regex.test(Telefono)){ 
             Estado=false;
             mensaje="Error: Verifique El Telefono"
 
         }
 
-        if (!regex.test(N_Licencia)){ //Si tiene letra
+        if (!regex.test(N_Licencia)){ 
             Estado=false;
             mensaje="Error: Verifique La Licencia"
 

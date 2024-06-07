@@ -48,7 +48,6 @@ module.exports = function (servicio) {
       
       if(Pago_Inicial>=1000 || Pago_Inicial<=Valor_Inicial){
          return res.status(404).json('El Pago inicial debe ser mayor a 1000');
-
       }
       const Answer = await servicio.UpdateAlquiler(Id, Fecha_Recepcion, KmRecepcion,Pago_Inicial,Valor_Inicial);
 

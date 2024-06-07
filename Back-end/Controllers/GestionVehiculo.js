@@ -9,13 +9,12 @@ class ServicioVehiculos {
 
         try {
           
-            console.log(Url);
+            
 
             const Id_TipoVehiculoNumber = parseInt(Id_Tipovehiculo);
             const Id_MarcaNumber = parseInt(Id_Marca);
             const Id_TarifaNumber =parseInt(Id_Tarifas);
-            //URL: URL DE IMAGEN
-
+           
 
             const sql = "insert into Vehiculos(Placa, Id_Tipovehiculo, Modelo, Id_Marca, Id_Tarifas, Disponible,Year,Url) values (:Placa, :Id_TipoVehiculoNumber, :Modelo, :Id_MarcaNumber, :Id_TarifaNumber, :Disponible,:Year,:Url)";
 
@@ -71,10 +70,7 @@ class ServicioVehiculos {
     async UpdateVehiculo(Year, Modelo,Placa) {
 
         try {
-            console.log(Year);
-            console.log(Modelo);
-            console.log(Placa)
-
+            
             const sql = "update VEHICULOS set Modelo=:Modelo,Year=:Year where Placa=:Placa";
 
             await this.DB.Open(sql, [Modelo, Year,Placa], true);

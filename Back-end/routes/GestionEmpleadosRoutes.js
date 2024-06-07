@@ -31,10 +31,10 @@ module.exports = function (servicio) {
 
 
 
-         console.log(Id_Cargo);
+         
          const Answer = await servicio.addEmpleado(Correo, Clave, Id_Cargo, Disponible)
 
-         console.log(Answer);
+         
 
          res.status(200).json(Answer)
 
@@ -68,7 +68,7 @@ module.exports = function (servicio) {
    router.delete('/api/DeleteEmpleado/:Id', async (req, res) => {
 
       const { Id } = req.params
-      console.log(Id)
+      
       const Answer = await servicio.DeleteEmpleado(Id);
 
       res.json(Answer);
@@ -78,8 +78,7 @@ module.exports = function (servicio) {
 
       const { Correo, Clave } = req.body
 
-      console.log(Correo);
-      console.log(Clave);
+      
 
       const Answer = await servicio.BuscarEmpleado(Correo, Clave);
 

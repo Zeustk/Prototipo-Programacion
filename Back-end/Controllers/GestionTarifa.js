@@ -57,10 +57,7 @@ class ServicioTarifas {
 
         try { 
             
-            /* console.log(Id);
-            console.log(Nombre);
-            console.log(Precio);
-            console.log(ValorDia); */
+            
             
             const sql = "update Tarifas set Nombre=:Nombre,Precio=:Precio,ValorDia=:ValorDia where Id=:Id";
 

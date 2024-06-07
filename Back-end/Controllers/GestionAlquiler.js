@@ -22,26 +22,13 @@ class ServicioAlquiler {
 
 
 
-            // const kmRecepcion = parseInt(KmRecepcion);
-            //const kmRecorridos =parseInt(KmRecorridos);
+            
             const id_empleado = parseInt(Id_Empleados);
             const valorinicial = parseInt(Valor_Inicial);
-            // const cargos_adicionales=parseFloat(Cargos_Adicionales);
-            const total = parseFloat(Total);
+            
+            
 
-            console.log(total);
-
-
-
-
-            console.log(fechaEmision);
-            console.log(KmEmision);
-            console.log(KmRecepcion);
-            console.log(Id_Empleados);
-            console.log(Valor_Inicial);
-            console.log(Cargos_Adicionales);
-            console.log(Total);
-
+            
 
 
             const sql = "insert into Alquiler(Fecha_Emision,Fecha_Contrato,ID,KmEmision,KmRecepcion,KmRecorridos,Cargos_Adicionales,Total,Placa_Vehiculos,CC_CLIENTES,ID_EMPLEADOS,Valor_Inicial,Disponible,Fecha_Recepcion,Pago_Inicial) values (:fechaEmision,:fechacontrato,SEQ_ALQUILER.NEXTVAL,:KmEmision,:KmRecepcion,:KmRecorridos,:Cargos_Adicionales,:Total,:Placa_Vehiculo,:Cc_Clientes,:id_empleado,:valorinicial,:Disponible,:Fecha_Recepcion,:Pago_Inicial)";
@@ -104,7 +91,7 @@ class ServicioAlquiler {
         try {
 
 
-            // Validar si la fecha es válida antes de continuar
+            
             if (isNaN(new Date(Fecha_Recepcion).getTime())) {
                 throw new Error('Fecha_Recepcion no es una fecha válida.');
             }
@@ -113,7 +100,7 @@ class ServicioAlquiler {
 
             fecha.setDate(fecha.getDate() + 1);
 
-            // Obtén la fecha formateada sin milisegundos
+            
             const fechaFormateada = fecha.toISOString().slice(0, 19).replace("T", " ");
 
             if ((Pago_Inicial != 0) || (Pago_Inicial == 0)) {
@@ -159,8 +146,6 @@ class ServicioAlquiler {
         } catch (err) {
             console.error('Error:', err.message || err);
 
-            // Puedes lanzar el error nuevamente si necesitas que sea manejado en un nivel superior
-            // throw err;
 
             return 'Error al actualizar';
         }

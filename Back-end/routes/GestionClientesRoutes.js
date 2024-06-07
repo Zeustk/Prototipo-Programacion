@@ -12,8 +12,7 @@ module.exports = function (servicio) {
 
             const { Nombre_Completo, Cc, Fecha_Nacimiento, N_Licencia, Correo, Telefono,Contrasena } = req.body;
 
-            console.log('hola');
-            console.log(N_Licencia);
+           
 
        
             if (Cc.trim()=='' || Contrasena.trim()=='' || Telefono.trim()=='' || N_Licencia.trim()==''){

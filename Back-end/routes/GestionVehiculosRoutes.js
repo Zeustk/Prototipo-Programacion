@@ -9,7 +9,6 @@ router.use('/Imagenes', express.static(path.join(__dirname, '..', 'front-end', '
 
 
 
-//Para poder enviarla al assets del front-end
 
 module.exports = function (servicio) {
 
@@ -58,7 +57,7 @@ module.exports = function (servicio) {
 
          fs.writeFileSync(imagePath, imageData);
 
-         const relativePath = imagePath.replace(/^.*?assets/, 'assets').replace(/\\/g, '/'); //RUTA RELATIVA
+         const relativePath = imagePath.replace(/^.*?assets/, 'assets').replace(/\\/g, '/'); //RUTA 
 
 
 
