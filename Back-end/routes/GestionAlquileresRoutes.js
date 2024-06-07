@@ -14,8 +14,13 @@ module.exports = function (servicio) {
 
          const FechaContrato = new Date(Fecha_Contrato);
          const FechaEmision = new Date(Fecha_Emision);
+<<<<<<< HEAD
 
          if (KmEmision == 0 || Id_Empleados == 0 || Cc_Clientes == '' || Placa_Vehiculo == '' || KmEmision=='') {
+=======
+         
+         if (KmEmision == 0 || Id_Empleados == 0 || Cc_Clientes == '' || FechaContrato < FechaEmision || Placa_Vehiculo == '' ) {
+>>>>>>> 82f8fc1a4d51a7dbd398b08d95a8befc30fc6f4b
             return res.status(400).json('VERIFIQUE CAMPOS');
          }
 
@@ -56,9 +61,13 @@ module.exports = function (servicio) {
 
    router.put('/api/UpdateAlquiler', async (req, res) => {
 
-      const { Id, Fecha_Recepcion, KmRecepcion, Pago_Inicial} = req.body
+      const { Id, Fecha_Recepcion, KmRecepcion, Pago_Inicial,Valor_Inicial} = req.body
+      
+      if(Pago_Inicial>=1000 || Pago_Inicial<=Valor_Inicial){
+         return res.status(404).json('El Pago inicial debe ser mayor a 1000');
 
-      const Answer = await servicio.UpdateAlquiler(Id, Fecha_Recepcion, KmRecepcion,Pago_Inicial);
+      }
+      const Answer = await servicio.UpdateAlquiler(Id, Fecha_Recepcion, KmRecepcion,Pago_Inicial,Valor_Inicial);
 
 
       res.json(Answer);
