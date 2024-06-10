@@ -18,7 +18,7 @@ app.disable('x-powered-by');
 app.set('x-powered-by', false);
 
 
-app.use(cors(corsOptions));
+app.use(cors());
 
 
 const ControllerMarcas=require('./Controllers/GestionMarca');
