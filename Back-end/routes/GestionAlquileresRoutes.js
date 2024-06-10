@@ -15,20 +15,6 @@ module.exports = function (servicio) {
          const FechaContrato = new Date(Fecha_Contrato);
          const FechaEmision = new Date(Fecha_Emision);
 
-         const tutu='2222';
-         console.log(typeof(KmEmision));
-         console.log(typeof(KmRecepcion));
-         console.log(typeof(KmRecorridos));
-         console.log(typeof(Placa_Vehiculo));
-         console.log(typeof(Cc_Clientes));
-         console.log(typeof(Id_Empleados));
-         console.log(typeof(Valor_Inicial));
-         console.log(typeof(Disponible));
-         console.log(typeof(Cargos_Adicionales));
-         console.log(typeof(Total));
-         console.log(typeof(Fecha_Recepcion));
-         console.log(typeof(Pago_Inicial));
-         
          
 
 
