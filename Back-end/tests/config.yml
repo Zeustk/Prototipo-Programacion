@@ -1,18 +1,12 @@
 config:
   target: "http://localhost:5000"  # La URL base de tu aplicación
   phases:
-    - duration: 60  # Duración de la primera fase en segundos
-      arrivalRate: 200  # Tasa de llegada inicial de solicitudes por segundo
-      name: "Fase de carga Media"
-    #- duration: 60  # Duración de la primera fase en segundos
-    #  arrivalRate: 100  # Tasa de llegada inicial de solicitudes por segundo
-    #  name: "Fase de carga Media"  
-    #- duration: 120  # Duración de la segunda fase en segundos
-    #  arrivalRate: 200  # Tasa de llegada durante la carga máxima
-    #  name: "Fase de carga grave"
+    - duration: 60  # Duración de la fase en segundos
+      arrivalRate: 1  # Tasa de llegada mínima de solicitudes por segundo
+      name: "Prueba de Rendimiento"
 
 scenarios:
   - flow:
       - get:
-          url: "/api/getAlquiler"  # La ruta para la solicitud POST de registro de vehículos
-         
+          url: "/api/getAlquiler"  # La ruta para la solicitud GET
+

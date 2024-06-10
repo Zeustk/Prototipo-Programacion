@@ -5,7 +5,7 @@ class ServicioAlquiler {
     }
 
 
-    async addAlquiler({Fecha_Emision, Fecha_Contrato, KmEmision, KmRecepcion, KmRecorridos, Placa_Vehiculo, Cc_Clientes, Id_Empleados, Valor_Inicial, Disponible, Cargos_Adicionales, Total, Fecha_Recepcion, Pago_Inicial}) {
+    async addAlquiler(Fecha_Emision, Fecha_Contrato, KmEmision, KmRecepcion, KmRecorridos, Placa_Vehiculo, Cc_Clientes, Id_Empleados, Valor_Inicial, Disponible, Cargos_Adicionales, Total, Fecha_Recepcion, Pago_Inicial) {
         try {
             //conversiones
 
@@ -227,18 +227,16 @@ class ServicioAlquiler {
 
     async VehiculoEstaEnCurso(Placa) {
         try {
-            const sql = "SELECT COUNT(Placa_Vehiculos) AS count FROM alquiler WHERE Fecha_Recepcion IS NULL AND Placa_Vehiculos = :Placa";
+            const sql = "SELECT COUNT(Placa_Vehiculos) AS count FROM alquiler WHERE Fecha_Recepcion IS NULL AND Placa_Vehiculos = :Placa AND Disponible='SI'";
             let consulta = await this.DB.Open(sql, [Placa], false);
     
-            console.log('Resultado de la consulta:', consulta); // Depuración
-            console.log('Número de filas:', consulta.rows.length); // Depuración
-    
+         
             // Accede al conteo correctamente
             if (consulta.rows.length > 0 && consulta.rows[0][0] > 0) {
-                console.log('Vehículo está en curso'); // Depuración
+          
                 return true;
             } else {
-                console.log('hola'); // Depuración
+
                 return false;
             }
     
@@ -255,11 +253,15 @@ class ServicioAlquiler {
         const regex = /^\d+$/;
       
 
-        if (!regex.test(KmEmision)) //Si tiene letra
+        if (!regex.test(KmEmision)){
+
+            console.log('paso');
             return true;
-        
+
+        } //Si tiene letra
 
         return false;
+
 
     }
 

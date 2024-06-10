@@ -5,7 +5,7 @@ class ServicioCliente {
     }
 
 
-    async addCliente({Nombre_Completo, Cc, Fecha_Nacimiento, N_Licencia,Disponible, Correo, Telefono,Contrasena}) {
+    async addCliente(Nombre_Completo, Cc, Fecha_Nacimiento, N_Licencia,Disponible, Correo, Telefono,Contrasena) {
         try {
            
             

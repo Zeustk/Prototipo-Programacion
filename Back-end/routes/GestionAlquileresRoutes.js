@@ -15,6 +15,22 @@ module.exports = function (servicio) {
          const FechaContrato = new Date(Fecha_Contrato);
          const FechaEmision = new Date(Fecha_Emision);
 
+         const tutu='2222';
+         console.log(typeof(KmEmision));
+         console.log(typeof(KmRecepcion));
+         console.log(typeof(KmRecorridos));
+         console.log(typeof(Placa_Vehiculo));
+         console.log(typeof(Cc_Clientes));
+         console.log(typeof(Id_Empleados));
+         console.log(typeof(Valor_Inicial));
+         console.log(typeof(Disponible));
+         console.log(typeof(Cargos_Adicionales));
+         console.log(typeof(Total));
+         console.log(typeof(Fecha_Recepcion));
+         console.log(typeof(Pago_Inicial));
+         
+         
+
 
          if (KmEmision < 0 || Id_Empleados == 0 || Cc_Clientes == '' || Placa_Vehiculo == '' || KmEmision==null || Id_Empleados==null) {
             return res.status(400).json('VERIFIQUE CAMPOS');
@@ -24,9 +40,12 @@ module.exports = function (servicio) {
             return res.status(400).json('La Fecha De Recepcion debe ser mayor a la Fecha de Emision');
          }
 
+
          if (servicio.KmEmisionTieneLetra(KmEmision)){
             return res.status(400).json('Verifique los Km De Emision');
          }
+
+         
 
          if (await servicio.VehiculoEstaEnCurso(Placa_Vehiculo)) {
      
